@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demand Journeys | AI & Travel Distribution Advisory</title>
+    <meta name="description" content="Executive AI Search (GEO) Positioning, Direct Booking Shift, and MarTech Data Architecture for JAPAC Hospitality Enterprises.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           DESIGN SYSTEM & BASE STYLES
+           Style: Bright, Bold, Minimalistic Light Theme
+           ========================================================================== */
+        :root {
+            --bg-body: #F8FAFC;
+            --bg-surface: #FFFFFF;
+            --bg-subtle: #F1F5F9;
+            --bg-highlight: #EFF6FF;
+            
+            --border-color: #E2E8F0;
+            --border-strong: #CBD5E1;
+            
+            --text-primary: #0F172A;
+            --text-secondary: #334155;
+            --text-muted: #64748B;
+            
+            --accent-blue: #2563EB;
+            --accent-blue-bg: rgba(37, 99, 235, 0.08);
+            --accent-blue-hover: #1D4ED8;
+            
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --container-width: 960px;
+            --header-height: 80px;
+            
+            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+            --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+            --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-body);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            overflow-x: hidden;
+            background-color: var(--bg-body);
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
+            line-height: 1.15;
+        }
+
+        .label-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-blue);
+            background: var(--accent-blue-bg);
+            border: 1px solid rgba(37, 99, 235, 0.25);
+            padding: 6px 14px;
+            border-radius: 100px;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .label-tag::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-blue);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px var(--accent-blue);
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 16px 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-blue);
+            color: #FFFFFF;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-blue-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-surface);
+            color: var(--text-primary);
+            border-color: var(--border-strong);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-primary);
+            background-color: var(--bg-subtle);
+        }
+
+        /* Header & Nav */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .brand-logo {
+            font-weight: 800;
+            font-size: 1.35rem;
+            letter-spacing: -0.04em;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: calc(var(--header-height) + 90px);
+            padding-bottom: 100px;
+            background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-body) 100%);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            letter-spacing: -0.04em;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .hero-title span {
+            color: var(--accent-blue);
+            background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        /* Footer & Form */
+        footer {
+            padding: 60px 0 40px;
+            background: #FFFFFF;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .footer-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 420px;
+            line-height: 1.6;
+        }
+
+        .footer-sub {
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.8rem; }
+            .hero-cta-group { flex-direction: column; }
+            .nav-links { display: none; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-inner">
+            <a href="#" class="brand-logo">
+                DEMAND JOURNEYS
+            </a>
+            <ul class="nav-links">
+                <li><a href="#audit" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.88rem;">Request Audit &rarr;</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="label-tag">C-SUITE TRAVEL COMMERCIAL &amp; TECHNICAL AI ADVISORY</div>
+                <h1 class="hero-title">Recapture Direct Revenue. Dominate <span>Generative AI</span> Search.</h1>
+                <p class="hero-subtitle">
+                    We bridge executive commercial strategy with technical AI engineering for APAC luxury hotel chains and travel platforms—eliminating 19% OTA commission leakage and capturing conversational AI traffic.
+                </p>
+                <div class="hero-cta-group">
+                    <a href="#audit" class="btn btn-primary">Request C-Suite Audit &rarr;</a>
+                    <a href="mailto:mengliang.online@outlook.com" class="btn btn-secondary">Contact Directly</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Executive Call to Action & Audit Lead Form -->
+    <section id="audit" style="background: linear-gradient(180deg, #FFFFFF 0%, #EFF6FF 100%);">
+        <div class="container" style="max-width: 800px;">
+            <div class="section-header">
+                <div class="label-tag">COMPLIMENTARY EXECUTIVE LEAD MAGNET</div>
+                <h2 class="section-title">Request an Executive AI Visibility &amp; OTA Leakage Audit</h2>
+                <p class="section-desc">
+                    Receive a 10-point diagnostic report evaluating your properties' ChatGPT/Perplexity search citation coverage, mobile booking friction, and direct margin recovery potential.
+                </p>
+            </div>
+
+            <form action="mailto:mengliang.online@outlook.com" method="POST" enctype="text/plain" style="display: flex; flex-direction: column; gap: 24px; text-align: left; background: var(--bg-surface); padding: 48px; border: 1px solid var(--border-color); border-radius: 16px; box-shadow: var(--shadow-lg);">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                    <div>
+                        <label style="font-size: 0.82rem; font-family: var(--font-mono); font-weight: 700; color: var(--text-secondary); display: block; margin-bottom: 8px;">EXECUTIVE NAME *</label>
+                        <input type="text" name="Executive Name" required placeholder="e.g. Tan Meng Liang" style="width: 100%; padding: 16px; background: var(--bg-body); border: 1px solid var(--border-strong); color: var(--text-primary); border-radius: 8px; font-family: var(--font-sans); font-size: 0.95rem;">
+                    </div>
+                    <div>
+                        <label style="font-size: 0.82rem; font-family: var(--font-mono); font-weight: 700; color: var(--text-secondary); display: block; margin-bottom: 8px;">OFFICIAL EMAIL *</label>
+                        <input type="email" name="Email" required placeholder="name@hotelgroup.com" style="width: 100%; padding: 16px; background: var(--bg-body); border: 1px solid var(--border-strong); color: var(--text-primary); border-radius: 8px; font-family: var(--font-sans); font-size: 0.95rem;">
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                    <div>
+                        <label style="font-size: 0.82rem; font-family: var(--font-mono); font-weight: 700; color: var(--text-secondary); display: block; margin-bottom: 8px;">COMPANY / HOTEL GROUP *</label>
+                        <input type="text" name="Company" required placeholder="e.g. Apex Resort Collection" style="width: 100%; padding: 16px; background: var(--bg-body); border: 1px solid var(--border-strong); color: var(--text-primary); border-radius: 8px; font-family: var(--font-sans); font-size: 0.95rem;">
+                    </div>
+                    <div>
+                        <label style="font-size: 0.82rem; font-family: var(--font-mono); font-weight: 700; color: var(--text-secondary); display: block; margin-bottom: 8px;">NUMBER OF PROPERTIES</label>
+                        <select name="Number of Properties" style="width: 100%; padding: 16px; background: var(--bg-body); border: 1px solid var(--border-strong); color: var(--text-primary); border-radius: 8px; font-family: var(--font-sans); font-size: 0.95rem;">
+                            <option>1 – 5 Properties</option>
+                            <option selected>6 – 20 Properties</option>
+                            <option>21 – 50 Properties</option>
+                            <option>50+ Properties</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label style="font-size: 0.82rem; font-family: var(--font-mono); font-weight: 700; color: var(--text-secondary); display: block; margin-bottom: 8px;">PRIMARY COMMERCIAL BOTTLENECK</label>
+                    <textarea name="Commercial Bottleneck" rows="3" placeholder="Describe your current OTA commission dependency or booking engine friction..." style="width: 100%; padding: 16px; background: var(--bg-body); border: 1px solid var(--border-strong); color: var(--text-primary); border-radius: 8px; font-family: var(--font-sans); font-size: 0.95rem;"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="padding: 18px; font-size: 1rem; margin-top: 10px;">Submit Audit Request &rarr;</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">DEMAND JOURNEYS</div>
+                    <div class="footer-desc">
+                        AI &amp; Travel Distribution Advisory.<br>
+                        Bridging C-Suite Commercial Strategy with Technical AI Execution across APAC.
+                    </div>
+                </div>
+                <div>
+                    <div style="font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 16px;">CONTACT</div>
+                    <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.8; font-weight: 500;">
+                        Email: <a href="mailto:mengliang.online@outlook.com" style="color: var(--accent-blue); text-decoration: none;">mengliang.online@outlook.com</a><br>
+                        Location: Singapore &amp; Regional APAC
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-sub">
+                <div>&copy; 2026 DEMAND JOURNEYS. ALL RIGHTS RESERVED.</div>
+                <div>CONFIDENTIAL &amp; PROPRIETARY</div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
