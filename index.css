@@ -127,6 +127,37 @@ body {
   color: var(--color-accent);
 }
 
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-nav-deck {
+  padding: 8px 16px;
+  font-size: 0.84rem;
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  color: var(--color-primary) !important;
+  border: 1px solid var(--color-border);
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-nav-deck:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent) !important;
+  background-color: rgba(217, 119, 6, 0.05);
+}
+
+.btn-nav-deck .deck-icon {
+  stroke: currentColor;
+}
+
 .btn-nav {
   padding: 9px 18px;
   font-size: 0.85rem;
