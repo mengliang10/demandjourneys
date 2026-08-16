@@ -1191,6 +1191,11 @@ section {
 }
 
 .cta-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
   margin-bottom: 30px;
 }
 
@@ -1311,6 +1316,11 @@ section {
 
   .hero-actions {
     flex-direction: column;
+  }
+
+  .cta-button-wrapper {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .btn {
