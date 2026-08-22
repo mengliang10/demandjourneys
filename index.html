@@ -1008,14 +1008,75 @@
             <div class="cta-option-box">
               <h3 class="opt-title">90-Minute Commercial Workshop</h3>
               <p class="opt-desc">A focused diagnostic working session to identify demand sources, channel economics, customer journey friction, and 90-day priorities.</p>
-              <a href="mailto:mengliang.online@outlook.com?subject=Demand%20Journeys%2090-Minute%20Workshop%20Request&body=Hi%20Meng%20Liang,%0D%0A%0D%0AI%20would%20like%20to%20request%20a%2090-Minute%20Commercial%20Demand%20Workshop.%0D%0A%0D%0AName:%20%0D%0ACompany%20/%20Property:%20%0D%0ARole:%20%0D%0APrimary%20Commercial%20Challenge:%20%0D%0ADesired%20Timeframe:%20" class="btn btn-primary btn-large" id="main-contact-btn">Request 90-Minute Workshop &rarr;</a>
+              <a href="#contact-box" class="btn btn-primary btn-large" id="main-contact-btn">Request Workshop &darr;</a>
             </div>
 
             <div class="cta-option-box">
               <h3 class="opt-title">Targeted Advisory &amp; Leadership</h3>
               <p class="opt-desc">Discuss a specific transformation project, distribution review, MarTech architecture, or fractional leadership requirement.</p>
-              <a href="mailto:mengliang.online@outlook.com?subject=Demand%20Journeys%20Advisory%20Inquiry&body=Hi%20Meng%20Liang,%0D%0A%0D%0AI%20would%20like%20to%20discuss%20an%20advisory%20challenge%20/%20fractional%20leadership.%0D%0A%0D%0AName:%20%0D%0ACompany%20/%20Property:%20%0D%0ARole:%20%0D%0AChallenge%20/%20Decision%20to%20Make:%20%0D%0AApproximate%20Scale:%20" class="btn btn-secondary btn-large" id="advisory-contact-btn">Discuss Advisory Challenge &rarr;</a>
+              <a href="#contact-box" class="btn btn-secondary btn-large" id="advisory-contact-btn">Discuss Advisory &darr;</a>
             </div>
+          </div>
+
+          <!-- Interactive Direct Contact Form Box -->
+          <div class="contact-form-container" id="contact-box">
+            <div class="form-header">
+              <span class="form-badge">Direct Executive Line</span>
+              <h3 class="contact-form-title">Send a Direct Message to Meng Liang</h3>
+              <p class="contact-form-subtitle">Inquiries are delivered immediately to <code>ml@demandjourneys.com</code> and <code>mengliang.online@outlook.com</code>.</p>
+            </div>
+
+            <form action="https://formsubmit.co/ml@demandjourneys.com" method="POST" id="dj-contact-form" class="dj-contact-form">
+              <!-- FormSubmit Configuration & Security -->
+              <input type="hidden" name="_cc" value="mengliang.online@outlook.com">
+              <input type="hidden" name="_subject" value="New Executive Inquiry from DemandJourneys.com">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="text" name="_honey" style="display:none">
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="form-name">Your Name <span class="req">*</span></label>
+                  <input type="text" id="form-name" name="name" placeholder="e.g. Alex Wong" required class="form-input">
+                </div>
+
+                <div class="form-group">
+                  <label for="form-email">Work Email <span class="req">*</span></label>
+                  <input type="email" id="form-email" name="email" placeholder="alex.wong@company.com" required class="form-input">
+                </div>
+
+                <div class="form-group">
+                  <label for="form-company">Company / Property</label>
+                  <input type="text" id="form-company" name="company" placeholder="e.g. Hospitality Group / Brand" class="form-input">
+                </div>
+
+                <div class="form-group">
+                  <label for="form-topic">Inquiry Type</label>
+                  <select id="form-topic" name="topic" class="form-input form-select">
+                    <option value="90-Minute Commercial Diagnostic Workshop">90-Minute Commercial Diagnostic Workshop</option>
+                    <option value="Hospitality Commercial & Distribution Review">Hospitality Commercial &amp; Distribution Review</option>
+                    <option value="MarTech, CDP & Customer Platform Strategy">MarTech, CDP &amp; Customer Platform Strategy</option>
+                    <option value="Marketing Measurement (MMM) & Yield Analytics">Marketing Measurement (MMM) &amp; Yield Analytics</option>
+                    <option value="Fractional Commercial / Transformation Leadership">Fractional Commercial / Transformation Leadership</option>
+                    <option value="General Commercial Inquiry">General Commercial Inquiry</option>
+                  </select>
+                </div>
+
+                <div class="form-group full-width">
+                  <label for="form-message">Commercial Question or Project Scope <span class="req">*</span></label>
+                  <textarea id="form-message" name="message" rows="3" placeholder="Tell us what is not working, what technology or channel you are considering investing in, or where you need senior commercial clarity..." required class="form-input form-textarea"></textarea>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" id="form-submit-btn" class="btn btn-primary btn-large btn-submit">
+                  <span class="btn-text">Send Message to Meng Liang &rarr;</span>
+                  <span class="btn-loading" style="display: none;">Sending to Mailbox...</span>
+                </button>
+              </div>
+
+              <div id="form-response-msg" class="form-response-card" style="display: none;"></div>
+            </form>
           </div>
 
           <p class="cta-footer-tags">
@@ -1082,6 +1143,67 @@
           }
         });
       }, { passive: true });
+
+      // FormSubmit AJAX Handler
+      const contactForm = document.getElementById('dj-contact-form');
+      const submitBtn = document.getElementById('form-submit-btn');
+      const responseCard = document.getElementById('form-response-msg');
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const btnText = submitBtn.querySelector('.btn-text');
+          const btnLoading = submitBtn.querySelector('.btn-loading');
+
+          btnText.style.display = 'none';
+          btnLoading.style.display = 'inline-block';
+          submitBtn.disabled = true;
+          responseCard.style.display = 'none';
+
+          const formData = new FormData(contactForm);
+
+          try {
+            const res = await fetch('https://formsubmit.co/ajax/ml@demandjourneys.com', {
+              method: 'POST',
+              body: formData,
+              headers: {
+                'Accept': 'application/json'
+              }
+            });
+
+            if (res.ok) {
+              responseCard.className = 'form-response-card response-success';
+              responseCard.innerHTML = `
+                <div class="resp-icon">✓</div>
+                <div class="resp-body">
+                  <strong>Message Sent Successfully!</strong>
+                  <p>Your inquiry has been delivered directly to Meng Liang's mailbox (<code>ml@demandjourneys.com</code> &amp; <code>mengliang.online@outlook.com</code>). You will receive a direct reply within 24 hours.</p>
+                </div>
+              `;
+              responseCard.style.display = 'flex';
+              contactForm.reset();
+              trackEvent('form_submission_success', { form_id: 'dj-contact-form' });
+            } else {
+              throw new Error('Server response not ok');
+            }
+          } catch (err) {
+            console.error('Form submission error:', err);
+            responseCard.className = 'form-response-card response-error';
+            responseCard.innerHTML = `
+              <div class="resp-icon">!</div>
+              <div class="resp-body">
+                <strong>Submission Note</strong>
+                <p>We are forwarding your message. If it doesn't arrive within 24 hours, you can also reach Meng Liang directly at <a href="mailto:ml@demandjourneys.com" style="color: #F59E0B; text-decoration: underline;">ml@demandjourneys.com</a>.</p>
+              </div>
+            `;
+            responseCard.style.display = 'flex';
+          } finally {
+            btnText.style.display = 'inline-block';
+            btnLoading.style.display = 'none';
+            submitBtn.disabled = false;
+          }
+        });
+      }
     });
   </script>
 </body>
