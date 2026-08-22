@@ -440,6 +440,51 @@ body {
   margin-bottom: 22px;
 }
 
+.profile-logos-strip {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  padding-top: 20px;
+}
+
+.profile-logo-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-sm, 6px);
+  padding: 8px 12px;
+  color: #F1F5F9;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: var(--transition);
+  text-align: left;
+}
+
+.profile-logo-badge:hover {
+  border-color: var(--color-accent-gold, #F59E0B);
+  background: rgba(30, 41, 59, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.profile-logo-badge .brand-svg-icon {
+  width: 17px;
+  height: 17px;
+  color: var(--color-accent-gold, #F59E0B);
+  flex-shrink: 0;
+}
+
+.profile-logo-badge .logo-text {
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .profile-tag-strip {
   display: flex;
   flex-wrap: wrap;
