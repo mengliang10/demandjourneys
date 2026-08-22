@@ -32,7 +32,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
 
-  <!-- Structured Data (JSON-LD) for SEO / AEO / GEO -->
+  <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,76 +44,16 @@
         "alternateName": "Demand Journeys Advisory",
         "url": "https://demandjourneys.com",
         "logo": "https://demandjourneys.com/profile.jpg",
-        "description": "Operator-led commercial growth, marketing and transformation advisory helping businesses understand which customers, channels, journeys and technology investments create valuable demand at sustainable cost.",
         "founder": {
           "@type": "Person",
-          "@id": "https://demandjourneys.com/#founder",
-          "name": "Tan Meng Liang",
+          "name": "Meng Liang Tan",
           "jobTitle": "Founder & Principal Advisor",
           "sameAs": [
             "https://linkedin.com/in/mengliang",
-            "https://github.com/mengliang10"
+            "https://demandjourneys.substack.com"
           ]
         },
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Singapore",
-          "addressCountry": "SG"
-        },
-        "knowsAbout": [
-          "Commercial Demand Diagnostics",
-          "Hospitality Commercial Strategy & Distribution",
-          "Customer Journey Transformation",
-          "Marketing Intelligence & Incrementality Measurement",
-          "MarTech & Customer Data Platforms",
-          "AI, GEO & Emerging Discovery",
-          "Fractional Executive Leadership"
-        ]
-      },
-      {
-        "@type": "ProfessionalService",
-        "@id": "https://demandjourneys.com/#service",
-        "name": "Demand Journeys Commercial Advisory",
-        "provider": {
-          "@id": "https://demandjourneys.com/#organization"
-        },
-        "serviceType": [
-          "Commercial Demand Diagnostics",
-          "Hospitality Commercial & Distribution Advisory",
-          "Targeted Transformation Advisory",
-          "Fractional Marketing Leadership"
-        ],
-        "areaServed": "Global / APAC",
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Advisory Services",
-          "itemListElement": [
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "90-Minute Commercial Demand Workshop",
-                "description": "Executive working session to diagnose where valuable demand comes from, what it costs, and where commercial value is being lost."
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Targeted Transformation Advisory",
-                "description": "Diagnostic and roadmap advisory for digital growth, distribution economics, MarTech/CDP architecture, measurement, and AI transformation."
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Fractional Executive Leadership",
-                "description": "Senior commercial marketing leadership and governance during transformation or executive transition."
-              }
-            }
-          ]
-        }
+        "description": "Operator-led advisory connecting customer, channel, journey and technology economics to identify where growth is actually profitable."
       }
     ]
   }
@@ -123,26 +63,28 @@
 
   <!-- 1. NAVIGATION -->
   <header class="header">
-    <div class="nav-container">
-      <a href="#hero" class="brand-logo">
-        <span class="brand-name">DEMAND JOURNEYS</span>
-        <span class="brand-tagline">Commercial Growth &bull; Marketing &bull; Transformation</span>
+    <div class="container nav-container">
+      <a href="#hero" class="brand-link">
+        <span class="brand-title">DEMAND JOURNEYS</span>
+        <span class="brand-subtitle">Commercial Growth &amp; Transformation</span>
       </a>
 
-      <nav class="nav-menu" aria-label="Main Navigation">
-        <a href="#hero" class="nav-link">Home</a>
+      <nav class="nav-menu">
+        <a href="#approach" class="nav-link">Approach</a>
+        <a href="#track-record" class="nav-link">Track Record</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </nav>
 
-      <div class="nav-cta">
-        <a href="https://linkedin.com/in/mengliang" target="_blank" rel="noopener" class="btn-nav-outline" title="Connect on LinkedIn">
-          <svg class="nav-btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="nav-cta-wrap">
+        <a href="https://linkedin.com/in/mengliang" target="_blank" rel="noopener" class="btn-linkedin" aria-label="LinkedIn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
             <rect x="2" y="9" width="4" height="12"></rect>
             <circle cx="4" cy="4" r="2"></circle>
           </svg>
           LinkedIn
         </a>
-        <a href="mailto:ml@demandjourneys.com" class="btn-nav">Contact Me &rarr;</a>
+        <a href="#contact" class="btn-nav">Contact Me &rarr;</a>
       </div>
     </div>
   </header>
@@ -167,12 +109,12 @@
             </blockquote>
 
             <p class="hero-supporting-line">
-              Operator-led advisory connecting commercial strategy, marketing, customer data, distribution, MarTech, measurement and AI.
+              Operator-led advisory connecting commercial strategy, direct distribution, customer data, MarTech, marketing measurement and AI.
             </p>
 
             <div class="hero-actions">
-              <a href="mailto:mengliang.online@outlook.com?subject=Demand%20Journeys%2090-Minute%20Workshop%20Request" class="btn btn-primary btn-large">Request a 90-Minute Executive Workshop</a>
-              <a href="#advisory" class="btn btn-secondary btn-large">Explore Advisory</a>
+              <a href="#contact" class="btn btn-primary btn-large">Send a Direct Message &darr;</a>
+              <a href="#track-record" class="btn btn-secondary btn-large">View Verified Track Record &rarr;</a>
             </div>
           </div>
 
@@ -203,247 +145,141 @@
       </div>
     </section>
 
-    <!-- 3. CORE PROBLEM / COMMERCIAL INTELLIGENCE PROBLEM -->
-    <section class="problem-section" id="problem">
+    <!-- 3. VALUE APPROACH & FRAMEWORK SECTION -->
+    <section class="framework-section" id="approach">
       <div class="container">
         <div class="section-header text-center">
-          <span class="section-tag">The Commercial Problem</span>
-          <h2 class="section-title">Growth Is Not the Same as Profitable Demand.</h2>
+          <span class="section-tag">Value Methodology</span>
+          <h2 class="section-title">The Question Behind the Dashboard</h2>
           <p class="section-subtitle">
-            Most businesses do not have a traffic problem. They have a commercial value alignment problem.
+            Most businesses can track leads and traffic. Few can clearly prove which activities create incremental commercial profit after factoring in channel costs, conversion drop-offs, and technology overhead.
           </p>
         </div>
 
-        <div class="problem-manifesto-box">
+        <div class="problem-manifesto-box" style="margin-bottom: 40px;">
           <div class="problem-statements-grid">
             <div class="statement-card">
               <div class="statement-icon">✕</div>
-              <p><strong>More traffic</strong> does not necessarily mean more value.</p>
+              <p><strong>More traffic</strong> does not necessarily create profitable demand.</p>
             </div>
             <div class="statement-card">
               <div class="statement-icon">✕</div>
-              <p><strong>More bookings</strong> do not necessarily mean more profit.</p>
+              <p><strong>Channel-reported ROAS</strong> often masks heavy commission leakage.</p>
             </div>
             <div class="statement-card">
               <div class="statement-icon">✕</div>
-              <p><strong>More marketing technology</strong> does not necessarily mean better customer experiences.</p>
+              <p><strong>Complex MarTech tools</strong> frequently drain budget without commercial lift.</p>
             </div>
             <div class="statement-card">
               <div class="statement-icon">✕</div>
-              <p><strong>More data</strong> does not necessarily mean better decisions.</p>
-            </div>
-          </div>
-          
-          <div class="problem-thesis-bar">
-            <p>
-              Demand Journeys looks across the system to determine where commercial value is being created, where it is being lost, and what should change first.
-            </p>
-          </div>
-        </div>
-
-        <!-- Connected Commercial Value System -->
-        <div class="value-system-wrap">
-          <h3 class="value-system-title">The Connected Commercial Value System</h3>
-          <div class="value-system-flow">
-            <div class="system-node"><span class="node-num">01</span><span class="node-name">Demand</span></div>
-            <div class="system-arrow">&rarr;</div>
-            <div class="system-node"><span class="node-num">02</span><span class="node-name">Customer</span></div>
-            <div class="system-arrow">&rarr;</div>
-            <div class="system-node"><span class="node-num">03</span><span class="node-name">Channel</span></div>
-            <div class="system-arrow">&rarr;</div>
-            <div class="system-node"><span class="node-num">04</span><span class="node-name">Conversion</span></div>
-            <div class="system-arrow">&rarr;</div>
-            <div class="system-node"><span class="node-num">05</span><span class="node-name">Distribution</span></div>
-            <div class="system-arrow">&rarr;</div>
-            <div class="system-node"><span class="node-num">06</span><span class="node-name">Data</span></div>
-            <div class="system-arrow">&rarr;</div>
-            <div class="system-node"><span class="node-num">07</span><span class="node-name">Technology</span></div>
-            <div class="system-arrow">&rarr;</div>
-            <div class="system-node"><span class="node-num">08</span><span class="node-name">Measurement</span></div>
-            <div class="system-arrow">&rarr;</div>
-            <div class="system-node node-highlight"><span class="node-num">09</span><span class="node-name">Margin</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. OPERATOR ADVANTAGE & THE QUESTION BEHIND THE DASHBOARD -->
-    <section class="operator-advantage-section" id="advantage">
-      <div class="container">
-        <div class="about-grid">
-          <div class="about-content">
-            <span class="section-tag">Operator Advantage</span>
-            <h2 class="section-title">The Question Behind the Dashboard</h2>
-            
-            <div class="about-text-body">
-              <p>
-                Most businesses can tell you how much they spent. Most can tell you how many leads, visitors, bookings or customers they generated.
-              </p>
-              <p>
-                Fewer can clearly explain which activities created incremental commercial value after considering channel economics, customer behaviour, distribution costs, technology costs and operating constraints.
-              </p>
-              <p>
-                Demand Journeys starts there.
-              </p>
-            </div>
-
-            <div class="central-question-callout">
-              <span class="callout-tag">The Core Question</span>
-              <p class="callout-text">“Which demand is actually worth buying?”</p>
-            </div>
-          </div>
-
-          <div class="about-callout-wrap">
-            <div class="operator-badge-card">
-              <div class="operator-badge-header">
-                <span class="badge-icon">⚖</span>
-                <span class="badge-title">Operator-Led Intelligence</span>
-              </div>
-              <div class="operator-transition-flow">
-                <div class="flow-pill flow-operator">Operator</div>
-                <div class="flow-arrow">&rarr;</div>
-                <div class="flow-pill flow-advisor">Strategic Advisor</div>
-              </div>
-              <p class="operator-badge-desc">
-                Built from the operator's side of the table.
-              </p>
-              <p class="operator-badge-sub">
-                Not a slide-only advisory exercise. Demand Journeys combines direct P&amp;L accountability, real platform architectures, channel economics and organizational governance.
-              </p>
-              <div class="operator-sub-pills">
-                <span>Raffles</span>
-                <span>AccorHotels</span>
-                <span>TripAdvisor</span>
-                <span>Expedia</span>
-                <span>Frasers</span>
-                <span>Mezzofy</span>
-              </div>
+              <p><strong>Departmental silos</strong> misalign marketing, revenue management and IT.</p>
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- 5. COMMERCIAL VALUE FRAMEWORK (7 STAGES) -->
-    <section class="framework-section" id="framework">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-tag">Core Intellectual Property</span>
-          <h2 class="section-title">The Demand Journeys Commercial Value Framework</h2>
+        <div class="section-header text-center" style="margin-top: 50px;">
+          <span class="section-tag">Core Value System</span>
+          <h3 class="section-title" style="font-size: 2rem;">The 7-Stage Commercial Value Framework</h3>
           <p class="section-subtitle">
-            A 7-stage connected system to evaluate where commercial value is created, where margin leaks, and which interventions should happen first.
+            An interconnected system to diagnose demand sources, eliminate margin drag, and prioritize high-ROI interventions.
           </p>
         </div>
 
         <div class="framework-grid-seven">
-          <!-- 01. Discover -->
           <div class="framework-card">
             <div class="framework-header">
               <span class="fw-num">01</span>
-              <h3 class="fw-title">DISCOVER</h3>
+              <h4 class="fw-title">DISCOVER</h4>
             </div>
-            <p class="fw-question">Where does valuable demand come from?</p>
+            <p class="fw-question">Where does valuable demand originate?</p>
             <ul class="fw-list">
               <li>Organic &amp; Paid Search</li>
-              <li>AI Discovery &amp; GEO / AEO</li>
-              <li>Marketplaces &amp; Metasearch</li>
-              <li>Brand &amp; Strategic Partnerships</li>
-              <li>Distribution Channels</li>
+              <li>AI Discovery (GEO / AEO / AIO)</li>
+              <li>Metasearch &amp; Aggregators</li>
+              <li>Brand &amp; Strategic Alliances</li>
             </ul>
           </div>
 
-          <!-- 02. Attract -->
           <div class="framework-card">
             <div class="framework-header">
               <span class="fw-num">02</span>
-              <h3 class="fw-title">ATTRACT</h3>
+              <h4 class="fw-title">ATTRACT</h4>
             </div>
-            <p class="fw-question">Which audiences and propositions deserve investment?</p>
+            <p class="fw-question">Which propositions justify investment?</p>
             <ul class="fw-list">
               <li>Audience Segmentation</li>
               <li>Commercial Positioning</li>
-              <li>Demand Generation Economics</li>
-              <li>Market Opportunity Sizing</li>
-              <li>Channel &amp; Media Selection</li>
+              <li>Unit Acquisition Economics</li>
+              <li>Channel &amp; Media Allocation</li>
             </ul>
           </div>
 
-          <!-- 03. Convert -->
           <div class="framework-card">
             <div class="framework-header">
               <span class="fw-num">03</span>
-              <h3 class="fw-title">CONVERT</h3>
+              <h4 class="fw-title">CONVERT</h4>
             </div>
-            <p class="fw-question">Where does demand become commercial value?</p>
+            <p class="fw-question">Where does interest become revenue?</p>
             <ul class="fw-list">
-              <li>Digital Experience &amp; UX</li>
-              <li>Booking Engine Flow</li>
-              <li>Conversion Rate Optimization</li>
+              <li>Digital Booking Engine CRO</li>
+              <li>Friction Reduction (10 to 5 Steps)</li>
               <li>On-Site Personalization</li>
-              <li>Digital Commerce Funnels</li>
+              <li>Mobile Speed &amp; Experience</li>
             </ul>
           </div>
 
-          <!-- 04. Distribute -->
           <div class="framework-card framework-card-prominent">
             <div class="framework-header">
               <span class="fw-num">04</span>
-              <h3 class="fw-title">DISTRIBUTE</h3>
+              <h4 class="fw-title">DISTRIBUTE</h4>
             </div>
-            <p class="fw-question">Which channels create the strongest economics?</p>
+            <p class="fw-question">Which mix creates maximum margin?</p>
             <ul class="fw-list">
-              <li>Direct Channel Margins</li>
-              <li>OTA Cost &amp; Dependency Mix</li>
-              <li>GDS &amp; Wholesale Dynamics</li>
-              <li>B2B &amp; Partner Gateways</li>
-              <li>Channel Contribution Economics</li>
+              <li>Direct Brand.com Margin</li>
+              <li>OTA Dependency &amp; Commission Mix</li>
+              <li>B2B &amp; API Partner Gateways</li>
+              <li>Net ADR &amp; Inventory Yield</li>
             </ul>
           </div>
 
-          <!-- 05. Retain -->
           <div class="framework-card">
             <div class="framework-header">
               <span class="fw-num">05</span>
-              <h3 class="fw-title">RETAIN</h3>
+              <h4 class="fw-title">RETAIN</h4>
             </div>
-            <p class="fw-question">How much more value can the customer create?</p>
+            <p class="fw-question">How does customer value compound?</p>
             <ul class="fw-list">
-              <li>CRM &amp; Lifecycle Marketing</li>
-              <li>Loyalty Program Economics</li>
-              <li>First-Party Customer Data</li>
-              <li>Automated Journey Triggering</li>
-              <li>Customer Lifetime Value (LTV)</li>
+              <li>Single Customer View (CDP)</li>
+              <li>Loyalty Commercialization</li>
+              <li>Lifecycle &amp; Automated Triggers</li>
+              <li>Lifetime Value (LTV) Expansion</li>
             </ul>
           </div>
 
-          <!-- 06. Measure -->
           <div class="framework-card">
             <div class="framework-header">
               <span class="fw-num">06</span>
-              <h3 class="fw-title">MEASURE</h3>
+              <h4 class="fw-title">MEASURE</h4>
             </div>
-            <p class="fw-question">What actually created incremental value?</p>
+            <p class="fw-question">What delivered true incrementality?</p>
             <ul class="fw-list">
               <li>Marketing Mix Modeling (MMM)</li>
+              <li>Incrementality &amp; Geo-Lift Testing</li>
               <li>Multi-Touch Attribution (MTA)</li>
-              <li>Incrementality &amp; Lift Testing</li>
-              <li>Causal Experimentation</li>
-              <li>Commercial Analytics Alignment</li>
+              <li>ExCo Financial Alignment</li>
             </ul>
           </div>
 
-          <!-- 07. Optimize -->
           <div class="framework-card">
             <div class="framework-header">
               <span class="fw-num">07</span>
-              <h3 class="fw-title">OPTIMIZE</h3>
+              <h4 class="fw-title">OPTIMIZE</h4>
             </div>
-            <p class="fw-question">Where should the next dollar or capital go?</p>
+            <p class="fw-question">Where should capital go next?</p>
             <ul class="fw-list">
-              <li>Capital &amp; Budget Allocation</li>
-              <li>Channel Economics Rebalancing</li>
-              <li>MarTech &amp; CDP Prioritization</li>
-              <li>AI Leverage Opportunities</li>
+              <li>Dynamic Budget Reallocation</li>
+              <li>MarTech &amp; Data Prioritization</li>
+              <li>Applied AI Opportunities</li>
               <li>Operating Model Refinement</li>
             </ul>
           </div>
@@ -451,579 +287,198 @@
       </div>
     </section>
 
-    <!-- 6. HOSPITALITY SPECIALIZATION -->
-    <section class="hospitality-section" id="hospitality">
+    <!-- 4. UNIFIED OPERATOR TRACK RECORD & CASE EVIDENCE SECTION -->
+    <section class="experience" id="track-record">
       <div class="container">
         <div class="section-header text-center">
-          <span class="section-tag section-tag-gold">Primary Vertical Specialization</span>
-          <h2 class="section-title text-white">Make Hotel Demand More Profitable.</h2>
-          <p class="section-subtitle text-muted">
-            Demand Journeys helps hotel owners, operators and hospitality businesses understand the economics connecting demand generation, direct booking, distribution, customer data, technology and commercial performance.
+          <span class="section-tag">Verified Track Record &amp; Case Evidence</span>
+          <h2 class="section-title">Built From the Operator's Side of the Table</h2>
+          <p class="section-subtitle">
+            Demonstrated commercial problem-solving, Board-approved transformations, and multi-market P&amp;L scale across APAC.
           </p>
         </div>
 
-        <div class="hospitality-problem-box">
-          <p class="hosp-problem-lead">
-            Hotels rarely have a single demand problem. They have interconnected challenges across OTA dependency, direct booking, acquisition cost, conversion, loyalty, customer data, technology, distribution and measurement.
-          </p>
-          <p class="hosp-problem-sub">
-            Optimizing one function in isolation simply moves the cost somewhere else. Demand Journeys evaluates the system as a whole.
-          </p>
-        </div>
-
-        <!-- 7 Hospitality Problem Areas -->
-        <div class="hospitality-grid">
-          <div class="hosp-card">
-            <div class="hosp-card-num">01</div>
-            <h3 class="hosp-card-title">Direct vs. OTA Economics</h3>
-            <p class="hosp-card-desc">
-              Understand the true economics of direct and indirect channels, including acquisition costs, commission structures, discount promotions and downstream customer value.
-            </p>
-          </div>
-
-          <div class="hosp-card">
-            <div class="hosp-card-num">02</div>
-            <h3 class="hosp-card-title">Distribution Strategy</h3>
-            <p class="hosp-card-desc">
-              Evaluate whether the current channel mix produces the right balance of reach, room revenue, net ADR and operating margin across properties.
-            </p>
-          </div>
-
-          <div class="hosp-card">
-            <div class="hosp-card-num">03</div>
-            <h3 class="hosp-card-title">Digital Commerce &amp; Booking Flow</h3>
-            <p class="hosp-card-desc">
-              Identify friction in the digital booking journey, CRS/booking engine drop-offs, and opportunities to increase direct conversion and basket contribution.
-            </p>
-          </div>
-
-          <div class="hosp-card">
-            <div class="hosp-card-num">04</div>
-            <h3 class="hosp-card-title">Customer &amp; Loyalty</h3>
-            <p class="hosp-card-desc">
-              Connect CRM, loyalty programs and first-party guest data to direct acquisition, repeat stays and compounding lifetime value.
-            </p>
-          </div>
-
-          <div class="hosp-card">
-            <div class="hosp-card-num">05</div>
-            <h3 class="hosp-card-title">MarTech &amp; Customer Platforms</h3>
-            <p class="hosp-card-desc">
-              Determine whether the existing tech stack (CDP, CRM, PMS, CRS, analytics) actually enables the commercial strategy or drains operating budget.
-            </p>
-          </div>
-
-          <div class="hosp-card">
-            <div class="hosp-card-num">06</div>
-            <h3 class="hosp-card-title">Measurement &amp; Incrementality</h3>
-            <p class="hosp-card-desc">
-              Move beyond channel-reported performance toward a clearer understanding of true incremental commercial contribution across paid search, metasearch and display.
-            </p>
-          </div>
-
-          <div class="hosp-card hosp-card-wide">
-            <div class="hosp-card-num">07</div>
-            <h3 class="hosp-card-title">AI &amp; Emerging Discovery</h3>
-            <p class="hosp-card-desc">
-              Assess how AI-mediated discovery, Generative Engine Optimization (GEO), AI Overviews (AEO/AIO) and emerging agentic booking journeys impact future hotel demand and distribution.
-            </p>
-          </div>
-        </div>
-
-        <!-- Verified Operator Scale Evidence -->
-        <div class="operator-evidence-wrap">
-          <div class="evidence-header">
-            <span class="evidence-badge">Verified Track Record</span>
-            <h3 class="evidence-title">Selected Operator Experience</h3>
-            <p class="evidence-sub">Demonstrated scale and performance achieved in senior executive operator roles.</p>
-          </div>
-
+        <!-- High-Impact Scale Grid -->
+        <div class="operator-evidence-wrap" style="margin-bottom: 40px;">
           <div class="evidence-stats-grid">
             <div class="ev-stat">
-              <span class="ev-num">20+</span>
-              <span class="ev-label">Years Executive Experience</span>
-            </div>
-            <div class="ev-stat">
-              <span class="ev-num">70+</span>
-              <span class="ev-label">Properties Governed Globally</span>
-            </div>
-            <div class="ev-stat">
               <span class="ev-num">US$50M+</span>
-              <span class="ev-label">Direct Digital Channel P&amp;L</span>
-            </div>
-            <div class="ev-stat">
-              <span class="ev-num">US$200M+</span>
-              <span class="ev-label">Distribution Portfolio Scale</span>
-            </div>
-            <div class="ev-stat">
-              <span class="ev-num">+56%</span>
-              <span class="ev-label">Direct Room Night Growth YoY</span>
-            </div>
-            <div class="ev-stat">
-              <span class="ev-num">+18%</span>
-              <span class="ev-label">Net ADR Growth</span>
-            </div>
-            <div class="ev-stat">
-              <span class="ev-num">28% &rarr; 74%</span>
-              <span class="ev-label">Loyalty Booking Share Lift</span>
-            </div>
-            <div class="ev-stat">
-              <span class="ev-num">S$550K</span>
-              <span class="ev-label">Annual Commission Savings</span>
+              <span class="ev-label">Direct Digital Channel P&amp;L (US$200M+ Portfolio)</span>
             </div>
             <div class="ev-stat">
               <span class="ev-num">S$5.5M</span>
-              <span class="ev-label">Board-Approved CapEx Funding</span>
+              <span class="ev-label">Board-Approved CapEx (Project Meta; 14.4x ROI)</span>
+            </div>
+            <div class="ev-stat">
+              <span class="ev-num">+56% / +18%</span>
+              <span class="ev-label">YoY Direct Web Growth &amp; Net ADR Yield</span>
+            </div>
+            <div class="ev-stat">
+              <span class="ev-num">28% &rarr; 74%</span>
+              <span class="ev-label">Loyalty Direct Share (S$550K Annual Savings)</span>
             </div>
             <div class="ev-stat">
               <span class="ev-num">2.3M+</span>
-              <span class="ev-label">Customer Profiles Unified</span>
+              <span class="ev-label">Customer Profiles Unified Across 12 Systems</span>
             </div>
             <div class="ev-stat">
-              <span class="ev-num">12</span>
-              <span class="ev-label">Legacy Source Systems Integrated</span>
+              <span class="ev-num">US$1.4M</span>
+              <span class="ev-label">Annual Recurring OpEx Saved (350+ Hotels)</span>
             </div>
             <div class="ev-stat">
               <span class="ev-num">US$15M</span>
-              <span class="ev-label">Annual APAC Media Managed</span>
+              <span class="ev-label">Annual APAC Media Investment (HomeAway/VRBO)</span>
+            </div>
+            <div class="ev-stat">
+              <span class="ev-num">20+ Yrs</span>
+              <span class="ev-label">APAC Multi-Market Executive Leadership</span>
             </div>
           </div>
-          <p class="evidence-disclaimer">
-            Note: Figures represent verified scale from founder executive leadership roles at Frasers Hospitality and Expedia Group, distinguished from Demand Journeys advisory mandates.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7. BROADER APPLICATIONS -->
-    <section class="verticals-section" id="verticals">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-tag">Industry Focus</span>
-          <h2 class="section-title">Where the Methodology Applies</h2>
-          <p class="section-subtitle">
-            Hospitality is where Demand Journeys has unusual depth, while the underlying commercial, customer, marketing and transformation methodology applies across select high-value sectors.
+          <p class="note-disclaimer text-center" style="color: #94A3B8; font-size: 0.8rem; margin-top: 14px;">
+            Note: Figures represent verified scale from executive operator leadership roles (Frasers Hospitality, Expedia Group, AccorHotels) and advisory mandates.
           </p>
         </div>
 
-        <div class="verticals-grid">
-          <div class="vert-card vert-card-primary">
-            <span class="vert-tag">Primary Depth</span>
-            <h3 class="vert-title">Hospitality, Travel &amp; Hospitality Tech</h3>
-            <p class="vert-desc">
-              Hotel owners, operators, hotel groups, hospitality asset managers, investment funds, travel platforms, and hospitality technology vendors.
-            </p>
-          </div>
-
-          <div class="vert-card">
-            <span class="vert-tag">Secondary Application</span>
-            <h3 class="vert-title">Financial Services</h3>
-            <p class="vert-desc">
-              Complex customer journeys, high-compliance acquisition funnels, retention modeling, and customer intelligence systems.
-            </p>
-          </div>
-
-          <div class="vert-card">
-            <span class="vert-tag">Secondary Application</span>
-            <h3 class="vert-title">Consumer &amp; D2C Brands</h3>
-            <p class="vert-desc">
-              Digital commerce optimization, customer lifecycle segmentation, retention economics, and unit acquisition profitability.
-            </p>
-          </div>
-
-          <div class="vert-card">
-            <span class="vert-tag">Secondary Application</span>
-            <h3 class="vert-title">Technology Businesses</h3>
-            <p class="vert-desc">
-              B2B demand generation, go-to-market commercial architecture, partner distribution channels, and emerging AI discovery.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 8. WHAT CLIENTS ENGAGE DEMAND JOURNEYS TO SOLVE -->
-    <section class="when-to-work" id="scenarios">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-tag">Practical Scenarios</span>
-          <h2 class="section-title">What Clients Engage Demand Journeys to Solve</h2>
-          <p class="section-subtitle">
-            Situations where commercial, marketing, technology and data disconnects require senior diagnostic clarity and operator leadership.
-          </p>
-        </div>
-
-        <div class="situations-grid">
-          <!-- Situation 1 -->
-          <div class="situation-card">
-            <div class="situation-icon">01</div>
-            <h3 class="situation-title">Unclear Incremental Demand</h3>
-            <p class="situation-desc">
-              You do not know which customers, channels, journeys and technology investments are actually producing profitable incremental demand versus cannibalizing existing revenue.
-            </p>
-          </div>
-
-          <!-- Situation 2 -->
-          <div class="situation-card">
-            <div class="situation-icon">02</div>
-            <h3 class="situation-title">Fragmented Commercial Engine</h3>
-            <p class="situation-desc">
-              Marketing, revenue management, distribution, customer data and technology teams operate in departmental silos with misaligned incentives and metrics.
-            </p>
-          </div>
-
-          <!-- Situation 3 -->
-          <div class="situation-card">
-            <div class="situation-icon">03</div>
-            <h3 class="situation-title">Value Leakage in Customer Journey</h3>
-            <p class="situation-desc">
-              Customer acquisition is happening, but digital conversion drop-offs, poor booking flow, or weak CRM retention are leaking margin throughout the lifecycle.
-            </p>
-          </div>
-
-          <!-- Situation 4 -->
-          <div class="situation-card">
-            <div class="situation-icon">04</div>
-            <h3 class="situation-title">MarTech / CDP Underperformance</h3>
-            <p class="situation-desc">
-              You have made substantial investments in marketing technology or customer platforms, but customer data, journeys and execution remain disconnected from commercial outcomes.
-            </p>
-          </div>
-
-          <!-- Situation 5 -->
-          <div class="situation-card">
-            <div class="situation-icon">05</div>
-            <h3 class="situation-title">Measurement &amp; Finance Disconnect</h3>
-            <p class="situation-desc">
-              Channel reporting and agency dashboards claim high ROAS, but financial statements and incremental contribution do not reflect the reported returns.
-            </p>
-          </div>
-
-          <!-- Situation 6 -->
-          <div class="situation-card">
-            <div class="situation-icon">06</div>
-            <h3 class="situation-title">Navigating AI &amp; Discovery Shifts</h3>
-            <p class="situation-desc">
-              You need to understand how AI-mediated discovery (GEO, AEO, AIO) and agentic workflows will impact your channel mix, without wasting capital on speculative tools.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. ADVISORY / ENGAGEMENT MODELS -->
-    <section class="services" id="advisory">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-tag">Advisory Models</span>
-          <h2 class="section-title">Three Levels of Engagement</h2>
-          <p class="section-subtitle">
-            Structured engagements built to diagnose commercial leakage, design actionable roadmaps, and lead execution when senior capability is needed.
-          </p>
-        </div>
-
-        <div class="engagement-grid">
-          <!-- LEVEL 1: DIAGNOSE -->
-          <div class="engagement-card">
-            <span class="eng-tier">Level 1 &bull; Diagnose</span>
-            <h3 class="eng-title">Commercial Demand Diagnostic</h3>
-            <p class="eng-lead">
-              Identify where demand is coming from, what it costs, which channels create true value, and where commercial leakage exists across the system.
-            </p>
-            <div class="eng-examples">
-              <span class="examples-label">Includes 90-Minute Workshop &amp; Outputs:</span>
-              <ul class="eng-list">
-                <li>Commercial performance &amp; demand diagnosis</li>
-                <li>Customer journey &amp; channel friction map</li>
-                <li>Channel economics &amp; distribution review</li>
-                <li>Data, MarTech &amp; measurement assessment</li>
-                <li>Priority business questions &amp; hypothesis map</li>
-                <li>Directional 90-day opportunity roadmap</li>
-              </ul>
-            </div>
-            <div class="eng-footer">
-              <a href="mailto:mengliang.online@outlook.com?subject=Demand%20Journeys%2090-Minute%20Workshop%20Request" class="btn btn-secondary btn-block">Request 90-Min Workshop &rarr;</a>
-            </div>
-          </div>
-
-          <!-- LEVEL 2: DESIGN -->
-          <div class="engagement-card engagement-card-featured">
-            <div class="featured-tag">Transformation Focus</div>
-            <span class="eng-tier">Level 2 &bull; Design</span>
-            <h3 class="eng-title">Targeted Transformation Advisory</h3>
-            <p class="eng-lead">
-              Focused strategic blueprints and technical architecture roadmaps to resolve complex commercial and operational challenges.
-            </p>
-            <div class="eng-examples">
-              <span class="examples-label">Core Advisory Focus Areas:</span>
-              <ul class="eng-list">
-                <li>Hospitality distribution &amp; direct booking strategy</li>
-                <li>CRM &amp; Customer Data Platform (CDP) roadmap</li>
-                <li>Customer journey design &amp; CRO transformation</li>
-                <li>Marketing operating model &amp; agency governance</li>
-                <li>Measurement, incrementality &amp; MMM architecture</li>
-                <li>AI, GEO, AEO &amp; emerging demand roadmap</li>
-              </ul>
-            </div>
-            <div class="eng-footer">
-              <a href="#contact" class="btn btn-primary btn-block">Discuss Advisory Challenge &rarr;</a>
-            </div>
-          </div>
-
-          <!-- LEVEL 3: LEAD -->
-          <div class="engagement-card">
-            <span class="eng-tier">Level 3 &bull; Lead</span>
-            <h3 class="eng-title">Fractional Executive Leadership</h3>
-            <p class="eng-lead">
-              Senior leadership for organisations undergoing transformation, operating model restructuring, or executive transitions.
-            </p>
-            <div class="eng-examples">
-              <span class="examples-label">Executive Leadership Scope:</span>
-              <ul class="eng-list">
-                <li>Fractional Chief Marketing Officer (CMO)</li>
-                <li>Interim commercial marketing leadership</li>
-                <li>Executive marketing governance &amp; alignment</li>
-                <li>Agency &amp; enterprise technology partner oversight</li>
-                <li>Transformation team leadership &amp; mentoring</li>
-                <li>Bridge leadership during executive recruitment</li>
-              </ul>
-            </div>
-            <div class="eng-footer">
-              <a href="#contact" class="btn btn-secondary btn-block">Inquire Fractional Leadership &rarr;</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 10. CASE STUDIES & REPRESENTATIVE EXPERIENCE -->
-    <section class="experience" id="experience">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-tag">Case Evidence</span>
-          <h2 class="section-title">Selected Advisory &amp; Operator Experience</h2>
-          <p class="section-subtitle">
-            Demonstrated commercial problem-solving across client advisory engagements and enterprise operator track records.
-          </p>
-        </div>
-
+        <!-- 4 Concrete Case Evidence Cards Grid -->
         <div class="case-studies-stack">
-          <!-- Demand Journeys Advisory Case -->
+          
+          <!-- Case 1: Demand Journeys Advisory Mandate -->
           <div class="case-study-card">
             <div class="case-meta">
-              <span class="case-sector">Demand Journeys Advisory Mandate</span>
-              <span class="case-type">Hospitality &amp; Digital Commerce</span>
+              <span class="case-sector">Demand Journeys Advisory Practice</span>
+              <span class="case-type">AI Strategy, CDP &amp; Commercial Discovery</span>
             </div>
-            <h4 class="case-heading">MarTech, Customer Platform &amp; AI-Enabled Commercial Roadmap</h4>
-
+            <h4 class="case-heading">Enterprise MarTech, Data Architecture &amp; AI Discovery Audits</h4>
             <div class="case-framework">
               <div class="cf-item">
-                <span class="cf-label">Challenge:</span>
-                <p class="cf-text">Enterprise leadership needed to navigate emerging AI discoverability (GEO/AEO/AIO), modernize legacy marketing tech, and identify high-yield digital distribution opportunities without overcommitting capital.</p>
+                <span class="cf-label">Context &amp; Challenge:</span>
+                <p class="cf-text">Enterprise leadership needed to evaluate customer data infrastructure, distribution economics, and emerging AI answer-engine visibility (GEO/AEO) without speculative capital waste.</p>
               </div>
               <div class="cf-item">
-                <span class="cf-label">Approach:</span>
-                <p class="cf-text">Conducted a cross-journey review of customer discovery, data infrastructure, and commercial conversion pathways, formulating an actionable AI and MarTech adoption roadmap.</p>
+                <span class="cf-label">Operator Approach:</span>
+                <p class="cf-text">Audited multi-LLM citation architectures for a US$36B insurer; engineered Python predictive purchase models (LightGBM, 82.4% recall); formulated prioritized CDP transformation roadmaps.</p>
               </div>
               <div class="cf-item">
-                <span class="cf-label">Output:</span>
-                <p class="cf-text">Delivered structured transformation frameworks, vendor evaluation blueprints, and an executive business case connecting technical capabilities to commercial revenue streams.</p>
-              </div>
-              <div class="cf-item">
-                <span class="cf-label">Commercial Implication:</span>
-                <p class="cf-text">Equipped executive leadership with clear prioritization, preventing wasteful software procurement and establishing a measurable pathway for digital growth.</p>
+                <span class="cf-label">Commercial Impact:</span>
+                <p class="cf-text">Equipped executive teams with clear investment cases, preventing redundant software procurement and establishing measurable attribution models.</p>
               </div>
             </div>
           </div>
 
-          <!-- Operator Experience Highlight: Frasers Hospitality -->
+          <!-- Case 2: Frasers Hospitality Operator Leadership -->
           <div class="case-study-card case-study-operator">
             <div class="case-meta">
-              <span class="case-sector">Selected Operator Experience &bull; Frasers Hospitality</span>
-              <span class="case-type">Global Digital Marketing &amp; Distribution</span>
+              <span class="case-sector">Executive Operator &bull; Frasers Hospitality</span>
+              <span class="case-type">VP Global Digital Marketing &amp; Distribution</span>
             </div>
-            <h4 class="case-heading">Unified MarTech &amp; Customer Data Platform Transformation (Project Meta)</h4>
-
+            <h4 class="case-heading">Enterprise CDP Modernization &amp; Direct Channel Expansion (Project Meta)</h4>
             <div class="case-framework">
               <div class="cf-item">
-                <span class="cf-label">Context:</span>
-                <p class="cf-text">VP-level governance over US$50M+ direct channel within a US$200M+ portfolio across 70+ properties globally.</p>
+                <span class="cf-label">Context &amp; Scale:</span>
+                <p class="cf-text">Governed US$50M+ direct booking channel within US$200M+ portfolio across 70+ properties in 13+ APAC markets; managed 9-person regional team.</p>
               </div>
               <div class="cf-item">
-                <span class="cf-label">Transformation:</span>
-                <p class="cf-text">Won Board approval for S$5.5M CapEx to unify 12 legacy source systems into a single Customer Data Platform (SAP Emarsys/Azure) and rebuilt APAC Digital Centre of Excellence.</p>
+                <span class="cf-label">Transformation Executed:</span>
+                <p class="cf-text">Built Board case securing S$5.5M CapEx (14.4x ROI) unifying 12 legacy PMS/CRS systems into SAP Emarsys CDP (2.3M+ profiles); deployed Adobe Experience Cloud and in-house ML bidding.</p>
               </div>
               <div class="cf-item">
-                <span class="cf-label">Performance:</span>
-                <p class="cf-text">Delivered +56% direct digital room night growth YoY, expanded loyalty contribution from 28% to 74%, and reduced CPA by 22% via in-house ML bidding models.</p>
+                <span class="cf-label">Commercial Impact:</span>
+                <p class="cf-text">Delivered +56% YoY direct web revenue, +18% net ADR yield, lifted loyalty direct share to 74% (saving S$550K/yr in commissions), and cut CPA by 22%.</p>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- 11. FOUNDER & ABOUT SECTION -->
-    <section class="about" id="about">
-      <div class="container">
-        <div class="about-grid">
+          <!-- Case 3: HomeAway / VRBO (Expedia Group) -->
+          <div class="case-study-card">
+            <div class="case-meta">
+              <span class="case-sector">Executive Operator &bull; HomeAway / VRBO (Expedia Group)</span>
+              <span class="case-type">Head of Performance Marketing, APAC</span>
+            </div>
+            <h4 class="case-heading">0-to-1 Regional Market Entry &amp; Marketplace Liquidity Scaling</h4>
+            <div class="case-framework">
+              <div class="cf-item">
+                <span class="cf-label">Context &amp; Scale:</span>
+                <p class="cf-text">Owned US$15M annual media P&amp;L across 7 APAC markets; led 8-member regional team in Singapore and Tokyo across 75,000+ listing marketplace.</p>
+              </div>
+              <div class="cf-item">
+                <span class="cf-label">Execution:</span>
+                <p class="cf-text">Directed zero-to-one Japan market expansion; instituted regional experimentation framework executing 1,000+ annual Bayesian tests across search and programmatic channels.</p>
+              </div>
+              <div class="cf-item">
+                <span class="cf-label">Commercial Impact:</span>
+                <p class="cf-text">Generated US$3M gross revenue in Year 1 on US$1M budget (300% ROI) in Japan; drove +40% YoY efficiency gain in machine learning bidding.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Case 4: AccorHotels & Mezzofy Partnerships -->
+          <div class="case-study-card">
+            <div class="case-meta">
+              <span class="case-sector">Commercial Strategy &bull; AccorHotels &amp; Mezzofy</span>
+              <span class="case-type">Regional Governance &amp; API Ecosystem Partnerships</span>
+            </div>
+            <h4 class="case-heading">Multi-Market Operating Restructuring &amp; B2B API Distribution</h4>
+            <div class="case-framework">
+              <div class="cf-item">
+                <span class="cf-label">Context &amp; Mandate:</span>
+                <p class="cf-text">Governed US$10M regional paid acquisition across 13 markets and 350+ AccorHotels properties; leading enterprise GTM for Mezzofy agentic coupon platform.</p>
+              </div>
+              <div class="cf-item">
+                <span class="cf-label">Execution:</span>
+                <p class="cf-text">Consolidated decentralized agency model through regional procurement tender; architected API voucher distribution connecting hotel PMS/POS ecosystems to corporate networks.</p>
+              </div>
+              <div class="cf-item">
+                <span class="cf-label">Commercial Impact:</span>
+                <p class="cf-text">Saved US$1.4M annually in recurring OpEx at AccorHotels (+48% Korea room-night growth); closed high-margin B2B voucher distribution alliances.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Founder Operator Summary -->
+        <div class="about-grid" style="margin-top: 50px; background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 36px 30px;">
           <div class="about-content">
-            <span class="section-tag">About Demand Journeys</span>
-            <h2 class="section-title">Built from the operator's side of the table.</h2>
-            
+            <span class="section-tag">Principal Profile</span>
+            <h3 class="section-title" style="font-size: 1.85rem;">Direct Principal Involvement, Not Junior Teams</h3>
             <div class="about-text-body">
               <p>
-                Demand Journeys was founded by Meng Liang Tan, a digital and commercial executive with more than 20 years of experience across hospitality, travel marketplaces, performance marketing, customer platforms and digital transformation in APAC.
+                Demand Journeys is an independent advisory practice led by <strong>Meng Liang Tan</strong>. When you engage Demand Journeys, you work directly with an experienced executive who has held P&amp;L ownership, negotiated enterprise vendor contracts, and guided multi-market APAC operations from the inside.
               </p>
               <p>
-                His career spans Raffles International Hotels, AccorHotels, TripAdvisor, HomeAway / Expedia Group, Frasers Hospitality and hospitality technology advisory at Mezzofy.
+                Track record encompasses executive roles at <strong>Frasers Hospitality (VP)</strong>, <strong>HomeAway / Expedia Group (APAC Head)</strong>, <strong>AccorHotels (APAC Head)</strong>, <strong>TripAdvisor</strong>, <strong>Raffles International Hotels</strong>, and <strong>Mezzofy (BD Director)</strong>.
               </p>
-              <p>
-                At Frasers Hospitality, he served as Vice President, Global Digital Marketing &amp; Distribution, with accountability for a US$50M+ direct digital booking channel within a broader US$200M+ distribution portfolio across 70+ properties.
-              </p>
-              <p>
-                Demand Journeys brings that operator perspective into advisory work: connecting commercial questions to customer behaviour, channel economics, technology, data and execution.
-              </p>
-            </div>
-
-            <div class="about-principles-grid">
-              <div class="principle-item">
-                <strong>Direct Principal Involvement</strong>
-                <span>Work directly with an experienced executive operator, not a revolving junior consulting team.</span>
-              </div>
-              <div class="principle-item">
-                <strong>Commercial Diagnosis First</strong>
-                <span>Evaluate commercial economics and margin realities before recommending technology or campaigns.</span>
-              </div>
-              <div class="principle-item">
-                <strong>Practical Implementation</strong>
-                <span>Deliver roadmaps and governance architectures designed to function inside real operating environments.</span>
-              </div>
             </div>
           </div>
-
-          <div class="about-sidebar">
-            <div class="founder-card">
-              <div class="founder-img-wrap">
-                <img src="profile.jpg" alt="Meng Liang Tan" onerror="this.src='profile.png'">
-              </div>
-              <h3 class="founder-card-name">Meng Liang Tan</h3>
-              <p class="founder-card-title">Founder &amp; Principal Advisor</p>
-              <p class="founder-card-location">Singapore &bull; Global / APAC Mandates</p>
-              
-              <div class="founder-career-timeline">
-                <div class="timeline-entry">
-                  <span class="tl-role">Advisor to CEO</span>
-                  <span class="tl-company">Mezzofy (Hospitality AI &amp; GTM)</span>
-                </div>
-                <div class="timeline-entry">
-                  <span class="tl-role">VP Global Digital &amp; Distribution</span>
-                  <span class="tl-company">Frasers Hospitality</span>
-                </div>
-                <div class="timeline-entry">
-                  <span class="tl-role">Head of Performance Marketing APAC</span>
-                  <span class="tl-company">HomeAway / Expedia Group</span>
-                </div>
-                <div class="timeline-entry">
-                  <span class="tl-role">APAC Head of Paid Search &amp; Analytics</span>
-                  <span class="tl-company">AccorHotels</span>
-                </div>
-                <div class="timeline-entry">
-                  <span class="tl-role">Senior Search Marketing Analyst APAC</span>
-                  <span class="tl-company">TripAdvisor</span>
-                </div>
-                <div class="timeline-entry">
-                  <span class="tl-role">CRM Marketing Executive</span>
-                  <span class="tl-company">Raffles International Hotels</span>
-                </div>
-              </div>
+          <div class="founder-card" style="margin: auto 0;">
+            <div class="founder-img-wrap">
+              <img src="profile.jpg" alt="Meng Liang Tan" onerror="this.src='profile.png'">
             </div>
+            <h4 class="founder-card-name">Meng Liang Tan</h4>
+            <p class="founder-card-title">Founder &amp; Principal Advisor</p>
+            <p class="founder-card-location">Singapore &bull; Global / APAC Mandates</p>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- 12. INSIGHTS & EDITORIAL PILLARS -->
-    <section class="insights" id="insights">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-tag">Insights &amp; Perspectives</span>
-          <h2 class="section-title">Thinking About Commercial Problems</h2>
-          <p class="section-subtitle">
-            Strategic analysis and operator commentary across the five core pillars of commercial growth and transformation.
-          </p>
-        </div>
-
-        <div class="editorial-pillars-grid">
-          <div class="pillar-card">
-            <div class="pillar-num">Pillar 01</div>
-            <h3 class="pillar-title">Hotel Commercial Economics</h3>
-            <p class="pillar-desc">Direct vs. OTA margin realities, net ADR dynamics, commission structures, and owner-operator alignment.</p>
-          </div>
-
-          <div class="pillar-card">
-            <div class="pillar-num">Pillar 02</div>
-            <h3 class="pillar-title">Demand &amp; Distribution</h3>
-            <p class="pillar-desc">Channel mix balancing, metasearch optimization, market entry economics, and acquisition efficiency.</p>
-          </div>
-
-          <div class="pillar-card">
-            <div class="pillar-num">Pillar 03</div>
-            <h3 class="pillar-title">Marketing Measurement</h3>
-            <p class="pillar-desc">Marketing Mix Modeling (MMM), attribution reconciliation, incrementality lift testing, and finance alignment.</p>
-          </div>
-
-          <div class="pillar-card">
-            <div class="pillar-num">Pillar 04</div>
-            <h3 class="pillar-title">Customer Data &amp; MarTech</h3>
-            <p class="pillar-desc">CDP architecture, single customer views, legacy system consolidation, and loyalty journey automation.</p>
-          </div>
-
-          <div class="pillar-card">
-            <div class="pillar-num">Pillar 05</div>
-            <h3 class="pillar-title">AI &amp; Emerging Demand</h3>
-            <p class="pillar-desc">Generative Engine Optimization (GEO), AI search overviews (AEO/AIO), and agentic commerce workflows.</p>
-          </div>
-        </div>
-
-        <div class="insights-action-bar text-center">
-          <a href="https://demandjourneys.substack.com/" target="_blank" rel="noopener" class="btn btn-secondary">
-            Read Selected Essays on Substack &rarr;
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 13. FINAL CTA & CONTACT SECTION -->
+    <!-- 5. DIRECT CONTACT & ENGAGEMENT BOX SECTION -->
     <section class="final-cta" id="contact">
       <div class="container">
         <div class="cta-inner-card text-center">
           <span class="section-tag section-tag-dark">Next Steps</span>
           <h2 class="cta-title">Start With the Commercial Question.</h2>
           <p class="cta-subtitle">
-            Tell us what is not working, what technology or channel you are considering investing in, or where you need senior commercial clarity. The first conversation is used to determine whether the problem is one Demand Journeys can genuinely help solve.
+            Tell us what is not working, what technology or channel you are considering investing in, or where you need senior commercial clarity. Inquiries go directly to Meng Liang Tan.
           </p>
-
-          <div class="cta-options-grid">
-            <div class="cta-option-box">
-              <h3 class="opt-title">90-Minute Commercial Workshop</h3>
-              <p class="opt-desc">A focused diagnostic working session to identify demand sources, channel economics, customer journey friction, and 90-day priorities.</p>
-              <a href="#contact-box" class="btn btn-primary btn-large" id="main-contact-btn">Request Workshop &darr;</a>
-            </div>
-
-            <div class="cta-option-box">
-              <h3 class="opt-title">Targeted Advisory &amp; Leadership</h3>
-              <p class="opt-desc">Discuss a specific transformation project, distribution review, MarTech architecture, or fractional leadership requirement.</p>
-              <a href="#contact-box" class="btn btn-secondary btn-large" id="advisory-contact-btn">Discuss Advisory &darr;</a>
-            </div>
-          </div>
 
           <!-- Interactive Direct Contact Form Box -->
           <div class="contact-form-container" id="contact-box">
             <div class="form-header">
               <span class="form-badge">Direct Executive Line</span>
-              <h3 class="contact-form-title">Send a Direct Message to Meng Liang</h3>
-              <p class="contact-form-subtitle">Inquiries are delivered immediately to <code>ml@demandjourneys.com</code> and <code>mengliang.online@outlook.com</code>.</p>
+              <h3 class="contact-form-title">Send a Direct Message</h3>
+              <p class="contact-form-subtitle">Messages are delivered immediately to <code>ml@demandjourneys.com</code> and <code>mengliang.online@outlook.com</code>.</p>
             </div>
 
             <form action="https://formsubmit.co/ml@demandjourneys.com" method="POST" id="dj-contact-form" class="dj-contact-form">
@@ -1097,13 +552,12 @@
         </div>
         <div class="footer-nav-links">
           <a href="#hero">Home</a>
-          <a href="#hospitality">Hospitality</a>
-          <a href="#advisory">Advisory</a>
-          <a href="#framework">Approach</a>
-          <a href="#about">About</a>
+          <a href="#approach">Approach</a>
+          <a href="#track-record">Track Record</a>
+          <a href="#contact">Contact</a>
           <a href="https://demandjourneys.substack.com/" target="_blank" rel="noopener">Substack</a>
           <a href="https://linkedin.com/in/mengliang" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="mailto:mengliang.online@outlook.com?subject=Demand%20Journeys%20Inquiry">Email Principal</a>
+          <a href="mailto:ml@demandjourneys.com">Email Principal</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -1112,7 +566,7 @@
     </div>
   </footer>
 
-  <!-- Clean Analytics Event Tracker -->
+  <!-- Clean Analytics & Form Handler -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const trackEvent = (eventName, eventData = {}) => {
@@ -1124,7 +578,7 @@
 
       trackEvent('page_view', { page_title: document.title, page_location: window.location.href });
 
-      document.querySelectorAll('.btn, .btn-nav').forEach(btn => {
+      document.querySelectorAll('.btn, .btn-nav, .nav-link').forEach(btn => {
         btn.addEventListener('click', (e) => {
           trackEvent('cta_click', {
             cta_text: e.target.innerText.trim(),
