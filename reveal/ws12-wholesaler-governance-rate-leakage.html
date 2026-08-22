@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WRNWZSKD');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WHOLESALER GOVERNANCE & RATE LEAKAGE PREVENTION | Demand Journeys Executive Workshop</title>
+  <meta name="description" content="A diagnostic masterclass on auditing static wholesale contracts, tracing unauthorized unbundled bedbank inventory to rogue OTAs, and enforcing strict dynamic rate distribution agreements.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Reveal.js Core CSS -->
+  <link rel="stylesheet" href="vendor/reveal.min.css" onerror="this.href='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css'">
+  <link rel="stylesheet" href="css/demand-journeys.css">
+
+  <!-- Plotly.js & Mermaid.js -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        darkMode: true,
+        background: '#0F172A',
+        primaryColor: '#1E293B',
+        primaryTextColor: '#F8FAFC',
+        primaryBorderColor: '#D97706',
+        lineColor: '#FBBF24',
+        secondaryColor: '#172338',
+        tertiaryColor: '#0F172A'
+      }
+    });
+  </script>
+  <style>
+    .dense-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+    .dense-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 10px; }
+    .dense-card { background: rgba(30, 41, 59, 0.85); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; padding: 14px 18px; }
+    .dense-card h4 { font-size: 1.05rem; color: #FBBF24; margin-bottom: 6px; font-weight: 600; }
+    .dense-card p, .dense-card li { font-size: 0.82rem; line-height: 1.42; color: #E2E8F0; }
+    .dense-card ul { padding-left: 16px; margin: 4px 0; }
+    .metric-badge { display: inline-block; background: rgba(217, 119, 6, 0.2); border: 1px solid #D97706; color: #FBBF24; padding: 2px 8px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 600; }
+    .chart-container { width: 100%; height: 320px; background: rgba(15, 23, 42, 0.7); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); }
+    .comparison-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 8px; }
+    .comparison-table th { background: #1E293B; color: #FBBF24; padding: 8px; text-align: left; border: 1px solid #334155; }
+    .comparison-table td { padding: 7px 8px; border: 1px solid #334155; color: #E2E8F0; }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRNWZSKD"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1: COVER -->
+      <section id="slide-01-cover" data-transition="fade">
+        <div class="deck-cover-container">
+          <div class="slide-tag">Executive Masterclass &bull; Workshop 12</div>
+          <h1 class="cover-title" style="font-size: 2.35rem; line-height: 1.1;">WHOLESALER GOVERNANCE & RATE LEAKAGE PREVENTION</h1>
+          <div class="cover-subtitle" style="font-size: 1.2rem; color: #FBBF24; margin-top: 6px;">
+            Auditing Bedbanks, Ending Rogue OTA Undercutting, and Protecting Direct Price Integrity
+          </div>
+          <p class="cover-descriptor" style="max-width: 820px; margin: 12px auto; font-size: 0.9rem;">
+            A diagnostic masterclass on auditing static wholesale contracts, tracing unauthorized unbundled bedbank inventory to rogue OTAs, and enforcing strict dynamic rate distribution agreements.
+          </p>
+
+          <div class="workshop-meta-bar" style="margin-top: 14px;">
+            <div class="meta-pill"><span class="meta-dot"></span> 90-Minute Executive Session</div>
+            <div class="meta-pill"><span class="meta-dot"></span> Target: General Managers, Asset Owners, Commercial VPs, Revenue Directors</div>
+            <div class="meta-pill"><span class="meta-dot"></span> Framework: The Anti-Leakage Distribution Firewall™</div>
+          </div>
+
+          <div class="cover-footer-note" style="margin-top: 18px;">
+            Demand Journeys Executive Workshop Series &bull; Facilitated by Tan Meng Liang &bull; Singapore &bull; Global
+          </div>
+        </div>
+        <aside class="notes">
+          Executive Opening:
+          - Welcome to Workshop 12.
+          - The objective of this working session is to translate complex technical and data capabilities into measurable RevPAR, Net ADR, and bottom-line margin expansion.
+          - We will dissect architecture schemes, real-world case studies, and concrete financial models.
+        </aside>
+      </section>
+
+      <!-- SLIDE 2: ARCHITECTURE & SYSTEM SCHEME -->
+      <section id="slide-02-architecture" data-transition="slide">
+        <div class="slide-tag">01 / Operating Architecture</div>
+        <h2 class="slide-headline">System Scheme: <span>The Anti-Leakage Distribution Firewall™</span></h2>
+        <div class="statement-prefix">End-to-end integration and data flow across hotel enterprise systems</div>
+
+        <div class="mermaid" style="transform: scale(0.88); transform-origin: top center;">
+          graph TD
+    A[Hotel Issues 30% Wholesale Discount<br/>Intended for Bundled Flight+Hotel Package] --> B[Wholesaler / Bedbank<br/>Hotelbeds, WebBeds, GTA]
+    B -->|Unlawful Unbundling of Standalone Room| C[B2B Rate Aggregator Switch]
+    C -->|Feed Injected into Rogue Online Sellers| D[Rogue OTAs / Trip.com / Amoma clones]
+    D -->|Listed Publicly on Google Metasearch| E[Undercuts Hotel Official Rate by $35]
+    E --> F[Brand.com Direct Conversion Collapses by 60%]
+    E --> G[Hotel Pays Wholesaler 30% Margin on Direct Booker Cannibalization]
+    F --> H[Demand Journeys Audit: Test Booking &amp; Distributor Code Trace]
+    H --> I[Contract Breach Notice &amp; Dynamic API Rate Transition]
+        </div>
+
+        <aside class="notes">
+          Walkthrough of the architecture:
+          - Explain how data flows seamlessly from operational source systems into analytical and execution layers.
+          - Emphasize the closed feedback loop connecting commercial outputs directly to revenue strategy.
+        </aside>
+      </section>
+
+      <!-- SLIDE 3: DATA VISUALIZATION & FINANCIAL PROOF -->
+      <section id="slide-03-chart" data-transition="slide">
+        <div class="slide-tag">02 / Quantitative Evidence</div>
+        <h2 class="slide-headline">Commercial Impact &amp; <span>Performance Economics</span></h2>
+        <div class="statement-prefix">Comparative analysis of baseline performance versus optimized transformation</div>
+
+        <div id="plotly-leakage-chart" class="chart-container"></div>
+
+        <script>
+          
+          setTimeout(() => {
+            const months = ['Month 1 (Audit)', 'Month 2 (Tracing)', 'Month 3 (Enforcement)', 'Month 4 (Dynamic API)', 'Month 5 (Controlled)'];
+            const rateDiscrepancyIncidents = [142, 118, 42, 12, 3];
+            const directBrandConversion = [0.72, 0.88, 1.45, 1.95, 2.30];
+
+            const trace1 = { x: months, y: rateDiscrepancyIncidents, name: 'Monthly Parity Breaches Detected', type: 'bar', marker: { color: '#EF4444' } };
+            const trace2 = { x: months, y: directBrandConversion, name: 'Brand.com Direct Conversion (%)', type: 'scatter', mode: 'lines+markers', yaxis: 'y2', line: { color: '#10B981', width: 3 } };
+
+            const layout = {
+              paper_bgcolor: 'transparent', plot_bgcolor: 'transparent',
+              margin: { t: 30, r: 50, l: 50, b: 50 }, font: { color: '#94A3B8', family: 'Inter', size: 11 },
+              xaxis: { gridcolor: '#334155' }, yaxis: { title: 'Parity Breach Incidents', gridcolor: '#334155' },
+              yaxis2: { title: 'Brand.com Conversion %', overlaying: 'y', side: 'right', range: [0, 3], showgrid: false },
+              legend: { orientation: 'h', y: 1.15, x: 0.1 }
+            };
+            Plotly.newPlot('plotly-leakage-chart', [trace1, trace2], layout, { responsive: true, displayModeBar: false });
+          }, 300);
+        
+        </script>
+
+        <aside class="notes">
+          Chart Interpretation:
+          - Guide the executives through the metrics shown on screen.
+          - Connect the mathematical inflection points to organizational decisions and capital allocation.
+        </aside>
+      </section>
+
+      <!-- SLIDE 4: CORE PILLARS / MECHANICS -->
+      <section id="slide-04-mechanics" data-transition="slide">
+        <div class="slide-tag">03 / Strategic Pillars</div>
+        <h2 class="slide-headline">Execution Blueprint: <span>Wholesale Governance Protocol</span></h2>
+        <div class="statement-prefix">The critical technical and commercial levers that drive sustainable differentiation</div>
+
+        <div class="dense-grid-3">
+          
+          <div class="dense-card">
+            <h4>1. Mystery Test-Booking Trace Protocol</h4>
+            <p>Executing live test bookings on undercutting OTAs to extract the specific 8-digit booking voucher identifier, pinning the exact wholesaler distributor in breach.</p>
+          </div>
+          <div class="dense-card">
+            <h4>2. Transitioning from Static to Dynamic Net Rates</h4>
+            <p>Eliminating static contracted allotments. Wholesale partners must connect via dynamic APIs with contracted maximum discount caps linked directly to BAR.</p>
+          </div>
+          <div class="dense-card">
+            <h4>3. Strict Non-Opaque Package Clauses</h4>
+            <p>Inserting strict contractual penalties into bedbank agreements that forfeit distribution rights if rooms are distributed without dynamic flight bundling.</p>
+          </div>
+        
+        </div>
+
+        <aside class="notes">
+          Deep-dive into the execution pillars:
+          - Debated each point with the commercial team.
+          - Address common organizational bottlenecks (e.g. legacy IT constraints, siloed department KPIs).
+        </aside>
+      </section>
+
+      <!-- SLIDE 5: CASE STUDY & ACTION PLAN -->
+      <section id="slide-05-casestudy" data-transition="fade">
+        <div class="slide-tag">04 / Case Study &amp; Next Steps</div>
+        <h2 class="slide-headline">Proven Case Study &amp; <span>90-Day Implementation</span></h2>
+        <div class="statement-prefix">Realized multi-property hospitality results and immediate tactical roadmap</div>
+
+        <div class="dense-grid-2">
+          
+          <div class="dense-card">
+            <h4>Frasers Hospitality Commission Protection</h4>
+            <ul>
+              <li><strong>Challenge:</strong> Rogue third-party aggregators were displaying unbundled wholesale rates across metasearch, eroding direct booking integrity.</li>
+              <li><strong>Action:</strong> Implemented systematic parity audits, test bookings, and restructured wholesale agreements to dynamic API models.</li>
+              <li><strong>Result:</strong> Generated <span class="metric-badge">Approx. S$550K in annual commission savings</span> while boosting direct web ADR by +18%.</li>
+            </ul>
+          </div>
+          <div class="dense-card">
+            <h4>Audit Readiness Checklist</h4>
+            <ul>
+              <li>Do your wholesale contracts allow third-party B2B onward redistribution?</li>
+              <li>When was the last time your team audited meta rates across European and North Asian IPs?</li>
+            </ul>
+          </div>
+        
+        </div>
+
+        <div style="text-align: center; margin-top: 18px; padding: 12px; background: rgba(217, 119, 6, 0.15); border: 1px solid #D97706; border-radius: 8px;">
+          <h3 style="font-size: 1.05rem; color: #FFFFFF; margin: 0;">Schedule this 90-Minute Masterclass for Your Leadership Team</h3>
+          <p style="font-size: 0.8rem; color: #FBBF24; margin: 4px 0 0 0;">Contact Demand Journeys to tailor this session to your specific property or portfolio.</p>
+        </div>
+
+        <aside class="notes">
+          Closing and Q&A:
+          - Summarize the strategic imperative.
+          - Open floor for candid executive debate on timeline, investment requirements, and team accountability.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="vendor/reveal.min.js" onerror="this.src='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js'"></script>
+  <script>
+    Reveal.initialize({
+      width: 1200,
+      height: 700,
+      margin: 0.04,
+      minScale: 0.2,
+      maxScale: 2.0,
+      hash: true,
+      history: true,
+      slideNumber: 'c/t',
+      showSlideNumber: 'all',
+      transition: 'slide',
+      backgroundTransition: 'fade',
+      center: false
+    });
+  </script>
+</body>
+</html>

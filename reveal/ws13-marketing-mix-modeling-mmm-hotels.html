@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WRNWZSKD');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MARKETING MIX MODELING (MMM) FOR HOTEL GROUPS | Demand Journeys Executive Workshop</title>
+  <meta name="description" content="A top-down econometric masterclass for hospitality executives on measuring the true offline and online media contribution, channel saturation thresholds, and optimal cross-market marketing budget allocation.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Reveal.js Core CSS -->
+  <link rel="stylesheet" href="vendor/reveal.min.css" onerror="this.href='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css'">
+  <link rel="stylesheet" href="css/demand-journeys.css">
+
+  <!-- Plotly.js & Mermaid.js -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        darkMode: true,
+        background: '#0F172A',
+        primaryColor: '#1E293B',
+        primaryTextColor: '#F8FAFC',
+        primaryBorderColor: '#D97706',
+        lineColor: '#FBBF24',
+        secondaryColor: '#172338',
+        tertiaryColor: '#0F172A'
+      }
+    });
+  </script>
+  <style>
+    .dense-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+    .dense-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 10px; }
+    .dense-card { background: rgba(30, 41, 59, 0.85); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; padding: 14px 18px; }
+    .dense-card h4 { font-size: 1.05rem; color: #FBBF24; margin-bottom: 6px; font-weight: 600; }
+    .dense-card p, .dense-card li { font-size: 0.82rem; line-height: 1.42; color: #E2E8F0; }
+    .dense-card ul { padding-left: 16px; margin: 4px 0; }
+    .metric-badge { display: inline-block; background: rgba(217, 119, 6, 0.2); border: 1px solid #D97706; color: #FBBF24; padding: 2px 8px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 600; }
+    .chart-container { width: 100%; height: 320px; background: rgba(15, 23, 42, 0.7); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); }
+    .comparison-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 8px; }
+    .comparison-table th { background: #1E293B; color: #FBBF24; padding: 8px; text-align: left; border: 1px solid #334155; }
+    .comparison-table td { padding: 7px 8px; border: 1px solid #334155; color: #E2E8F0; }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRNWZSKD"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1: COVER -->
+      <section id="slide-01-cover" data-transition="fade">
+        <div class="deck-cover-container">
+          <div class="slide-tag">Executive Masterclass &bull; Workshop 13</div>
+          <h1 class="cover-title" style="font-size: 2.35rem; line-height: 1.1;">MARKETING MIX MODELING (MMM) FOR HOTEL GROUPS</h1>
+          <div class="cover-subtitle" style="font-size: 1.2rem; color: #FBBF24; margin-top: 6px;">
+            Econometric Measurement, Adstock Decay, and Multi-Market Capital Allocation Without Attribution Bias
+          </div>
+          <p class="cover-descriptor" style="max-width: 820px; margin: 12px auto; font-size: 0.9rem;">
+            A top-down econometric masterclass for hospitality executives on measuring the true offline and online media contribution, channel saturation thresholds, and optimal cross-market marketing budget allocation.
+          </p>
+
+          <div class="workshop-meta-bar" style="margin-top: 14px;">
+            <div class="meta-pill"><span class="meta-dot"></span> 90-Minute Executive Session</div>
+            <div class="meta-pill"><span class="meta-dot"></span> Target: Chief Marketing Officers, CFOs, Commercial Directors, Regional Marketing Leads</div>
+            <div class="meta-pill"><span class="meta-dot"></span> Framework: The Hospitality Econometric MMM Framework™</div>
+          </div>
+
+          <div class="cover-footer-note" style="margin-top: 18px;">
+            Demand Journeys Executive Workshop Series &bull; Facilitated by Tan Meng Liang &bull; Singapore &bull; Global
+          </div>
+        </div>
+        <aside class="notes">
+          Executive Opening:
+          - Welcome to Workshop 13.
+          - The objective of this working session is to translate complex technical and data capabilities into measurable RevPAR, Net ADR, and bottom-line margin expansion.
+          - We will dissect architecture schemes, real-world case studies, and concrete financial models.
+        </aside>
+      </section>
+
+      <!-- SLIDE 2: ARCHITECTURE & SYSTEM SCHEME -->
+      <section id="slide-02-architecture" data-transition="slide">
+        <div class="slide-tag">01 / Operating Architecture</div>
+        <h2 class="slide-headline">System Scheme: <span>The Hospitality Econometric MMM Framework™</span></h2>
+        <div class="statement-prefix">End-to-end integration and data flow across hotel enterprise systems</div>
+
+        <div class="mermaid" style="transform: scale(0.88); transform-origin: top center;">
+          graph TD
+    A[Marketing Spend Inputs<br/>Search, Meta, Social, PR, OOH, Sponsorships] --> E{Econometric Regression Engine}
+    B[Exogenous Macro Variables<br/>Aviation Capacity, FX Rates, Seasonality] --> E
+    C[Internal Property Variables<br/>Pricing, RevPAR Index, CompSet Rates] --> E
+    D[Adstock Decay &amp; Diminishing Returns Curves] --> E
+    E --> F[Decomposed Revenue Contribution by Channel]
+    F --> G[Marginal Return on Ad Spend (mROAS) by Market]
+    G --> H[Optimal Budget Reallocation Across 13 APAC Markets]
+    H --> I[+20% Baseline Marketing Efficiency Gain]
+        </div>
+
+        <aside class="notes">
+          Walkthrough of the architecture:
+          - Explain how data flows seamlessly from operational source systems into analytical and execution layers.
+          - Emphasize the closed feedback loop connecting commercial outputs directly to revenue strategy.
+        </aside>
+      </section>
+
+      <!-- SLIDE 3: DATA VISUALIZATION & FINANCIAL PROOF -->
+      <section id="slide-03-chart" data-transition="slide">
+        <div class="slide-tag">02 / Quantitative Evidence</div>
+        <h2 class="slide-headline">Commercial Impact &amp; <span>Performance Economics</span></h2>
+        <div class="statement-prefix">Comparative analysis of baseline performance versus optimized transformation</div>
+
+        <div id="plotly-mmm-chart" class="chart-container"></div>
+
+        <script>
+          
+          setTimeout(() => {
+            const spendLevels = ['S$10K', 'S$25K', 'S$50K', 'S$75K', 'S$100K', 'S$150K', 'S$200K'];
+            const searchRevenue = [80, 180, 310, 390, 430, 460, 470];
+            const metaRevenue = [90, 210, 380, 510, 600, 680, 710];
+            const brandSocial = [20, 60, 140, 240, 350, 480, 560];
+
+            const trace1 = { x: spendLevels, y: searchRevenue, name: 'Paid Brand Search (Early Saturation)', type: 'scatter', mode: 'lines+markers', line: { color: '#EF4444', width: 3 } };
+            const trace2 = { x: spendLevels, y: metaRevenue, name: 'Google Hotel Ads (High Linear Yield)', type: 'scatter', mode: 'lines+markers', line: { color: '#10B981', width: 3 } };
+            const trace3 = { x: spendLevels, y: brandSocial, name: 'Video / Social Brand (Delayed Adstock)', type: 'scatter', mode: 'lines+markers', line: { color: '#FBBF24', width: 3 } };
+
+            const layout = {
+              paper_bgcolor: 'transparent', plot_bgcolor: 'transparent',
+              margin: { t: 30, r: 30, l: 50, b: 50 }, font: { color: '#94A3B8', family: 'Inter', size: 11 },
+              xaxis: { title: 'Monthly Channel Spend', gridcolor: '#334155' }, yaxis: { title: 'Incremental Room Revenue (S$k)', gridcolor: '#334155' },
+              legend: { orientation: 'h', y: 1.15, x: 0.05 }
+            };
+            Plotly.newPlot('plotly-mmm-chart', [trace1, trace2], layout, { responsive: true, displayModeBar: false });
+          }, 300);
+        
+        </script>
+
+        <aside class="notes">
+          Chart Interpretation:
+          - Guide the executives through the metrics shown on screen.
+          - Connect the mathematical inflection points to organizational decisions and capital allocation.
+        </aside>
+      </section>
+
+      <!-- SLIDE 4: CORE PILLARS / MECHANICS -->
+      <section id="slide-04-mechanics" data-transition="slide">
+        <div class="slide-tag">03 / Strategic Pillars</div>
+        <h2 class="slide-headline">Execution Blueprint: <span>MMM Econometric Core</span></h2>
+        <div class="statement-prefix">The critical technical and commercial levers that drive sustainable differentiation</div>
+
+        <div class="dense-grid-3">
+          
+          <div class="dense-card">
+            <h4>1. Overcoming Digital Last-Click Bias</h4>
+            <p>Last-click digital attribution over-rewards brand paid search (taking credit for guests already intending to book) while under-valuing upper-funnel PR and brand campaigns.</p>
+          </div>
+          <div class="dense-card">
+            <h4>2. Calculating Adstock Half-Life Decay</h4>
+            <p>Luxury travel decisions have a 45–90 day booking window. Modeling the half-life decay of advertising awareness ensures marketing capital is timed ahead of seasonal booking surges.</p>
+          </div>
+          <div class="dense-card">
+            <h4>3. Diminishing Marginal Returns Curves</h4>
+            <p>Identifying the exact spend threshold where each additional marketing dollar generates less than $1 in incremental gross operating profit, preventing media waste.</p>
+          </div>
+        
+        </div>
+
+        <aside class="notes">
+          Deep-dive into the execution pillars:
+          - Debated each point with the commercial team.
+          - Address common organizational bottlenecks (e.g. legacy IT constraints, siloed department KPIs).
+        </aside>
+      </section>
+
+      <!-- SLIDE 5: CASE STUDY & ACTION PLAN -->
+      <section id="slide-05-casestudy" data-transition="fade">
+        <div class="slide-tag">04 / Case Study &amp; Next Steps</div>
+        <h2 class="slide-headline">Proven Case Study &amp; <span>90-Day Implementation</span></h2>
+        <div class="statement-prefix">Realized multi-property hospitality results and immediate tactical roadmap</div>
+
+        <div class="dense-grid-2">
+          
+          <div class="dense-card">
+            <h4>Practical Multi-Market MMM Application</h4>
+            <ul>
+              <li><strong>Credential:</strong> Fundamentals of Marketing Mix Modeling certification (Udemy ID: UC-532c8e2b-7345-4113-9cff-90d39802d545).</li>
+              <li><strong>Execution:</strong> Applied Excel-based econometric modeling and regression analysis to optimize media budgets across 70+ properties.</li>
+              <li><strong>Impact:</strong> Reallocated US$15M regional media spend, reducing wasted ad spend by 22% while accelerating direct room nights.</li>
+            </ul>
+          </div>
+          <div class="dense-card">
+            <h4>Executive Questions for CMOs</h4>
+            <ul>
+              <li>What is your marginal return on advertising spend (mROAS) on your final $100,000 of digital budget?</li>
+              <li>How much of your reported Google Ads revenue would have occurred organically without ad spend?</li>
+            </ul>
+          </div>
+        
+        </div>
+
+        <div style="text-align: center; margin-top: 18px; padding: 12px; background: rgba(217, 119, 6, 0.15); border: 1px solid #D97706; border-radius: 8px;">
+          <h3 style="font-size: 1.05rem; color: #FFFFFF; margin: 0;">Schedule this 90-Minute Masterclass for Your Leadership Team</h3>
+          <p style="font-size: 0.8rem; color: #FBBF24; margin: 4px 0 0 0;">Contact Demand Journeys to tailor this session to your specific property or portfolio.</p>
+        </div>
+
+        <aside class="notes">
+          Closing and Q&A:
+          - Summarize the strategic imperative.
+          - Open floor for candid executive debate on timeline, investment requirements, and team accountability.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="vendor/reveal.min.js" onerror="this.src='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js'"></script>
+  <script>
+    Reveal.initialize({
+      width: 1200,
+      height: 700,
+      margin: 0.04,
+      minScale: 0.2,
+      maxScale: 2.0,
+      hash: true,
+      history: true,
+      slideNumber: 'c/t',
+      showSlideNumber: 'all',
+      transition: 'slide',
+      backgroundTransition: 'fade',
+      center: false
+    });
+  </script>
+</body>
+</html>

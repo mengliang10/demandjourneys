@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WRNWZSKD');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonomous AI &amp; Agentic Workflows for Hotel Commercial Teams | Demand Journeys</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Reveal.js Core CSS -->
+  <link rel="stylesheet" href="vendor/reveal.min.css" onerror="this.href='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css'">
+  <link rel="stylesheet" href="css/demand-journeys.css">
+
+  <!-- Plotly.js & Mermaid.js -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        darkMode: true,
+        background: '#0F172A',
+        primaryColor: '#1E293B',
+        primaryTextColor: '#F8FAFC',
+        primaryBorderColor: '#D97706',
+        lineColor: '#FBBF24',
+        secondaryColor: '#172338',
+        tertiaryColor: '#0F172A'
+      }
+    });
+  </script>
+  <style>
+    .dense-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+    .dense-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 10px; }
+    .dense-card { background: rgba(30, 41, 59, 0.85); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; padding: 14px 18px; }
+    .dense-card h4 { font-size: 1.05rem; color: #FBBF24; margin-bottom: 6px; font-weight: 600; }
+    .dense-card p, .dense-card li { font-size: 0.82rem; line-height: 1.42; color: #E2E8F0; }
+    .dense-card ul { padding-left: 16px; margin: 4px 0; }
+    .metric-badge { display: inline-block; background: rgba(217, 119, 6, 0.2); border: 1px solid #D97706; color: #FBBF24; padding: 2px 8px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 600; }
+    .chart-container { width: 100%; height: 320px; background: rgba(15, 23, 42, 0.7); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRNWZSKD"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1: COVER -->
+      <section id="slide-01-cover" data-transition="fade">
+        <div class="deck-cover-container">
+          <div class="slide-tag">Executive Masterclass &bull; Workshop 02</div>
+          <h1 class="cover-title" style="font-size: 2.35rem; line-height: 1.1;">AUTONOMOUS AI &amp; AGENTIC WORKFLOWS</h1>
+          <div class="cover-subtitle" style="font-size: 1.2rem; color: #FBBF24; margin-top: 6px;">
+            Scaling Hotel Commercial Operations, Rate Intelligence &amp; Guest Ops with AI Agents
+          </div>
+          <p class="cover-descriptor" style="max-width: 820px; margin: 12px auto; font-size: 0.9rem;">
+            Moving beyond single-turn chatbot prompts into autonomous, multi-agent systems that automate competitor rate auditing, corporate RFP drafting, guest sentiment response, and real-time revenue alerting.
+          </p>
+
+          <div class="workshop-meta-bar" style="margin-top: 14px;">
+            <div class="meta-pill"><span class="meta-dot"></span> 90-Minute Executive Session</div>
+            <div class="meta-pill"><span class="meta-dot"></span> Target: DOSM, DORM, GM, Commercial Operations Leads</div>
+            <div class="meta-pill"><span class="meta-dot"></span> Framework: The Multi-Agent Commercial Triad™</div>
+          </div>
+
+          <div class="cover-footer-note" style="margin-top: 18px;">
+            Demand Journeys Executive Workshop Series &bull; Facilitated by Tan Meng Liang &bull; Singapore &bull; Global
+          </div>
+        </div>
+        <aside class="notes">
+          Executive Setup:
+          - Clarify the difference between "ChatGPT prompts" (manual, single human input) and "Agentic Workflows" (autonomous multi-step software loops with tool execution capabilities).
+          - Why hotels are the ideal domain: 24/7 operations, repetitive multi-channel audits, rate discrepancies, and thousands of guest touchpoints.
+        </aside>
+      </section>
+
+      <!-- SLIDE 2: MULTI-AGENT ARCHITECTURE IN HOSPITALITY -->
+      <section id="slide-02-architecture" data-transition="slide">
+        <div class="slide-tag">01 / Architecture</div>
+        <h2 class="slide-headline">The Multi-Agent <span>Hospitality Commercial Mesh</span></h2>
+        <div class="statement-prefix">Autonomous orchestration across Revenue Management, Marketing, and Front-of-House</div>
+
+        <div class="mermaid" style="transform: scale(0.88); transform-origin: top center;">
+          graph TD
+            A[Master Orchestrator Agent] --> B[Rate Intelligence Agent]
+            A --> C[Guest Review &amp; Sentiment Agent]
+            A --> D[Corporate RFP &amp; MICE Agent]
+            A --> E[Pre-Arrival Upsell Agent]
+            
+            B -->|Pings OTA/GHA APIs| F[(Competitor Rate Feeds)]
+            B -->|Detects Parity Violations| G[Slack/Teams Alert + Auto-RMS Rule]
+            
+            C -->|Ingests TripAdvisor/Google/OTA| H[(Guest Review Feeds)]
+            C -->|Drafts Contextual Responses| I[GM Review Approval Queue]
+            
+            D -->|Parses Inbound RFPs| J[(Corporate Inquiries)]
+            D -->|Checks PMS Availability &amp; Yield| K[Dynamic Proposal Generator]
+            
+            E -->|Analyzes Guest Booking Profile| L[(PMS / CDP Records)]
+            E -->|Sends Tailored Ancillary Offers| M[WhatsApp/Email Conversion]
+        </div>
+
+        <aside class="notes">
+          Architecture Breakdown:
+          - Point out the Human-in-the-Loop (HITL) design: agents do 95% of the data gathering, synthesis, and drafting; human managers approve high-stakes actions.
+          - Example: The Corporate RFP agent drafts a full proposal within 90 seconds of receiving an email inquiry, pricing it dynamically against current occupancy curves.
+        </aside>
+      </section>
+
+      <!-- SLIDE 3: OPERATIONAL TIME REALLOCATION (PLOTLY CHART) -->
+      <section id="slide-03-time-saved" data-transition="slide">
+        <div class="slide-tag">02 / Commercial ROI</div>
+        <h2 class="slide-headline">Labor Hours Reallocation: <span>Manual vs Autonomous Ops</span></h2>
+        <div class="statement-prefix">Hours per week spent per property by commercial leadership (DOSM &amp; Revenue Managers)</div>
+
+        <div id="plotly-agentic-hours" class="chart-container"></div>
+
+        <script>
+          setTimeout(() => {
+            const categories = ['CompSet Rate Shopping', 'Review Responses', 'Corporate RFP Response', 'Parity Audit & Discrepancy', 'Manual PowerBI Aggregation', 'Strategic Commercial Planning'];
+            const manualHours = [12, 8, 14, 9, 10, 5];
+            const agenticHours = [1.5, 1.0, 2.5, 0.5, 1.0, 22.0];
+
+            const trace1 = { x: categories, y: manualHours, name: 'Traditional Manual Workflows (58 hrs/wk)', type: 'bar', marker: { color: '#EF4444' } };
+            const trace2 = { x: categories, y: agenticHours, name: 'Agentic Workflows + Human-in-the-Loop (28.5 hrs/wk)', type: 'bar', marker: { color: '#10B981' } };
+
+            const layout = {
+              barmode: 'group',
+              paper_bgcolor: 'transparent',
+              plot_bgcolor: 'transparent',
+              margin: { t: 30, r: 30, l: 40, b: 60 },
+              font: { color: '#94A3B8', family: 'Inter', size: 11 },
+              xaxis: { gridcolor: '#334155', tickangle: -15 },
+              yaxis: { title: 'Hours per Week', gridcolor: '#334155' },
+              legend: { orientation: 'h', y: 1.15, x: 0.15 }
+            };
+
+            Plotly.newPlot('plotly-agentic-hours', [trace1, trace2], layout, { responsive: true, displayModeBar: false });
+          }, 300);
+        </script>
+
+        <aside class="notes">
+          Strategic takeaway:
+          - Notice the reversal: Strategic Commercial Planning increases from 5 hours to 22 hours per week because tedious administrative tasks (rate scraping, generic review replies, manual reporting) are automated.
+        </aside>
+      </section>
+
+      <!-- SLIDE 4: 4 CORE HOSPITALITY AGENT WORKFLOWS -->
+      <section id="slide-04-usecases" data-transition="slide">
+        <div class="slide-tag">03 / High-Yield Playbooks</div>
+        <h2 class="slide-headline">The 4 Core <span>Hospitality Agentic Workflows</span></h2>
+        <div class="statement-prefix">Specific implementations deployed in multi-property hotel environments</div>
+
+        <div class="dense-grid-2">
+          <div class="dense-card">
+            <h4>1. Autonomous Parity Sentinel Agent</h4>
+            <p><strong>Trigger:</strong> Runs every 30 minutes across Booking.com, Expedia, Agoda, and 12 metasearch engines.</p>
+            <p><strong>Action:</strong> Detects unauthorized OTA rate unbundling / wholesale leakage. Takes automated timestamped screenshots, logs the exact distributor code, and sends a pre-drafted breach notice to the market manager.</p>
+            <span class="metric-badge">Eliminates 92% of rogue rate leakage</span>
+          </div>
+
+          <div class="dense-card">
+            <h4>2. Instant Corporate MICE RFP Closer</h4>
+            <p><strong>Trigger:</strong> Inbound corporate event inquiry received via email or webform.</p>
+            <p><strong>Action:</strong> Ingests meeting room capacity, calculates F&amp;B minimum spend, checks block availability in PMS, and generates a personalized, branded PDF proposal within 3 minutes.</p>
+            <span class="metric-badge">Lifts lead-to-booking conversion by +38%</span>
+          </div>
+
+          <div class="dense-card">
+            <h4>3. VIP Guest Synthesis &amp; Briefing Agent</h4>
+            <p><strong>Trigger:</strong> Daily 06:00 AM PMS check-in manifest generation.</p>
+            <p><strong>Action:</strong> Aggregates previous stay history, dining preferences, linked corporate entity, social presence, and flags specific high-value repeat guests for personalized GM welcome notes and tailored amenities.</p>
+            <span class="metric-badge">+42% NPS score among top 5% spenders</span>
+          </div>
+
+          <div class="dense-card">
+            <h4>4. Intelligent Pre-Stay Monetization Agent</h4>
+            <p><strong>Trigger:</strong> T-minus 72 hours before arrival.</p>
+            <p><strong>Action:</strong> Analyzes arrival flight time and current suite occupancy. Offers targeted early check-in, premium airport limousine transfer, and curated dinner reservations via WhatsApp.</p>
+            <span class="metric-badge">+S$48 Incremental Net Margin per Room</span>
+          </div>
+        </div>
+
+        <aside class="notes">
+          Practical application:
+          - Ask attendees: "How long does it currently take your sales team to reply to a 50-room corporate retreat RFP? If it takes 24-48 hours, you have already lost the booking to competitor hotels that respond in minutes."
+        </aside>
+      </section>
+
+      <!-- SLIDE 5: 90-DAY DEPLOYMENT SPRINTS -->
+      <section id="slide-05-sprint" data-transition="fade">
+        <div class="slide-tag">04 / Roadmap &amp; Governance</div>
+        <h2 class="slide-headline">The 90-Day <span>Agentic Deployment Sprint</span></h2>
+        <div class="statement-prefix">Structured implementation timeline with strict risk and privacy guardrails</div>
+
+        <div class="dense-grid-3">
+          <div class="dense-card">
+            <h4>Month 1: Tool Hooks &amp; Read-Only Agents</h4>
+            <ul>
+              <li>Connect API connectors to PMS (Opera/Cloudbeds), CRS, and email inbox.</li>
+              <li>Deploy read-only Parity Sentinel Agent in audit mode.</li>
+              <li>Establish strict data isolation (zero guest PII fed to public model training).</li>
+            </ul>
+          </div>
+          <div class="dense-card">
+            <h4>Month 2: Human-in-the-Loop Drafting</h4>
+            <ul>
+              <li>Deploy Corporate RFP Assistant with DOSM approval queue.</li>
+              <li>Implement guest review response generator for GM review.</li>
+              <li>Benchmark time savings and output quality.</li>
+            </ul>
+          </div>
+          <div class="dense-card">
+            <h4>Month 3: Autonomous Execution &amp; Scale</h4>
+            <ul>
+              <li>Enable automated pre-stay WhatsApp upsell triggers.</li>
+              <li>Integrate automated RMS rule adjustments during peak demand surges.</li>
+              <li>Roll out across portfolio properties with centralized monitoring.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px; padding: 12px; background: rgba(217, 119, 6, 0.15); border: 1px solid #D97706; border-radius: 8px;">
+          <h3 style="font-size: 1.05rem; color: #FFFFFF; margin: 0;">Ready to Deploy Agentic Workflows at Your Property?</h3>
+          <p style="font-size: 0.8rem; color: #FBBF24; margin: 4px 0 0 0;">Book a Demand Journeys Architecture Working Session.</p>
+        </div>
+
+        <aside class="notes">
+          Closing Remarks:
+          - Emphasize governance and safety: hospitality agents must always operate within bounded parameters (e.g. rate floors that agents cannot override).
+          - Open floor for Q&A.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="vendor/reveal.min.js" onerror="this.src='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js'"></script>
+  <script>
+    Reveal.initialize({
+      width: 1200,
+      height: 700,
+      margin: 0.04,
+      minScale: 0.2,
+      maxScale: 2.0,
+      hash: true,
+      history: true,
+      slideNumber: 'c/t',
+      showSlideNumber: 'all',
+      transition: 'slide',
+      backgroundTransition: 'fade',
+      center: false
+    });
+  </script>
+</body>
+</html>

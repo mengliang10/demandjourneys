@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WRNWZSKD');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOTEL TECH STACK EVALUATION & VENDOR RFP GOVERNANCE | Demand Journeys Executive Workshop</title>
+  <meta name="description" content="A comprehensive procurement and architecture guide for hospitality leaders on structuring vendor evaluation scorecards, calculating total cost of ownership (TCO), and avoiding vendor lock-in.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Reveal.js Core CSS -->
+  <link rel="stylesheet" href="vendor/reveal.min.css" onerror="this.href='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css'">
+  <link rel="stylesheet" href="css/demand-journeys.css">
+
+  <!-- Plotly.js & Mermaid.js -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        darkMode: true,
+        background: '#0F172A',
+        primaryColor: '#1E293B',
+        primaryTextColor: '#F8FAFC',
+        primaryBorderColor: '#D97706',
+        lineColor: '#FBBF24',
+        secondaryColor: '#172338',
+        tertiaryColor: '#0F172A'
+      }
+    });
+  </script>
+  <style>
+    .dense-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+    .dense-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 10px; }
+    .dense-card { background: rgba(30, 41, 59, 0.85); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; padding: 14px 18px; }
+    .dense-card h4 { font-size: 1.05rem; color: #FBBF24; margin-bottom: 6px; font-weight: 600; }
+    .dense-card p, .dense-card li { font-size: 0.82rem; line-height: 1.42; color: #E2E8F0; }
+    .dense-card ul { padding-left: 16px; margin: 4px 0; }
+    .metric-badge { display: inline-block; background: rgba(217, 119, 6, 0.2); border: 1px solid #D97706; color: #FBBF24; padding: 2px 8px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 600; }
+    .chart-container { width: 100%; height: 320px; background: rgba(15, 23, 42, 0.7); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); }
+    .comparison-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 8px; }
+    .comparison-table th { background: #1E293B; color: #FBBF24; padding: 8px; text-align: left; border: 1px solid #334155; }
+    .comparison-table td { padding: 7px 8px; border: 1px solid #334155; color: #E2E8F0; }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRNWZSKD"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1: COVER -->
+      <section id="slide-01-cover" data-transition="fade">
+        <div class="deck-cover-container">
+          <div class="slide-tag">Executive Masterclass &bull; Workshop 19</div>
+          <h1 class="cover-title" style="font-size: 2.35rem; line-height: 1.1;">HOTEL TECH STACK EVALUATION & VENDOR RFP GOVERNANCE</h1>
+          <div class="cover-subtitle" style="font-size: 1.2rem; color: #FBBF24; margin-top: 6px;">
+            Navigating PMS, CRS, Booking Engines, CDP and Channel Managers Without Accumulating Technical Debt
+          </div>
+          <p class="cover-descriptor" style="max-width: 820px; margin: 12px auto; font-size: 0.9rem;">
+            A comprehensive procurement and architecture guide for hospitality leaders on structuring vendor evaluation scorecards, calculating total cost of ownership (TCO), and avoiding vendor lock-in.
+          </p>
+
+          <div class="workshop-meta-bar" style="margin-top: 14px;">
+            <div class="meta-pill"><span class="meta-dot"></span> 90-Minute Executive Session</div>
+            <div class="meta-pill"><span class="meta-dot"></span> Target: Chief Information Officers, Chief Commercial Officers, Asset Managers, Procurement Leads</div>
+            <div class="meta-pill"><span class="meta-dot"></span> Framework: The Hospitality Enterprise Tech Evaluation Matrix™</div>
+          </div>
+
+          <div class="cover-footer-note" style="margin-top: 18px;">
+            Demand Journeys Executive Workshop Series &bull; Facilitated by Tan Meng Liang &bull; Singapore &bull; Global
+          </div>
+        </div>
+        <aside class="notes">
+          Executive Opening:
+          - Welcome to Workshop 19.
+          - The objective of this working session is to translate complex technical and data capabilities into measurable RevPAR, Net ADR, and bottom-line margin expansion.
+          - We will dissect architecture schemes, real-world case studies, and concrete financial models.
+        </aside>
+      </section>
+
+      <!-- SLIDE 2: ARCHITECTURE & SYSTEM SCHEME -->
+      <section id="slide-02-architecture" data-transition="slide">
+        <div class="slide-tag">01 / Operating Architecture</div>
+        <h2 class="slide-headline">System Scheme: <span>The Hospitality Enterprise Tech Evaluation Matrix™</span></h2>
+        <div class="statement-prefix">End-to-end integration and data flow across hotel enterprise systems</div>
+
+        <div class="mermaid" style="transform: scale(0.88); transform-origin: top center;">
+          graph TD
+    A[Business Strategy &amp; Commercial Growth Requirements] --> B[Technical Architecture Blueprint]
+    B --> C{Structured Vendor RFP Process}
+    C -->|PMS Core: Opera Cloud vs Infor vs Cloudbeds| D[Property Operations &amp; Folio Billing]
+    C -->|CRS &amp; Booking: Sabre SynXis vs Amadeus vs TravelClick| E[Central Distribution &amp; ARI]
+    C -->|CDP &amp; CRM: Adobe AEP vs Salesforce vs Cendyn| F[Guest Intelligence &amp; Personalization]
+    D --> G[Open API Integration &amp; Real-Time Webhooks]
+    E --> G
+    F --> G
+    G --> H[Unified Modern Hospitality Ecosystem<br/>Zero Vendor Lock-in | High Agility]
+        </div>
+
+        <aside class="notes">
+          Walkthrough of the architecture:
+          - Explain how data flows seamlessly from operational source systems into analytical and execution layers.
+          - Emphasize the closed feedback loop connecting commercial outputs directly to revenue strategy.
+        </aside>
+      </section>
+
+      <!-- SLIDE 3: DATA VISUALIZATION & FINANCIAL PROOF -->
+      <section id="slide-03-chart" data-transition="slide">
+        <div class="slide-tag">02 / Quantitative Evidence</div>
+        <h2 class="slide-headline">Commercial Impact &amp; <span>Performance Economics</span></h2>
+        <div class="statement-prefix">Comparative analysis of baseline performance versus optimized transformation</div>
+
+        <div id="plotly-tco-chart" class="chart-container"></div>
+
+        <script>
+          
+          setTimeout(() => {
+            const categories = ['SaaS License Fees', 'Implementation & Migration', 'Custom Integration Dev', 'Maintenance & Support', 'Hidden Transaction Fees'];
+            const unmanagedTCO = [100, 85, 95, 45, 65];
+            const governedTCO = [85, 40, 25, 30, 15];
+
+            const trace1 = { x: categories, y: unmanagedTCO, name: 'Unmanaged Vendor RFP (High Tech Debt)', type: 'bar', marker: { color: '#EF4444' } };
+            const trace2 = { x: categories, y: governedTCO, name: 'Demand Journeys Governed RFP (S$k)', type: 'bar', marker: { color: '#10B981' } };
+
+            const layout = {
+              barmode: 'group', paper_bgcolor: 'transparent', plot_bgcolor: 'transparent',
+              margin: { t: 30, r: 30, l: 50, b: 60 }, font: { color: '#94A3B8', family: 'Inter', size: 10 },
+              xaxis: { gridcolor: '#334155', tickangle: -10 }, yaxis: { title: '5-Year TCO Cost (S$k)', gridcolor: '#334155' },
+              legend: { orientation: 'h', y: 1.15, x: 0.1 }
+            };
+            Plotly.newPlot('plotly-tco-chart', [trace1, trace2], layout, { responsive: true, displayModeBar: false });
+          }, 300);
+        
+        </script>
+
+        <aside class="notes">
+          Chart Interpretation:
+          - Guide the executives through the metrics shown on screen.
+          - Connect the mathematical inflection points to organizational decisions and capital allocation.
+        </aside>
+      </section>
+
+      <!-- SLIDE 4: CORE PILLARS / MECHANICS -->
+      <section id="slide-04-mechanics" data-transition="slide">
+        <div class="slide-tag">03 / Strategic Pillars</div>
+        <h2 class="slide-headline">Execution Blueprint: <span>RFP Evaluation Criteria</span></h2>
+        <div class="statement-prefix">The critical technical and commercial levers that drive sustainable differentiation</div>
+
+        <div class="dense-grid-3">
+          
+          <div class="dense-card">
+            <h4>1. Open API & Webhook Capabilities</h4>
+            <p>Vendors that charge proprietary fees for every API call trap hotel groups. Modern platforms must offer open, documented REST/GraphQL APIs with real-time webhooks.</p>
+          </div>
+          <div class="dense-card">
+            <h4>2. Total Cost of Ownership (5-Year TCO)</h4>
+            <p>Evaluating total financial commitment including implementation fees, custom integration labor, transaction charges, and annual maintenance escalators.</p>
+          </div>
+          <div class="dense-card">
+            <h4>3. Global Partner Management</h4>
+            <p>Negotiating enterprise terms across Adobe, SAP, Sabre, Cendyn, and Microsoft to secure volume discounting and dedicated service level agreements (SLAs).</p>
+          </div>
+        
+        </div>
+
+        <aside class="notes">
+          Deep-dive into the execution pillars:
+          - Debated each point with the commercial team.
+          - Address common organizational bottlenecks (e.g. legacy IT constraints, siloed department KPIs).
+        </aside>
+      </section>
+
+      <!-- SLIDE 5: CASE STUDY & ACTION PLAN -->
+      <section id="slide-05-casestudy" data-transition="fade">
+        <div class="slide-tag">04 / Case Study &amp; Next Steps</div>
+        <h2 class="slide-headline">Proven Case Study &amp; <span>90-Day Implementation</span></h2>
+        <div class="statement-prefix">Realized multi-property hospitality results and immediate tactical roadmap</div>
+
+        <div class="dense-grid-2">
+          
+          <div class="dense-card">
+            <h4>Enterprise Partner & RFP Leadership</h4>
+            <ul>
+              <li><strong>Experience:</strong> Led business-side RFP evaluations and vendor negotiations with Adobe, SAP, Sabre, Cendyn, and Microsoft.</li>
+              <li><strong>Governance:</strong> Stabilized the enterprise website and platform transformation ahead of launch across 70+ properties.</li>
+              <li><strong>Result:</strong> Eliminated redundant software platforms, saving <span class="metric-badge">over S$800K in duplicate licensing</span> over 3 years.</li>
+            </ul>
+          </div>
+          <div class="dense-card">
+            <h4>Procurement Toolkit</h4>
+            <ul>
+              <li>The 100-Point Hospitality Vendor RFP Evaluation Scorecard.</li>
+              <li>SLA and Data Ownership Contract Clause Templates.</li>
+            </ul>
+          </div>
+        
+        </div>
+
+        <div style="text-align: center; margin-top: 18px; padding: 12px; background: rgba(217, 119, 6, 0.15); border: 1px solid #D97706; border-radius: 8px;">
+          <h3 style="font-size: 1.05rem; color: #FFFFFF; margin: 0;">Schedule this 90-Minute Masterclass for Your Leadership Team</h3>
+          <p style="font-size: 0.8rem; color: #FBBF24; margin: 4px 0 0 0;">Contact Demand Journeys to tailor this session to your specific property or portfolio.</p>
+        </div>
+
+        <aside class="notes">
+          Closing and Q&A:
+          - Summarize the strategic imperative.
+          - Open floor for candid executive debate on timeline, investment requirements, and team accountability.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="vendor/reveal.min.js" onerror="this.src='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js'"></script>
+  <script>
+    Reveal.initialize({
+      width: 1200,
+      height: 700,
+      margin: 0.04,
+      minScale: 0.2,
+      maxScale: 2.0,
+      hash: true,
+      history: true,
+      slideNumber: 'c/t',
+      showSlideNumber: 'all',
+      transition: 'slide',
+      backgroundTransition: 'fade',
+      center: false
+    });
+  </script>
+</body>
+</html>
