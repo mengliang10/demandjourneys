@@ -81,9 +81,9 @@
       </a>
 
       <nav class="nav-menu">
+        <a href="#contact" class="nav-link">Contact</a>
         <a href="#approach" class="nav-link">Approach</a>
         <a href="#about" class="nav-link">About</a>
-        <a href="#contact" class="nav-link">Contact</a>
       </nav>
 
       <div class="nav-cta">
@@ -184,7 +184,85 @@
       </div>
     </section>
 
-    <!-- 3. VALUE APPROACH & FRAMEWORK SECTION -->
+    <!-- 3. DIRECT CONTACT & ENGAGEMENT BOX SECTION -->
+    <section class="final-cta" id="contact">
+      <div class="container">
+        <div class="cta-inner-card text-center">
+          <span class="section-tag section-tag-dark">Next Steps</span>
+          <h2 class="cta-title">Start With the Commercial Question.</h2>
+          <p class="cta-subtitle">
+            Tell us what is not working, what technology or channel you are considering investing in, or where you need senior commercial clarity. Inquiries go directly to Meng Liang Tan.
+          </p>
+
+          <!-- Interactive Direct Contact Form Box -->
+          <div class="contact-form-container" id="contact-box">
+            <div class="form-header">
+              <span class="form-badge">Direct Executive Line</span>
+              <h3 class="contact-form-title">Send a Direct Message</h3>
+              <p class="contact-form-subtitle">Submit your commercial question or project scope for direct executive review.</p>
+            </div>
+
+            <form action="https://formsubmit.co/ml@demandjourneys.com" method="POST" id="dj-contact-form" class="dj-contact-form">
+              <!-- FormSubmit Configuration & Security -->
+              <input type="hidden" name="_cc" value="mengliang.online@outlook.com">
+              <input type="hidden" name="_subject" value="New Executive Inquiry from DemandJourneys.com">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="text" name="_honey" style="display:none">
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="form-name">Your Name <span class="req">*</span></label>
+                  <input type="text" id="form-name" name="name" placeholder="e.g. Alex Wong" required class="form-input">
+                </div>
+
+                <div class="form-group">
+                  <label for="form-email">Work Email <span class="req">*</span></label>
+                  <input type="email" id="form-email" name="email" placeholder="alex.wong@company.com" required class="form-input">
+                </div>
+
+                <div class="form-group">
+                  <label for="form-company">Company / Property</label>
+                  <input type="text" id="form-company" name="company" placeholder="e.g. Hospitality Group / Brand" class="form-input">
+                </div>
+
+                <div class="form-group">
+                  <label for="form-topic">Inquiry Type</label>
+                  <select id="form-topic" name="topic" class="form-input form-select">
+                    <option value="90-Minute Commercial Diagnostic Workshop">90-Minute Commercial Diagnostic Workshop</option>
+                    <option value="Hospitality Commercial & Distribution Review">Hospitality Commercial &amp; Distribution Review</option>
+                    <option value="MarTech, CDP & Customer Platform Strategy">MarTech, CDP &amp; Customer Platform Strategy</option>
+                    <option value="Marketing Measurement (MMM) & Yield Analytics">Marketing Measurement (MMM) &amp; Yield Analytics</option>
+                    <option value="Fractional Commercial / Transformation Leadership">Fractional Commercial / Transformation Leadership</option>
+                    <option value="General Commercial Inquiry">General Commercial Inquiry</option>
+                  </select>
+                </div>
+
+                <div class="form-group full-width">
+                  <label for="form-message">Commercial Question or Project Scope <span class="req">*</span></label>
+                  <textarea id="form-message" name="message" rows="3" placeholder="Tell us what is not working, what technology or channel you are considering investing in, or where you need senior commercial clarity..." required class="form-input form-textarea"></textarea>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" id="form-submit-btn" class="btn btn-primary btn-large btn-submit">
+                  <span class="btn-text">Send Message to Meng Liang &rarr;</span>
+                  <span class="btn-loading" style="display: none;">Sending to Mailbox...</span>
+                </button>
+              </div>
+
+              <div id="form-response-msg" class="form-response-card" style="display: none;"></div>
+            </form>
+          </div>
+
+          <p class="cta-footer-tags">
+            Commercial Demand Diagnostics &bull; Hospitality Strategy &bull; Customer &amp; Lifecycle &bull; Marketing Intelligence &bull; MarTech &amp; AI Transformation &bull; Fractional Leadership
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. VALUE APPROACH & FRAMEWORK SECTION -->
     <section class="framework-section" id="approach">
       <div class="container">
         <div class="section-header text-center">
@@ -350,83 +428,6 @@
       </div>
     </section>
 
-    <!-- 5. DIRECT CONTACT & ENGAGEMENT BOX SECTION -->
-    <section class="final-cta" id="contact">
-      <div class="container">
-        <div class="cta-inner-card text-center">
-          <span class="section-tag section-tag-dark">Next Steps</span>
-          <h2 class="cta-title">Start With the Commercial Question.</h2>
-          <p class="cta-subtitle">
-            Tell us what is not working, what technology or channel you are considering investing in, or where you need senior commercial clarity. Inquiries go directly to Meng Liang Tan.
-          </p>
-
-          <!-- Interactive Direct Contact Form Box -->
-          <div class="contact-form-container" id="contact-box">
-            <div class="form-header">
-              <span class="form-badge">Direct Executive Line</span>
-              <h3 class="contact-form-title">Send a Direct Message</h3>
-              <p class="contact-form-subtitle">Submit your commercial question or project scope for direct executive review.</p>
-            </div>
-
-            <form action="https://formsubmit.co/ml@demandjourneys.com" method="POST" id="dj-contact-form" class="dj-contact-form">
-              <!-- FormSubmit Configuration & Security -->
-              <input type="hidden" name="_cc" value="mengliang.online@outlook.com">
-              <input type="hidden" name="_subject" value="New Executive Inquiry from DemandJourneys.com">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="text" name="_honey" style="display:none">
-
-              <div class="form-grid">
-                <div class="form-group">
-                  <label for="form-name">Your Name <span class="req">*</span></label>
-                  <input type="text" id="form-name" name="name" placeholder="e.g. Alex Wong" required class="form-input">
-                </div>
-
-                <div class="form-group">
-                  <label for="form-email">Work Email <span class="req">*</span></label>
-                  <input type="email" id="form-email" name="email" placeholder="alex.wong@company.com" required class="form-input">
-                </div>
-
-                <div class="form-group">
-                  <label for="form-company">Company / Property</label>
-                  <input type="text" id="form-company" name="company" placeholder="e.g. Hospitality Group / Brand" class="form-input">
-                </div>
-
-                <div class="form-group">
-                  <label for="form-topic">Inquiry Type</label>
-                  <select id="form-topic" name="topic" class="form-input form-select">
-                    <option value="90-Minute Commercial Diagnostic Workshop">90-Minute Commercial Diagnostic Workshop</option>
-                    <option value="Hospitality Commercial & Distribution Review">Hospitality Commercial &amp; Distribution Review</option>
-                    <option value="MarTech, CDP & Customer Platform Strategy">MarTech, CDP &amp; Customer Platform Strategy</option>
-                    <option value="Marketing Measurement (MMM) & Yield Analytics">Marketing Measurement (MMM) &amp; Yield Analytics</option>
-                    <option value="Fractional Commercial / Transformation Leadership">Fractional Commercial / Transformation Leadership</option>
-                    <option value="General Commercial Inquiry">General Commercial Inquiry</option>
-                  </select>
-                </div>
-
-                <div class="form-group full-width">
-                  <label for="form-message">Commercial Question or Project Scope <span class="req">*</span></label>
-                  <textarea id="form-message" name="message" rows="3" placeholder="Tell us what is not working, what technology or channel you are considering investing in, or where you need senior commercial clarity..." required class="form-input form-textarea"></textarea>
-                </div>
-              </div>
-
-              <div class="form-actions">
-                <button type="submit" id="form-submit-btn" class="btn btn-primary btn-large btn-submit">
-                  <span class="btn-text">Send Message to Meng Liang &rarr;</span>
-                  <span class="btn-loading" style="display: none;">Sending to Mailbox...</span>
-                </button>
-              </div>
-
-              <div id="form-response-msg" class="form-response-card" style="display: none;"></div>
-            </form>
-          </div>
-
-          <p class="cta-footer-tags">
-            Commercial Demand Diagnostics &bull; Hospitality Strategy &bull; Customer &amp; Lifecycle &bull; Marketing Intelligence &bull; MarTech &amp; AI Transformation &bull; Fractional Leadership
-          </p>
-        </div>
-      </div>
-    </section>
   </main>
 
   <!-- FOOTER -->
@@ -439,9 +440,9 @@
         </div>
         <div class="footer-nav-links">
           <a href="#hero">Home</a>
+          <a href="#contact">Contact</a>
           <a href="#approach">Approach</a>
           <a href="#about">About</a>
-          <a href="#contact">Contact</a>
           <a href="https://demandjourneys.substack.com/" target="_blank" rel="noopener">Substack</a>
           <a href="https://linkedin.com/in/mengliang" target="_blank" rel="noopener">LinkedIn</a>
           <a href="mailto:ml@demandjourneys.com">Email Principal</a>
