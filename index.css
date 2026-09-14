@@ -2308,11 +2308,14 @@ input::placeholder,textarea::placeholder {
 }
 .hero-tagline {
   font-family: var(--sans);
-  font-size: clamp(16px, 1.8vw, 22px);
-  color: rgba(255, 255, 255, 0.82);
-  letter-spacing: 0.8px;
-  margin: 0 0 44px;
+  font-size: clamp(17px, 2vw, 22px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: 0.1px;
+  max-width: 780px;
+  margin: 0 auto 44px;
   font-weight: 400;
+  text-wrap: balance;
 }
 .hero-cta-wrap {
   margin-top: 10px;
