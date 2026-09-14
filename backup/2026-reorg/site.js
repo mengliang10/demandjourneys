@@ -32,9 +32,10 @@ document.querySelectorAll('[data-enquiry]').forEach(control => {
   control.addEventListener('click', (e) => {
     if (!form) return;
     const targetVal = control.dataset.enquiry;
-    const select = form.elements.help_with || form.elements.issue || form.elements.topic;
-    if (select) {
-      select.value = targetVal;
+    if (form.elements.issue) {
+      form.elements.issue.value = targetVal;
+    } else if (form.elements.topic) {
+      form.elements.topic.value = targetVal;
     }
     const nameField = form.elements.name;
     if (nameField) {
@@ -75,11 +76,11 @@ if (form) {
       });
       const result = await response.json();
       if (!response.ok || ![true, 'true'].includes(result.success)) throw new Error('Enquiry not accepted');
-      showStatus('Thank you. Your enquiry has been sent.');
+      showStatus('Thank you. Your enquiry has been submitted. Meng Liang will be in touch to discuss the next step.');
       form.reset();
       window.dataLayer?.push({ event: 'enquiry_submitted', page_type: document.body.dataset.page });
     } catch {
-      showStatus('Your enquiry could not be sent. Please try again.', true);
+      showStatus('We could not confirm delivery. Your message is still here. Please try again or email ml@demandjourneys.com directly.', true);
     } finally {
       clearTimeout(timeout);
       submit.disabled = false;
