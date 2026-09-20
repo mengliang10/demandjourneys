@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tours, Activities & Experiences - Enterprise Tech Stack Architecture</title>
+  
+  <style>
+    :root {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #111827;
+      --bg-card: rgba(17, 24, 39, 0.75);
+      --bg-card-hover: rgba(31, 41, 55, 0.9);
+      --border-color: rgba(75, 85, 99, 0.35);
+      --border-highlight: rgba(59, 130, 246, 0.5);
+      --text-primary: #f9fafb;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --accent-blue: #3b82f6;
+      --accent-cyan: #06b6d4;
+      --accent-purple: #8b5cf6;
+      --accent-emerald: #10b981;
+      --accent-orange: #f97316;
+      --accent-amber: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.5;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
+      padding: 1.5rem 2rem 3rem;
+    }
+
+    .container { max-width: 1400px; margin: 0 auto; }
+    
+    .glass-panel {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.2s ease-in-out;
+    }
+    .glass-panel:hover { border-color: var(--border-highlight); }
+
+    /* Top Nav */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 0.85rem 1.25rem;
+      margin-bottom: 2rem;
+      border-radius: 10px;
+      font-size: 0.88rem;
+    }
+    .nav-links { display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap; }
+    .nav-link { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; font-weight: 500; }
+    .nav-link:hover { color: #60a5fa; }
+    .nav-badge {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      background: rgba(59, 130, 246, 0.2);
+      color: #93c5fd;
+      border: 1px solid rgba(59, 130, 246, 0.35);
+    }
+
+    /* Header */
+    .header { text-align: center; margin-bottom: 2.5rem; }
+    .header h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+    .header p { color: var(--text-secondary); font-size: 1.05rem; max-width: 900px; margin: 0 auto; }
+
+    /* Variation Selector Switcher */
+    .variation-switch-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .var-btn {
+      background: rgba(17, 24, 39, 0.8);
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.35rem;
+      width: 340px;
+      text-align: left;
+    }
+    .var-btn:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      color: var(--text-primary);
+      transform: translateY(-2px);
+    }
+    .var-btn.active-salesforce {
+      border-color: #3b82f6;
+      background: rgba(59, 130, 246, 0.15);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    }
+    .var-btn.active-no-salesforce {
+      border-color: #10b981;
+      background: rgba(16, 185, 129, 0.15);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+    }
+    .var-btn.active-best-money {
+      border-color: #f59e0b;
+      background: rgba(245, 158, 11, 0.15);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+    }
+    .var-btn-title { font-weight: 700; font-size: 1rem; }
+    .var-btn-tagline { font-size: 0.78rem; opacity: 0.85; }
+
+    /* Variation Summary Card */
+    .var-summary-card {
+      margin-bottom: 2rem;
+      border-left: 4px solid var(--accent-blue);
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 900px) {
+      .var-summary-card { grid-template-columns: 1fr; }
+    }
+    .var-summary-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      padding-left: 1.5rem;
+      border-left: 1px solid var(--border-color);
+    }
+    .metric-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .metric-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+    .metric-value { font-size: 1.15rem; font-weight: 700; color: #60a5fa; }
+
+    /* Filter Pills */
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .filter-pill {
+      background: rgba(31, 41, 55, 0.7);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      padding: 0.4rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-pill:hover, .filter-pill.active {
+      background: #2563eb;
+      color: #fff;
+      border-color: #3b82f6;
+    }
+
+    /* Layers Grid */
+    .layers-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .layer-card {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+    .layer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .layer-title-box { display: flex; align-items: center; gap: 0.75rem; }
+    .layer-icon { font-size: 1.8rem; }
+    .layer-title { font-size: 1.25rem; font-weight: 700; }
+    .layer-desc { font-size: 0.82rem; color: var(--text-secondary); }
+
+    .layer-cost-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      font-size: 0.85rem;
+    }
+
+    .layer-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .layer-body { grid-template-columns: 1fr; }
+    }
+
+    .section-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Platform Pills */
+    .platforms-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .platform-item {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.6rem 0.85rem;
+      border-radius: 6px;
+      border-left: 3px solid #3b82f6;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+    .platform-name { font-weight: 600; color: #f9fafb; }
+    .platform-vendor { font-size: 0.75rem; color: var(--text-muted); }
+    .platform-role { font-size: 0.78rem; color: var(--text-secondary); }
+
+    /* Info Callouts */
+    .info-box {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    .info-box p { color: var(--text-secondary); }
+
+    /* Side-by-side comparison table */
+    .table-container { overflow-x: auto; margin-top: 1.5rem; }
+    table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.85rem; }
+    th {
+      background: rgba(31, 41, 55, 0.9);
+      padding: 0.85rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-color);
+    }
+    td { padding: 0.85rem 1rem; border-bottom: 1px solid rgba(75, 85, 99, 0.2); vertical-align: top; }
+    tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+    .badge-var1 { color: #93c5fd; background: rgba(59, 130, 246, 0.15); padding: 0.2rem 0.5rem; border-radius: 4px; }
+    .badge-var2 { color: #a7f3d0; background: rgba(16, 185, 129, 0.15); padding: 0.2rem 0.5rem; border-radius: 4px; }
+    .badge-var3 { color: #fde68a; background: rgba(245, 158, 11, 0.15); padding: 0.2rem 0.5rem; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Top Nav -->
+    <div class="glass-panel top-nav">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <span class="nav-badge">ENTERPRISE TECH STACK</span>
+        <span style="font-weight: 600; color: #f9fafb;">Tours, Activities & Experiences</span>
+      </div>
+      <div class="nav-links">
+        <a href="presentation.html" class="nav-link" style="color: #c084fc; font-weight: 700;">🖥️ 52-Slide Master Deck</a>
+        <a href="index.html" class="nav-link">📊 Sector Distribution Lab</a>
+        <a href="../index.html" class="nav-link">🏠 Masterclass Hub</a>
+        <a href="PRESENTATION_FRAMEWORK_COMPENDIUM.md" class="nav-link" target="_blank">📖 Frameworks Compendium</a>
+        <a href="ENTERPRISE_TECH_STACK_ARCHITECTURE_COMPENDIUM.md" class="nav-link" target="_blank">📄 Full Compendium MD</a>
+        <a href="../hotels/tech_stack.html" class="nav-link">🏨 Hotels Stack</a>
+        <a href="../airlines/tech_stack.html" class="nav-link">✈️ Airlines Stack</a>
+        <a href="../cruises/tech_stack.html" class="nav-link">🚢 Cruises Stack</a>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <span class="nav-badge" style="margin-bottom: 0.75rem; display: inline-block;">13-Layer Master Architecture</span>
+      <h1>Tours, Activities & Experiences Tech Stack & Systems Architecture</h1>
+      <p>
+        Exhaustive multi-layer architectural mapping across 13 enterprise dimensions: Core Operations, Marketing, CRM/Service, Loyalty, CDP, Integration, Cloud, AI/ML, Front-Ends, CMS/DXP, Finance, HR & Governance.
+      </p>
+    </header>
+
+    <!-- Variation Switcher -->
+    <div class="variation-switch-container">
+      <button class="var-btn active-salesforce" id="btn-var-salesforce" onclick="setVariation('var_salesforce')">
+        <span class="var-btn-title">Variation 1: With Salesforce</span>
+        <span class="var-btn-tagline">Salesforce-Centric Enterprise Ecosystem</span>
+      </button>
+      <button class="var-btn" id="btn-var-no-salesforce" onclick="setVariation('var_no_salesforce')">
+        <span class="var-btn-title">Variation 2: Without Salesforce</span>
+        <span class="var-btn-tagline">Best-of-Breed Modern Open/Enterprise</span>
+      </button>
+      <button class="var-btn" id="btn-var-best-money" onclick="setVariation('var_best_money_can_buy')">
+        <span class="var-btn-title">Variation 3: Best Money Can Buy</span>
+        <span class="var-btn-tagline">Ultra-Tier Sovereign & High-Roller Pinnacle</span>
+      </button>
+    </div>
+
+    <!-- Variation Summary Card -->
+    <div class="glass-panel var-summary-card" id="var-summary-panel">
+      <!-- Dynamic Content Populated by JS -->
+    </div>
+
+    <!-- Filter Pills -->
+    <div class="filter-bar">
+      <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; margin-right: 0.5rem;">FILTER LAYERS:</span>
+      <button class="filter-pill active" onclick="filterLayers('all', this)">All 13 Layers</button>
+      <button class="filter-pill" onclick="filterLayers('ops', this)">Core & Ops</button>
+      <button class="filter-pill" onclick="filterLayers('commercial', this)">Commercial & CX</button>
+      <button class="filter-pill" onclick="filterLayers('data_ai', this)">Data, Integration & AI</button>
+      <button class="filter-pill" onclick="filterLayers('enterprise', this)">ERP, HR & Governance</button>
+    </div>
+
+    <!-- Layers Container -->
+    <div class="layers-container" id="layers-container">
+      <!-- Dynamic Layers Populated by JS -->
+    </div>
+
+    <!-- Side-by-Side Comparison Matrix -->
+    <div class="glass-panel" style="margin-top: 3rem;">
+      <h2 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">Side-by-Side Architectural & Financial Comparison</h2>
+      <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.5rem;">
+        Complete cross-comparison of annual software licensing (ACV), key vendors, and data models across all 3 variations.
+      </p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 22%;">Layer & Dimension</th>
+              <th style="width: 26%;">Variation 1: With Salesforce</th>
+              <th style="width: 26%;">Variation 2: Without Salesforce</th>
+              <th style="width: 26%;">Variation 3: Best Money Can Buy</th>
+            </tr>
+          </thead>
+          <tbody id="comparison-table-body">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const STACK_DATA = {"sector": "Tours, Activities & Experiences", "market_context": {"global_scale": "$220.0B Tour & Activity GBV (1.8B Experiences)", "annual_experiences_sold": "1.8 Billion Experiences Globally", "blended_ticket_price": "$122.22 USD per participant", "ota_intermediation_share": "$132.0B (60.0% booked via Viator, GetYourGuide, Klook)", "direct_operator_share": "$88.0B (40.0% direct bookings)", "distribution_friction": "$31.68B (14.4% blended OTA commissions & payment processing)", "net_tour_operator_revenue": "$188.32B (85.6% retained by operators)", "operator_count": "Over 1.2 Million operators globally, highly fragmented"}, "variations": [{"id": "var_salesforce", "name": "Variation 1: With Salesforce", "tagline": "The Salesforce-Centric Enterprise Experience Ecosystem", "summary": "Unified experiential travel architecture leveraging Salesforce Data Cloud as the customer data fabric, Agentforce for autonomous guide dispatch and weather rebooking, Service Cloud Voice, Marketing Cloud, and MuleSoft OCTO API adapters connecting Bokun/FareHarbor to global OTAs and field operations.", "total_acv_usd": "$5,500,000 - $9,500,000 / year", "implementation_capex_usd": "$6,800,000 - $12,000,000", "annual_run_cost_usd": "$2,200,000 - $3,800,000 / year", "projected_roi": "350% over 3 years with 9-month payback period", "primary_moat": "Zero-Copy Data Cloud traveler harmonization, native Agentforce autonomous weather disruption rebooking, and MuleSoft OCTO pre-built connectors to Viator, GetYourGuide, and Klook."}, {"id": "var_no_salesforce", "name": "Variation 2: Without Salesforce (Best-of-Breed Open/Enterprise)", "tagline": "Modern Best-of-Breed Composable Experiences Stack", "summary": "Decoupled, modern cloud architecture utilizing Snowflake/Databricks, Twilio Segment/mParticle CDP, Braze for real-time mobile push notifications, Zendesk / Microsoft Dynamics 365, Talon.One for dynamic group promotions, and Confluent Kafka event mesh.", "total_acv_usd": "$4,500,000 - $7,800,000 / year", "implementation_capex_usd": "$7,500,000 - $13,500,000", "annual_run_cost_usd": "$3,100,000 - $5,000,000 / year", "projected_roi": "270% over 3 years with 13-month payback period", "primary_moat": "Complete vendor independence, open APIs, custom LLM fine-tuning on destination knowledge bases, and zero platform lock-in."}, {"id": "var_best_money_can_buy", "name": "Variation 3: The Best Platforms Money Can Buy", "tagline": "Ultra-Tier Sovereign & Global Destination Operator Pinnacle", "summary": "Unconstrained budget, sovereign-grade global operator architecture combining Palantir Foundry / AIP for fleet operations, guide dispatch, and dynamic yield optimization, Adobe Experience Cloud (AEP + AJO + AEM), Databricks Lakehouse on NVIDIA DGX clusters, Genesys Cloud CX with Google CCAI, and Samsara AI Fleet Telematics.", "total_acv_usd": "$16,500,000 - $28,000,000 / year", "implementation_capex_usd": "$22,000,000 - $38,000,000", "annual_run_cost_usd": "$7,200,000 - $11,500,000 / year", "projected_roi": "460% over 3 years with 11-month payback period via massive guide utilization gains, dynamic pricing, and direct booking capture", "primary_moat": "Kinetic fleet and guide digital twin (Palantir), sub-50ms streaming personalization (Adobe AEP), automated weather risk mitigation, and carrier-grade operational resilience."}], "layers": [{"layer_id": "core_ops", "name": "1. Core Industry Operational Stack", "icon": "\u2699\ufe0f", "desc": "Tour Booking Engines (Bokun/FareHarbor/Peek Pro), OCTO API Channel Manager, Fleet Telematics & Digital Waivers", "variations": {"var_salesforce": {"platforms": [{"name": "Bokun (Tripadvisor) / FareHarbor / Rezdy", "vendor": "Tripadvisor / Booking Holdings / Rezdy", "role": "Master tour reservation engine, live calendar inventory, guide assignment, and booking widget"}, {"name": "OCTO API Standard Channel Manager", "vendor": "Rezdy / Bokun / OCTO Open Standard", "role": "2-way automated live availability and booking confirmation across Viator, GetYourGuide, and Klook"}, {"name": "Samsara Fleet Telematics & Asset Tracking", "vendor": "Samsara Inc.", "role": "Real-time GPS bus/boat fleet tracking, driver safety, and preventative vehicle maintenance"}, {"name": "Wherewolf Digital Liability Waivers", "vendor": "Wherewolf", "role": "Automated digital liability waiver signing via mobile tablets and QR codes"}, {"name": "Square / Adyen Mobile POS", "vendor": "Square / Adyen", "role": "On-site ticket sales, guide merchandise, and tips processing"}], "licensing_acv": "$6,500,000 - $11,500,000 / year (Booking SaaS fees: ~1.5% - 3.5% of gross bookings across a $500M operator network)", "implementation_capex": "$7,000,000 - $14,000,000", "annual_run_cost": "$2,400,000 / year", "data_handled": "Tour departure times, passenger manifests, dietary restrictions, signed legal liability waivers, GPS fleet breadcrumbs, vehicle engine diagnostics.", "purpose": "Executes all tour scheduling, guide assignments, vehicle dispatch, digital waiver compliance, and real-time OTA inventory distribution.", "business_value": "The foundational operational spine of the experience operator. Eliminates overbooking, ensures legal liability protection, and maximizes bus/boat load factors.", "integration_specs": "OCTO 1.0/2.0 REST APIs, Wherewolf Webhooks, Samsara Telematics Cloud APIs, MuleSoft direct connectors streaming reservation events to Salesforce Data Cloud."}, "var_no_salesforce": {"platforms": [{"name": "Peek Pro / TrekkSoft Booking Platform", "vendor": "Peek / TrekkSoft", "role": "API-first activity booking engine with dynamic pricing and custom waivers"}, {"name": "Rezdy Channel Manager Gateway", "vendor": "Rezdy", "role": "OCTO API distribution gateway connecting 150+ international OTAs"}, {"name": "Geotab Fleet Telematics", "vendor": "Geotab", "role": "Vehicle tracking, fuel management, and route optimization"}, {"name": "Smartwaiver Enterprise", "vendor": "Smartwaiver", "role": "Digital waiver and release of liability cloud platform"}, {"name": "Clover / Stripe Terminal POS", "vendor": "Fiserv / Stripe", "role": "Handheld terminal POS for ticket booths and tour guides"}], "licensing_acv": "$5,500,000 - $9,800,000 / year", "implementation_capex": "$6,500,000 - $12,500,000", "annual_run_cost": "$2,200,000 / year", "data_handled": "Real-time departure seat availability, driver hours of service (HOS), waiver legal records, credit card tap transactions.", "purpose": "Modern, API-first tour operations stack designed for mid-sized and multi-location tour operators.", "business_value": "Geotab route optimization cuts fleet fuel consumption by 14%; Peek Pro dynamic pricing boosts tour yields by 5.2%.", "integration_specs": "Open REST APIs, Webhooks, Kafka event streams to Snowflake, OpenAPI 3.0 specifications."}, "var_best_money_can_buy": {"platforms": [{"name": "Enterprise Custom Booking Engine (Bespoke Microservices)", "vendor": "In-House / Dedicated Engineering", "role": "Custom high-throughput booking engine supporting multi-thousand simultaneous bookings during flash sales"}, {"name": "Rezdy Enterprise OCTO Gateway", "vendor": "Rezdy", "role": "Dedicated enterprise channel switch processing 200,000 availability requests/sec"}, {"name": "Samsara AI Dashcams & Asset Tracking Sovereign", "vendor": "Samsara Inc.", "role": "AI computer vision driver safety, real-time collision avoidance, and fleet maintenance"}, {"name": "Smartwaiver Sovereign Enterprise Vault", "vendor": "Smartwaiver", "role": "Cryptographically sealed legal liability waiver vault with biometric signature verification"}, {"name": "WeatherOps Meteorologist Decision Support", "vendor": "DTN WeatherOps", "role": "Real-time lightning, wind, and marine storm predictive alerts integrated directly to dispatch"}], "licensing_acv": "$14,000,000 - $24,000,000 / year", "implementation_capex": "$20,000,000 - $35,000,000", "annual_run_cost": "$5,500,000 / year", "data_handled": "Microsecond tour seat locks, biometric signature hashes, live video telematics streams, predictive radar weather models, full corporate contract ledgers.", "purpose": "The ultimate sovereign-grade destination operational command system, coordinating thousands of tour vehicles, boats, and guides across global destinations.", "business_value": "WeatherOps prevents catastrophic tourist safety incidents; Samsara AI cuts accident insurance premiums by 38% ($8M saved); saves $15M in weather cancellations.", "integration_specs": "Dedicated AWS PrivateLink connections, encrypted gRPC streams, OCTO 2.0 streaming WebSockets, sub-20ms transaction response."}}}, {"layer_id": "marketing", "name": "2. Marketing Automation & AdTech", "icon": "\ud83d\udce3", "desc": "In-destination mobile marketing, last-minute tour upselling, Google Things to Do syndication, and review generation", "variations": {"var_salesforce": {"platforms": [{"name": "Salesforce Marketing Cloud Engagement", "vendor": "Salesforce", "role": "Email, SMS, Mobile Push, and WhatsApp pre-trip and in-destination journey orchestration"}, {"name": "Marketing Cloud Personalization (Interaction Studio)", "vendor": "Salesforce", "role": "Real-time web/app tour recommendations and dynamic photo package upselling"}, {"name": "Salesforce Marketing Cloud Growth / Advanced", "vendor": "Salesforce", "role": "Agentic campaign generation via Einstein 1 Platform"}, {"name": "Advertising Studio", "vendor": "Salesforce", "role": "First-party audience sync to Google Things to Do, Meta CAPI, and TikTok Ads"}], "licensing_acv": "$950,000 - $1,750,000 / year", "implementation_capex": "$800,000 - $1,500,000", "annual_run_cost": "$400,000 / year", "data_handled": "Traveler email engagement, in-destination mobile location pings, tour browsing history, WhatsApp confirmation messages, TripAdvisor review prompts.", "purpose": "Drives high-margin in-destination tour bookings, photo package sales, and automated post-tour 5-star review collection on TripAdvisor/Google.", "business_value": "Generates $18M+ in direct in-destination sales; increases 5-star review volume by 65%, driving organic search rankings to #1 on TripAdvisor.", "integration_specs": "Direct native Zero-Copy synchronization with Salesforce Data Cloud; Journey Builder triggered via Bokun/FareHarbor booking status."}, "var_no_salesforce": {"platforms": [{"name": "Braze Enterprise Customer Engagement", "vendor": "Braze", "role": "Cross-channel messaging (Push, In-App, SMS, WhatsApp, Email)"}, {"name": "Movable Ink", "vendor": "Movable Ink", "role": "Dynamic visual content rendering (live local weather forecast and countdown to departure in email)"}, {"name": "Google Things to Do Direct API", "vendor": "Google", "role": "Direct official ticket pricing and booking link placement on Google Search and Maps"}, {"name": "Branch.io", "vendor": "Branch Metrics", "role": "Deep linking directly from QR codes on hotel brochures into instant mobile booking flow"}], "licensing_acv": "$780,000 - $1,400,000 / year", "implementation_capex": "$700,000 - $1,200,000", "annual_run_cost": "$360,000 / year", "data_handled": "User engagement streams, Google Things to Do click tokens, QR code scan analytics, dynamic weather cache.", "purpose": "High-velocity mobile and web messaging stack paired with Google Things to Do direct syndication to bypass OTA commissions.", "business_value": "Google Things to Do shifts 22% of bookings from Viator/GetYourGuide to direct Brand.com, saving $8.5M in OTA commissions.", "integration_specs": "REST APIs, Webhooks, Twilio Segment / Snowflake direct synchronization via Braze Currents."}, "var_best_money_can_buy": {"platforms": [{"name": "Adobe Experience Platform (AEP)", "vendor": "Adobe", "role": "Central real-time marketing data fabric and governance"}, {"name": "Adobe Journey Optimizer (AJO)", "vendor": "Adobe", "role": "Unified omni-channel orchestration across digital ads, hotel concierges, and tour guide tablets"}, {"name": "Adobe Target Enterprise", "vendor": "Adobe", "role": "AI-driven algorithmic dynamic tour pricing and combo package personalization"}, {"name": "Programmatic Bidding AI for Google Things to Do", "vendor": "In-House / Bespoke", "role": "Algorithmic bidding optimizing ad spend based on real-time tour seat availability and weather forecasts"}, {"name": "LiveRamp Safe Haven Clean Room", "vendor": "LiveRamp", "role": "Sovereign data clean room for joint airline and hotel partner co-op promotions"}], "licensing_acv": "$2,200,000 - $3,800,000 / year", "implementation_capex": "$2,600,000 - $4,500,000", "annual_run_cost": "$950,000 / year", "data_handled": "Sub-second traveler behavioral clickstreams, physical destination geolocation tags, clean room tokenized airline passenger manifests.", "purpose": "The premier digital marketing suite globally: executes sub-50ms dynamic package pricing and targets incoming airline passengers before they land.", "business_value": "Expands direct booking share to > 50%; captures $11M in co-op marketing subsidies from tourism boards and luxury resort partners.", "integration_specs": "Adobe Experience Platform Web SDK, Adobe Edge Network, streaming ingestion via Kafka, and bidirectional sync to Snowflake."}}}, {"layer_id": "crm_service", "name": "3. CRM & Omni-Channel Service Desk", "icon": "\ud83c\udfa7", "desc": "Central traveler support desk, WhatsApp conversational concierge, weather cancellation management, and VIP guide requests", "variations": {"var_salesforce": {"platforms": [{"name": "Salesforce Service Cloud Enterprise", "vendor": "Salesforce", "role": "Unified customer service desktop, omni-channel request routing, and SLA tracking"}, {"name": "Service Cloud Voice (Amazon Connect)", "vendor": "Salesforce / AWS", "role": "Integrated cloud telephony for customer inquiries and tour booking phone lines"}, {"name": "Salesforce Digital Engagement", "vendor": "Salesforce", "role": "WhatsApp, SMS, Apple Messages for Business, and Web Chat routing"}, {"name": "Agentforce Tour Concierge", "vendor": "Salesforce", "role": "Autonomous conversational AI resolving meeting point directions, dietary requests, and weather cancellations"}], "licensing_acv": "$1,300,000 - $2,400,000 / year", "implementation_capex": "$1,200,000 - $2,200,000", "annual_run_cost": "$550,000 / year", "data_handled": "Customer inquiries, meeting point GPS waypoints, weather cancellation re-bookings, voice recordings, call sentiment, refund voucher records.", "purpose": "Equips support agents with a single 360-degree traveler view, while deflecting 55%+ of routine day-of-tour questions autonomously.", "business_value": "Reduces call center Average Handle Time (AHT) by 80 seconds; deflects $6M in administrative phone call overhead on busy weekend mornings.", "integration_specs": "Integrated with Bokun/FareHarbor via MuleSoft OCTO connector; CTI integration via Amazon Connect WebRTC; Pub/Sub API for real-time dispatch updates."}, "var_no_salesforce": {"platforms": [{"name": "Zendesk Enterprise Suite", "vendor": "Zendesk", "role": "Omni-channel ticketing, live chat, and help center for traveler inquiries"}, {"name": "Genesys Cloud CX", "vendor": "Genesys", "role": "Global cloud contact center for centralized booking phone desks"}, {"name": "Forethought AI / Ada CX", "vendor": "Forethought / Ada", "role": "Conversational AI resolution engine for instant traveler self-service"}], "licensing_acv": "$1,050,000 - $1,900,000 / year", "implementation_capex": "$1,100,000 - $2,000,000", "annual_run_cost": "$500,000 / year", "data_handled": "Customer support tickets, WhatsApp text chats, chatbot transcripts, queue metrics, agent scheduling.", "purpose": "Reliable, modern customer service stack tailored for fast-paced travel inquiries and mobile messaging.", "business_value": "Forethought deflects 42% of repetitive questions ('Where do I meet the guide?'); Genesys ensures zero dropped phone bookings during peak season.", "integration_specs": "Open REST APIs, Twilio WhatsApp gateway, Webhook dispatch to Snowflake."}, "var_best_money_can_buy": {"platforms": [{"name": "Genesys Cloud CX Sovereign Dedicated", "vendor": "Genesys", "role": "Dedicated enterprise private cloud contact center with zero shared tenancy"}, {"name": "Google Cloud Contact Center AI (CCAI)", "vendor": "Google Cloud", "role": "Real-time agent assist, predictive sentiment, and voice bot orchestration"}, {"name": "Palantir AIP Tour Operations & Guide Dispatch Desk", "vendor": "Palantir Technologies", "role": "Dedicated operational command desk with automated vehicle re-routing and guide reallocation during weather disruptions"}, {"name": "Nuance Gatekeeper Voice Biometrics", "vendor": "Microsoft / Nuance", "role": "Instant voice biometrics authentication in IVR (< 3 seconds) for high-net-worth VIP clients"}], "licensing_acv": "$3,200,000 - $5,500,000 / year", "implementation_capex": "$3,600,000 - $6,500,000", "annual_run_cost": "$1,300,000 / year", "data_handled": "VIP traveler dossiers, voice biometrics acoustic models, live tour guide GPS telemetry, real-time fleet traffic heatmaps, charter client agreements.", "purpose": "The gold standard in experience operations: instant VIP identification, automated storm disruption recovery, and seamless guide communication.", "business_value": "Eliminates booking cancellation losses during weather emergencies ($12M saved); VIP client retention increased by 22%.", "integration_specs": "Dedicated SIP trunks, TLS 1.3 encrypted WebSockets, direct Google CCAI Dialogflow CX integration, Palantir AIP secure REST endpoints."}}}, {"layer_id": "loyalty", "name": "4. Loyalty Management & Gamification", "icon": "\ud83d\udc8e", "desc": "Adventure rewards points, experience badges, coalition partner earn/burn (airlines/hotels), and member discounts", "variations": {"var_salesforce": {"platforms": [{"name": "Salesforce Loyalty Management", "vendor": "Salesforce", "role": "Experience loyalty points ledger, adventure badges, and partner rewards catalog"}, {"name": "Salesforce Data Cloud for Loyalty", "vendor": "Salesforce", "role": "Real-time tier status calculation and dynamic activity voucher provisioning"}, {"name": "Salesforce Experience Cloud Loyalty Portal", "vendor": "Salesforce", "role": "Member digital self-service, points redemption, and claim missing activity credits"}], "licensing_acv": "$680,000 - $1,250,000 / year", "implementation_capex": "$850,000 - $1,600,000", "annual_run_cost": "$300,000 / year", "data_handled": "Member IDs, tier status (Explorer/Adventurer/Global Pioneer), qualifying activity spend, non-qualifying points, partner earn transactions, reward redemptions.", "purpose": "Powers the tour operator's loyalty and referral program, driving repeat direct bookings and incentivizing reviews and photo sharing.", "business_value": "Loyalty members book 2.4x more experiences per year and refer an average of 3.2 new customers through gamified referral badges.", "integration_specs": "MuleSoft connectors to Bokun/FareHarbor; real-time transactional REST APIs for airline/hotel partner files."}, "var_no_salesforce": {"platforms": [{"name": "Antavo Enterprise Loyalty Cloud", "vendor": "Antavo", "role": "Gamified loyalty management, VIP tier progression, and reward wallet"}, {"name": "Talon.One Promotion & Loyalty Engine", "vendor": "Talon.One", "role": "Rule-based real-time promotion and loyalty reward engine"}, {"name": "OpenLoyalty Microservices", "vendor": "OpenLoyalty", "role": "Headless loyalty ledger microservices"}], "licensing_acv": "$520,000 - $950,000 / year", "implementation_capex": "$750,000 - $1,400,000", "annual_run_cost": "$280,000 / year", "data_handled": "Member IDs, rule triggers, coupon codes, point transaction ledgers, gamification badges.", "purpose": "API-first, headless loyalty architecture giving product engineering teams complete control over front-end user experience.", "business_value": "Talon.One processes seasonal promo codes in under 15ms at 20,000 requests/sec during peak holiday shopping periods.", "integration_specs": "Headless REST APIs, GraphQL endpoints, Webhooks, Kafka event stream to Snowflake."}, "var_best_money_can_buy": {"platforms": [{"name": "Antavo Enterprise Loyalty Cloud Sovereign", "vendor": "Antavo", "role": "Custom high-throughput ledger supporting global multi-destination real-time point transactions"}, {"name": "Points.com / Rocketmiles API", "vendor": "Points.com / Plusgrade", "role": "Global loyalty coalition exchange connecting airline miles and tour points"}, {"name": "Visa Direct & Amex Global Gateway", "vendor": "Visa / American Express", "role": "Real-time card-linked offer redemption at destination restaurants, museums, and attractions"}], "licensing_acv": "$1,600,000 - $2,800,000 / year", "implementation_capex": "$2,000,000 - $3,500,000", "annual_run_cost": "$700,000 / year", "data_handled": "Financial-grade points ledger, real-time ISO 8583 card swipe feeds, merchant category codes (MCC), partner currency exchange rates.", "purpose": "Transforms the tour loyalty program into a global experiential currency, allowing travelers to burn airline miles for local tours seamlessly.", "business_value": "Coalition airline mileage redemptions drive $45M+ in high-margin tour bookings that would otherwise never have occurred.", "integration_specs": "PCI-DSS Level 1 certified private circuits, ISO 8583 financial transaction protocol, sub-50ms API response SLA."}}}, {"layer_id": "cdp", "name": "5. Customer Data Platform (CDP) & Identity", "icon": "\ud83e\uddec", "desc": "Real-time traveler event ingestion, OTA-to-direct identity resolution, and unified golden traveler profile", "variations": {"var_salesforce": {"platforms": [{"name": "Salesforce Data Cloud for Travel", "vendor": "Salesforce", "role": "Zero-Copy data harmonization, identity resolution, and real-time Calculated Insights"}, {"name": "Data Cloud Zero-Copy Federation", "vendor": "Salesforce / Snowflake", "role": "Direct querying of external Snowflake/Databricks lakehouse without ETL duplication"}], "licensing_acv": "$850,000 - $1,500,000 / year (Based on Data Cloud segment & profile credits)", "implementation_capex": "$750,000 - $1,350,000", "annual_run_cost": "$320,000 / year", "data_handled": "Unified Individual DMO, Contact Point Email/Phone, Bokun booking histories, signed liability waiver records, GPS tour participation logs.", "purpose": "The central real-time traveler brain: resolves fragmented OTA bookers, signed waivers, and direct website visitors into a single golden profile.", "business_value": "Converts 32% of OTA bookers into direct repeat customers on their next vacation; eliminates duplicate marketing emails.", "integration_specs": "Zero-Copy open data architecture with Snowflake and BigQuery; streaming ingestion via Kafka, MuleSoft, and Salesforce Pub/Sub API."}, "var_no_salesforce": {"platforms": [{"name": "Twilio Segment Unify (or mParticle)", "vendor": "Twilio / mParticle", "role": "Real-time customer data platform, identity graph, and reverse ETL"}, {"name": "RudderStack Enterprise", "vendor": "RudderStack", "role": "Warehouse-native event streaming and reverse ETL to operational systems"}], "licensing_acv": "$650,000 - $1,150,000 / year", "implementation_capex": "$750,000 - $1,300,000", "annual_run_cost": "$340,000 / year", "data_handled": "Cross-platform traveler interaction events, anonymous-to-known user mapping, identity graphs, consent state.", "purpose": "Developer-centric, warehouse-first CDP architecture that feeds clean, validated event streams directly into Snowflake.", "business_value": "Reduces data engineering overhead by 55%; provides instantaneous event forwarding to downstream marketing and analytics tools.", "integration_specs": "Client-side iOS/Android/JavaScript SDKs, server-side REST APIs, Kafka streaming connector, direct Snowflake load."}, "var_best_money_can_buy": {"platforms": [{"name": "Adobe Real-Time Customer Data Platform (RT-CDP)", "vendor": "Adobe", "role": "B2C & B2B unified streaming traveler profile with patented identity governance"}, {"name": "Snowflake Travel & Destination Data Clean Room", "vendor": "Snowflake", "role": "Sovereign multi-party data collaboration with airlines, hotel chains, and OTAs"}, {"name": "Palantir Foundry Dynamic Traveler Ontology", "vendor": "Palantir Technologies", "role": "Deep kinetic graph linking traveler activity preferences, travel companion networks, and global spend"}], "licensing_acv": "$2,600,000 - $4,500,000 / year", "implementation_capex": "$3,000,000 - $5,400,000", "annual_run_cost": "$1,100,000 / year", "data_handled": "30-billion-node enterprise identity graph, multi-generational family activity profiles, corporate retreat contract utilization, real-time destination GPS footprints.", "purpose": "The most advanced identity and kinetic graph platform in existence, fusing digital clickstreams, physical tour participation, and corporate retreat contracts.", "business_value": "Unlocks $18M+ in targeted corporate team-building contract retention and multi-million-dollar hotel concierge partnerships.", "integration_specs": "Streaming ingestion via Apache Pulsar / Kafka, sub-100ms edge profile activation, encrypted clean room queries via SQL."}}}, {"layer_id": "integration", "name": "6. API Gateway, Integration & Event Mesh", "icon": "\ud83d\udd0c", "desc": "Universal API management, OCTO API open connectivity, Kafka event streaming, and OTA distribution adapters", "variations": {"var_salesforce": {"platforms": [{"name": "MuleSoft Anypoint Platform", "vendor": "Salesforce / MuleSoft", "role": "Universal API Management, API Gateway, and Enterprise Service Bus (ESB)"}, {"name": "MuleSoft OCTO API Adapter", "vendor": "Salesforce / MuleSoft", "role": "Pre-built connectors mapping OCTO standard availability and booking feeds to Salesforce DMOs"}, {"name": "Salesforce Pub/Sub API (gRPC)", "vendor": "Salesforce", "role": "High-throughput, bi-directional event bus streaming Change Data Capture (CDC)"}], "licensing_acv": "$950,000 - $1,800,000 / year", "implementation_capex": "$1,100,000 - $2,000,000", "annual_run_cost": "$450,000 / year", "data_handled": "OCTO JSON messages, OTA booking notifications, waiver completion webhooks, gRPC binary protocol buffers.", "purpose": "Acts as the central nervous system connecting disparate reservation engines, telematics feeds, and global OTAs into unified microservices.", "business_value": "Cuts new OTA distribution connection time from 8 weeks to 4 days; guarantees zero lost bookings during peak holiday booking surges.", "integration_specs": "REST, SOAP, OCTO 1.0/2.0, gRPC, Kafka connectors, RAML/OAS3 API specifications, OAuth2 token validation."}, "var_no_salesforce": {"platforms": [{"name": "Confluent Cloud Enterprise (Kafka)", "vendor": "Confluent", "role": "Managed enterprise event streaming backbone across multi-cloud regions"}, {"name": "Kong Konnect API Gateway", "vendor": "Kong Inc.", "role": "Cloud-native, ultra-low latency API gateway and service mesh"}, {"name": "Workato Enterprise iPaaS", "vendor": "Workato", "role": "Low-code enterprise workflow automation and business application integration"}], "licensing_acv": "$820,000 - $1,500,000 / year", "implementation_capex": "$950,000 - $1,700,000", "annual_run_cost": "$420,000 / year", "data_handled": "Streaming event topics (tour_booked, waiver_signed, vehicle_dispatched), API gateway tokens, JSON microservices payloads.", "purpose": "High-performance, event-driven decoupled architecture optimized for microservices and real-time operational responsiveness.", "business_value": "Kong provides sub-millisecond API proxy latency; Confluent guarantees fault-tolerant streaming of 30,000+ tour events/sec.", "integration_specs": "Apache Kafka wire protocol, gRPC, REST, GraphQL, Kong Ingress Controller on Kubernetes."}, "var_best_money_can_buy": {"platforms": [{"name": "Confluent Cloud Dedicated Tier-1 Clusters", "vendor": "Confluent", "role": "Dedicated multi-region event mesh with 99.999% SLA and infinite retention"}, {"name": "Solace PubSub+ Event Broker", "vendor": "Solace", "role": "Hardware-accelerated ultra-low-latency event mesh for fleet telematics and mission-critical dispatch"}, {"name": "Kong Enterprise Gateway Sovereign", "vendor": "Kong Inc.", "role": "FIPS 140-2 compliant API security gateway with mTLS enforcement"}, {"name": "AWS PrivateLink & Cloud Interconnect", "vendor": "Amazon Web Services", "role": "Direct encrypted VPC peering bypassing the public internet entirely"}], "licensing_acv": "$2,200,000 - $3,800,000 / year", "implementation_capex": "$2,500,000 - $4,500,000", "annual_run_cost": "$900,000 / year", "data_handled": "Real-time vehicle telematics, guide panic button telemetry, sovereign customer clearance, hardware-encrypted credit card authorizations.", "purpose": "Carrier-grade, military-spec integration mesh ensuring zero dropped packets and microsecond routing across global destination fleets.", "business_value": "Prevents catastrophic system-wide booking engine crashes during mega-events; meets highest transport safety and PCI-DSS mandates.", "integration_specs": "Hardware-accelerated SMF, AMQP, MQTT, Kafka, gRPC, dedicated private fiber circuits."}}}, {"layer_id": "cloud_data", "name": "7. Cloud Infrastructure & Lakehouse", "icon": "\u2601\ufe0f", "desc": "Cloud compute, relational databases, analytical data lakehouse, and real-time destination analytics", "variations": {"var_salesforce": {"platforms": [{"name": "Salesforce Hyperforce on AWS", "vendor": "Salesforce / AWS", "role": "Sovereign regional cloud hosting for CRM, Data Cloud, and Agentforce"}, {"name": "Snowflake Data Cloud", "vendor": "Snowflake", "role": "Enterprise analytical data warehouse with Zero-Copy Data Cloud sharing"}, {"name": "Amazon Web Services (AWS) Core", "vendor": "AWS", "role": "EKS Kubernetes compute, Amazon S3 data lake, and Amazon RDS PostgreSQL"}], "licensing_acv": "$1,600,000 - $2,800,000 / year", "implementation_capex": "$1,200,000 - $2,100,000", "annual_run_cost": "$700,000 / year", "data_handled": "Historical activity bookings (10+ years), financial ledgers, clickstream data lakes, customer preference tables, machine learning feature stores.", "purpose": "Provides elastic compute and infinite storage for destination analytics, guide payroll calculations, and predictive AI model training.", "business_value": "Snowflake Zero-Copy eliminates 75% of data duplication costs and enables instant querying of 20TB datasets without data egress fees.", "integration_specs": "Apache Iceberg table formats, AWS PrivateLink, Snowflake Secure Data Sharing, JDBC/ODBC."}, "var_no_salesforce": {"platforms": [{"name": "Google Cloud Platform (GCP) Core", "vendor": "Google Cloud", "role": "Google Kubernetes Engine (GKE), Cloud Spanner, and Cloud Storage"}, {"name": "Databricks Lakehouse Platform", "vendor": "Databricks", "role": "Unified Apache Spark lakehouse for data engineering, BI, and ML"}, {"name": "Snowflake Analytical Cloud", "vendor": "Snowflake", "role": "Enterprise data warehousing and data clean rooms"}], "licensing_acv": "$1,800,000 - $3,200,000 / year", "implementation_capex": "$1,400,000 - $2,500,000", "annual_run_cost": "$850,000 / year", "data_handled": "Delta Lake parquet tables, streaming Spark logs, operational Spanner databases, real-time feature tables.", "purpose": "High-performance open lakehouse architecture optimized for heavy data science, dynamic tour pricing, and route optimization.", "business_value": "Cloud Spanner provides 99.999% SLA with external consistency; Databricks Spark clusters process billions of search queries daily.", "integration_specs": "Delta Lake, Apache Iceberg, Apache Parquet, Cloud Spanner gRPC, Databricks Unity Catalog."}, "var_best_money_can_buy": {"platforms": [{"name": "Multi-Cloud Sovereign Hybrid (AWS GovCloud / European Sovereign Cloud + GCP Anthos)", "vendor": "AWS / Google Cloud", "role": "Sovereign isolated compute clusters with air-gapped security capability"}, {"name": "Databricks Lakehouse on NVIDIA DGX Clusters", "vendor": "Databricks / NVIDIA", "role": "Dedicated enterprise AI compute for continuous foundation model pre-training"}, {"name": "Snowflake Sovereign Clean Rooms", "vendor": "Snowflake", "role": "Isolated zero-trust clean rooms for travel partner and government tourism board data exchange"}], "licensing_acv": "$4,800,000 - $8,200,000 / year", "implementation_capex": "$5,200,000 - $9,800,000", "annual_run_cost": "$2,200,000 / year", "data_handled": "Tourism board economic impact datasets, sovereign biometric passenger registries, encrypted inter-operator settlement ledgers, petabyte-scale sensor dumps.", "purpose": "The world's most resilient cloud infrastructure, built to survive nation-state cyberattacks and comply with strict national data residency laws.", "business_value": "100% compliance with sovereign data residency laws; zero downtime guarantee for critical booking and dispatch infrastructure.", "integration_specs": "Hardware Security Modules (HSM), Quantum-safe encryption, BGP Anycast, dedicated private fiber links."}}}, {"layer_id": "ai_ml", "name": "8. AI, Machine Learning & Agentic Systems", "icon": "\ud83e\udd16", "desc": "Frontier LLMs, autonomous agentic reasoning (Agentforce / LangGraph / Palantir AIP), and predictive tourism ML models", "variations": {"var_salesforce": {"platforms": [{"name": "Salesforce Agentforce & Atlas Reasoning Engine", "vendor": "Salesforce", "role": "Autonomous agent orchestration for tour guide dispatch, customer rebooking, and weather cancellations"}, {"name": "Claude 3.5 Sonnet / Claude 3.7 via Model Context Protocol (MCP)", "vendor": "Anthropic / Salesforce", "role": "Frontier multi-modal reasoning connected to tour operational tools via MCP"}, {"name": "Einstein 1 Predictive AI Platform", "vendor": "Salesforce", "role": "No-show probability prediction, dynamic ticket pricing, and guide matching optimization"}], "licensing_acv": "$950,000 - $1,850,000 / year", "implementation_capex": "$800,000 - $1,500,000", "annual_run_cost": "$380,000 / year", "data_handled": "Natural language traveler prompts, tool invocation schemas (JSON-RPC MCP), weather probability scores, dynamic ticket bid amounts.", "purpose": "Empowers autonomous multi-agent reasoning directly inside the CRM and customer messaging apps, autonomously rebooking hundreds of tourists during sudden rainstorms.", "business_value": "Deflects 58% of morning customer service calls; recovers $6.5M in tour revenue by autonomously rescheduling rained-out guests to indoor museums.", "integration_specs": "Model Context Protocol (MCP) servers, JSON-RPC 2.0, Salesforce Trust Layer, Zero-Copy data grounding."}, "var_no_salesforce": {"platforms": [{"name": "Databricks Mosaic AI & MLflow", "vendor": "Databricks", "role": "End-to-end LLM fine-tuning, RAG evaluation, and model governance"}, {"name": "AWS Bedrock (Anthropic Claude 3.5 & Amazon Titan)", "vendor": "Amazon Web Services", "role": "Serverless foundation model APIs with VPC private endpoints"}, {"name": "LangGraph & CrewAI Frameworks", "vendor": "Open Source / CrewAI", "role": "Multi-agent autonomous state machines for tour operations workflows"}, {"name": "Pinecone Enterprise Vector Database", "vendor": "Pinecone", "role": "Sub-50ms vector search for destination historical trivia, itinerary PDFs, and restaurant guides"}], "licensing_acv": "$700,000 - $1,350,000 / year", "implementation_capex": "$1,000,000 - $1,900,000", "annual_run_cost": "$550,000 / year", "data_handled": "Vector embeddings (1536-dim), agent execution traces, destination historical knowledge PDFs, guide commentary transcripts.", "purpose": "Complete developer autonomy to build, test, and deploy customized agentic workflows with custom guardrails.", "business_value": "Enables proprietary domain-specific fine-tuning on local cultural and historical knowledge; zero vendor platform markup.", "integration_specs": "Python, FastAPI, Docker, Kubernetes, LangChain/LangGraph, OpenAI-compatible REST endpoints."}, "var_best_money_can_buy": {"platforms": [{"name": "Palantir AIP (Artificial Intelligence Platform)", "vendor": "Palantir Technologies", "role": "Ontology-grounded autonomous agentic operational command for destination fleet routing, guide matching, and dynamic surge pricing"}, {"name": "Anthropic Claude 3.7 Sonnet Enterprise Dedicated", "vendor": "Anthropic", "role": "Dedicated throughput provisioned LLM capacity with zero rate-limiting"}, {"name": "NVIDIA NeMo Guardrails & Inference Microservices (NIM)", "vendor": "NVIDIA", "role": "Hardware-accelerated LLM inference and deterministic safety guardrails"}, {"name": "Custom Tourism SLMs (Mistral Large On-Premise)", "vendor": "Mistral AI / In-House", "role": "Locally hosted sovereign 70B parameter models fine-tuned on 10 years of destination tour commentary"}], "licensing_acv": "$4,200,000 - $7,200,000 / year", "implementation_capex": "$4,800,000 - $9,000,000", "annual_run_cost": "$1,700,000 / year", "data_handled": "Full enterprise operational ontology, live micro-climate meteorological forecasts, real-time bus/boat GPS feeds, charter client contracts.", "purpose": "The apex of enterprise artificial intelligence: Palantir AIP autonomously simulates traffic jams, cruise ship port arrival surges, and rain fronts, dynamically routing tour buses to avoid crowds.", "business_value": "Increases daily guide and bus asset utilization by 26%; saves $18M in idle vehicle fuel and driver overtime costs.", "integration_specs": "Palantir Foundry Action API, NVIDIA TensorRT-LLM, encrypted gRPC, on-premise inference cluster."}}}, {"layer_id": "frontends", "name": "9. Website, Mobile Apps & Digital Front-Ends", "icon": "\ud83d\udcf1", "desc": "Direct web booking engine with calendar picker, native iOS/Android guide & traveler apps, Apple Wallet tickets, and partner extranets", "variations": {"var_salesforce": {"platforms": [{"name": "Custom React / Next.js Web Booking Engine", "vendor": "In-House / Vercel", "role": "High-conversion direct tour discovery, date/time calendar slot picker, and payment checkout"}, {"name": "Native iOS (Swift) & Android (Kotlin) Mobile Apps", "vendor": "In-House", "role": "Tour guide dispatch app (roster, manifests, QR check-in) and traveler itinerary wallet"}, {"name": "Salesforce Experience Cloud Portals", "vendor": "Salesforce", "role": "Hotel concierge booking extranet, freelance tour guide portal, and travel agency affiliate portal"}, {"name": "Apple Wallet & Google Wallet Mobile Passes", "vendor": "Apple / Google", "role": "Digital ticket QR code with location-based lock screen notifications upon approaching meeting point"}], "licensing_acv": "$750,000 - $1,350,000 / year", "implementation_capex": "$2,000,000 - $3,500,000", "annual_run_cost": "$850,000 / year", "data_handled": "Session state, payment form tokens, Apple Wallet pass tokens, GPS geolocation coordinates, camera QR code scans.", "purpose": "Delivers a seamless digital experience from mobile ticket purchase to meeting-point wayfinding and instant guide check-in.", "business_value": "Drives direct booking share to > 40%; eliminates paper ticket confusion, reducing tour departure delays by 90%.", "integration_specs": "GraphQL / REST APIs to Bokun/FareHarbor and Salesforce Data Cloud; Apple Wallet .pkpass web service; Google Wallet REST API."}, "var_no_salesforce": {"platforms": [{"name": "Next.js Enterprise Web Platform on Vercel", "vendor": "Vercel", "role": "Edge-rendered web booking engine with sub-100ms page load times"}, {"name": "Native iOS & Android Mobile Apps", "vendor": "In-House", "role": "Cross-platform mobile app with offline map download and meeting point audio guide"}, {"name": "Auth0 by Okta CIAM", "vendor": "Okta", "role": "Customer Identity and Access Management with social login and passkeys"}], "licensing_acv": "$620,000 - $1,100,000 / year", "implementation_capex": "$2,100,000 - $3,800,000", "annual_run_cost": "$900,000 / year", "data_handled": "Web vitals, authentication tokens, offline map tiles, device push tokens.", "purpose": "Modern composable front-end architecture with edge rendering and instantaneous global CDN caching.", "business_value": "Every 100ms reduction in web booking engine latency increases booking conversion by 1.2%, generating $4.2M+ in direct revenue.", "integration_specs": "Vercel Edge Functions, GraphQL Federation, Okta OIDC/OAuth2, Mapbox Vector Tile API."}, "var_best_money_can_buy": {"platforms": [{"name": "Ultra-High-End Bespoke Native iOS & Android Apps", "vendor": "In-House / Apple Elite Partnership", "role": "100% Swift & Kotlin native codebases with Apple Vision Pro spatial destination previews and AR meeting-point navigation"}, {"name": "Apple Wallet NFC & QR High-Speed Ticket Validation", "vendor": "Apple Inc.", "role": "Instant NFC/QR scan boarding for 500+ passengers onto catamarans and sightseeing buses in seconds"}, {"name": "Tour Guide Smart Glasses / AR Headset Integration", "vendor": "Meta / Apple / In-House", "role": "Augmented reality historical overlays for tour guides during walking tours"}, {"name": "Vercel Enterprise Edge Network + Cloudflare Workers", "vendor": "Vercel / Cloudflare", "role": "Global multi-cloud edge compute with zero single point of failure"}], "licensing_acv": "$2,500,000 - $4,200,000 / year", "implementation_capex": "$5,000,000 - $9,500,000", "annual_run_cost": "$1,800,000 / year", "data_handled": "Spatial 3D tour interaction telemetry, AR waypoint coordinates, biometric face check-in hashes, Apple Secure Enclave credentials.", "purpose": "The pinnacle of experiential travel: spatial tour previews, AR historic storytelling, and frictionless group boarding.", "business_value": "AR walking tours command a 35% ticket price premium; eliminates boarding bottlenecks, increasing daily tour departures by 15%.", "integration_specs": "Apple PassKit, ARKit/VisionOS spatial audio, WebSockets, ultra-low-latency edge caching."}}}, {"layer_id": "cms_dxp", "name": "10. Headless CMS, DXP & Digital Asset Mgmt", "icon": "\ud83c\udfa8", "desc": "Headless content management, 25+ language localization, enterprise digital asset management (DAM), and edge delivery", "variations": {"var_salesforce": {"platforms": [{"name": "Contentful Enterprise Headless CMS", "vendor": "Contentful", "role": "Structured content repository powering web, mobile, kiosk displays, and partner extranets"}, {"name": "Cloudinary Enterprise DAM", "vendor": "Cloudinary", "role": "AI-powered automated tour photography and video optimization across all device breakpoints"}, {"name": "Salesforce Experience Cloud CMS", "vendor": "Salesforce", "role": "Integrated portal content management for hotel concierges and affiliate travel agents"}], "licensing_acv": "$320,000 - $600,000 / year", "implementation_capex": "$350,000 - $680,000", "annual_run_cost": "$180,000 / year", "data_handled": "Tour descriptions, itinerary timelines, packing list advice, meeting point photography, multi-lingual translations (25 locales), 4K action cam videos.", "purpose": "Centrally stores and serves all marketing and operational tour content, enabling marketing teams to publish campaigns without engineering deployments.", "business_value": "Cuts time-to-market for new tour product launches from 4 weeks to 1 day; reduces mobile app image payload by 60% for faster loading over cellular networks.", "integration_specs": "GraphQL Content API, Webhooks to Vercel/Next.js, Cloudinary dynamic image transformation URLs."}, "var_no_salesforce": {"platforms": [{"name": "Strapi Enterprise (or Sanity.io)", "vendor": "Strapi / Sanity", "role": "Composable headless CMS with real-time collaborative editing"}, {"name": "Bynder Enterprise DAM", "vendor": "Bynder", "role": "Enterprise brand asset management, digital rights management (DRM), and creative workflow"}, {"name": "Lokalise Enterprise", "vendor": "Lokalise", "role": "Automated translation management system integrated with GitHub and Figma"}], "licensing_acv": "$280,000 - $520,000 / year", "implementation_capex": "$320,000 - $600,000", "annual_run_cost": "$160,000 / year", "data_handled": "JSON content schemas, localized translation strings, photographer copyright metadata, high-res RAW brand assets.", "purpose": "Agile, modern content stack tailored for continuous localization and rapid multi-platform publishing.", "business_value": "Eliminates translation overhead; saves $350K annually in agency localization fees.", "integration_specs": "REST & GraphQL APIs, GitHub Actions automated sync, Bynder Brand Connect integrations."}, "var_best_money_can_buy": {"platforms": [{"name": "Adobe Experience Manager (AEM Sites & AEM Assets Enterprise)", "vendor": "Adobe", "role": "The enterprise standard for global multi-destination experience management"}, {"name": "Adobe Dynamic Media with Scene7", "vendor": "Adobe", "role": "Real-time 360-degree tour video rendering and automated smart-cropping for millions of asset variants"}, {"name": "Akamai EdgeWorkers & Ion CDN", "vendor": "Akamai Technologies", "role": "Global Tier-1 CDN delivering content from 4,000+ edge locations worldwide"}], "licensing_acv": "$1,300,000 - $2,200,000 / year", "implementation_capex": "$1,500,000 - $3,000,000", "annual_run_cost": "$650,000 / year", "data_handled": "Enterprise master asset library (250TB+), global destination taxonomy trees, digital rights contracts, real-time edge cache tags.", "purpose": "The ultimate enterprise content powerhouse: powers dozens of localized destination portals with automated governance and edge caching.", "business_value": "Guarantees 100% brand consistency globally; withstands massive traffic surges during global holiday sales without cache misses.", "integration_specs": "Adobe Cloud Manager, Dispatcher configurations, Adobe Experience Platform connectors, Akamai Edge API."}}}, {"layer_id": "finance_erp", "name": "11. Finance, Revenue Accounting, ERP & Billing", "icon": "\ud83d\udcb3", "desc": "OTA net-rate reconciliation, guide contractor payouts, revenue recognition (ASC 606), ERP general ledger, and global tax", "variations": {"var_salesforce": {"platforms": [{"name": "SAP S/4HANA Finance", "vendor": "SAP", "role": "Enterprise General Ledger, Accounts Payable, Accounts Receivable, and Asset Accounting"}, {"name": "Bokun / FareHarbor Automated Financial Settlement", "vendor": "Tripadvisor / Booking Holdings", "role": "OTA gross-to-net commission reconciliation and automated affiliate hotel commission payouts"}, {"name": "Adyen Enterprise Unified Commerce", "vendor": "Adyen", "role": "Global payment gateway, mobile POS card acquiring, and multi-currency payouts"}, {"name": "Salesforce Billing & Net Zero Cloud", "vendor": "Salesforce", "role": "Corporate group charter invoicing and fleet vehicle carbon emissions tracking"}], "licensing_acv": "$1,800,000 - $3,100,000 / year", "implementation_capex": "$2,800,000 - $5,200,000", "annual_run_cost": "$800,000 / year", "data_handled": "Tour completion manifests, OTA net remittance statements, guide commission vouchers, VAT/GST tax rates across 80 countries, vehicle fuel emission logs.", "purpose": "Recognizes tour revenue strictly upon tour departure (ASC 606), automates complex OTA net-rate reconciliations, and settles thousands of supplier payouts.", "business_value": "Prevents revenue leakage on OTA over-commissions ($4.5M saved); Adyen smart-routing reduces payment processing interchange fees by 30 bps ($6M saved).", "integration_specs": "SAP IDoc / RFC interfaces via MuleSoft, Adyen Webhooks, Bokun financial export."}, "var_no_salesforce": {"platforms": [{"name": "SAP S/4HANA Public Cloud / Oracle NetSuite", "vendor": "SAP / Oracle", "role": "Cloud ERP for multi-currency travel financial management and consolidation"}, {"name": "Stripe Enterprise Payments & Stripe Connect", "vendor": "Stripe", "role": "Global payment infrastructure with automated instant payouts to freelance tour guides"}, {"name": "Avalara AvaTax for Tourism & Amusement", "vendor": "Avalara", "role": "Automated amusement tax, local city tourism assessments, and VAT calculation"}], "licensing_acv": "$1,500,000 - $2,700,000 / year", "implementation_capex": "$2,500,000 - $4,600,000", "annual_run_cost": "$720,000 / year", "data_handled": "Ledger journals, payment authorizations, Stripe Connect guide bank accounts, local amusement tax tables.", "purpose": "Modern, API-accessible financial and tax automation stack minimizing custom code for marketplace payouts.", "business_value": "Stripe Connect automates payouts to 2,000+ freelance tour guides in 40 currencies; Avalara eliminates risk of severe local municipal amusement tax audits.", "integration_specs": "Stripe REST APIs, NetSuite SuiteTalk REST, Snowflake accounting export."}, "var_best_money_can_buy": {"platforms": [{"name": "SAP S/4HANA Enterprise Private Cloud (with Central Finance)", "vendor": "SAP", "role": "Tier-1 global financial backbone unifying multiple regional tour operating companies"}, {"name": "Kyriba Enterprise Treasury Management", "vendor": "Kyriba", "role": "Global multi-currency liquidity forecasting, vehicle fleet leasing optimization, and FX risk management"}, {"name": "Adyen Enterprise Global Omnichannel Gateway", "vendor": "Adyen", "role": "Direct scheme acquiring (Visa/Mastercard/Amex/JCB/UnionPay) across 150+ local currencies with tokenized unified commerce"}], "licensing_acv": "$3,800,000 - $6,500,000 / year", "implementation_capex": "$6,000,000 - $11,000,000", "annual_run_cost": "$1,500,000 / year", "data_handled": "Multi-currency bank accounts ($1B+ liquidity), fleet asset debt covenants, international supplier remittance ledgers, sovereign tax audit vaults.", "purpose": "The ultimate corporate treasury and financial engine: protects against international currency swings, automates complex multi-country tour payouts, and optimizes capital.", "business_value": "Optimizes working capital by $25M+; direct scheme acquiring saves $18M in cross-border card processor markups.", "integration_specs": "SWIFT messaging network, SAP OData APIs, direct banking host-to-host links (EBICS/AS2)."}}}, {"layer_id": "hr_workforce", "name": "12. HR, Workforce Mgmt & Guide Dispatch", "icon": "\ud83d\udc65", "desc": "Core HRIS, tour guide shift scheduling (Deputy/When I Work), language qualification matching, and contractor payouts", "variations": {"var_salesforce": {"platforms": [{"name": "Workday Human Capital Management (HCM)", "vendor": "Workday", "role": "Core HRIS, talent management, benefits, and global payroll for corporate and field operations"}, {"name": "Salesforce Agentforce for HR Service", "vendor": "Salesforce", "role": "Autonomous internal employee service agent resolving HR inquiries in Slack"}, {"name": "Deputy / When I Work Enterprise", "vendor": "Deputy / When I Work", "role": "Tour guide and driver shift scheduling, language capability matching, and mobile clock-in"}], "licensing_acv": "$1,100,000 - $1,950,000 / year", "implementation_capex": "$1,500,000 - $2,600,000", "annual_run_cost": "$500,000 / year", "data_handled": "Employee records, tour guide language proficiencies (e.g. Japanese, German, Mandarin), first-aid certifications, driver commercial licenses (CDL), shift schedules.", "purpose": "Ensures every tour is staffed with qualified, multi-lingual guides and licensed drivers while providing seamless mobile shift bidding.", "business_value": "Deputy dynamic scheduling cuts guide overtime costs by 5.5%; cuts HR administrative ticketing volume by 52% via Slack.", "integration_specs": "Workday RaaS, MuleSoft Workday Connector, Deputy API connections to Bokun/FareHarbor."}, "var_no_salesforce": {"platforms": [{"name": "SAP SuccessFactors Employee Central", "vendor": "SAP", "role": "Global cloud HR and talent management system"}, {"name": "UKG Pro (Ultimate Kronos Group)", "vendor": "UKG", "role": "Workforce management, time and attendance, and labor scheduling for tour drivers and depot crews"}, {"name": "7shifts / Sling Workforce Management", "vendor": "7shifts / Sling", "role": "Mobile team communication, shift swapping, and labor compliance"}], "licensing_acv": "$950,000 - $1,750,000 / year", "implementation_capex": "$1,300,000 - $2,400,000", "annual_run_cost": "$460,000 / year", "data_handled": "Field staff shift schedules, biometric clock-in timestamps, safety compliance logs, guide tip distribution.", "purpose": "Proven workforce and field operational management stack widely deployed across tour operators and hospitality venues.", "business_value": "UKG eliminates driver overtime scheduling errors, saving $5.2M annually; 7shifts enables seamless guide shift trades without manager intervention.", "integration_specs": "Sling REST APIs, SAP SuccessFactors OData APIs, Kronos Workforce Central database links."}, "var_best_money_can_buy": {"platforms": [{"name": "Workday HCM & Workday Adaptive Planning Enterprise", "vendor": "Workday", "role": "Global human capital management, predictive seasonal headcount planning, and executive succession"}, {"name": "Deputy Enterprise Workforce Optimization Suite", "vendor": "Deputy", "role": "AI-driven predictive guide matching based on customer demographics and tour ratings"}, {"name": "UKG InTouch DX Biometric Timeclocks", "vendor": "UKG", "role": "Enterprise facial recognition clock-in for 10,000+ tour depot drivers, mechanics, and guides"}, {"name": "CyberArk Privileged Access Security", "vendor": "CyberArk", "role": "Zero-trust privileged identity access for tour operations dispatchers and fleet safety managers"}], "licensing_acv": "$3,000,000 - $5,000,000 / year", "implementation_capex": "$3,500,000 - $6,500,000", "annual_run_cost": "$1,100,000 / year", "data_handled": "Guide biometric clock-in hashes, predictive seasonal labor demand models, CDL regulatory audit vaults, fleet dispatcher credentials.", "purpose": "The ultimate workforce optimization and field safety architecture: automatically aligns guide language skills with incoming tourist demographics.", "business_value": "Saves $14M annually in seasonal labor scheduling efficiency; cuts guide turnover by 15% through fair, transparent mobile shift allocation.", "integration_specs": "Workday Enterprise Bus, Deputy cloud streaming, CyberArk Identity APIs."}}}, {"layer_id": "governance", "name": "13. Enterprise Governance, Security & Privacy", "icon": "\ud83d\udee1\ufe0f", "desc": "GDPR/PDPA/CCPA privacy, PCI-DSS Level 1 tokenization, SOC2 Type II, IAM (Okta), Zero-Trust & HSM key management", "variations": {"var_salesforce": {"platforms": [{"name": "Salesforce Shield", "vendor": "Salesforce", "role": "Platform Encryption, Event Monitoring, and Field Audit Trail for CRM and Data Cloud"}, {"name": "OneTrust Privacy & Consent Automation", "vendor": "OneTrust", "role": "Global consent management, cookie preferences, and DSAR automated fulfillment"}, {"name": "Okta Workforce Identity Cloud", "vendor": "Okta", "role": "Single Sign-On (SSO), Adaptive Multi-Factor Authentication (MFA), and lifecycle provisioning"}], "licensing_acv": "$600,000 - $1,150,000 / year", "implementation_capex": "$550,000 - $1,050,000", "annual_run_cost": "$280,000 / year", "data_handled": "Encrypted PII (passports, emergency medical info, signed liability waivers), audit logs of every staff profile view, customer consent records, employee SSO credentials.", "purpose": "Guarantees regulatory compliance with global privacy mandates (GDPR, CCPA, Singapore PDPA) and protects customer trust across tour operations.", "business_value": "Prevents catastrophic GDPR fines (up to 4% of global turnover); enables instant auditing of customer data access for regulatory inquiries.", "integration_specs": "Salesforce Shield BYOK (Bring Your Own Key), Okta SCIM / SAML 2.0, OneTrust REST APIs."}, "var_no_salesforce": {"platforms": [{"name": "HashiCorp Vault Enterprise", "vendor": "HashiCorp / IBM", "role": "Central secrets management, encryption-as-a-service, and dynamic database credentials"}, {"name": "Collibra Data Intelligence Platform", "vendor": "Collibra", "role": "Enterprise data governance, data catalog, and data lineage mapping"}, {"name": "Cloudflare Magic Transit & WAF", "vendor": "Cloudflare", "role": "DDoS mitigation, web application firewall, and API security protection"}], "licensing_acv": "$750,000 - $1,350,000 / year", "implementation_capex": "$700,000 - $1,250,000", "annual_run_cost": "$340,000 / year", "data_handled": "API secret keys, database passwords, TLS certificates, data catalog metadata, blocked malicious DDoS traffic.", "purpose": "Developer-centric, zero-trust security infrastructure protecting microservices and cloud databases from unauthorized access.", "business_value": "Cloudflare mitigates multi-terabit DDoS attacks during Black Friday tour promotions; HashiCorp Vault eliminates hardcoded credentials across all repositories.", "integration_specs": "Vault Kubernetes injector, Cloudflare Terraform provider, Collibra metadata harvesters."}, "var_best_money_can_buy": {"platforms": [{"name": "CyberArk Privileged Access Security Sovereign", "vendor": "CyberArk", "role": "Military-grade credential vaulting and session recording for infrastructure administrators and dispatch servers"}, {"name": "HashiCorp Vault with Hardware Security Modules (HSM)", "vendor": "HashiCorp / Thales", "role": "FIPS 140-2 Level 3 hardware-backed cryptographic key generation and storage"}, {"name": "Zscaler Zero Trust Exchange (ZPA & ZIA)", "vendor": "Zscaler", "role": "Direct-to-cloud zero-trust network access eliminating corporate VPN vulnerabilities for remote tour dispatchers"}, {"name": "Palantir Foundry Security & Access Controls", "vendor": "Palantir Technologies", "role": "Granular cell-level and row-level mandatory access control (MAC) based on security clearance"}, {"name": "BigID Data Discovery & DSPM", "vendor": "BigID", "role": "AI-driven discovery of dark, unstructured sensitive traveler waiver data across multi-cloud lakes"}], "licensing_acv": "$2,600,000 - $4,500,000 / year", "implementation_capex": "$2,800,000 - $5,200,000", "annual_run_cost": "$1,000,000 / year", "data_handled": "Root cryptographic keys, privileged admin session keystrokes, dark PII discovery graphs, zero-trust microsegmentation rules.", "purpose": "The absolute pinnacle of sovereign enterprise security: trusted by global destination operators to prevent nation-state cyber breaches.", "business_value": "Eliminates lateral network movement during ransomware attacks; guarantees zero breach of passenger identity, medical waiver, and payment data.", "integration_specs": "PKCS#11 HSM interfaces, Zscaler Client Connector, CyberArk PAM REST APIs, BigID automated scan connectors."}}}]};
+
+    let currentVariation = 'var_salesforce';
+    let currentCategory = 'all';
+
+    function setVariation(varId) {
+      currentVariation = varId;
+      
+      document.getElementById('btn-var-salesforce').className = 'var-btn' + (varId === 'var_salesforce' ? ' active-salesforce' : '');
+      document.getElementById('btn-var-no-salesforce').className = 'var-btn' + (varId === 'var_no_salesforce' ? ' active-no-salesforce' : '');
+      document.getElementById('btn-var-best-money').className = 'var-btn' + (varId === 'var_best_money_can_buy' ? ' active-best-money' : '');
+
+      renderSummary();
+      renderLayers();
+    }
+
+    function filterLayers(cat, btn) {
+      currentCategory = cat;
+      document.querySelectorAll('.filter-pill').forEach(el => el.classList.remove('active'));
+      btn.classList.add('active');
+      renderLayers();
+    }
+
+    function renderSummary() {
+      const varData = STACK_DATA.variations.find(v => v.id === currentVariation);
+      const panel = document.getElementById('var-summary-panel');
+      
+      let borderAccent = '#3b82f6';
+      if (currentVariation === 'var_no_salesforce') borderAccent = '#10b981';
+      if (currentVariation === 'var_best_money_can_buy') borderAccent = '#f59e0b';
+      panel.style.borderLeftColor = borderAccent;
+
+      panel.innerHTML = `
+        <div>
+          <span class="nav-badge" style="margin-bottom: 0.5rem; display: inline-block;">${varData.name}</span>
+          <h2 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">${varData.tagline}</h2>
+          <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5; margin-bottom: 1rem;">${varData.summary}</p>
+          <div style="font-size: 0.8rem; color: #93c5fd;"><strong>Strategic Moat:</strong> ${varData.primary_moat}</div>
+        </div>
+        <div class="var-summary-metrics">
+          <div class="metric-box">
+            <span class="metric-label">Annual Software ACV</span>
+            <span class="metric-value" style="color: ${borderAccent};">${varData.total_acv_usd}</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-label">Implementation CapEx</span>
+            <span class="metric-value">${varData.implementation_capex_usd}</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-label">Annual Run Cost</span>
+            <span class="metric-value">${varData.annual_run_cost_usd}</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-label">Projected 3-Yr ROI</span>
+            <span class="metric-value" style="color: #34d399;">${varData.projected_roi}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderLayers() {
+      const container = document.getElementById('layers-container');
+      container.innerHTML = '';
+
+      STACK_DATA.layers.forEach(layer => {
+        let match = false;
+        if (currentCategory === 'all') match = true;
+        if (currentCategory === 'ops' && ['core_ops'].includes(layer.layer_id)) match = true;
+        if (currentCategory === 'commercial' && ['marketing', 'crm_service', 'loyalty', 'frontends', 'cms_dxp'].includes(layer.layer_id)) match = true;
+        if (currentCategory === 'data_ai' && ['cdp', 'integration', 'cloud_data', 'ai_ml'].includes(layer.layer_id)) match = true;
+        if (currentCategory === 'enterprise' && ['finance_erp', 'hr_workforce', 'governance'].includes(layer.layer_id)) match = true;
+
+        if (!match) return;
+
+        const stack = layer.variations[currentVariation];
+        
+        let borderAccent = '#3b82f6';
+        if (currentVariation === 'var_no_salesforce') borderAccent = '#10b981';
+        if (currentVariation === 'var_best_money_can_buy') borderAccent = '#f59e0b';
+
+        let platformsHtml = stack.platforms.map(p => `
+          <div class="platform-item" style="border-left-color: ${borderAccent};">
+            <div>
+              <div class="platform-name">${p.name}</div>
+              <div class="platform-role">${p.role}</div>
+            </div>
+            <div class="platform-vendor">${p.vendor}</div>
+          </div>
+        `).join('');
+
+        let card = document.createElement('div');
+        card.className = 'glass-panel layer-card';
+        card.innerHTML = `
+          <div class="layer-header">
+            <div class="layer-title-box">
+              <span class="layer-icon">${layer.icon}</span>
+              <div>
+                <div class="layer-title">${layer.name}</div>
+                <div class="layer-desc">${layer.desc}</div>
+              </div>
+            </div>
+            <div class="layer-cost-badge">
+              <span style="color: var(--text-muted); font-size: 0.75rem;">ACV:</span>
+              <strong style="color: ${borderAccent};">${stack.licensing_acv}</strong>
+            </div>
+          </div>
+
+          <div class="layer-body">
+            <div>
+              <div class="section-title">Core Platforms & Vendor Capabilities</div>
+              <div class="platforms-grid">
+                ${platformsHtml}
+              </div>
+
+              <div class="section-title" style="margin-top: 1rem;">Types of Data Handled</div>
+              <div style="margin-bottom: 1rem;">
+                <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.4;">${stack.data_handled}</p>
+              </div>
+
+              <div class="section-title">Cost & Economics</div>
+              <div class="info-box">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+                  <span>Implementation CapEx:</span> <strong>${stack.implementation_capex}</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span>Annual Run Cost:</span> <strong>${stack.annual_run_cost}</strong>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="section-title">Purpose & Operational Role</div>
+              <div class="info-box">
+                <p>${stack.purpose}</p>
+              </div>
+
+              <div class="section-title">Business Value, ROI & Strategic Moat</div>
+              <div class="info-box" style="border-left: 3px solid #10b981;">
+                <p>${stack.business_value}</p>
+              </div>
+
+              <div class="section-title">Integration Protocols & Latency SLA</div>
+              <div class="info-box" style="border-left: 3px solid #8b5cf6;">
+                <p style="font-family: monospace; font-size: 0.78rem;">${stack.integration_specs}</p>
+              </div>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function renderComparisonTable() {
+      const tbody = document.getElementById('comparison-table-body');
+      tbody.innerHTML = '';
+
+      STACK_DATA.layers.forEach(layer => {
+        const v1 = layer.variations['var_salesforce'];
+        const v2 = layer.variations['var_no_salesforce'];
+        const v3 = layer.variations['var_best_money_can_buy'];
+
+        let row = document.createElement('tr');
+        row.innerHTML = `
+          <td>
+            <strong>${layer.icon} ${layer.name}</strong>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">${layer.desc}</div>
+          </td>
+          <td>
+            <div class="badge-var1" style="display: inline-block; margin-bottom: 0.35rem;">${v1.licensing_acv}</div>
+            <div style="font-size: 0.8rem; color: #f9fafb; font-weight: 600;">${v1.platforms.map(p => p.name).slice(0, 3).join(', ')}</div>
+            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.3rem;">${v1.purpose.substring(0, 100)}...</div>
+          </td>
+          <td>
+            <div class="badge-var2" style="display: inline-block; margin-bottom: 0.35rem;">${v2.licensing_acv}</div>
+            <div style="font-size: 0.8rem; color: #f9fafb; font-weight: 600;">${v2.platforms.map(p => p.name).slice(0, 3).join(', ')}</div>
+            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.3rem;">${v2.purpose.substring(0, 100)}...</div>
+          </td>
+          <td>
+            <div class="badge-var3" style="display: inline-block; margin-bottom: 0.35rem;">${v3.licensing_acv}</div>
+            <div style="font-size: 0.8rem; color: #f9fafb; font-weight: 600;">${v3.platforms.map(p => p.name).slice(0, 3).join(', ')}</div>
+            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.3rem;">${v3.purpose.substring(0, 100)}...</div>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    setVariation('var_salesforce');
+    renderComparisonTable();
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+  <div id="chart" style="width:600px;height:400px;"></div>
+  <script>
+    function render() {
+      Plotly.newPlot('chart', [{
+        type: 'sankey',
+        node: { label: ['A', 'B'] },
+        link: { source: [0], target: [1], value: [10] }
+      }]);
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', render);
+    } else {
+      render();
+    }
+  </script>
+</body>
+</html>

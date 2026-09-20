@@ -1,0 +1,762 @@
+#!/usr/bin/env python3
+"""
+Hotels & Lodging Enterprise Tech Stack Generator
+Generates:
+1. /run/media/ml/Storage/Labs/hotels/data/tech_stack_data.json
+2. /run/media/ml/Storage/Labs/hotels/data/tech_stack_data.js
+3. /run/media/ml/Storage/Labs/hotels/tech_stack.html
+4. /run/media/ml/Storage/Labs/hotels/ENTERPRISE_TECH_STACK_ARCHITECTURE_COMPENDIUM.md
+"""
+
+import os
+import json
+import sys
+
+BASE_DIR = "/run/media/ml/Storage/Labs"
+HOTEL_DIR = os.path.join(BASE_DIR, "hotels")
+os.makedirs(os.path.join(HOTEL_DIR, "data"), exist_ok=True)
+os.makedirs(os.path.join(HOTEL_DIR, "css"), exist_ok=True)
+os.makedirs(os.path.join(HOTEL_DIR, "js"), exist_ok=True)
+
+sys.path.append(BASE_DIR)
+import stack_renderer
+
+hotels_data = {
+    "sector": "Hotels & Lodging",
+    "market_context": {
+        "global_scale": "$600.0B Room GBV (4.25B Room Nights)",
+        "annual_room_nights": "4.25 Billion Globally",
+        "blended_adr": "$141.18 USD",
+        "direct_channel_share": "$210.0B (35.0% of supply)",
+        "intermediated_channel_share": "$390.0B (65.0% of supply)",
+        "distribution_friction": "$87.7B (14.6% blended take rate)",
+        "net_room_revenue": "$512.3B (85.4% retained by hoteliers)",
+        "hotel_gop_ebitda": "$194.6B (32.4% of GBV / 38.0% of Net Revenue)"
+    },
+    "variations": [
+        {
+            "id": "var_salesforce",
+            "name": "Variation 1: With Salesforce",
+            "tagline": "The Salesforce-Centric Enterprise Hospitality Ecosystem",
+            "summary": "Unified hospitality architecture leveraging Salesforce Data Cloud as the guest data fabric, Agentforce for autonomous concierge and housekeeping dispatch, Service Cloud Voice, Marketing Cloud, and MuleSoft OHIP connectors to Oracle Opera Cloud and Sabre SynXis CRS.",
+            "total_acv_usd": "$8,500,000 - $14,200,000 / year",
+            "implementation_capex_usd": "$10,000,000 - $18,000,000",
+            "annual_run_cost_usd": "$3,200,000 - $5,500,000 / year",
+            "projected_roi": "340% over 3 years with 10-month payback period",
+            "primary_moat": "Zero-Copy Data Cloud guest harmonization, native Agentforce hospitality agents, and MuleSoft pre-built connectors to Oracle OHIP and SynXis."
+        },
+        {
+            "id": "var_no_salesforce",
+            "name": "Variation 2: Without Salesforce (Best-of-Breed Open/Enterprise)",
+            "tagline": "Modern Best-of-Breed Composable Hospitality Stack",
+            "summary": "Decoupled, modern cloud architecture utilizing Snowflake/Databricks, Twilio Segment/mParticle CDP, Braze for real-time messaging, Zendesk / Microsoft Dynamics 365, Talon.One for dynamic promotions, and Confluent Kafka event mesh.",
+            "total_acv_usd": "$6,800,000 - $11,500,000 / year",
+            "implementation_capex_usd": "$11,500,000 - $19,500,000",
+            "annual_run_cost_usd": "$4,500,000 - $7,200,000 / year",
+            "projected_roi": "260% over 3 years with 14-month payback period",
+            "primary_moat": "Complete vendor autonomy, open APIs, custom LLM fine-tuning on guest preference histories, and zero platform lock-in."
+        },
+        {
+            "id": "var_best_money_can_buy",
+            "name": "Variation 3: The Best Platforms Money Can Buy",
+            "tagline": "Ultra-Tier Sovereign & High-Roller Integrated Resort Pinnacle",
+            "summary": "Unconstrained budget, sovereign-grade luxury architecture combining Palantir Foundry / AIP for integrated resort guest ontology and VIP casino host intelligence, Adobe Experience Cloud (AEP + AJO + AEM), Databricks Lakehouse on NVIDIA DGX clusters, Genesys Cloud CX with Google CCAI, and Oracle Opera Cloud Premium Sovereign Dedicated.",
+            "total_acv_usd": "$22,000,000 - $38,000,000 / year",
+            "implementation_capex_usd": "$28,000,000 - $52,000,000",
+            "annual_run_cost_usd": "$9,500,000 - $15,000,000 / year",
+            "projected_roi": "450% over 3 years with 12-month payback period via massive VIP spend capture and direct booking maximization",
+            "primary_moat": "Kinetic guest ontology (Palantir), sub-50ms streaming personalization (Adobe AEP), walk-through facial recognition access, and carrier-grade operational resilience."
+        }
+    ],
+    "layers": [
+        {
+            "layer_id": "core_ops",
+            "name": "1. Core Industry Operational Stack",
+            "icon": "⚙️",
+            "desc": "Property Management Systems (PMS), Central Reservation Systems (CRS), Channel Managers, Revenue Management (RMS) & POS",
+            "variations": {
+                "var_salesforce": {
+                    "platforms": [
+                        {"name": "Oracle Opera Cloud PMS (or Opera 5.5 on-prem)", "vendor": "Oracle Hospitality", "role": "Master property management, room inventory, housekeeping status, and guest folios"},
+                        {"name": "Sabre SynXis CRS (or Amadeus iHotelier)", "vendor": "Sabre Hospitality / Amadeus", "role": "Central reservation system, global rate distribution, and ARI switch"},
+                        {"name": "SiteMinder Channel Manager", "vendor": "SiteMinder", "role": "2-way automated OTA inventory and rate synchronization across 450+ channels"},
+                        {"name": "IDeaS G3 RMS", "vendor": "IDeaS (SAS)", "role": "Automated algorithmic pricing, yield management, and overbooking controls"},
+                        {"name": "Oracle Simphony POS", "vendor": "Oracle Food & Beverage", "role": "F&B restaurant, bar, and room service point of sale integrated to guest folio"},
+                        {"name": "Assa Abloy Mobile Access", "vendor": "Assa Abloy Global Solutions", "role": "NFC and BLE mobile digital room key issuance via Apple Wallet / Google Wallet"}
+                    ],
+                    "licensing_acv": "$12,000,000 - $22,000,000 / year (SaaS fee per room/month: ~$8.50 - $14.00 across 100,000 rooms)",
+                    "implementation_capex": "$12,000,000 - $25,000,000",
+                    "annual_run_cost": "$3,800,000 / year",
+                    "data_handled": "Room inventory state (Clean/Dirty/Inspected/OOO), guest folios, credit card pre-authorizations, CRS ARI feeds, POS dining checks, NFC door lock cryptographic tokens.",
+                    "purpose": "Executes all on-property guest check-in/out, room assignment, housekeeping dispatch, restaurant billing, and global distribution.",
+                    "business_value": "The foundational operational spine of the hotel enterprise. Without PMS/CRS, rooms cannot be sold, doors cannot be opened, and guest spend cannot be billed.",
+                    "integration_specs": "Oracle Hospitality Integration Platform (OHIP) REST APIs, Opera OXI XML feeds, HTNG 2009B standards, MuleSoft direct connectors streaming CDC events to Salesforce Data Cloud."
+                },
+                "var_no_salesforce": {
+                    "platforms": [
+                        {"name": "Mews Cloud PMS / Infor HMS", "vendor": "Mews / Infor", "role": "Modern API-first cloud PMS with automated payments and guest kiosks"},
+                        {"name": "D-EDGE CRS & Channel Manager", "vendor": "D-EDGE Hospitality Solutions", "role": "Central reservation system and direct booking engine"},
+                        {"name": "Duetto Dynamic Revenue Strategy", "vendor": "Duetto", "role": "Open pricing methodology, personalized loyalty rates, and group quote scoring"},
+                        {"name": "Toast / Lightspeed POS", "vendor": "Toast / Lightspeed", "role": "Cloud-native restaurant and bar POS with handheld ordering tablets"},
+                        {"name": "Dormakaba BlueSky Mobile Access", "vendor": "Dormakaba", "role": "Cloud-managed digital room keys and electronic door locks"}
+                    ],
+                    "licensing_acv": "$10,500,000 - $18,500,000 / year",
+                    "implementation_capex": "$10,000,000 - $20,000,000",
+                    "annual_run_cost": "$3,400,000 / year",
+                    "data_handled": "Real-time reservation events, open pricing curves, POS table orders, BLE mobile key sessions, housekeeping room clean times.",
+                    "purpose": "Cloud-native, open API operational architecture tailored for rapid deployment and continuous updates without on-premise servers.",
+                    "business_value": "Duetto open pricing boosts RevPAR by 4.8%; Mews automated web check-in reduces front-desk queues by 70%.",
+                    "integration_specs": "Open REST APIs, Webhooks, Kafka event streams to Snowflake, OpenAPI 3.0 specifications."
+                },
+                "var_best_money_can_buy": {
+                    "platforms": [
+                        {"name": "Oracle Opera Cloud Premium Sovereign Dedicated", "vendor": "Oracle Hospitality", "role": "Dedicated enterprise instance with 99.999% SLA and sovereign data residency"},
+                        {"name": "Sabre SynXis Enterprise Central Reservation Core", "vendor": "Sabre Hospitality", "role": "High-throughput CRS processing 500,000 shopping transactions/sec"},
+                        {"name": "IDeaS G3 Optix Enterprise Revenue Suite", "vendor": "IDeaS (SAS)", "role": "Multi-property enterprise portfolio revenue intelligence and continuous dynamic pricing"},
+                        {"name": "Agilysys InfoGenesis Enterprise POS", "vendor": "Agilysys", "role": "Resort-wide point of sale unifying fine dining, spas, golf courses, and casino floors"},
+                        {"name": "Assa Abloy VingCard Allure Smart Glass", "vendor": "Assa Abloy", "role": "Bespoke smart glass touch panels with integrated DND/MUR and Apple Wallet NFC room keys"},
+                        {"name": "Lutron Guestroom Energy Management (myRoom)", "vendor": "Lutron Electronics", "role": "Automated HVAC and lighting setback tied to PMS occupancy status"}
+                    ],
+                    "licensing_acv": "$24,000,000 - $42,000,000 / year",
+                    "implementation_capex": "$30,000,000 - $55,000,000",
+                    "annual_run_cost": "$8,500,000 / year",
+                    "data_handled": "Microsecond room inventory locks, high-frequency casino player tracking, biometric door access logs, real-time HVAC power telemetry, master corporate billing ledgers.",
+                    "purpose": "The ultimate sovereign-grade hospitality and integrated resort operating system, orchestrating multi-thousand-room mega-resorts with zero latency.",
+                    "business_value": "Lutron myRoom saves $3.5M annually in utility costs; IDeaS Optix delivers $28M in portfolio RevPAR outperformance against competitive sets.",
+                    "integration_specs": "Dedicated high-speed fiber interconnects, encrypted BACnet IP building protocols, OHIP enterprise streaming, sub-10ms transaction response."
+                }
+            }
+        },
+        {
+            "layer_id": "marketing",
+            "name": "2. Marketing Automation & AdTech",
+            "icon": "📣",
+            "desc": "Omni-channel journey orchestration, pre-arrival upselling (spas, dining, upgrades), and metasearch adtech syndication",
+            "variations": {
+                "var_salesforce": {
+                    "platforms": [
+                        {"name": "Salesforce Marketing Cloud Engagement", "vendor": "Salesforce", "role": "Email, SMS, Mobile Push, and WhatsApp guest journey orchestration"},
+                        {"name": "Marketing Cloud Personalization (Interaction Studio)", "vendor": "Salesforce", "role": "Real-time web/app room upgrade offers and dynamic dining recommendations"},
+                        {"name": "Salesforce Marketing Cloud Growth / Advanced", "vendor": "Salesforce", "role": "Autonomous campaign generation via Einstein 1 Platform"},
+                        {"name": "Advertising Studio", "vendor": "Salesforce", "role": "First-party audience sync to Google Hotel Ads, Meta CAPI, and Tripadvisor"}
+                    ],
+                    "licensing_acv": "$1,200,000 - $2,200,000 / year",
+                    "implementation_capex": "$1,000,000 - $1,900,000",
+                    "annual_run_cost": "$500,000 / year",
+                    "data_handled": "Guest email engagement, browsing abandonment on Brand.com, pre-arrival preferences, WhatsApp confirmation messages, hashed PII for ad match.",
+                    "purpose": "Drives pre-arrival upsell revenue (room upgrades, champagne on arrival, spa appointments) and automates personalized re-engagement campaigns.",
+                    "business_value": "Generates $24M+ in high-margin on-property ancillary spend; cuts paid search acquisition CPA by 26% via real-time suppression of booked guests.",
+                    "integration_specs": "Direct native Zero-Copy synchronization with Salesforce Data Cloud; Journey Builder triggered via PMS check-in/out events."
+                },
+                "var_no_salesforce": {
+                    "platforms": [
+                        {"name": "Braze Enterprise Customer Engagement", "vendor": "Braze", "role": "Cross-channel messaging (Push, In-App, SMS, WhatsApp, Email)"},
+                        {"name": "Movable Ink", "vendor": "Movable Ink", "role": "Dynamic visual content rendering (live local weather, room view photography, countdown to check-in)"},
+                        {"name": "Koddi Enterprise Metasearch Engine", "vendor": "Koddi", "role": "Automated programmatic bidding across Google Hotel Ads, Trivago, and Tripadvisor"},
+                        {"name": "Branch.io", "vendor": "Branch Metrics", "role": "Deep linking directly into mobile app room selection and digital key flow"}
+                    ],
+                    "licensing_acv": "$950,000 - $1,700,000 / year",
+                    "implementation_capex": "$850,000 - $1,400,000",
+                    "annual_run_cost": "$450,000 / year",
+                    "data_handled": "User engagement streams, metasearch click logs, real-time bid adjustments, deep-link routing tokens.",
+                    "purpose": "High-velocity mobile and web messaging stack paired with algorithmic metasearch bidding to maximize direct booking ROAS.",
+                    "business_value": "Koddi increases direct Google Hotel Ads return on ad spend (ROAS) from 4.2x to 7.8x, shifting $45M from OTAs to direct Brand.com.",
+                    "integration_specs": "REST APIs, Webhooks, Twilio Segment / Snowflake direct synchronization via Braze Currents."
+                },
+                "var_best_money_can_buy": {
+                    "platforms": [
+                        {"name": "Adobe Experience Platform (AEP)", "vendor": "Adobe", "role": "Central real-time marketing data fabric and governance"},
+                        {"name": "Adobe Journey Optimizer (AJO)", "vendor": "Adobe", "role": "Unified omni-channel orchestration across digital and physical touchpoints"},
+                        {"name": "Adobe Target Enterprise", "vendor": "Adobe", "role": "AI-driven algorithmic dynamic rate and package personalization on Brand.com"},
+                        {"name": "Koddi Enterprise AI Metasearch Suite", "vendor": "Koddi", "role": "Algorithmic bidding across all global metasearch and sponsored OTA placements"},
+                        {"name": "LiveRamp Safe Haven Clean Room", "vendor": "LiveRamp", "role": "Sovereign data clean room for joint airline and credit card partner monetization"}
+                    ],
+                    "licensing_acv": "$2,800,000 - $4,800,000 / year",
+                    "implementation_capex": "$3,200,000 - $5,500,000",
+                    "annual_run_cost": "$1,200,000 / year",
+                    "data_handled": "Sub-second guest behavioral clickstreams, physical geolocation tags, clean room tokenized credit card transaction histories.",
+                    "purpose": "The premier digital marketing suite globally: executes sub-50ms dynamic room rate personalization and hyper-targeted VIP pre-arrival engagement.",
+                    "business_value": "Expands direct channel booking share to > 45%; captures $14M in co-op marketing subsidies from luxury credit card partnerships.",
+                    "integration_specs": "Adobe Experience Platform Web SDK, Adobe Edge Network, streaming ingestion via Kafka, and bidirectional sync to Snowflake."
+                }
+            }
+        },
+        {
+            "layer_id": "crm_service",
+            "name": "3. CRM & Omni-Channel Service Desk",
+            "icon": "🎧",
+            "desc": "Central guest service desk, front-desk tablet integration, WhatsApp digital concierge, and VIP host management",
+            "variations": {
+                "var_salesforce": {
+                    "platforms": [
+                        {"name": "Salesforce Service Cloud Enterprise", "vendor": "Salesforce", "role": "Unified guest service desktop, omni-channel request routing, and SLA tracking"},
+                        {"name": "Service Cloud Voice (Amazon Connect)", "vendor": "Salesforce / AWS", "role": "Integrated cloud telephony for Central Reservations (CRO) with real-time transcription"},
+                        {"name": "Salesforce Digital Engagement", "vendor": "Salesforce", "role": "WhatsApp, SMS, Apple Messages for Business, and Web Chat routing"},
+                        {"name": "Agentforce Hospitality Agent", "vendor": "Salesforce", "role": "Autonomous conversational AI resolving guest inquiries, folio requests, and late checkouts"}
+                    ],
+                    "licensing_acv": "$1,800,000 - $3,200,000 / year",
+                    "implementation_capex": "$1,600,000 - $2,800,000",
+                    "annual_run_cost": "$750,000 / year",
+                    "data_handled": "Guest service tickets, wake-up calls, maintenance work orders, voice audio recordings, call sentiment, dining reservations, VIP amenity requests.",
+                    "purpose": "Equips front desk, concierge, and central voice agents with a single 360-degree guest profile, while deflecting 45%+ of routine requests autonomously.",
+                    "business_value": "Reduces call center Average Handle Time (AHT) by 65 seconds; eliminates $8M in front-desk administrative overhead; increases guest review sentiment by 22%.",
+                    "integration_specs": "Integrated with Oracle Opera Cloud via MuleSoft OHIP connector; CTI integration via Amazon Connect WebRTC; Pub/Sub API for real-time room events."
+                },
+                "var_no_salesforce": {
+                    "platforms": [
+                        {"name": "Zendesk Enterprise Suite", "vendor": "Zendesk", "role": "Omni-channel ticketing, live chat, and help center for guest service"},
+                        {"name": "Genesys Cloud CX", "vendor": "Genesys", "role": "Global cloud contact center for central reservation offices (CRO)"},
+                        {"name": "Akia / Hoperator AI Guest Messaging", "vendor": "Akia / Hoperator", "role": "Specialized hotel conversational AI platform for contactless check-in and guest text messaging"},
+                        {"name": "SevenRooms VIP Guest Experience", "vendor": "SevenRooms", "role": "Hospitality CRM and reservation platform for restaurant and nightlife VIP management"}
+                    ],
+                    "licensing_acv": "$1,400,000 - $2,500,000 / year",
+                    "implementation_capex": "$1,500,000 - $2,800,000",
+                    "annual_run_cost": "$700,000 / year",
+                    "data_handled": "Guest text messages, dining guest spend history, table seating preferences, contact center voice queues.",
+                    "purpose": "Hospitality-tailored guest communications and VIP dining management stack designed for boutique and lifestyle hotel portfolios.",
+                    "business_value": "Akia achieves 82% open rates on pre-arrival text check-ins; SevenRooms captures direct diner booking data, saving $3.2M in OpenTable fees.",
+                    "integration_specs": "Open REST APIs, Twilio SMS gateway, SevenRooms webhook feeds to Snowflake."
+                },
+                "var_best_money_can_buy": {
+                    "platforms": [
+                        {"name": "Genesys Cloud CX Sovereign Dedicated", "vendor": "Genesys", "role": "Dedicated enterprise private cloud contact center with zero shared tenancy"},
+                        {"name": "Google Cloud Contact Center AI (CCAI)", "vendor": "Google Cloud", "role": "Real-time agent assist, predictive sentiment, and voice bot orchestration"},
+                        {"name": "Palantir AIP VIP Host & Casino Executive Desk", "vendor": "Palantir Technologies", "role": "Dedicated high-roller resolution platform with automated comp authorization and credit line management"},
+                        {"name": "Nuance Gatekeeper Voice Biometrics", "vendor": "Microsoft / Nuance", "role": "Instant voice biometrics authentication in IVR (< 3 seconds) for high-net-worth VIPs"}
+                    ],
+                    "licensing_acv": "$4,500,000 - $7,500,000 / year",
+                    "implementation_capex": "$4,800,000 - $8,500,000",
+                    "annual_run_cost": "$1,800,000 / year",
+                    "data_handled": "VIP guest behavioral dossiers, voice biometrics acoustic models, casino gaming credit authorizations, high-roller personal preferences and family milestones.",
+                    "purpose": "The ultimate luxury concierge and casino host platform: zero account takeover fraud, instant voice biometric verification, and automated VIP host decisioning.",
+                    "business_value": "Protects against VIP account takeover fraud ($5M+ saved); elevates VIP gaming patron retention by 18%; drives $35M in incremental high-roller spend.",
+                    "integration_specs": "Dedicated SIP trunks, TLS 1.3 encrypted WebSockets, direct Google CCAI Dialogflow CX integration, Palantir AIP secure REST endpoints."
+                }
+            }
+        },
+        {
+            "layer_id": "loyalty",
+            "name": "4. Loyalty Management & Gamification",
+            "icon": "💎",
+            "desc": "Hotel loyalty points ledger, tier status qualification, coalition earn/burn, and co-brand credit cards",
+            "variations": {
+                "var_salesforce": {
+                    "platforms": [
+                        {"name": "Salesforce Loyalty Management", "vendor": "Salesforce", "role": "Hotel reward points ledger, elite tier qualification, and partner rewards catalog"},
+                        {"name": "Salesforce Data Cloud for Loyalty", "vendor": "Salesforce", "role": "Real-time tier status calculation and dynamic room upgrade certificate issuance"},
+                        {"name": "Salesforce Experience Cloud Loyalty Portal", "vendor": "Salesforce", "role": "Member digital self-service, points redemption, and claim missing stay credits"}
+                    ],
+                    "licensing_acv": "$950,000 - $1,600,000 / year",
+                    "implementation_capex": "$1,200,000 - $2,200,000",
+                    "annual_run_cost": "$400,000 / year",
+                    "data_handled": "Loyalty member IDs, tier status (Silver/Gold/Platinum/Diamond), qualifying room nights, non-qualifying points, partner earn transactions, reward redemptions.",
+                    "purpose": "Powers the hotel's high-margin loyalty program, driving direct booking frequency, gamified stay challenges, and non-room partner accruals.",
+                    "business_value": "Loyalty members generate 55%+ of total room nights with 28% higher ADR and 40% lower cancellation rates compared to OTA bookers.",
+                    "integration_specs": "MuleSoft connectors to Oracle Opera Cloud and SynXis CRS; real-time transactional REST APIs for co-brand bank files."
+                },
+                "var_no_salesforce": {
+                    "platforms": [
+                        {"name": "Antavo Enterprise Loyalty Cloud", "vendor": "Antavo", "role": "Gamified loyalty management, VIP tier progression, and reward wallet"},
+                        {"name": "Talon.One Promotion & Loyalty Engine", "vendor": "Talon.One", "role": "Rule-based real-time promotion and loyalty reward engine"},
+                        {"name": "OpenLoyalty Microservices", "vendor": "OpenLoyalty", "role": "Headless loyalty ledger microservices"}
+                    ],
+                    "licensing_acv": "$680,000 - $1,250,000 / year",
+                    "implementation_capex": "$950,000 - $1,800,000",
+                    "annual_run_cost": "$380,000 / year",
+                    "data_handled": "Member IDs, rule triggers, coupon codes, point transaction ledgers, gamification badges.",
+                    "purpose": "API-first, headless loyalty architecture giving product engineering teams complete control over front-end user experience.",
+                    "business_value": "Talon.One processes promotion validations in under 15ms at 30,000 requests/sec during cyber week promotions.",
+                    "integration_specs": "Headless REST APIs, GraphQL endpoints, Webhooks, Kafka event stream to Snowflake."
+                },
+                "var_best_money_can_buy": {
+                    "platforms": [
+                        {"name": "Antavo Enterprise Loyalty Cloud Sovereign", "vendor": "Antavo", "role": "Custom high-throughput ledger supporting 80,000 TPS across global properties"},
+                        {"name": "Points.com / Rocketmiles API", "vendor": "Points.com / Plusgrade", "role": "Global loyalty coalition exchange connecting airline miles and hotel points"},
+                        {"name": "Visa Direct & Amex Global Gateway", "vendor": "Visa / American Express", "role": "Real-time card-linked offer redemption at hotel restaurants, spas, and shops"}
+                    ],
+                    "licensing_acv": "$2,200,000 - $3,800,000 / year",
+                    "implementation_capex": "$2,800,000 - $4,800,000",
+                    "annual_run_cost": "$900,000 / year",
+                    "data_handled": "Financial-grade points ledger, real-time ISO 8583 card swipe feeds, merchant category codes (MCC), partner currency exchange rates.",
+                    "purpose": "Transforms the loyalty program into a standalone financial asset, driving hundreds of millions in co-brand credit card revenue.",
+                    "business_value": "Co-brand credit card point sales generate $250M+ in annual high-margin licensing income; card-linked dining offers boost on-property F&B spend by 32%.",
+                    "integration_specs": "PCI-DSS Level 1 certified private circuits, ISO 8583 financial transaction protocol, sub-50ms API response SLA."
+                }
+            }
+        },
+        {
+            "layer_id": "cdp",
+            "name": "5. Customer Data Platform (CDP) & Identity",
+            "icon": "🧬",
+            "desc": "Real-time guest event ingestion, deterministic/probabilistic identity resolution, and unified golden guest profile",
+            "variations": {
+                "var_salesforce": {
+                    "platforms": [
+                        {"name": "Salesforce Data Cloud for Hospitality", "vendor": "Salesforce", "role": "Zero-Copy data harmonization, identity resolution, and real-time Calculated Insights"},
+                        {"name": "Data Cloud Zero-Copy Federation", "vendor": "Salesforce / Snowflake", "role": "Direct querying of external Snowflake/Databricks lakehouse without ETL duplication"}
+                    ],
+                    "licensing_acv": "$1,100,000 - $1,950,000 / year (Based on Data Cloud segment & profile credits)",
+                    "implementation_capex": "$900,000 - $1,600,000",
+                    "annual_run_cost": "$400,000 / year",
+                    "data_handled": "Unified Individual DMO, Contact Point Email/Phone, Opera PMS stay histories, SynXis CRS reservations, Simphony dining receipts, spa bookings.",
+                    "purpose": "The central real-time guest brain: resolves fragmented OTA bookers, phone reservations, and direct stays into a single golden profile.",
+                    "business_value": "Identifies 28% of 'anonymous' OTA bookers as existing loyalty members, enabling immediate direct channel re-capture; eliminates duplicate marketing emails.",
+                    "integration_specs": "Zero-Copy open data architecture with Snowflake and BigQuery; streaming ingestion via Kafka, MuleSoft, and Salesforce Pub/Sub API."
+                },
+                "var_no_salesforce": {
+                    "platforms": [
+                        {"name": "Twilio Segment Unify (or mParticle)", "vendor": "Twilio / mParticle", "role": "Real-time customer data platform, identity graph, and reverse ETL"},
+                        {"name": "RudderStack Enterprise", "vendor": "RudderStack", "role": "Warehouse-native event streaming and reverse ETL to operational systems"}
+                    ],
+                    "licensing_acv": "$800,000 - $1,450,000 / year",
+                    "implementation_capex": "$950,000 - $1,700,000",
+                    "annual_run_cost": "$420,000 / year",
+                    "data_handled": "Cross-platform guest interaction events, anonymous-to-known user mapping, identity graphs, consent state.",
+                    "purpose": "Developer-centric, warehouse-first CDP architecture that feeds clean, validated event streams directly into Snowflake.",
+                    "business_value": "Reduces data engineering overhead by 60%; provides instantaneous event forwarding to 200+ downstream marketing and analytics tools.",
+                    "integration_specs": "Client-side iOS/Android/JavaScript SDKs, server-side REST APIs, Kafka streaming connector, direct Snowflake load."
+                },
+                "var_best_money_can_buy": {
+                    "platforms": [
+                        {"name": "Adobe Real-Time Customer Data Platform (RT-CDP)", "vendor": "Adobe", "role": "B2C & B2B unified streaming guest profile with patented identity governance"},
+                        {"name": "Snowflake Hospitality Data Clean Room", "vendor": "Snowflake", "role": "Sovereign multi-party data collaboration with airlines, OTAs, and luxury retailers"},
+                        {"name": "Palantir Foundry Dynamic Guest Ontology", "vendor": "Palantir Technologies", "role": "Deep kinetic graph linking guest relationships, corporate accounts, and property spend"}
+                    ],
+                    "licensing_acv": "$3,400,000 - $5,800,000 / year",
+                    "implementation_capex": "$3,800,000 - $6,800,000",
+                    "annual_run_cost": "$1,400,000 / year",
+                    "data_handled": "50-billion-node enterprise identity graph, multi-generational family groupings, corporate negotiated rate utilization, real-time beacon geolocation.",
+                    "purpose": "The most advanced identity and kinetic graph platform in existence, fusing digital clickstreams, physical resort foot traffic, and corporate travel contracts.",
+                    "business_value": "Unlocks $30M+ in targeted corporate account retention and multi-million-dollar airline partner joint marketing agreements.",
+                    "integration_specs": "Streaming ingestion via Apache Pulsar / Kafka, sub-100ms edge profile activation, encrypted clean room queries via SQL."
+                }
+            }
+        },
+        {
+            "layer_id": "integration",
+            "name": "6. API Gateway, Integration & Event Mesh",
+            "icon": "🔌",
+            "desc": "Universal API management, enterprise iPaaS, Kafka event streaming, and HTNG/OXI hospitality protocol adapters",
+            "variations": {
+                "var_salesforce": {
+                    "platforms": [
+                        {"name": "MuleSoft Anypoint Platform", "vendor": "Salesforce / MuleSoft", "role": "Universal API Management, API Gateway, and Enterprise Service Bus (ESB)"},
+                        {"name": "MuleSoft Accelerator for Hospitality", "vendor": "Salesforce / MuleSoft", "role": "Pre-built connectors mapping Oracle OHIP, SynXis CRS, and Simphony POS to Salesforce DMOs"},
+                        {"name": "Salesforce Pub/Sub API (gRPC)", "vendor": "Salesforce", "role": "High-throughput, bi-directional event bus streaming Change Data Capture (CDC)"}
+                    ],
+                    "licensing_acv": "$1,250,000 - $2,400,000 / year",
+                    "implementation_capex": "$1,500,000 - $2,800,000",
+                    "annual_run_cost": "$600,000 / year",
+                    "data_handled": "HTNG XML messages, OHIP JSON payloads, OXI reservation feeds, POS dining checks, gRPC binary protocol buffers.",
+                    "purpose": "Acts as the central nervous system connecting fragmented on-premise hotel systems and cloud CRSs into modern enterprise microservices.",
+                    "business_value": "Cuts property onboarding integration time from 6 weeks to 3 days; guarantees zero lost reservation messages during flash sales.",
+                    "integration_specs": "REST, SOAP, HTNG, gRPC, Kafka connectors, RAML/OAS3 API specifications, OAuth2 token validation."
+                },
+                "var_no_salesforce": {
+                    "platforms": [
+                        {"name": "Confluent Cloud Enterprise (Kafka)", "vendor": "Confluent", "role": "Managed enterprise event streaming backbone across multi-cloud regions"},
+                        {"name": "Kong Konnect API Gateway", "vendor": "Kong Inc.", "role": "Cloud-native, ultra-low latency API gateway and service mesh"},
+                        {"name": "Workato Enterprise iPaaS", "vendor": "Workato", "role": "Low-code enterprise workflow automation and business application integration"}
+                    ],
+                    "licensing_acv": "$1,050,000 - $1,900,000 / year",
+                    "implementation_capex": "$1,200,000 - $2,200,000",
+                    "annual_run_cost": "$550,000 / year",
+                    "data_handled": "Streaming event topics (room_status_changed, reservation_created, checkin_completed), API gateway tokens, JSON payloads.",
+                    "purpose": "High-performance, event-driven decoupled architecture optimized for microservices and real-time operational reactivity.",
+                    "business_value": "Kong provides sub-millisecond API proxy latency; Confluent guarantees fault-tolerant streaming of 50,000+ hospitality events/sec.",
+                    "integration_specs": "Apache Kafka wire protocol, gRPC, REST, GraphQL, Kong Ingress Controller on Kubernetes."
+                },
+                "var_best_money_can_buy": {
+                    "platforms": [
+                        {"name": "Confluent Cloud Dedicated Tier-1 Clusters", "vendor": "Confluent", "role": "Dedicated multi-region event mesh with 99.999% SLA and infinite retention"},
+                        {"name": "Solace PubSub+ Event Broker", "vendor": "Solace", "role": "Hardware-accelerated ultra-low-latency event mesh for mega-resort IoT and gaming operations"},
+                        {"name": "Kong Enterprise Gateway Sovereign", "vendor": "Kong Inc.", "role": "FIPS 140-2 compliant API security gateway with mTLS enforcement"},
+                        {"name": "AWS PrivateLink & Cloud Interconnect", "vendor": "Amazon Web Services", "role": "Direct encrypted VPC peering bypassing the public internet entirely"}
+                    ],
+                    "licensing_acv": "$2,800,000 - $4,800,000 / year",
+                    "implementation_capex": "$3,200,000 - $5,500,000",
+                    "annual_run_cost": "$1,200,000 / year",
+                    "data_handled": "Resort IoT sensor streams, gaming table telemetry, sovereign guest identity validation, hardware-encrypted credit card authorizations.",
+                    "purpose": "Carrier-grade, military-spec integration mesh ensuring zero dropped packets and microsecond routing across sprawling resort properties.",
+                    "business_value": "Prevents catastrophic system-wide PMS/POS lockups during mega-events; meets highest casino regulatory and PCI-DSS mandates.",
+                    "integration_specs": "Hardware-accelerated SMF, AMQP, MQTT, Kafka, gRPC, dedicated 10Gbps private fiber circuits."
+                }
+            }
+        },
+        {
+            "layer_id": "cloud_data",
+            "name": "7. Cloud Infrastructure & Lakehouse",
+            "icon": "☁️",
+            "desc": "Cloud compute, relational databases, analytical data lakehouse, and real-time business intelligence",
+            "variations": {
+                "var_salesforce": {
+                    "platforms": [
+                        {"name": "Salesforce Hyperforce on AWS", "vendor": "Salesforce / AWS", "role": "Sovereign regional cloud hosting for CRM, Data Cloud, and Agentforce"},
+                        {"name": "Snowflake Data Cloud", "vendor": "Snowflake", "role": "Enterprise analytical data warehouse with Zero-Copy Data Cloud sharing"},
+                        {"name": "Amazon Web Services (AWS) Core", "vendor": "AWS", "role": "EKS Kubernetes compute, Amazon S3 data lake, and Amazon RDS PostgreSQL"}
+                    ],
+                    "licensing_acv": "$2,100,000 - $3,600,000 / year",
+                    "implementation_capex": "$1,500,000 - $2,600,000",
+                    "annual_run_cost": "$900,000 / year",
+                    "data_handled": "Historical reservation records (10+ years), financial ledgers, clickstream data lakes, guest preference tables, machine learning feature stores.",
+                    "purpose": "Provides elastic compute and infinite storage for portfolio-wide analytics, owner reporting, and predictive AI model training.",
+                    "business_value": "Snowflake Zero-Copy eliminates 75% of data duplication costs and enables instant querying of 30TB datasets without data egress fees.",
+                    "integration_specs": "Apache Iceberg table formats, AWS PrivateLink, Snowflake Secure Data Sharing, JDBC/ODBC."
+                },
+                "var_no_salesforce": {
+                    "platforms": [
+                        {"name": "Google Cloud Platform (GCP) Core", "vendor": "Google Cloud", "role": "Google Kubernetes Engine (GKE), Cloud Spanner, and Cloud Storage"},
+                        {"name": "Databricks Lakehouse Platform", "vendor": "Databricks", "role": "Unified Apache Spark lakehouse for data engineering, BI, and ML"},
+                        {"name": "Snowflake Analytical Cloud", "vendor": "Snowflake", "role": "Enterprise data warehousing and data clean rooms"}
+                    ],
+                    "licensing_acv": "$2,400,000 - $4,100,000 / year",
+                    "implementation_capex": "$1,800,000 - $3,200,000",
+                    "annual_run_cost": "$1,100,000 / year",
+                    "data_handled": "Delta Lake parquet tables, streaming Spark logs, operational Spanner databases, real-time feature tables.",
+                    "purpose": "High-performance open lakehouse architecture optimized for heavy data science, predictive pricing, and complex data engineering.",
+                    "business_value": "Cloud Spanner provides 99.999% SLA with external consistency; Databricks Spark clusters process billions of room search queries daily.",
+                    "integration_specs": "Delta Lake, Apache Iceberg, Apache Parquet, Cloud Spanner gRPC, Databricks Unity Catalog."
+                },
+                "var_best_money_can_buy": {
+                    "platforms": [
+                        {"name": "Multi-Cloud Sovereign Hybrid (AWS GovCloud / European Sovereign Cloud + GCP Anthos)", "vendor": "AWS / Google Cloud", "role": "Sovereign isolated compute clusters with air-gapped security capability"},
+                        {"name": "Databricks Lakehouse on NVIDIA DGX Clusters", "vendor": "Databricks / NVIDIA", "role": "Dedicated enterprise AI compute for continuous foundation model pre-training"},
+                        {"name": "Snowflake Sovereign Clean Rooms", "vendor": "Snowflake", "role": "Isolated zero-trust clean rooms for travel partner and casino gaming data exchange"}
+                    ],
+                    "licensing_acv": "$6,200,000 - $10,500,000 / year",
+                    "implementation_capex": "$6,500,000 - $12,500,000",
+                    "annual_run_cost": "$2,800,000 / year",
+                    "data_handled": "Casino gaming patron records, sovereign biometric guest registries, encrypted interline settlement ledgers, petabyte-scale sensor dumps.",
+                    "purpose": "The world's most resilient cloud infrastructure, built to survive nation-state cyberattacks and comply with strict gaming regulatory mandates.",
+                    "business_value": "100% compliance with sovereign data residency laws; zero downtime guarantee for critical reservation and gaming infrastructure.",
+                    "integration_specs": "Hardware Security Modules (HSM), Quantum-safe encryption, BGP Anycast, dedicated private fiber links."
+                }
+            }
+        },
+        {
+            "layer_id": "ai_ml",
+            "name": "8. AI, Machine Learning & Agentic Systems",
+            "icon": "🤖",
+            "desc": "Frontier LLMs, autonomous agentic reasoning (Agentforce / LangGraph / Palantir AIP), and predictive hospitality ML models",
+            "variations": {
+                "var_salesforce": {
+                    "platforms": [
+                        {"name": "Salesforce Agentforce & Atlas Reasoning Engine", "vendor": "Salesforce", "role": "Autonomous agent orchestration for hotel guest concierge, room service, and housekeeping dispatch"},
+                        {"name": "Claude 3.5 Sonnet / Claude 3.7 via Model Context Protocol (MCP)", "vendor": "Anthropic / Salesforce", "role": "Frontier multi-modal reasoning connected to hotel operational tools via MCP"},
+                        {"name": "Einstein 1 Predictive AI Platform", "vendor": "Salesforce", "role": "Guest churn scoring, room upgrade propensity modeling, and cancellation probability prediction"}
+                    ],
+                    "licensing_acv": "$1,250,000 - $2,400,000 / year",
+                    "implementation_capex": "$1,000,000 - $2,000,000",
+                    "annual_run_cost": "$500,000 / year",
+                    "data_handled": "Natural language guest requests, tool invocation schemas (JSON-RPC MCP), cancellation probability scores, upgrade bid amounts.",
+                    "purpose": "Empowers autonomous multi-agent reasoning directly inside the CRM and guest messaging apps, autonomously executing complex room changes and concierge tasks.",
+                    "business_value": "Deflects 48% of guest front-desk calls; automates $8M in room upgrade revenue without front-desk manual sales pitching.",
+                    "integration_specs": "Model Context Protocol (MCP) servers, JSON-RPC 2.0, Salesforce Trust Layer, Zero-Copy data grounding."
+                },
+                "var_no_salesforce": {
+                    "platforms": [
+                        {"name": "Databricks Mosaic AI & MLflow", "vendor": "Databricks", "role": "End-to-end LLM fine-tuning, RAG evaluation, and model governance"},
+                        {"name": "AWS Bedrock (Anthropic Claude 3.5 & Amazon Titan)", "vendor": "Amazon Web Services", "role": "Serverless foundation model APIs with VPC private endpoints"},
+                        {"name": "LangGraph & CrewAI Frameworks", "vendor": "Open Source / CrewAI", "role": "Multi-agent autonomous state machines for hotel operations workflows"},
+                        {"name": "Pinecone Enterprise Vector Database", "vendor": "Pinecone", "role": "Sub-50ms vector search for hotel property directories, menus, and local area guides"}
+                    ],
+                    "licensing_acv": "$900,000 - $1,800,000 / year",
+                    "implementation_capex": "$1,300,000 - $2,500,000",
+                    "annual_run_cost": "$700,000 / year",
+                    "data_handled": "Vector embeddings (1536-dim), agent execution traces, property PDF manuals, historical guest review sentiment vectors.",
+                    "purpose": "Complete developer autonomy to build, test, and deploy customized agentic workflows with custom guardrails.",
+                    "business_value": "Enables proprietary domain-specific fine-tuning on luxury brand service standards; zero vendor platform markup.",
+                    "integration_specs": "Python, FastAPI, Docker, Kubernetes, LangChain/LangGraph, OpenAI-compatible REST endpoints."
+                },
+                "var_best_money_can_buy": {
+                    "platforms": [
+                        {"name": "Palantir AIP (Artificial Intelligence Platform)", "vendor": "Palantir Technologies", "role": "Ontology-grounded autonomous agentic operational command for mega-resorts and casino operations"},
+                        {"name": "Anthropic Claude 3.7 Sonnet Enterprise Dedicated", "vendor": "Anthropic", "role": "Dedicated throughput provisioned LLM capacity with zero rate-limiting"},
+                        {"name": "NVIDIA NeMo Guardrails & Inference Microservices (NIM)", "vendor": "NVIDIA", "role": "Hardware-accelerated LLM inference and deterministic safety guardrails"},
+                        {"name": "Custom Hospitality SLMs (Mistral Large On-Premise)", "vendor": "Mistral AI / In-House", "role": "Locally hosted sovereign 70B parameter models fine-tuned on 15 years of luxury guest service logs"}
+                    ],
+                    "licensing_acv": "$5,500,000 - $9,200,000 / year",
+                    "implementation_capex": "$6,000,000 - $11,500,000",
+                    "annual_run_cost": "$2,200,000 / year",
+                    "data_handled": "Full enterprise operational ontology, casino player behavior logs, real-time foot traffic heatmaps, predictive gaming appetite matrices.",
+                    "purpose": "The apex of enterprise artificial intelligence: Palantir AIP autonomously coordinates VIP host assignments, dynamic restaurant table allocations, and room inventory yield.",
+                    "business_value": "Captures $42M+ in incremental VIP gaming and dining spend; reduces high-value guest attrition to near zero.",
+                    "integration_specs": "Palantir Foundry Action API, NVIDIA TensorRT-LLM, encrypted gRPC, air-gapped on-premise inference cluster."
+                }
+            }
+        },
+        {
+            "layer_id": "frontends",
+            "name": "9. Website, Mobile Apps & Digital Front-Ends",
+            "icon": "📱",
+            "desc": "Brand.com booking engine, native iOS/Android mobile apps, digital room key (Apple Wallet NFC), and lobby kiosks",
+            "variations": {
+                "var_salesforce": {
+                    "platforms": [
+                        {"name": "Custom React / Next.js Web Booking Engine", "vendor": "In-House / Vercel", "role": "High-conversion direct digital room booking, room selection, and payment checkout"},
+                        {"name": "Native iOS (Swift) & Android (Kotlin) Mobile Apps", "vendor": "In-House", "role": "Mobile digital key, live room service tracking, and push notifications"},
+                        {"name": "Salesforce Experience Cloud Portals", "vendor": "Salesforce", "role": "Loyalty member portal, corporate account negotiated rate booking, and travel advisor extranet"},
+                        {"name": "Apple Wallet NFC Digital Key Service", "vendor": "Apple Inc.", "role": "Instant tap-to-unlock hotel room door via iPhone or Apple Watch without opening an app"}
+                    ],
+                    "licensing_acv": "$950,000 - $1,750,000 / year",
+                    "implementation_capex": "$2,500,000 - $4,500,000",
+                    "annual_run_cost": "$1,100,000 / year",
+                    "data_handled": "Session state, payment form tokens, Apple Wallet NFC pass tokens, GPS geolocation breadcrumbs, Bluetooth beacon signals.",
+                    "purpose": "Delivers a seamless, premium digital experience from initial room discovery to contactless room entry and express checkout.",
+                    "business_value": "Drives direct booking share to > 35%; reduces front-desk check-in queues by 65% through Apple Wallet digital key adoption.",
+                    "integration_specs": "GraphQL / REST APIs to SynXis CRS and Salesforce Data Cloud; Apple Wallet .pkpass web service; Assa Abloy door lock SDK."
+                },
+                "var_no_salesforce": {
+                    "platforms": [
+                        {"name": "Next.js Enterprise Web Platform on Vercel", "vendor": "Vercel", "role": "Edge-rendered web booking engine with sub-100ms page load times"},
+                        {"name": "Native iOS & Android Mobile Apps", "vendor": "In-House", "role": "Mobile app with offline digital key cache and interactive resort maps"},
+                        {"name": "Auth0 by Okta CIAM", "vendor": "Okta", "role": "Customer Identity and Access Management with passkeys and biometric face login"},
+                        {"name": "Zaplox Mobile Key SDK", "vendor": "Zaplox", "role": "Turnkey mobile key integration for hotel apps"}
+                    ],
+                    "licensing_acv": "$780,000 - $1,400,000 / year",
+                    "implementation_capex": "$2,600,000 - $4,800,000",
+                    "annual_run_cost": "$1,200,000 / year",
+                    "data_handled": "Web vitals, authentication tokens, BLE digital key certificates, device push tokens.",
+                    "purpose": "Modern composable front-end architecture with edge rendering and instantaneous global CDN caching.",
+                    "business_value": "Every 100ms reduction in web booking engine latency increases booking conversion by 1.1%, generating $6.5M+ in direct revenue.",
+                    "integration_specs": "Vercel Edge Functions, GraphQL Federation, Okta OIDC/OAuth2, Zaplox BLE SDK."
+                },
+                "var_best_money_can_buy": {
+                    "platforms": [
+                        {"name": "Ultra-High-End Bespoke Native iOS & Android Apps", "vendor": "In-House / Apple Elite Partnership", "role": "100% Swift & Kotlin native codebases with Apple Vision Pro spatial suite walkthroughs"},
+                        {"name": "Apple Wallet NFC Room Key with Express Mode", "vendor": "Apple Inc.", "role": "Tap iPhone/Watch to door lock without waking device; works even if phone battery is depleted"},
+                        {"name": "In-Room Crestron / Lutron Luxury Touch Panels", "vendor": "Crestron / Lutron", "role": "Bespoke in-room automation tablets controlling lighting, shades, temperature, and butler call"},
+                        {"name": "Vercel Enterprise Edge Network + Cloudflare Workers", "vendor": "Vercel / Cloudflare", "role": "Global multi-cloud edge compute with zero single point of failure"}
+                    ],
+                    "licensing_acv": "$3,200,000 - $5,400,000 / year",
+                    "implementation_capex": "$6,500,000 - $12,000,000",
+                    "annual_run_cost": "$2,500,000 / year",
+                    "data_handled": "Encrypted Apple Secure Enclave credentials, spatial 3D suite interaction telemetry, in-room automation preferences, biometric facial recognition at VIP check-in.",
+                    "purpose": "The pinnacle of luxury hospitality: effortless room access, spatial digital discovery, and complete digital/physical room harmony.",
+                    "business_value": "Reduces front-desk check-in time to zero for VIPs; wins prestigious luxury travel accolades, driving 15% ADR premium across luxury suites.",
+                    "integration_specs": "Apple PassKit Express Mode, Crestron CIP protocol, WebSockets, ultra-low-latency edge caching."
+                }
+            }
+        },
+        {
+            "layer_id": "cms_dxp",
+            "name": "10. Headless CMS, DXP & Digital Asset Mgmt",
+            "icon": "🎨",
+            "desc": "Headless content management, 35+ language localization, enterprise digital asset management (DAM), and edge delivery",
+            "variations": {
+                "var_salesforce": {
+                    "platforms": [
+                        {"name": "Contentful Enterprise Headless CMS", "vendor": "Contentful", "role": "Structured content repository powering web, mobile, in-room TVs, and digital signage"},
+                        {"name": "Cloudinary Enterprise DAM", "vendor": "Cloudinary", "role": "AI-powered automated room photography and video optimization across all device breakpoints"},
+                        {"name": "Salesforce Experience Cloud CMS", "vendor": "Salesforce", "role": "Integrated portal content management for loyalty members and B2B corporate bookers"}
+                    ],
+                    "licensing_acv": "$400,000 - $750,000 / year",
+                    "implementation_capex": "$450,000 - $850,000",
+                    "annual_run_cost": "$220,000 / year",
+                    "data_handled": "Hotel property photography, room amenities, dining menus, promotional packages, multi-lingual translations (35 locales), 4K video assets.",
+                    "purpose": "Centrally stores and serves all marketing and operational property content, enabling marketing teams to publish campaigns without engineering deployments.",
+                    "business_value": "Cuts time-to-market for seasonal package launches from 3 weeks to 6 hours; reduces web page load size by 58% for faster loading.",
+                    "integration_specs": "GraphQL Content API, Webhooks to Vercel/Next.js, Cloudinary dynamic image transformation URLs."
+                },
+                "var_no_salesforce": {
+                    "platforms": [
+                        {"name": "Strapi Enterprise (or Sanity.io)", "vendor": "Strapi / Sanity", "role": "Composable headless CMS with real-time collaborative editing"},
+                        {"name": "Bynder Enterprise DAM", "vendor": "Bynder", "role": "Enterprise brand asset management, digital rights management (DRM), and creative workflow"},
+                        {"name": "Lokalise Enterprise", "vendor": "Lokalise", "role": "Automated translation management system integrated with GitHub and Figma"}
+                    ],
+                    "licensing_acv": "$340,000 - $650,000 / year",
+                    "implementation_capex": "$400,000 - $750,000",
+                    "annual_run_cost": "$200,000 / year",
+                    "data_handled": "JSON content schemas, localized translation strings, photographer copyright metadata, high-res RAW brand assets.",
+                    "purpose": "Agile, modern content stack tailored for continuous localization and rapid multi-platform publishing.",
+                    "business_value": "Eliminates translation overhead; saves $450K annually in agency localization fees.",
+                    "integration_specs": "REST & GraphQL APIs, GitHub Actions automated sync, Bynder Brand Connect integrations."
+                },
+                "var_best_money_can_buy": {
+                    "platforms": [
+                        {"name": "Adobe Experience Manager (AEM Sites & AEM Assets Enterprise)", "vendor": "Adobe", "role": "The enterprise standard for global multi-brand, multi-property digital experience management"},
+                        {"name": "Adobe Dynamic Media with Scene7", "vendor": "Adobe", "role": "Real-time 3D room rendering and automated smart-cropping for millions of asset variants"},
+                        {"name": "Akamai EdgeWorkers & Ion CDN", "vendor": "Akamai Technologies", "role": "Global Tier-1 CDN delivering content from 4,000+ edge locations worldwide"}
+                    ],
+                    "licensing_acv": "$1,600,000 - $2,800,000 / year",
+                    "implementation_capex": "$2,000,000 - $3,800,000",
+                    "annual_run_cost": "$800,000 / year",
+                    "data_handled": "Enterprise master asset library (400TB+), global hotel brand taxonomy trees, digital rights contracts, real-time edge cache tags.",
+                    "purpose": "The ultimate enterprise content powerhouse: powers hundreds of localized hotel brand domains with automated governance and edge caching.",
+                    "business_value": "Guarantees 100% brand consistency globally; withstands massive traffic surges during global marketing promotions without cache misses.",
+                    "integration_specs": "Adobe Cloud Manager, Dispatcher configurations, Adobe Experience Platform connectors, Akamai Edge API."
+                }
+            }
+        },
+        {
+            "layer_id": "finance_erp",
+            "name": "11. Finance, Revenue Accounting, ERP & Billing",
+            "icon": "💳",
+            "desc": "Hotel city ledger, night audit reconciliation, general ledger, payment gateways (Adyen/Stripe), and global tax",
+            "variations": {
+                "var_salesforce": {
+                    "platforms": [
+                        {"name": "SAP S/4HANA Finance", "vendor": "SAP", "role": "Enterprise General Ledger, Accounts Payable, Accounts Receivable, and Asset Accounting"},
+                        {"name": "Oracle Opera City Ledger & Night Audit", "vendor": "Oracle Hospitality", "role": "Daily room revenue posting, guest ledger reconciliation, and tax accrual"},
+                        {"name": "Adyen Enterprise Unified Commerce", "vendor": "Adyen", "role": "Global payment gateway, credit card acquiring, and alternative payment methods (APMs)"},
+                        {"name": "Salesforce Billing & Net Zero Cloud", "vendor": "Salesforce", "role": "Corporate MICE recurring billing and hotel sustainability / carbon offset accounting"}
+                    ],
+                    "licensing_acv": "$2,200,000 - $3,800,000 / year",
+                    "implementation_capex": "$3,500,000 - $6,500,000",
+                    "annual_run_cost": "$950,000 / year",
+                    "data_handled": "Daily manager reports (DMR), night audit journals, credit card chargebacks, occupancy tax (TOT) filings across 150 jurisdictions, carbon emission records.",
+                    "purpose": "Recognizes room revenue strictly upon night audit completion (ASC 606), reconciles OTA virtual credit cards (VCCs), and processes millions in guest charges.",
+                    "business_value": "Prevents revenue leakage on OTA virtual card commissions; Adyen smart-routing reduces credit card processing interchange fees by 30 bps ($18M saved).",
+                    "integration_specs": "SAP IDoc / RFC interfaces via MuleSoft, Adyen Webhooks, Opera Night Audit file export."
+                },
+                "var_no_salesforce": {
+                    "platforms": [
+                        {"name": "SAP S/4HANA Public Cloud / Oracle NetSuite", "vendor": "SAP / Oracle", "role": "Cloud ERP for multi-entity hotel financial management and consolidation"},
+                        {"name": "Stripe Enterprise Payments", "vendor": "Stripe", "role": "Global payment infrastructure with Stripe Radar fraud detection"},
+                        {"name": "Avalara AvaTax for Hospitality", "vendor": "Avalara", "role": "Automated hotel occupancy tax (TOT), municipal tourism assessments, and VAT calculation"}
+                    ],
+                    "licensing_acv": "$1,900,000 - $3,400,000 / year",
+                    "implementation_capex": "$3,200,000 - $5,800,000",
+                    "annual_run_cost": "$850,000 / year",
+                    "data_handled": "Ledger journals, payment authorizations, 3D Secure 2.0 payloads, municipal lodging tax tables.",
+                    "purpose": "Modern, API-accessible financial and tax automation stack minimizing custom code for payment integrations.",
+                    "business_value": "Stripe Radar reduces credit card fraud chargebacks by 40%; Avalara eliminates risk of severe municipal tax audit penalties.",
+                    "integration_specs": "Stripe REST APIs, NetSuite SuiteTalk REST, Snowflake accounting export."
+                },
+                "var_best_money_can_buy": {
+                    "platforms": [
+                        {"name": "SAP S/4HANA Enterprise Private Cloud (with Central Finance)", "vendor": "SAP", "role": "Tier-1 global financial backbone unifying multiple hotel operating companies and asset owners"},
+                        {"name": "Kyriba Enterprise Treasury Management", "vendor": "Kyriba", "role": "Global multi-currency liquidity forecasting, debt covenant monitoring, and FX risk management"},
+                        {"name": "Adyen Enterprise Global Omnichannel Gateway", "vendor": "Adyen", "role": "Direct scheme acquiring (Visa/Mastercard/Amex/JCB/UnionPay) across 150+ local currencies with tokenized unified commerce"}
+                    ],
+                    "licensing_acv": "$4,800,000 - $8,200,000 / year",
+                    "implementation_capex": "$7,500,000 - $14,000,000",
+                    "annual_run_cost": "$1,900,000 / year",
+                    "data_handled": "Multi-currency bank accounts ($2B+ liquidity), hotel mortgage and debt covenants, owner distribution statements, sovereign tax audit vaults.",
+                    "purpose": "The ultimate corporate treasury and financial engine: optimizes capital allocation across property portfolios, automates owner statements, and eliminates FX friction.",
+                    "business_value": "Optimizes working capital by $40M+; direct scheme acquiring saves $35M in cross-border card processor markups.",
+                    "integration_specs": "SWIFT messaging network, SAP OData APIs, direct banking host-to-host links (EBICS/AS2)."
+                }
+            }
+        },
+        {
+            "layer_id": "hr_workforce",
+            "name": "12. HR, Workforce Mgmt & Housekeeping Scheduling",
+            "icon": "👥",
+            "desc": "Core HRIS, employee portals, housekeeping dispatch (HotSOS/UniFocus), shift bidding, and global payroll",
+            "variations": {
+                "var_salesforce": {
+                    "platforms": [
+                        {"name": "Workday Human Capital Management (HCM)", "vendor": "Workday", "role": "Core HRIS, talent management, benefits, and global hotel staff payroll"},
+                        {"name": "Salesforce Agentforce for HR Service", "vendor": "Salesforce", "role": "Autonomous internal employee service agent resolving HR inquiries in Slack"},
+                        {"name": "UniFocus / HotSOS (Amadeus)", "vendor": "UniFocus / Amadeus", "role": "Automated housekeeping room assignment, inspection workflows, and engineering dispatch"}
+                    ],
+                    "licensing_acv": "$1,300,000 - $2,300,000 / year",
+                    "implementation_capex": "$1,800,000 - $3,200,000",
+                    "annual_run_cost": "$600,000 / year",
+                    "data_handled": "Employee records, housekeeping room cleaning credits, union contract rules (UNITE HERE), maintenance tickets, employee shift schedules.",
+                    "purpose": "Ensures optimal hotel staffing levels based on forecasted occupancy while automating housekeeping room cleaning sequences.",
+                    "business_value": "UniFocus dynamic scheduling cuts labor costs by 4.2% while maintaining Forbes travel guide service standards; HotSOS reduces room inspection time by 30%.",
+                    "integration_specs": "Workday RaaS, MuleSoft Workday Connector, HotSOS API connections to Opera PMS."
+                },
+                "var_no_salesforce": {
+                    "platforms": [
+                        {"name": "SAP SuccessFactors Employee Central", "vendor": "SAP", "role": "Global cloud HR and talent management system"},
+                        {"name": "UKG Pro (Ultimate Kronos Group)", "vendor": "UKG", "role": "Hotel workforce management, time and attendance, and predictive labor scheduling"},
+                        {"name": "Quore Hotel Operations Platform", "vendor": "Quore", "role": "Housekeeping management, guest request dispatch, and preventive engineering maintenance"}
+                    ],
+                    "licensing_acv": "$1,150,000 - $2,050,000 / year",
+                    "implementation_capex": "$1,600,000 - $3,000,000",
+                    "annual_run_cost": "$550,000 / year",
+                    "data_handled": "Housekeeping room credits, biometric clock-in timestamps, safety compliance logs, employee tip allocations.",
+                    "purpose": "Proven hotel operational management stack widely deployed across over 5,000 branded properties in North America and Europe.",
+                    "business_value": "Quore reduces guest complaint resolution times by 50%; UKG eliminates overtime leakage, saving $8.5M annually.",
+                    "integration_specs": "Quore REST APIs, SAP SuccessFactors OData APIs, Kronos Workforce Central database links."
+                },
+                "var_best_money_can_buy": {
+                    "platforms": [
+                        {"name": "Workday HCM & Workday Adaptive Planning Enterprise", "vendor": "Workday", "role": "Global human capital management, predictive labor planning, and executive succession"},
+                        {"name": "HotSOS Enterprise Suite (Amadeus)", "vendor": "Amadeus Hospitality", "role": "Enterprise-wide service optimization, automated preventative maintenance, and asset lifecycle tracking"},
+                        {"name": "UKG InTouch DX Biometric Timeclocks", "vendor": "UKG", "role": "Enterprise facial recognition clock-in for 15,000+ hotel staff and banqueting crews"},
+                        {"name": "CyberArk Employee Identity Protection", "vendor": "CyberArk", "role": "Zero-trust privileged identity access for hotel property managers and night auditors"}
+                    ],
+                    "licensing_acv": "$3,500,000 - $5,800,000 / year",
+                    "implementation_capex": "$4,200,000 - $7,800,000",
+                    "annual_run_cost": "$1,400,000 / year",
+                    "data_handled": "Biometric clock-in hashes, predictive labor models, union grievance histories, property maintenance audit vaults.",
+                    "purpose": "The ultimate workforce optimization and property service excellence architecture: synchronizes labor scheduling directly with real-time occupancy and banqueting events.",
+                    "business_value": "Saves $22M annually in labor scheduling efficiency across 100+ properties; reduces staff turnover by 14% via fair mobile shift bidding.",
+                    "integration_specs": "Workday Enterprise Bus, HotSOS cloud streaming, CyberArk Identity APIs."
+                }
+            }
+        },
+        {
+            "layer_id": "governance",
+            "name": "13. Enterprise Governance, Security & Privacy",
+            "icon": "🛡️",
+            "desc": "GDPR/PDPA/CCPA privacy, PCI-DSS Level 1 tokenization, SOC2 Type II, IAM (Okta), Zero-Trust & HSM key management",
+            "variations": {
+                "var_salesforce": {
+                    "platforms": [
+                        {"name": "Salesforce Shield", "vendor": "Salesforce", "role": "Platform Encryption, Event Monitoring, and Field Audit Trail for CRM and Data Cloud"},
+                        {"name": "OneTrust Privacy & Consent Automation", "vendor": "OneTrust", "role": "Global consent management, cookie preferences, and DSAR automated fulfillment"},
+                        {"name": "Okta Workforce Identity Cloud", "vendor": "Okta", "role": "Single Sign-On (SSO), Adaptive Multi-Factor Authentication (MFA), and lifecycle provisioning"}
+                    ],
+                    "licensing_acv": "$750,000 - $1,400,000 / year",
+                    "implementation_capex": "$700,000 - $1,300,000",
+                    "annual_run_cost": "$350,000 / year",
+                    "data_handled": "Encrypted PII (passports, credit cards, dates of birth), audit logs of every staff profile view, customer consent records, employee SSO credentials.",
+                    "purpose": "Guarantees regulatory compliance with global privacy mandates (GDPR, CCPA, Singapore PDPA) and protects customer trust.",
+                    "business_value": "Prevents catastrophic GDPR fines (up to 4% of global turnover); enables instant auditing of customer data access for regulatory inquiries.",
+                    "integration_specs": "Salesforce Shield BYOK (Bring Your Own Key), Okta SCIM / SAML 2.0, OneTrust REST APIs."
+                },
+                "var_no_salesforce": {
+                    "platforms": [
+                        {"name": "HashiCorp Vault Enterprise", "vendor": "HashiCorp / IBM", "role": "Central secrets management, encryption-as-a-service, and dynamic database credentials"},
+                        {"name": "Collibra Data Intelligence Platform", "vendor": "Collibra", "role": "Enterprise data governance, data catalog, and data lineage mapping"},
+                        {"name": "Cloudflare Magic Transit & WAF", "vendor": "Cloudflare", "role": "DDoS mitigation, web application firewall, and API security protection"}
+                    ],
+                    "licensing_acv": "$900,000 - $1,600,000 / year",
+                    "implementation_capex": "$850,000 - $1,500,000",
+                    "annual_run_cost": "$400,000 / year",
+                    "data_handled": "API secret keys, database passwords, TLS certificates, data catalog metadata, blocked malicious DDoS traffic.",
+                    "purpose": "Developer-centric, zero-trust security infrastructure protecting microservices and cloud databases from unauthorized access.",
+                    "business_value": "Cloudflare mitigates multi-terabit DDoS attacks during flash sales; HashiCorp Vault eliminates hardcoded credentials across all repositories.",
+                    "integration_specs": "Vault Kubernetes injector, Cloudflare Terraform provider, Collibra metadata harvesters."
+                },
+                "var_best_money_can_buy": {
+                    "platforms": [
+                        {"name": "CyberArk Privileged Access Security Sovereign", "vendor": "CyberArk", "role": "Military-grade credential vaulting and session recording for infrastructure administrators"},
+                        {"name": "HashiCorp Vault with Hardware Security Modules (HSM)", "vendor": "HashiCorp / Thales", "role": "FIPS 140-2 Level 3 hardware-backed cryptographic key generation and storage"},
+                        {"name": "Zscaler Zero Trust Exchange (ZPA & ZIA)", "vendor": "Zscaler", "role": "Direct-to-cloud zero-trust network access eliminating corporate VPN vulnerabilities"},
+                        {"name": "Palantir Foundry Security & Access Controls", "vendor": "Palantir Technologies", "role": "Granular cell-level and row-level mandatory access control (MAC) based on security clearance"},
+                        {"name": "BigID Data Discovery & DSPM", "vendor": "BigID", "role": "AI-driven discovery of dark, unstructured sensitive guest data across multi-cloud lakes"}
+                    ],
+                    "licensing_acv": "$3,200,000 - $5,500,000 / year",
+                    "implementation_capex": "$3,500,000 - $6,500,000",
+                    "annual_run_cost": "$1,300,000 / year",
+                    "data_handled": "Root cryptographic keys, privileged admin session keystrokes, dark PII discovery graphs, zero-trust microsegmentation rules.",
+                    "purpose": "The absolute pinnacle of sovereign enterprise security: trusted by luxury integrated resorts and gaming operations to prevent nation-state cyber breaches.",
+                    "business_value": "Eliminates lateral network movement during ransomware attacks; guarantees zero breach of guest biometric and payment data.",
+                    "integration_specs": "PKCS#11 HSM interfaces, Zscaler Client Connector, CyberArk PAM REST APIs, BigID automated scan connectors."
+                }
+            }
+        }
+    ]
+}
+
+# 1. Write tech_stack_data.json
+json_path = os.path.join(HOTEL_DIR, "data", "tech_stack_data.json")
+with open(json_path, "w", encoding="utf-8") as f:
+    json.dump(hotels_data, f, indent=2)
+
+# 2. Write tech_stack_data.js
+js_path = os.path.join(HOTEL_DIR, "data", "tech_stack_data.js")
+with open(js_path, "w", encoding="utf-8") as f:
+    f.write("const HOTELS_TECH_STACK_DATA = " + json.dumps(hotels_data, indent=2) + ";\n")
+
+# 3. Render HTML and Markdown via shared stack_renderer
+stack_renderer.render_html(hotels_data, "HOTELS_TECH_STACK_DATA", "data/tech_stack_data.js", os.path.join(HOTEL_DIR, "tech_stack.html"))
+stack_renderer.render_markdown(hotels_data, os.path.join(HOTEL_DIR, "ENTERPRISE_TECH_STACK_ARCHITECTURE_COMPENDIUM.md"))
+
+print("Hotels tech stack generation completed successfully.")
