@@ -3467,3 +3467,9 @@ input::placeholder,textarea::placeholder {
 .splash-brand{display:inline-flex;gap:12px;align-items:center}
 .splash-brand::before{content:"";display:inline-block;background:url('brand/logos/journey-mark.svg') center/contain no-repeat;width:36px;height:36px;filter:brightness(0) invert(1);flex:none}
 @media(max-width:650px){.brand:not(.splash-brand)::before,.splash-brand::before{width:27px;height:27px}}
+
+/* Explicit approved Concept B header mark; replace legacy pseudo icon. */
+.splash-brand-with-logo::before{content:none;display:none}
+.splash-brand-with-logo{display:inline-flex;align-items:center;gap:12px}
+.splash-brand-with-logo .splash-logo-mark{display:block;width:42px;height:42px;object-fit:contain;filter:brightness(0) invert(1);flex:none}
+@media(max-width:650px){.splash-brand-with-logo .splash-logo-mark{width:32px;height:32px}}
