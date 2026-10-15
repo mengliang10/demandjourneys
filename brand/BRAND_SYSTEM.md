@@ -1,5 +1,5 @@
 # Demand Journeys | Unified Hybrid Brand System
-Version 1.1 · Unified identity approved: 15 October 2026 · Standardization prepared for review
+Version 1.2 · Unified hybrid identity deployed to GitHub main: 15 October 2026
 
 ## Decision
 The agreed system combines the editorial sophistication of the homepage and the analytical clarity of the Reveal.js portfolio:
@@ -12,7 +12,7 @@ The agreed system combines the editorial sophistication of the homepage and the 
 ## Canonical assets
 - [brand-tokens.json](brand-tokens.json): machine-readable colour, font and layout choices.
 - [brand-tokens.css](brand-tokens.css): prefixed CSS variables and opt-in brand component styles. Use as the canonical source of shared tokens for all new layouts; existing pages may retain their local aliases during migration.
-- **Concept B (Journey Path) is the selected brand direction.** The existing production favicon and mark must remain unchanged until the production vector and size/contrast tests are approved. See [LOGO_CONCEPT_COMPARISON.md](LOGO_CONCEPT_COMPARISON.md).
+- **Concept B (Journey Path) is the production brand direction.** The production favicon now uses the journey-path geometry, with forest background and paper/teal/gold strokes; the existing SVG wordmark and standalone mark are kept in `brand/logos/`. See [LOGO_CONCEPT_COMPARISON.md](LOGO_CONCEPT_COMPARISON.md).
 - The previous presentation-aligned guide remains at GitLab `mengliang.online/demandjourneys/brand/DEMAND_JOURNEYS_BRAND_GUIDE.md`, but this GitHub guide supersedes its *proposed brand direction*.
 
 ## Colour and usage
@@ -57,16 +57,16 @@ The website, Reveal.js, PowerPoint and document values are *format-specific*, no
 - Cards should be calm and flat, not gradient-heavy; 1px lines and subtle panels.
 - Keep content accessible: visible focus, reduced-motion behaviour, scalable type, no colour-only chart legend.
 
-## Logo direction approved; production master pending
-A legacy D/J symbol exists in GitHub `favicon.svg` (forest background and pale strokes). A new journey-path SVG was added to GitLab. Concept B is the selected design direction, but the SVG master and production favicon are not yet approved. Do not deploy the legacy and new marks interchangeably. Until production tests pass, retain the current homepage favicon. A future approved logo needs horizontal, stacked, monochrome, reverse, favicon and social versions with clear space and minimum sizing rules.
+## Logo direction approved and favicon deployed
+A legacy D/J symbol exists in GitHub `favicon.svg` (forest background and pale strokes). A new journey-path SVG was added to GitLab. Concept B is selected and the homepage favicon has been updated to the corresponding journey-path geometry. The mark, SVG horizontal wordmark, and reverse favicon are defined in `brand/logos/` and at repository root. Additional small-size visual QA and trademark checks remain advisable; do not revert to the superseded legacy D/J identity. A future approved logo needs horizontal, stacked, monochrome, reverse, favicon and social versions with clear space and minimum sizing rules.
 
 ## Migration strategy (no live changes in this commit)
 1. Inventory CSS/HTML styles on homepage, hospitality site and Reveal presentations; list overrides that might break.
 2. Compare the existing legacy D/J mark to the proposed journey-path symbol.
-3. Validate the Concept B master at small sizes and against backgrounds before changing the production favicon.
-4. Integrate prefixed tokens incrementally in a separate branch, using page-level opt-in.
-5. Review at desktop/mobile, export slides and PDFs, then merge.
-6. Preserve links, routes, claims, content and functions; do not run GitLab CI/CD.
+3. Use Concept B path consistently in visible marks, the current favicon, presentations and document templates.
+4. Core website and Reveal/portfolio/GEO stylesheets now import the canonical prefixed tokens.
+5. Keep checking desktop/mobile, PDF export, accessibility and chart legibility as content evolves.
+6. Preserve links, routes, claims, content and functions; GitLab CI/CD is not required.
 7. Single authority: GitHub `mengliang10/demandjourneys` is the intended production source for domain-linked assets; do not assume GitLab and GitHub automatically synchronize.
 
 ## Provenance
@@ -79,5 +79,7 @@ A legacy D/J symbol exists in GitHub `favicon.svg` (forest background and pale s
 - Corporate/homepage CSS already carries the approved palette and Newsreader/DM Sans.
 - Reveal.js workshop decks previously used a distinct dark gradient and gold-heavy scheme; unify their canvas, typography and primary accents while preserving all workshop-specific classes and layout structures.
 - Existing portfolio and GEO decks already largely follow the approved palette; future work should consolidate their aliases without changing slide behavior.
-- A source-code audit alone cannot certify desktop/mobile visual regressions. Review responsive layout, focus visibility, export/print, JS interactions and chart labels before merging.
+- Source checks confirm changes on GitHub `main`; full browser regression testing and GitHub Pages CDN propagation are not certified.
+- The twenty legacy workshop decks use DM Sans. Some inline chart palettes remain intentionally unchanged pending visual chart QA.
+- New content must inherit `brand/brand-tokens.css`; do not introduce independent colour or font definitions.
 
