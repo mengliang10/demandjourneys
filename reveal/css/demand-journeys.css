@@ -1524,3 +1524,19 @@
 .reveal .slides section .slide-headline span,.reveal .slides section .cover-subtitle,.reveal .slides section .statement-prefix,.reveal .slides section .hero-quote-giant span{color:var(--dj-teal,#237E72)}
 .reveal a:focus-visible,.reveal button:focus-visible{outline:3px solid var(--dj-focus);outline-offset:4px}
 @media(prefers-reduced-motion:reduce){.reveal *,.reveal *::before,.reveal *::after{animation:none!important;transition:none!important}}
+
+/* Workshop content compatibility: harmonizes legacy dark components without changing charts or structure. */
+.reveal .slides section .dense-card,
+.reveal .slides section .comparison-table td,
+.reveal .slides section .comparison-table tr:nth-child(even),
+.reveal .slides section .chart-container{background:var(--dj-panel);border-color:var(--dj-line);color:var(--dj-ink)}
+.reveal .slides section .dense-card h4,
+.reveal .slides section .comparison-table td,
+.reveal .slides section .dense-card p,
+.reveal .slides section .dense-card li{color:var(--dj-ink)}
+.reveal .slides section .comparison-table th{background:var(--dj-ink);color:var(--dj-paper);border-color:var(--dj-line)}
+.reveal .slides section .metric-badge{background:rgba(35,126,114,.10);border-color:var(--dj-teal);color:var(--dj-teal)}
+.reveal .slides section .code-pill{background:var(--dj-panel);color:var(--dj-teal);border-color:var(--dj-line)}
+.reveal .slides section .source-list li{color:var(--dj-muted)}
+.reveal .slides section .chart-container{background:var(--dj-paper)}
+.reveal .slides section a:focus-visible{outline:3px solid var(--dj-focus);outline-offset:4px}
