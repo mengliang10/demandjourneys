@@ -2448,6 +2448,24 @@ input::placeholder,textarea::placeholder {
   margin-bottom: 24px;
   font-weight: 400;
 }
+.about-social {
+  margin-top: 28px;
+  margin-bottom: 8px;
+}
+.about-link {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 550;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  transition: color 0.2s ease;
+}
+.about-link:hover {
+  color: var(--gold);
+}
 .experience-block {
   margin-top: 56px;
   padding-top: 36px;
