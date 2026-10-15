@@ -4,32 +4,32 @@
    ========================================================================== */
 
 :root {
-  --dj-primary: #0F172A;
-  --dj-primary-light: #1E293B;
-  --dj-primary-surface: #172338;
-  --dj-accent: #D97706;
-  --dj-accent-hover: #B45309;
-  --dj-accent-gold: #FBBF24;
-  --dj-accent-subtle: rgba(217, 119, 6, 0.14);
-  --dj-accent-border: rgba(217, 119, 6, 0.35);
+  --dj-primary: #203E3A;
+  --dj-primary-light: #31534D;
+  --dj-primary-surface: #254942;
+  --dj-accent: #237E72;
+  --dj-accent-hover: #1B655B;
+  --dj-accent-gold: #D4B67A;
+  --dj-accent-subtle: rgba(35, 126, 114, 0.20);
+  --dj-accent-border: rgba(35, 126, 114, 0.55);
 
-  --dj-text-dark: #0F172A;
-  --dj-text-light: #F8FAFC;
-  --dj-text-muted: #94A3B8;
-  --dj-text-dim: #64748B;
+  --dj-text-dark: #203E3A;
+  --dj-text-light: #F5F2E9;
+  --dj-text-muted: #CBD8D0;
+  --dj-text-dim: #A8BFB4;
   
   --dj-border: rgba(255, 255, 255, 0.12);
-  --dj-card-bg: rgba(30, 41, 59, 0.75);
+  --dj-card-bg: rgba(37, 73, 66, 0.78);
   
   --font-heading: 'Newsreader', Georgia, serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'DM Sans', Arial, Helvetica, sans-serif;
 }
 
 /* BASE REVEAL OVERRIDES */
 .reveal {
   font-family: var(--font-body);
   color: var(--dj-text-light);
-  background: radial-gradient(circle at 50% 30%, #1E293B 0%, #0F172A 100%);
+  background: radial-gradient(circle at 50% 30%, #31534D 0%, #203E3A 100%);
   font-size: 16px;
 }
 
@@ -1499,3 +1499,8 @@
     display: none !important;
   }
 }
+
+/* Brand harmonization: keep workshops as a dark variant */
+:root{--dj-brand-ink:#203E3A;--dj-brand-paper:#F5F2E9;--dj-brand-teal:#237E72;--dj-brand-gold:#927448}
+.reveal{font-family:'DM Sans',Arial,Helvetica,sans-serif}
+.reveal h1,.reveal h2,.reveal h3,.reveal h4{font-family:'Newsreader',Georgia,serif}
