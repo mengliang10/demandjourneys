@@ -2,7 +2,7 @@
   "$schema": "https://design-tokens.github.io/community-group/format/",
   "name": "Demand Journeys Unified Hybrid",
   "version": "1.0.0",
-  "status": "approved direction; implementation pending",
+  "status": "approved brand direction; production rollout under review",
   "colors": {
     "ink": {
       "value": "#203E3A",
@@ -58,5 +58,11 @@
     "slideWidthPx": 1920,
     "slideHeightPx": 1080,
     "document": "A4"
+  },
+  "logo": {
+    "selectedConcept": "B - Journey Path",
+    "productionMasterStatus": "pending small-size and export QA",
+    "symbol": "brand/logos/journey-mark.svg",
+    "wordmark": "brand/logos/journey-logo.svg"
   }
 }
