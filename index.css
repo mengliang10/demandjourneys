@@ -3473,3 +3473,7 @@ input::placeholder,textarea::placeholder {
 .splash-brand-with-logo{display:inline-flex;align-items:center;gap:12px}
 .splash-brand-with-logo .splash-logo-mark{display:block;width:42px;height:42px;object-fit:contain;filter:brightness(0) invert(1);flex:none}
 @media(max-width:650px){.splash-brand-with-logo .splash-logo-mark{width:32px;height:32px}}
+
+/* Complete, legible reverse Journey Path lockup on the dark homepage hero. */
+.splash-brand-with-logo .splash-logo-lockup{display:block;width:242px;height:auto;max-width:55vw;filter:none}
+@media(max-width:650px){.splash-brand-with-logo .splash-logo-lockup{width:188px;max-width:58vw}}
