@@ -3442,3 +3442,12 @@ input::placeholder,textarea::placeholder {
   }
 }
 
+
+/* Published presentation cards */
+.presentation-author { margin: 0 0 18px; color: var(--muted); font-size: 13px; }
+.presentation-open { align-self: flex-start; display: inline-flex; gap: 18px; align-items: center; padding: 12px 18px; margin-bottom: 24px; background: var(--ink); color: var(--paper); border-radius: 3px; font-size: 14px; font-weight: 600; text-decoration: none; }
+.presentation-open:hover { opacity: .85; }
+.presentation-open:focus-visible, .research-title a:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
+.research-title a { color: inherit; text-decoration: none; }
+.research-title a:hover { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 640px) { .research-entries-grid { grid-template-columns: 1fr; } .research-meta { align-items: flex-start; flex-direction: column; gap: 8px; } .research-card { padding: 24px; } }
