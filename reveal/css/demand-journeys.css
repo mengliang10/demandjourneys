@@ -9,7 +9,7 @@
   --dj-primary-surface: #254942;
   --dj-accent: #237E72;
   --dj-accent-hover: #1B655B;
-  --dj-accent-gold: #D4B67A;
+  --dj-accent-gold: #927448;
   --dj-accent-subtle: rgba(35, 126, 114, 0.20);
   --dj-accent-border: rgba(35, 126, 114, 0.55);
 
@@ -28,8 +28,8 @@
 /* BASE REVEAL OVERRIDES */
 .reveal {
   font-family: var(--font-body);
-  color: var(--dj-text-light);
-  background: radial-gradient(circle at 50% 30%, #31534D 0%, #203E3A 100%);
+  color: var(--dj-text-dark);
+  background: var(--dj-paper, #F5F2E9);
   font-size: 16px;
 }
 
@@ -48,7 +48,7 @@
   text-transform: none;
   letter-spacing: -0.02em;
   font-weight: 500;
-  color: #FFFFFF;
+  color: var(--dj-text-dark);
   margin: 0;
 }
 
@@ -1504,3 +1504,22 @@
 :root{--dj-brand-ink:#203E3A;--dj-brand-paper:#F5F2E9;--dj-brand-teal:#237E72;--dj-brand-gold:#927448}
 .reveal{font-family:'DM Sans',Arial,Helvetica,sans-serif}
 .reveal h1,.reveal h2,.reveal h3,.reveal h4{font-family:'Newsreader',Georgia,serif}
+
+/* Unified Hybrid Brand: Reveal workshop override layer, 2026-10-15.
+   Preserve existing component geometry and interactions. */
+:root{--dj-paper:#F5F2E9;--dj-gold:#927448;--dj-panel:#E8EDE4;--dj-line:#D5DCD1;--dj-focus:#B45A34}
+.reveal-viewport,.reveal{background:var(--dj-paper);color:var(--dj-text-dark);font-family:var(--font-body)}
+.reveal .slides section{color:var(--dj-text-dark)}
+.reveal h1,.reveal h2,.reveal h3,.reveal h4{font-family:var(--font-heading);font-weight:400;color:var(--dj-text-dark)}
+.reveal .slides section .slide-headline,.reveal .slides section .cover-title{color:var(--dj-text-dark)}
+.reveal .slides section .slide-subtitle,.reveal .slides section .cover-descriptor,.reveal .slides section .hero-quote-caption{color:#60716A}
+.reveal .slides section .slide-tag{color:var(--dj-teal,#237E72);background:transparent;border-color:var(--dj-line)}
+.reveal .slides section .slide-footer-bar{border-color:var(--dj-line);color:#60716A}
+.reveal .slides section .slide-footer-bar .brand-sig{color:var(--dj-text-dark)}
+.reveal .slides section .hero-quote-giant{color:var(--dj-text-dark)}
+.reveal .slides section .perspective-box,.reveal .slides section .eco-card,.reveal .slides section .source-col,.reveal .slides section .neutral-box,.reveal .slides section .stage-col-card,.reveal .slides section .system-step{background:var(--dj-panel);border-color:var(--dj-line);color:var(--dj-text-dark)}
+.reveal .slides section .view-title,.reveal .slides section .eco-title,.reveal .slides section .st-title,.reveal .slides section .col-card-title{color:var(--dj-text-dark)}
+.reveal .slides section .view-desc,.reveal .slides section .eco-desc,.reveal .slides section .source-list li{color:#60716A}
+.reveal .slides section .slide-headline span,.reveal .slides section .cover-subtitle,.reveal .slides section .statement-prefix,.reveal .slides section .hero-quote-giant span{color:var(--dj-teal,#237E72)}
+.reveal a:focus-visible,.reveal button:focus-visible{outline:3px solid var(--dj-focus);outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.reveal *,.reveal *::before,.reveal *::after{animation:none!important;transition:none!important}}
