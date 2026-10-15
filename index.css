@@ -3460,3 +3460,9 @@ input::placeholder,textarea::placeholder {
 .dj-journey-brand{display:inline-flex;align-items:center;gap:12px;color:inherit}
 .dj-journey-brand img{display:block;width:42px;height:42px;object-fit:contain}
 @media(max-width:650px){.dj-journey-brand img{width:32px;height:32px}}
+
+/* Selected Journey Path logo on navigation; adapt for the dark hero */
+.brand:not(.splash-brand)::before{content:"";display:inline-block;background:url('brand/logos/journey-mark.svg') center/contain no-repeat;width:34px;height:34px;flex:none}
+.splash-brand{display:inline-flex;gap:12px;align-items:center}
+.splash-brand::before{content:"";display:inline-block;background:url('brand/logos/journey-mark.svg') center/contain no-repeat;width:36px;height:36px;filter:brightness(0) invert(1);flex:none}
+@media(max-width:650px){.brand:not(.splash-brand)::before,.splash-brand::before{width:27px;height:27px}}
