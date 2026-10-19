@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="10" fill="#233d34"/><path d="M18 15h11c22 0 22 34 0 34H18V15Zm10 8h3c12 0 12 18 0 18h-3" fill="none" stroke="#f7f5ee" stroke-width="2.5"/><path d="M39 13v30c0 10-12 12-17 6" fill="none" stroke="#c4cfa9" stroke-width="2"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Demand Journeys journey path">
+<rect width="96" height="96" rx="17" fill="#203E3A"/>
+<path d="M11 73 C30 58 34 62 47 49 S69 29 82 27" fill="none" stroke="#F5F2E9" stroke-width="12" stroke-linecap="round"/>
+<path d="M14 73 C31 61 36 64 49 51 S68 36 80 31" fill="none" stroke="#237E72" stroke-width="6" stroke-linecap="round"/>
+<circle cx="80" cy="24" r="8" fill="#927448"/>
+</svg>

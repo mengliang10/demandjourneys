@@ -1,13 +1,16 @@
+@import url('./brand/brand-tokens.css');
 /* Shared visual system for the homepage and hospitality practice. */
 :root {
-  --paper:#f7f5ee;
+  --paper:#f5f2e9;
   --white:#fffefa;
-  --ink:#233d34;
+  --ink:#203e3a;
   --text:#4c5850;
-  --muted:#636b60;
-  --line:#d9ddcf;
-  --sage:#e9ede3;
+  --muted:#60716a;
+  --line:#d5dcd1;
+  --sage:#e8ede4;
+  --teal:#237e72;
   --gold:#927448;
+  --orange:#b45a34;
   --serif:'Newsreader',Georgia,serif;
   --sans:'DM Sans',Arial,sans-serif;
   --max:1200px
@@ -3451,3 +3454,26 @@ input::placeholder,textarea::placeholder {
 .research-title a { color: inherit; text-decoration: none; }
 .research-title a:hover { text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 640px) { .research-entries-grid { grid-template-columns: 1fr; } .research-meta { align-items: flex-start; flex-direction: column; gap: 8px; } .research-card { padding: 24px; } }
+
+/* Unified hybrid brand v1.0 | compatible extensions to existing layout */
+:root{--dj-ink:#203e3a;--dj-paper:#f5f2e9;--dj-teal:#237e72;--dj-gold:#927448;--dj-muted:#60716a;--dj-line:#d5dcd1;--dj-font-display:'Newsreader',Georgia,serif;--dj-font-body:'DM Sans',Arial,sans-serif}
+.brand-mark,.splash-brand-mark{flex-shrink:0}
+.dj-journey-brand{display:inline-flex;align-items:center;gap:12px;color:inherit}
+.dj-journey-brand img{display:block;width:42px;height:42px;object-fit:contain}
+@media(max-width:650px){.dj-journey-brand img{width:32px;height:32px}}
+
+/* Selected Journey Path logo on navigation; adapt for the dark hero */
+.brand:not(.splash-brand)::before{content:"";display:inline-block;background:url('brand/logos/journey-mark.svg') center/contain no-repeat;width:34px;height:34px;flex:none}
+.splash-brand{display:inline-flex;gap:12px;align-items:center}
+.splash-brand::before{content:"";display:inline-block;background:url('brand/logos/journey-mark.svg') center/contain no-repeat;width:36px;height:36px;filter:brightness(0) invert(1);flex:none}
+@media(max-width:650px){.brand:not(.splash-brand)::before,.splash-brand::before{width:27px;height:27px}}
+
+/* Explicit approved Concept B header mark; replace legacy pseudo icon. */
+.splash-brand-with-logo::before{content:none;display:none}
+.splash-brand-with-logo{display:inline-flex;align-items:center;gap:12px}
+.splash-brand-with-logo .splash-logo-mark{display:block;width:42px;height:42px;object-fit:contain;filter:brightness(0) invert(1);flex:none}
+@media(max-width:650px){.splash-brand-with-logo .splash-logo-mark{width:32px;height:32px}}
+
+/* Complete, legible reverse Journey Path lockup on the dark homepage hero. */
+.splash-brand-with-logo .splash-logo-lockup{display:block;width:242px;height:auto;max-width:55vw;filter:none}
+@media(max-width:650px){.splash-brand-with-logo .splash-logo-lockup{width:188px;max-width:58vw}}

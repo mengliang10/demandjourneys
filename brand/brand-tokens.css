@@ -1,0 +1,27 @@
+/* Demand Journeys unified hybrid brand tokens v1.0.0
+   Namespaced: does not alter the live site until imported.
+   Source: agreed hybrid identity, 2026-10-15. */
+:root {
+  --dj-ink: #203E3A;
+  --dj-teal: #237E72;
+  --dj-gold: #927448;
+  --dj-paper: #F5F2E9;
+  --dj-muted: #60716A;
+  --dj-line: #D5DCD1;
+  --dj-terracotta: #B45A34;
+  --dj-panel: #E8EDE4;
+  --dj-white: #FFFEFA;
+  --dj-font-display: 'Newsreader', Georgia, serif;
+  --dj-font-body: 'DM Sans', Arial, Helvetica, sans-serif;
+  --dj-space-unit: 8px;
+  --dj-radius-small: 4px;
+  --dj-content-max: 1200px;
+}
+/* Opt-in utility rules: apply only to .dj-brand-system descendants. */
+.dj-brand-system {color:var(--dj-ink);background:var(--dj-paper);font-family:var(--dj-font-body);}
+.dj-brand-system h1,.dj-brand-system h2,.dj-brand-system h3 {font-family:var(--dj-font-display);font-weight:400;}
+.dj-brand-system .dj-eyebrow {font-family:var(--dj-font-body);color:var(--dj-teal);font-weight:600;letter-spacing:.12em;text-transform:uppercase;}
+.dj-brand-system .dj-premium {color:var(--dj-gold);}
+.dj-brand-system .dj-source {color:var(--dj-muted);border-top:1px solid var(--dj-line);}
+.dj-brand-system :focus-visible {outline:3px solid var(--dj-terracotta);outline-offset:3px;}
+@media (prefers-reduced-motion:reduce) {.dj-brand-system *, .dj-brand-system *::before, .dj-brand-system *::after {animation:none!important;transition:none!important;}}

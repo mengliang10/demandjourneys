@@ -1,35 +1,36 @@
+@import url('../../brand/brand-tokens.css');
 /* ==========================================================================
    DEMAND JOURNEYS - EXECUTIVE REVEAL.JS WORKSHOP DECK THEME
    Executive Dark & Clean Slate Theme inheriting Demand Journeys Design System
    ========================================================================== */
 
 :root {
-  --dj-primary: #0F172A;
-  --dj-primary-light: #1E293B;
-  --dj-primary-surface: #172338;
-  --dj-accent: #D97706;
-  --dj-accent-hover: #B45309;
-  --dj-accent-gold: #FBBF24;
-  --dj-accent-subtle: rgba(217, 119, 6, 0.14);
-  --dj-accent-border: rgba(217, 119, 6, 0.35);
+  --dj-primary: #203E3A;
+  --dj-primary-light: #31534D;
+  --dj-primary-surface: #254942;
+  --dj-accent: #237E72;
+  --dj-accent-hover: #1B655B;
+  --dj-accent-gold: #927448;
+  --dj-accent-subtle: rgba(35, 126, 114, 0.20);
+  --dj-accent-border: rgba(35, 126, 114, 0.55);
 
-  --dj-text-dark: #0F172A;
-  --dj-text-light: #F8FAFC;
-  --dj-text-muted: #94A3B8;
-  --dj-text-dim: #64748B;
+  --dj-text-dark: #203E3A;
+  --dj-text-light: #F5F2E9;
+  --dj-text-muted: #CBD8D0;
+  --dj-text-dim: #A8BFB4;
   
   --dj-border: rgba(255, 255, 255, 0.12);
-  --dj-card-bg: rgba(30, 41, 59, 0.75);
+  --dj-card-bg: rgba(37, 73, 66, 0.78);
   
   --font-heading: 'Newsreader', Georgia, serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'DM Sans', Arial, Helvetica, sans-serif;
 }
 
 /* BASE REVEAL OVERRIDES */
 .reveal {
   font-family: var(--font-body);
-  color: var(--dj-text-light);
-  background: radial-gradient(circle at 50% 30%, #1E293B 0%, #0F172A 100%);
+  color: var(--dj-text-dark);
+  background: var(--dj-paper, #F5F2E9);
   font-size: 16px;
 }
 
@@ -48,7 +49,7 @@
   text-transform: none;
   letter-spacing: -0.02em;
   font-weight: 500;
-  color: #FFFFFF;
+  color: var(--dj-text-dark);
   margin: 0;
 }
 
@@ -1499,3 +1500,43 @@
     display: none !important;
   }
 }
+
+/* Brand harmonization: keep workshops as a dark variant */
+:root{--dj-brand-ink:#203E3A;--dj-brand-paper:#F5F2E9;--dj-brand-teal:#237E72;--dj-brand-gold:#927448}
+.reveal{font-family:'DM Sans',Arial,Helvetica,sans-serif}
+.reveal h1,.reveal h2,.reveal h3,.reveal h4{font-family:'Newsreader',Georgia,serif}
+
+/* Unified Hybrid Brand: Reveal workshop override layer, 2026-10-15.
+   Preserve existing component geometry and interactions. */
+:root{--dj-paper:#F5F2E9;--dj-gold:#927448;--dj-panel:#E8EDE4;--dj-line:#D5DCD1;--dj-focus:#B45A34}
+.reveal-viewport,.reveal{background:var(--dj-paper);color:var(--dj-text-dark);font-family:var(--font-body)}
+.reveal .slides section{color:var(--dj-text-dark)}
+.reveal h1,.reveal h2,.reveal h3,.reveal h4{font-family:var(--font-heading);font-weight:400;color:var(--dj-text-dark)}
+.reveal .slides section .slide-headline,.reveal .slides section .cover-title{color:var(--dj-text-dark)}
+.reveal .slides section .slide-subtitle,.reveal .slides section .cover-descriptor,.reveal .slides section .hero-quote-caption{color:#60716A}
+.reveal .slides section .slide-tag{color:var(--dj-teal,#237E72);background:transparent;border-color:var(--dj-line)}
+.reveal .slides section .slide-footer-bar{border-color:var(--dj-line);color:#60716A}
+.reveal .slides section .slide-footer-bar .brand-sig{color:var(--dj-text-dark)}
+.reveal .slides section .hero-quote-giant{color:var(--dj-text-dark)}
+.reveal .slides section .perspective-box,.reveal .slides section .eco-card,.reveal .slides section .source-col,.reveal .slides section .neutral-box,.reveal .slides section .stage-col-card,.reveal .slides section .system-step{background:var(--dj-panel);border-color:var(--dj-line);color:var(--dj-text-dark)}
+.reveal .slides section .view-title,.reveal .slides section .eco-title,.reveal .slides section .st-title,.reveal .slides section .col-card-title{color:var(--dj-text-dark)}
+.reveal .slides section .view-desc,.reveal .slides section .eco-desc,.reveal .slides section .source-list li{color:#60716A}
+.reveal .slides section .slide-headline span,.reveal .slides section .cover-subtitle,.reveal .slides section .statement-prefix,.reveal .slides section .hero-quote-giant span{color:var(--dj-teal,#237E72)}
+.reveal a:focus-visible,.reveal button:focus-visible{outline:3px solid var(--dj-focus);outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.reveal *,.reveal *::before,.reveal *::after{animation:none!important;transition:none!important}}
+
+/* Workshop content compatibility: harmonizes legacy dark components without changing charts or structure. */
+.reveal .slides section .dense-card,
+.reveal .slides section .comparison-table td,
+.reveal .slides section .comparison-table tr:nth-child(even),
+.reveal .slides section .chart-container{background:var(--dj-panel);border-color:var(--dj-line);color:var(--dj-ink)}
+.reveal .slides section .dense-card h4,
+.reveal .slides section .comparison-table td,
+.reveal .slides section .dense-card p,
+.reveal .slides section .dense-card li{color:var(--dj-ink)}
+.reveal .slides section .comparison-table th{background:var(--dj-ink);color:var(--dj-paper);border-color:var(--dj-line)}
+.reveal .slides section .metric-badge{background:rgba(35,126,114,.10);border-color:var(--dj-teal);color:var(--dj-teal)}
+.reveal .slides section .code-pill{background:var(--dj-panel);color:var(--dj-teal);border-color:var(--dj-line)}
+.reveal .slides section .source-list li{color:var(--dj-muted)}
+.reveal .slides section .chart-container{background:var(--dj-paper)}
+.reveal .slides section a:focus-visible{outline:3px solid var(--dj-focus);outline-offset:4px}
