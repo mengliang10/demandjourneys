@@ -73,76 +73,32 @@
        </p>
       </div>
 
-      <div class="system-flow-pipeline">
-       <div class="pipeline-node">
-        <span class="node-num">01</span>
-        <span class="node-title">DEMAND</span>
-       </div>
-       <div class="pipeline-arrow" aria-hidden="true">↓</div>
-
-       <div class="pipeline-node">
-        <span class="node-num">02</span>
-        <span class="node-title">DISCOVERY</span>
-       </div>
-       <div class="pipeline-arrow" aria-hidden="true">↓</div>
-
-       <div class="pipeline-node">
-        <span class="node-num">03</span>
-        <span class="node-title">CUSTOMER</span>
-       </div>
-       <div class="pipeline-arrow" aria-hidden="true">↓</div>
-
-       <div class="pipeline-node">
-        <span class="node-num">04</span>
-        <span class="node-title">ACQUISITION</span>
-       </div>
-       <div class="pipeline-arrow" aria-hidden="true">↓</div>
-
-       <div class="pipeline-node">
-        <span class="node-num">05</span>
-        <span class="node-title">CONVERSION</span>
-       </div>
-       <div class="pipeline-arrow" aria-hidden="true">↓</div>
-
-       <div class="pipeline-node">
-        <span class="node-num">06</span>
-        <span class="node-title">DISTRIBUTION</span>
-       </div>
-       <div class="pipeline-arrow" aria-hidden="true">↓</div>
-
-       <div class="pipeline-node">
-        <span class="node-num">07</span>
-        <span class="node-title">RETENTION</span>
-       </div>
-       <div class="pipeline-arrow" aria-hidden="true">↓</div>
-
-       <div class="pipeline-node">
-        <span class="node-num">08</span>
-        <span class="node-title">MEASUREMENT</span>
-       </div>
-       <div class="pipeline-arrow" aria-hidden="true">↓</div>
-
-       <div class="pipeline-node">
-        <span class="node-num">09</span>
-        <span class="node-title">OPTIMIZATION</span>
-       </div>
-      </div>
-
-      <!-- ENABLING INFRASTRUCTURE BAND -->
-      <div class="enabling-infra-panel">
-       <span class="infra-panel-label">ENABLING INFRASTRUCTURE</span>
-       <div class="infra-layers-grid">
-        <div class="infra-layer-item">DATA</div>
-        <div class="infra-layer-item">MARTECH</div>
-        <div class="infra-layer-item">AI</div>
-        <div class="infra-layer-item">ANALYTICS</div>
-        <div class="infra-layer-item">AGENCIES</div>
-        <div class="infra-layer-item">PLATFORMS</div>
-       </div>
-       <p class="infra-note">
-        These represent the operational and technological layers that power the commercial journey above.
-       </p>
-      </div>
+      <div class="commercial-journey" role="img" aria-label="Commercial customer journey: Demand, Discovery, Customer, Acquisition, Conversion, Distribution and Retention. Measurement and Optimization continuously improve every stage, supported by data, MarTech, AI, analytics, agencies and platforms.">
+<style>
+.commercial-journey{background:#fffdf8;border:1px solid #dedbd1;border-radius:18px;padding:clamp(16px,3vw,36px);box-shadow:0 12px 38px rgba(21,40,36,.06);overflow:hidden}
+.commercial-journey svg{display:block;width:100%;height:auto;font-family:'DM Sans',sans-serif}
+.commercial-journey .stage{fill:#fff;stroke:#d7e1dd;stroke-width:1.4}
+.commercial-journey .stage-title{font-size:15px;font-weight:700;fill:#183f38;letter-spacing:.5px}
+.commercial-journey .stage-detail{font-size:10.5px;fill:#64756e}
+.commercial-journey .stage-num{font-size:11px;font-weight:700;fill:#b48b4d}
+.commercial-journey .section-label{font-size:12px;font-weight:700;fill:#264d44;letter-spacing:1.3px}
+.commercial-journey .minor{font-size:11px;fill:#5d6f68}
+.commercial-journey .infra-text{font-size:11px;font-weight:650;fill:#28534a}
+@media(max-width:700px){.commercial-journey{overflow-x:auto}.commercial-journey svg{min-width:850px}}
+</style>
+<svg viewBox="0 0 1150 410" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<defs><marker id="dj-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#508c7a"/></marker></defs>
+<text x="20" y="24" class="section-label">CUSTOMER &amp; COMMERCIAL JOURNEY</text>
+<text x="1130" y="24" class="minor" text-anchor="end">From market intent to lifetime value</text>
+<path d="M50 116 H1095" stroke="#508c7a" stroke-width="3" stroke-dasharray="6 6" opacity=".25"/>
+<rect class="stage" x="15" y="56" width="148" height="125" rx="12"/><rect x="15" y="56" width="148" height="6" rx="3" fill="#397866"/><text x="29" y="83" class="stage-num">01</text><text x="29" y="118" class="stage-title">DEMAND</text><text x="29" y="143" class="stage-detail">Market signals</text><path d="M164 116 H175" stroke="#508c7a" stroke-width="2" marker-end="url(#dj-arrow)"/><rect class="stage" x="177" y="56" width="148" height="125" rx="12"/><rect x="177" y="56" width="148" height="6" rx="3" fill="#397866"/><text x="191" y="83" class="stage-num">02</text><text x="191" y="118" class="stage-title">DISCOVERY</text><text x="191" y="143" class="stage-detail">Search · AI · referrals</text><path d="M326 116 H337" stroke="#508c7a" stroke-width="2" marker-end="url(#dj-arrow)"/><rect class="stage" x="339" y="56" width="148" height="125" rx="12"/><rect x="339" y="56" width="148" height="6" rx="3" fill="#397866"/><text x="353" y="83" class="stage-num">03</text><text x="353" y="118" class="stage-title">CUSTOMER</text><text x="353" y="143" class="stage-detail">Segments · intent</text><path d="M488 116 H499" stroke="#508c7a" stroke-width="2" marker-end="url(#dj-arrow)"/><rect class="stage" x="501" y="56" width="148" height="125" rx="12"/><rect x="501" y="56" width="148" height="6" rx="3" fill="#397866"/><text x="515" y="83" class="stage-num">04</text><text x="515" y="118" class="stage-title">ACQUISITION</text><text x="515" y="143" class="stage-detail">Paid · owned · earned</text><path d="M650 116 H661" stroke="#508c7a" stroke-width="2" marker-end="url(#dj-arrow)"/><rect class="stage" x="663" y="56" width="148" height="125" rx="12"/><rect x="663" y="56" width="148" height="6" rx="3" fill="#397866"/><text x="677" y="83" class="stage-num">05</text><text x="677" y="118" class="stage-title">CONVERSION</text><text x="677" y="143" class="stage-detail">Experience · purchase</text><path d="M812 116 H823" stroke="#508c7a" stroke-width="2" marker-end="url(#dj-arrow)"/><rect class="stage" x="825" y="56" width="148" height="125" rx="12"/><rect x="825" y="56" width="148" height="6" rx="3" fill="#397866"/><text x="839" y="83" class="stage-num">06</text><text x="839" y="118" class="stage-title">DISTRIBUTION</text><text x="839" y="143" class="stage-detail">Direct · intermediaries</text><path d="M974 116 H985" stroke="#508c7a" stroke-width="2" marker-end="url(#dj-arrow)"/><rect class="stage" x="987" y="56" width="148" height="125" rx="12"/><rect x="987" y="56" width="148" height="6" rx="3" fill="#b48b4d"/><text x="1001" y="83" class="stage-num">07</text><text x="1001" y="118" class="stage-title">RETENTION</text><text x="1001" y="143" class="stage-detail">Loyalty · advocacy</text><path d="M1088 193 V224 H72 V193" fill="none" stroke="#b48b4d" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#dj-arrow)"/>
+<text x="575" y="217" text-anchor="middle" style="font:600 11px 'DM Sans',sans-serif;fill:#98733d">REPEAT PURCHASE · REFERRALS · NEW DEMAND</text>
+<rect x="15" y="244" width="1120" height="64" rx="12" fill="#e9f1ed" stroke="#c6dbd1"/>
+<text x="34" y="267" class="section-label">MEASUREMENT &amp; OPTIMIZATION</text>
+<text x="34" y="288" class="minor">Attribution · incrementality · unit economics · experimentation · budget allocation · commercial margin</text>
+<path d="M575 244 V226" stroke="#508c7a" stroke-width="2" marker-end="url(#dj-arrow)"/>
+<rect x="15" y="325" width="1120" height="66" rx="12" fill="#f5f1e8" stroke="#e5d8c4"/>
+<text x="34" y="345" class="section-label">ENABLING INFRASTRUCTURE</text><rect x="34" y="356" width="164" height="25" rx="6" fill="#fffdf8" stroke="#e1d9c8"/><text x="116" y="373" text-anchor="middle" class="infra-text">DATA</text><rect x="217" y="356" width="164" height="25" rx="6" fill="#fffdf8" stroke="#e1d9c8"/><text x="299" y="373" text-anchor="middle" class="infra-text">MARTECH</text><rect x="400" y="356" width="164" height="25" rx="6" fill="#fffdf8" stroke="#e1d9c8"/><text x="482" y="373" text-anchor="middle" class="infra-text">AI</text><rect x="583" y="356" width="164" height="25" rx="6" fill="#fffdf8" stroke="#e1d9c8"/><text x="665" y="373" text-anchor="middle" class="infra-text">ANALYTICS</text><rect x="766" y="356" width="164" height="25" rx="6" fill="#fffdf8" stroke="#e1d9c8"/><text x="848" y="373" text-anchor="middle" class="infra-text">AGENCIES</text><rect x="949" y="356" width="164" height="25" rx="6" fill="#fffdf8" stroke="#e1d9c8"/><text x="1031" y="373" text-anchor="middle" class="infra-text">PLATFORMS</text></svg></div>
      </div>
     </div>
    </section>
