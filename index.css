@@ -3477,3 +3477,23 @@ input::placeholder,textarea::placeholder {
 /* Complete, legible reverse Journey Path lockup on the dark homepage hero. */
 .splash-brand-with-logo .splash-logo-lockup{display:block;width:242px;height:auto;max-width:55vw;filter:none}
 @media(max-width:650px){.splash-brand-with-logo .splash-logo-lockup{width:188px;max-width:58vw}}
+
+/* Compact below-the-fold rhythm across public pages. Preserve hero breathing room. */
+main > .section:not(:first-child){padding-top:clamp(38px,5vw,64px);padding-bottom:clamp(38px,5vw,64px)}
+main > .section:not(:first-child) .eyebrow{margin-bottom:12px}
+main > .section:not(:first-child) .section-header{margin-bottom:24px}
+.method-diagram-section .diagram-intro{margin-bottom:22px}
+.method-diagram-section .system-diagram-wrap{padding:clamp(18px,3vw,34px)}
+.method-chapters .chapter-grid{padding:12px 0;gap:14px}
+.method-chapters .dj-chapter{gap:9px;padding:clamp(18px,2vw,26px)}
+.method-chapters .dj-chapter h2{margin:0}
+.method-chapters .dj-capabilities{padding-top:10px}
+.method-situations .situation-box,.method-diagnostic .output-card{padding:24px}
+.method-diagnostic .outputs-grid{margin-top:24px;gap:16px}
+.profile-page-section .profile-doc-card{padding-top:40px;padding-bottom:40px}
+@media(max-width:600px){
+ main > .section:not(:first-child){padding-top:32px;padding-bottom:32px}
+ .method-chapters .chapter-grid{gap:12px}
+ .method-diagram-section .system-diagram-wrap{padding:14px}
+ .profile-page-section .profile-doc-card{padding:26px 20px}
+}
