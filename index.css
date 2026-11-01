@@ -3497,3 +3497,39 @@ main > .section:not(:first-child) .section-header{margin-bottom:24px}
  .method-diagram-section .system-diagram-wrap{padding:14px}
  .profile-page-section .profile-doc-card{padding:26px 20px}
 }
+
+/* Density pass 2: explicit section rules override legacy page-specific spacing. */
+body main > section.section:not(:first-child),
+body main > section.ways-section,
+body main > section.about-section,
+body main > section.enquiry-section,
+body main > section.method-diagram-section,
+body main > section.method-chapters,
+body main > section.method-cta,
+body main > section.hospitality-library-section {
+  padding-top:28px;
+  padding-bottom:28px;
+  min-height:0;
+}
+body main > section.section:not(:first-child) .container > :first-child{margin-top:0}
+body main .section-top{margin-bottom:18px;gap:24px}
+body main .problem-intro{margin-bottom:20px;gap:28px}
+body main .diagram-intro{margin-bottom:14px}
+body main .chapter-grid{padding:8px 0;gap:12px}
+body main .method-chapters .dj-chapter{padding:18px;gap:7px}
+body main .method-chapters .dj-chapter p{line-height:1.45}
+body main .method-chapters .dj-capabilities{padding-top:8px}
+body main .outputs-grid{margin-top:18px;gap:12px}
+body main .ways-diagram{margin-top:18px;margin-bottom:18px}
+body main .about-section .section-top{margin-bottom:16px}
+body main .enquiry-section .section-top{margin-bottom:16px}
+body main .method-diagram-section .system-diagram-wrap{padding:16px}
+body main .method-hero{padding-top:48px;padding-bottom:30px}
+body main .hospitality-hero{padding-top:48px;padding-bottom:30px}
+@media(max-width:700px){
+ body main > section.section:not(:first-child),
+ body main > section.ways-section,
+ body main > section.about-section,
+ body main > section.enquiry-section{padding-top:22px;padding-bottom:22px}
+ body main .section-top{gap:12px;margin-bottom:14px}
+}
