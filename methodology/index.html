@@ -103,253 +103,31 @@
     </div>
    </section>
 
-   <!-- 11 METHODOLOGY CHAPTERS -->
+   <!-- SIMPLIFIED METHODOLOGY CHAPTERS -->
    <section class="section method-chapters">
     <div class="container">
+     <style>
+.method-chapters .chapter-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
+.method-chapters .dj-chapter{display:flex;flex-direction:column;gap:12px;padding:clamp(22px,2.4vw,32px);min-width:0;border:1px solid #dedbd1;border-radius:14px;background:#fffdf8;box-shadow:none}
+.method-chapters .dj-chapter .chapter-meta{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.method-chapters .dj-chapter h2{margin:4px 0 0;font-size:clamp(1.45rem,2vw,1.9rem);line-height:1.15}
+.method-chapters .dj-chapter p{margin:0;line-height:1.6;flex:1}
+.method-chapters .dj-capabilities{padding-top:14px;border-top:1px solid #e7e2d8;color:#557268;font-size:.83rem;line-height:1.5;font-weight:600}
+@media(max-width:900px){.method-chapters .chapter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.method-chapters .chapter-grid{grid-template-columns:1fr}}
+</style>
      <div class="chapter-grid">
-
-      <!-- 1. DEMAND -->
-      <article class="chapter-card" id="demand">
-       <div class="chapter-meta">
-        <span class="chapter-num">01</span>
-        <span class="chapter-tag">Market Economics</span>
-       </div>
-       <h2>Demand</h2>
-       <p class="chapter-subtitle">How demand is created, captured and evaluated.</p>
-       <p>
-        Demand does not begin in an advertising campaign; it originates in genuine market needs, seasonal triggers, and macroeconomic conditions. Understanding demand requires isolating true commercial intent from fabricated traffic.
-       </p>
-       <div class="chapter-questions">
-        <strong>Core Questions:</strong>
-        <ul>
-         <li>Where is demand originating: organic market expansion, competitor vulnerability, or baseline brand equity?</li>
-         <li>What is the quality of current demand, and does it produce acceptable unit economics?</li>
-         <li>Are growth bottlenecks caused by insufficient demand generation or friction in downstream capture?</li>
-        </ul>
-       </div>
-       <div class="terms-pill">Demand Generation · Brand Demand · Paid Acquisition · Organic Discovery · Incremental Demand · Demand Quality · Customer Acquisition Economics</div>
-      </article>
-
-      <!-- 2. DISCOVERY -->
-      <article class="chapter-card" id="discovery">
-       <div class="chapter-meta">
-        <span class="chapter-num">02</span>
-        <span class="chapter-tag">Search &amp; Visibility</span>
-       </div>
-       <h2>Discovery</h2>
-       <p class="chapter-subtitle">How customers and machines find businesses.</p>
-       <p>
-        Discovery is undergoing a fundamental structural transition. Buyers no longer discover services solely through ten blue search links; they use synthetic AI answers, conversational assistants, vertical search platforms, and marketplaces.
-       </p>
-       <div class="chapter-questions">
-        <strong>Core Questions:</strong>
-        <ul>
-         <li>How do traditional search engines, answer engines, and LLMs interpret your commercial entity?</li>
-         <li>Is technical architecture, structured data, and content discoverability prepared for AI crawler synthesis?</li>
-         <li>How reliant is discovery on paid intermediary placement versus durable organic authority?</li>
-        </ul>
-       </div>
-       <div class="terms-pill">SEO · GEO · AEO · AI Search · Search Platforms · Metasearch · Digital Marketplaces · Content Discoverability · Entity Understanding</div>
-      </article>
-
-      <!-- 3. CUSTOMER -->
-      <article class="chapter-card" id="customer">
-       <div class="chapter-meta">
-        <span class="chapter-num">03</span>
-        <span class="chapter-tag">Value &amp; Segments</span>
-       </div>
-       <h2>Customer</h2>
-       <p class="chapter-subtitle">Who customers are and which customers create economic value.</p>
-       <p>
-        Not all buyers create equal commercial margin. Effective commercial architecture identifies the highest-yield customer segments, their transaction economics, and the specific touchpoints where customer value is created or lost.
-       </p>
-       <div class="chapter-questions">
-        <strong>Core Questions:</strong>
-        <ul>
-         <li>Which customer segments generate profitable lifetime value versus high servicing costs?</li>
-         <li>Is customer data unified across touchpoints into an actionable single profile?</li>
-         <li>How does Customer Lifetime Value (LTV) inform Customer Acquisition Cost (CAC) thresholds?</li>
-        </ul>
-       </div>
-       <div class="terms-pill">Segmentation · Customer Data · Customer Value · CRM · CDP · Customer Profiles · Lifecycle · LTV</div>
-      </article>
-
-      <!-- 4. ACQUISITION -->
-      <article class="chapter-card" id="acquisition">
-       <div class="chapter-meta">
-        <span class="chapter-num">04</span>
-        <span class="chapter-tag">Media &amp; Channels</span>
-       </div>
-       <h2>Acquisition</h2>
-       <p class="chapter-subtitle">How businesses buy or generate customers.</p>
-       <p>
-        Acquisition should be governed as an investment portfolio. We align paid media, performance marketing, social distribution, and programmatic buying to verifiable incrementality rather than platform-reported return figures.
-       </p>
-       <div class="chapter-questions">
-        <strong>Core Questions:</strong>
-        <ul>
-         <li>What percentage of paid acquisition is truly incremental versus bidding on existing demand?</li>
-         <li>What are the true media economics across paid search, programmatic, and social channels?</li>
-         <li>How do blended Marketing Efficiency Ratios (MER) and channel-level ROAS guide budget deployment?</li>
-        </ul>
-       </div>
-       <div class="terms-pill">Performance Marketing · Paid Media · Search · Social · Programmatic · CAC · ROAS · Incrementality · Media Economics</div>
-      </article>
-
-      <!-- 5. CONVERSION -->
-      <article class="chapter-card" id="conversion">
-       <div class="chapter-meta">
-        <span class="chapter-num">05</span>
-        <span class="chapter-tag">Friction &amp; Experience</span>
-       </div>
-       <h2>Conversion</h2>
-       <p class="chapter-subtitle">How demand turns into transactions.</p>
-       <p>
-        Driving qualified demand into a high-friction booking or purchasing experience destroys commercial value. Conversion focuses on eliminating cognitive, technical, and process barriers along the direct digital path.
-       </p>
-       <div class="chapter-questions">
-        <strong>Core Questions:</strong>
-        <ul>
-         <li>Where in the funnel are qualified buyers dropping out, and what friction causes abandonment?</li>
-         <li>Does the digital product, booking engine, or e-commerce checkout load fast and transparently?</li>
-         <li>How is personalization deployed to resolve specific buyer hesitancy rather than add decorative noise?</li>
-        </ul>
-       </div>
-       <div class="terms-pill">Customer Journey · UX · CRO · Digital Product · Booking Engines · E-Commerce · Checkout Friction · Personalization</div>
-      </article>
-
-      <!-- 6. DISTRIBUTION -->
-      <article class="chapter-card" id="distribution">
-       <div class="chapter-meta">
-        <span class="chapter-num">06</span>
-        <span class="chapter-tag">Channel Governance</span>
-       </div>
-       <h2>Distribution</h2>
-       <p class="chapter-subtitle">Who controls the transaction and how much that costs.</p>
-       <p>
-        Distribution determines operating margin. Particularly in hospitality and travel, surrendering customer ownership entirely to Online Travel Agencies (OTAs) and marketplaces creates severe margin erosion, while relying purely on direct channels can restrict volume.
-       </p>
-       <div class="chapter-questions">
-        <strong>Core Questions:</strong>
-        <ul>
-         <li>What is the total cost of distribution across direct booking, OTAs, wholesalers, and corporate intermediaries?</li>
-         <li>Where is margin leaking through unauthorized wholesaler discounting or rate parity violations?</li>
-         <li>What distinct value proposition compels the customer to transact directly?</li>
-        </ul>
-       </div>
-       <div class="terms-pill">Direct Channels · OTAs · Marketplaces · Metasearch · Platform Economics · Distribution Costs · Commission Economics · Digital Commerce</div>
-      </article>
-
-      <!-- 7. RETENTION -->
-      <article class="chapter-card" id="retention">
-       <div class="chapter-meta">
-        <span class="chapter-num">07</span>
-        <span class="chapter-tag">Loyalty &amp; Lifetime</span>
-       </div>
-       <h2>Retention</h2>
-       <p class="chapter-subtitle">How customers become repeat customers.</p>
-       <p>
-        Re-acquiring the same customer repeatedly resets customer acquisition costs on every transaction. Retention turns initial buyers into recurring commercial assets through structured lifecycle management and genuine utility.
-       </p>
-       <div class="chapter-questions">
-        <strong>Core Questions:</strong>
-        <ul>
-         <li>What triggers repeat purchase or rebooking behavior, and at what interval?</li>
-         <li>Does the loyalty program create genuine economic attachment or merely fund unredeemed liability?</li>
-         <li>How automated are lifecycle re-engagement journeys across email, messaging, and customer portals?</li>
-        </ul>
-       </div>
-       <div class="terms-pill">CRM · Loyalty · Lifecycle Marketing · Marketing Automation · Customer Engagement · Repeat Purchasing · Customer Value</div>
-      </article>
-
-      <!-- 8. MEASUREMENT -->
-      <article class="chapter-card" id="measurement">
-       <div class="chapter-meta">
-        <span class="chapter-num">08</span>
-        <span class="chapter-tag">Truth &amp; Causality</span>
-       </div>
-       <h2>Measurement</h2>
-       <p class="chapter-subtitle">How businesses distinguish activity from causality.</p>
-       <p>
-        Most marketing reporting tracks volume and correlation rather than business causality. Establishing a credible evidence base requires isolating incremental gain, reconciling analytics to financial ledgers, and understanding measurement limitations.
-       </p>
-       <div class="chapter-questions">
-        <strong>Core Questions:</strong>
-        <ul>
-         <li>What commercial evidence separates marketing causality from baseline organic momentum?</li>
-         <li>How do Multi-Touch Attribution (MTA) and Marketing Mix Modeling (MMM) frameworks balance top-down and bottom-up data?</li>
-         <li>Do marketing dashboards reconcile transparently with the general ledger and audited revenue?</li>
-        </ul>
-       </div>
-       <div class="terms-pill">Marketing Analytics · Attribution · MTA · MMM · Incrementality · Experimentation · Holdouts · Commercial KPIs · Customer Economics</div>
-      </article>
-
-      <!-- 9. MARTECH -->
-      <article class="chapter-card" id="martech">
-       <div class="chapter-meta">
-        <span class="chapter-num">09</span>
-        <span class="chapter-tag">Systems &amp; Architecture</span>
-       </div>
-       <h2>MarTech</h2>
-       <p class="chapter-subtitle">How technology supports the commercial system.</p>
-       <p>
-        Organizations frequently accumulate software licenses without achieving business integration. Technology exists to execute the commercial operating model, not to justify vendor subscriptions.
-       </p>
-       <div class="chapter-questions">
-        <strong>Core Questions:</strong>
-        <ul>
-         <li>How cleanly do CMS, CRM, CDP, booking engines, and analytics communicate?</li>
-         <li>Which tools are redundant, underutilized, or creating stranded maintenance overhead?</li>
-         <li>What governance structures ensure vendor contracts and enterprise RFPs deliver promised capabilities?</li>
-        </ul>
-       </div>
-       <div class="terms-pill">CMS · AEM · CRM · CDP · Analytics · Tagging · Marketing Automation · Data Flows · Customer Platforms · Architecture · Vendor Selection · Technology Governance</div>
-      </article>
-
-      <!-- 10. AI -->
-      <article class="chapter-card" id="ai">
-       <div class="chapter-meta">
-        <span class="chapter-num">10</span>
-        <span class="chapter-tag">Operating System Shift</span>
-       </div>
-       <h2>AI</h2>
-       <p class="chapter-subtitle">How artificial intelligence changes commercial workflows.</p>
-       <p>
-        Artificial intelligence is not treated here as marketing hype or speculative automation. It represents a fundamental shift in how consumers research and discover options, how teams synthesize intelligence, and how operational workflows are executed.
-       </p>
-       <div class="chapter-questions">
-        <strong>Core Questions:</strong>
-        <ul>
-         <li>How does conversational and agentic search alter customer discovery and comparison behavior?</li>
-         <li>Where can workflow automation reduce administrative friction in marketing operations?</li>
-         <li>How does machine learning improve predictive demand forecasting and revenue optimization?</li>
-        </ul>
-       </div>
-       <div class="terms-pill">Discovery · Research · Decision-Making · Customer Interaction · Marketing Operations · Content Production · Search · Measurement · Workflows · Organizational Capability</div>
-      </article>
-
-      <!-- 11. OPTIMIZATION -->
-      <article class="chapter-card" id="optimization">
-       <div class="chapter-meta">
-        <span class="chapter-num">11</span>
-        <span class="chapter-tag">Continuous Loop</span>
-       </div>
-       <h2>Optimization</h2>
-       <p class="chapter-subtitle">How the entire system improves over time.</p>
-       <p>
-        Optimization is not a one-off audit or temporary initiative; it is an executive operating discipline. It requires continuous experimentation, clear governance between internal teams and external agencies, and rigorous capital allocation.
-       </p>
-       <div class="chapter-questions">
-        <strong>Core Questions:</strong>
-        <ul>
-         <li>Is there a structured experimentation cadence with controlled testing and holdout groups?</li>
-         <li>Are agency incentives aligned with incremental commercial profit rather than gross media spend?</li>
-         <li>How routinely are commercial budgets reallocated based on proven performance evidence?</li>
-        </ul>
-       </div>
-       <div class="terms-pill">Experimentation · Testing · Operating Models · Agency Governance · Measurement · Budget Allocation · Technology Prioritization · Commercial Decision-Making</div>
-      </article>
-
+<article class="chapter-card dj-chapter" id="demand"><div class="chapter-meta"><span class="chapter-num">01</span><span class="chapter-tag">Market Economics</span></div><h2>Demand</h2><p>Understand where profitable demand originates and what drives it.</p><div class="dj-capabilities">Market demand · Intent · Incrementality</div></article>
+<article class="chapter-card dj-chapter" id="discovery"><div class="chapter-meta"><span class="chapter-num">02</span><span class="chapter-tag">Search & Visibility</span></div><h2>Discovery</h2><p>Make the business visible wherever customers research and compare.</p><div class="dj-capabilities">SEO · AI Search · Marketplaces</div></article>
+<article class="chapter-card dj-chapter" id="customer"><div class="chapter-meta"><span class="chapter-num">03</span><span class="chapter-tag">Value & Segments</span></div><h2>Customer</h2><p>Identify high-value customers, their needs and lifetime economics.</p><div class="dj-capabilities">Segmentation · CRM · LTV</div></article>
+<article class="chapter-card dj-chapter" id="acquisition"><div class="chapter-meta"><span class="chapter-num">04</span><span class="chapter-tag">Media & Channels</span></div><h2>Acquisition</h2><p>Acquire incremental customers through efficient channel investment.</p><div class="dj-capabilities">Paid Media · CAC · ROAS</div></article>
+<article class="chapter-card dj-chapter" id="conversion"><div class="chapter-meta"><span class="chapter-num">05</span><span class="chapter-tag">Friction & Experience</span></div><h2>Conversion</h2><p>Remove barriers between customer interest and completed transactions.</p><div class="dj-capabilities">UX · CRO · Checkout</div></article>
+<article class="chapter-card dj-chapter" id="distribution"><div class="chapter-meta"><span class="chapter-num">06</span><span class="chapter-tag">Channel Governance</span></div><h2>Distribution</h2><p>Balance reach, channel costs and control of customer relationships.</p><div class="dj-capabilities">Direct · OTAs · Margin</div></article>
+<article class="chapter-card dj-chapter" id="retention"><div class="chapter-meta"><span class="chapter-num">07</span><span class="chapter-tag">Loyalty & Lifetime</span></div><h2>Retention</h2><p>Turn first purchases into repeat business and advocacy.</p><div class="dj-capabilities">Lifecycle · Loyalty · Repeat</div></article>
+<article class="chapter-card dj-chapter" id="measurement"><div class="chapter-meta"><span class="chapter-num">08</span><span class="chapter-tag">Truth & Causality</span></div><h2>Measurement</h2><p>Connect commercial outcomes to credible evidence of impact.</p><div class="dj-capabilities">Attribution · MMM · Testing</div></article>
+<article class="chapter-card dj-chapter" id="martech"><div class="chapter-meta"><span class="chapter-num">09</span><span class="chapter-tag">Systems & Architecture</span></div><h2>MarTech</h2><p>Integrate technology and data around business needs.</p><div class="dj-capabilities">CRM · CDP · Automation</div></article>
+<article class="chapter-card dj-chapter" id="ai"><div class="chapter-meta"><span class="chapter-num">10</span><span class="chapter-tag">Operating System Shift</span></div><h2>AI</h2><p>Apply AI to discovery, decision-making and operational efficiency.</p><div class="dj-capabilities">AI Search · Forecasting · Workflows</div></article>
+<article class="chapter-card dj-chapter" id="optimization"><div class="chapter-meta"><span class="chapter-num">11</span><span class="chapter-tag">Continuous Loop</span></div><h2>Optimization</h2><p>Use evidence to improve experiences, investment and profitability.</p><div class="dj-capabilities">Experiments · Governance · Allocation</div></article>
      </div>
     </div>
    </section>
