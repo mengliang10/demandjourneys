@@ -1,0 +1,11 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+export function getStaticPaths() {
+ const source=path.resolve('_source/site');const paths=[];
+ function visit(dir){for(const item of fs.readdirSync(dir,{withFileTypes:true})){if(item.name==='.git')continue;const full=path.join(dir,item.name);if(item.isDirectory())visit(full);else if(item.name.endsWith('.html')&&item.name!=='index.html')paths.push({params:{legacy:path.relative(source,full).slice(0,-5)},props:{file:full}});}}
+ visit(source);return paths;
+}
+const html=fs.readFileSync(Astro.props.file,'utf8');
+---
+<Fragment set:html={html} />

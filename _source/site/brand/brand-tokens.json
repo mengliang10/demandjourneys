@@ -1,0 +1,68 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "name": "Demand Journeys Unified Hybrid",
+  "version": "1.0.0",
+  "status": "approved brand direction; production rollout under review",
+  "colors": {
+    "ink": {
+      "value": "#203E3A",
+      "role": "primary ink"
+    },
+    "teal": {
+      "value": "#237E72",
+      "role": "primary analytical accent"
+    },
+    "gold": {
+      "value": "#927448",
+      "role": "premium accent"
+    },
+    "paper": {
+      "value": "#F5F2E9",
+      "role": "default canvas"
+    },
+    "muted": {
+      "value": "#60716A",
+      "role": "supporting text"
+    },
+    "line": {
+      "value": "#D5DCD1",
+      "role": "dividers"
+    },
+    "terracotta": {
+      "value": "#B45A34",
+      "role": "limited alert/focus accent"
+    },
+    "panel": {
+      "value": "#E8EDE4",
+      "role": "panels"
+    },
+    "white": {
+      "value": "#FFFEFA",
+      "role": "reverse/white surface"
+    }
+  },
+  "typography": {
+    "display": "Newsreader",
+    "body": "DM Sans",
+    "fallbackDisplay": "Georgia, serif",
+    "fallbackBody": "Arial, Helvetica, sans-serif",
+    "weights": {
+      "display": 400,
+      "body": 400,
+      "emphasis": 600
+    }
+  },
+  "layout": {
+    "spacingBasePx": 8,
+    "slideAspect": "16:9",
+    "slideWidthPx": 1920,
+    "slideHeightPx": 1080,
+    "document": "A4"
+  },
+  "logo": {
+    "selectedConcept": "B - Journey Path",
+    "productionMasterStatus": "pending small-size and export QA",
+    "symbol": "brand/logos/journey-mark.svg",
+    "wordmark": "brand/logos/journey-logo.svg"
+  }
+}

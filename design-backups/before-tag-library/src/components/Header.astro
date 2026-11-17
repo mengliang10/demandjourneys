@@ -1,0 +1,15 @@
+---
+const {home=false,current=""}=Astro.props;
+---
+  <header class="site-header">
+   <a class="logo" href="/" aria-label="Demand Journeys home"><img src={home ? "/identity/demandjourneys-logo-white.png" : "/identity/demandjourneys-logo-forest.png"} alt="Demand Journeys" width="228" height="40" /></a>
+   <button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false">Menu</button>
+   <nav id="main-navigation" aria-label="Main navigation">
+    <a href="/profile/" aria-current={current === "profile" ? "page" : undefined}>Profile</a>
+    <a href="/hospitality-presentations/" aria-current={current === "hospitality-presentations" ? "page" : undefined}>Presentations</a>
+    <a href="/methodology/" aria-current={current === "methodology" ? "page" : undefined}>Methodology</a>
+    <a href="https://demandjourneys.substack.com" target="_blank" rel="noopener noreferrer">Substack ↗</a>
+    <a href="https://github.com/mengliang10" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+   </nav>
+   <a class="header-cta" href={home ? "#enquiry" : "/#enquiry"}>Enquire <span aria-hidden="true">↗</span></a>
+  </header>

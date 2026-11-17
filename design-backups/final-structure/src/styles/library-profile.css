@@ -1,0 +1,137 @@
+body.interior .presentation-library{padding-block:15px 45px}
+body.interior .library-tools{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:0}
+.library-tools>label{display:block;font-size:14px;font-weight:600;margin-bottom:10px}
+.library-search-row{display:flex;gap:12px;align-items:center}
+.library-search-row input{width:100%;min-width:0;background:#fff;border:1px solid #b7c5bc;border-radius:5px;padding:14px 16px;font:inherit;color:var(--ink)}
+.library-search-row button,.library-pagination button{flex-shrink:0;border:1px solid #b7c5bc;background:transparent;color:var(--ink);border-radius:5px;padding:12px 16px;cursor:pointer;font:inherit;font-size:13px}
+.tag-filters{border:0;padding:0;margin:24px 0 14px;min-width:0}
+.tag-filters legend{padding:0;margin-bottom:12px;font-size:12px;font-weight:600}
+.tag-filters legend span{font-weight:400;color:var(--muted)}
+.tag-filters>div{display:flex;gap:8px;flex-wrap:wrap}
+.tag-filters button{display:inline-flex;gap:10px;align-items:center;border:1px solid #cbd5cd;background:#fff;border-radius:5px;color:var(--ink);padding:8px 12px;font:inherit;font-size:12px;cursor:pointer}
+.tag-filters button span{font-size:10px;opacity:.75}
+.tag-filters button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+body.interior #library-status{font-size:12px;margin:20px 0 0;color:var(--muted)}
+body.interior .library-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 38px}
+body.interior .library-results .research-card{padding:30px 0;border:0;border-bottom:1px solid var(--line);background:transparent;border-radius:0;box-shadow:none;overflow:visible}
+body.interior .library-results .research-title{font-size:27px}
+body.interior .library-results .research-summary{font-size:15px;line-height:1.7}
+body.interior .library-results .research-tags span{border:1px solid var(--line);padding:4px 8px;border-radius:4px}
+body.interior .library-results .research-tags span+span::before{content:none}
+.library-pagination{display:flex;justify-content:center;align-items:center;gap:20px;padding-top:26px;font-size:13px}
+.library-pagination button:disabled{opacity:.4;cursor:default}
+body.interior .library-empty{padding:35px 0}
+body.interior .library-scope{margin-top:35px;border-top:1px solid var(--line);padding-top:20px;max-width:850px;font-size:14px}
+.library-scope summary{cursor:pointer;font-size:14px;font-weight:600;margin-bottom:20px}
+body.interior .library-scope h3{font-size:20px}
+.scope-topics{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
+.presentation-library [hidden]{display:none!important}
+/* A quiet, single-column profile; preserve every paragraph and download. */
+body.interior[data-page=profile] .profile-doc-container,body.interior[data-page=profile] #practice-context .container,body.interior[data-page=profile] .about-section .container{max-width:780px}
+body.interior[data-page=profile] .profile-page-section{padding-top:10px}
+body.interior[data-page=profile] .profile-doc-card{background:none;border:0;padding:18px 0;box-shadow:none;border-radius:0}
+body.interior[data-page=profile] .profile-action-bar{margin-bottom:10px}
+body.interior[data-page=profile] .profile-header-title{font-size:clamp(34px,4vw,50px);font-weight:500;margin:22px 0 15px}
+body.interior[data-page=profile] .profile-top-meta{font-size:12px}
+body.interior[data-page=profile] .profile-subtitle{font-size:16px}
+body.interior[data-page=profile] .profile-lead-statement{border:0;padding:0;font-size:22px;line-height:1.55;margin:20px 0}
+body.interior[data-page=profile] .profile-paragraph{font-size:16px;line-height:1.8}
+body.interior[data-page=profile] .profile-section-heading{font-size:13px;letter-spacing:.05em;margin:28px 0 16px;padding-top:25px}
+body.interior[data-page=profile] .profile-pillars-grid{display:block}
+body.interior[data-page=profile] .profile-pillar-card{padding:0;margin-bottom:19px}
+body.interior[data-page=profile] .profile-pillar-title{font-size:19px;margin:0 0 7px}
+body.interior[data-page=profile] .profile-pillar-title::before{content:none}
+body.interior[data-page=profile] .profile-pillar-text{font-size:15px}
+body.interior[data-page=profile] .growth-flow-box{padding:0;background:none;border:0;gap:8px 12px;font-size:13px}
+body.interior[data-page=profile] .growth-arrow{margin-left:7px}
+body.interior[data-page=profile] .profile-download-btn{background:none;color:var(--ink);padding:0;border-radius:0;text-decoration:underline;text-underline-offset:4px;font-size:12px}
+body.interior[data-page=profile] .next-step{max-width:780px;background:none;border-top:1px solid var(--line);border-radius:0;padding:30px 0;color:var(--ink);margin-top:15px}
+body.interior[data-page=profile] .next-step h2{color:var(--ink);font-size:26px}
+body.interior[data-page=profile] .next-step p,body.interior[data-page=profile] .next-step .eyebrow{color:var(--muted)}
+body.interior[data-page=profile] .next-step .button{background:var(--ink);color:#fff}
+body.interior[data-page=profile] #practice-context h2,body.interior[data-page=profile] .about-section h2{font-size:25px}
+body.interior[data-page=profile] #practice-context h3{font-size:19px}
+body.interior[data-page=profile] #practice-context p,body.interior[data-page=profile] .about-section{font-size:15px}
+@media(max-width:760px){body.interior .library-results{grid-template-columns:1fr}.library-search-row{flex-wrap:wrap}.library-search-row input{flex-basis:100%}.tag-filters legend span{display:block;margin-top:5px}.library-pagination{gap:10px}.library-pagination button{padding:10px}body.interior[data-page=profile] .profile-action-bar{gap:15px}body.interior[data-page=profile] .profile-lead-statement{font-size:20px}}
+/* Slide previews keep a true widescreen canvas at every breakpoint. */
+body.interior[data-page=hospitality-presentations] .container{width:min(1400px,92%)}
+body.interior .library-results{gap:0 28px}
+body.interior .library-results .deck-preview{display:block;position:relative;align-self:stretch;width:100%;aspect-ratio:16/9;margin-bottom:23px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#e9eee9;text-decoration:none;isolation:isolate}
+body.interior .deck-preview img{display:block;width:100%;height:100%;object-fit:contain}
+.deck-preview-open{position:absolute;right:12px;bottom:12px;padding:7px 11px;background:#253b34;color:#fff;border-radius:4px;font-size:11px;opacity:0;transition:opacity .15s}
+.deck-preview:hover .deck-preview-open,.deck-preview:focus-visible .deck-preview-open{opacity:1}
+.deck-preview-fallback{height:100%;padding:7%;display:flex;flex-direction:column;justify-content:space-between;background:#253b34;color:#fff}
+.deck-preview-fallback>span{font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.deck-preview-fallback strong{font:500 clamp(18px,2.2vw,32px)/1.15 Outfit,Arial,sans-serif;max-width:90%}
+@media(max-width:760px){body.interior .library-results{grid-template-columns:1fr}body.interior .library-results .research-card{min-width:0}.deck-preview-open{display:none}.deck-preview-fallback strong{font-size:clamp(17px,4vw,28px)}}
+@media(prefers-reduced-motion:reduce){.deck-preview-open{transition:none}}
+/* Wide profile and methodology compositions; natural document flow on mobile. */
+body.interior[data-page=profile] .container,body.interior[data-page=methodology] .container{width:min(1400px,92%);max-width:1400px}
+body.interior[data-page=profile] .profile-doc-container{max-width:1400px}
+body.interior[data-page=profile] .profile-doc-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:7%;align-items:start}
+body.interior[data-page=profile] .profile-doc-header{grid-column:1/-1;aspect-ratio:16/9;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:7%;background:#e8eee8;border-radius:10px;margin-bottom:40px;width:100%}
+body.interior[data-page=profile] .profile-top-meta{width:100%;margin-bottom:auto}
+body.interior[data-page=profile] .profile-header-title{font-size:clamp(40px,5.2vw,78px);margin:30px 0 20px}
+body.interior[data-page=profile] .profile-subtitle{font-size:clamp(18px,1.8vw,26px);max-width:750px;margin-bottom:auto}
+body.interior[data-page=profile] .profile-divider-heavy{width:100%;margin-bottom:0}
+body.interior[data-page=profile] .profile-lead-statement{grid-column:1/-1;max-width:880px;font-size:27px;margin:0 0 32px}
+body.interior[data-page=profile] .profile-section-heading,body.interior[data-page=profile] .profile-pillars-grid,body.interior[data-page=profile] .growth-flow-box,body.interior[data-page=profile] .profile-doc-footer{grid-column:1/-1;width:100%}
+body.interior[data-page=profile] .profile-pillars-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px}
+body.interior[data-page=profile] #practice-context .container,body.interior[data-page=profile] .about-section .container,body.interior[data-page=profile] .next-step{max-width:1400px}
+body.interior[data-page=profile] #practice-context p,body.interior[data-page=profile] .about-section p{max-width:85ch}
+body.interior[data-page=methodology] .method-hero .container{aspect-ratio:16/9;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;padding:7%;background:#e8eee8;border:0;border-radius:10px}
+body.interior[data-page=methodology] .method-hero h1{font-size:clamp(42px,5.2vw,78px);margin-top:0}
+body.interior[data-page=methodology] .method-hero .section-lead{max-width:850px;font-size:clamp(24px,2.4vw,35px)}
+body.interior[data-page=methodology] .method-hero .lead-sub{max-width:850px;font-size:18px;margin-bottom:0}
+body.interior[data-page=methodology] .method-chapters .chapter-grid{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:36px}
+@media(max-width:1000px){body.interior[data-page=profile] .profile-pillars-grid{grid-template-columns:repeat(2,minmax(0,1fr))}body.interior[data-page=methodology] .method-chapters .chapter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+body.interior[data-page=profile] .profile-doc-card{display:block}
+body.interior[data-page=profile] .profile-doc-header,body.interior[data-page=methodology] .method-hero .container{aspect-ratio:auto;min-height:0;padding:28px 23px;margin-bottom:25px}
+body.interior[data-page=profile] .profile-top-meta{margin-bottom:22px}
+body.interior[data-page=profile] .profile-header-title{font-size:36px;margin:0 0 20px}
+body.interior[data-page=profile] .profile-subtitle{font-size:17px;margin-bottom:0}
+body.interior[data-page=profile] .profile-lead-statement{font-size:21px}
+body.interior[data-page=profile] .profile-pillars-grid,body.interior[data-page=methodology] .method-chapters .chapter-grid{grid-template-columns:1fr;gap:0}
+body.interior[data-page=methodology] .method-hero .container{margin-bottom:0}
+body.interior[data-page=methodology] .method-hero h1{font-size:38px}
+body.interior[data-page=methodology] .method-hero .section-lead{font-size:23px}
+body.interior[data-page=methodology] .method-hero .lead-sub{font-size:16px}
+}
+@media print{body.interior[data-page=profile] .profile-doc-header,body.interior[data-page=methodology] .method-hero .container{aspect-ratio:auto;background:none;padding:0}body.interior[data-page=profile] .profile-doc-card{display:block}}
+/* Compact library introduction: bring browsing controls above the fold. */
+body.interior[data-page=hospitality-presentations] .hospitality-hero{padding:8px 0 0}
+body.interior[data-page=hospitality-presentations] .hospitality-hero .container{padding:14px 0 22px;display:grid;grid-template-columns:1.15fr 1fr;column-gap:55px;align-items:start}
+body.interior[data-page=hospitality-presentations] .hospitality-hero .eyebrow{grid-column:1/-1;margin-bottom:10px;font-size:10px}
+body.interior[data-page=hospitality-presentations] .hospitality-hero h1{grid-column:1;grid-row:2/4;font-size:clamp(34px,3.4vw,49px);line-height:1.1;letter-spacing:-.035em;margin:0;max-width:600px}
+body.interior[data-page=hospitality-presentations] .hospitality-hero .section-lead{grid-column:2;font-size:20px;line-height:1.45;margin:0 0 10px}
+body.interior[data-page=hospitality-presentations] .hospitality-hero .lead-sub{grid-column:2;font-size:14px;line-height:1.6;margin:0;max-width:650px}
+body.interior[data-page=hospitality-presentations] .presentation-library{padding-top:20px}
+body.interior[data-page=hospitality-presentations] .tag-filters{margin:18px 0 10px}
+body.interior[data-page=hospitality-presentations] #library-status{margin-top:14px}
+body.interior[data-page=hospitality-presentations] .library-tools{padding-bottom:16px}
+body.interior[data-page=hospitality-presentations] .library-results .research-card{padding-top:22px}
+@media(max-width:760px){
+body.interior[data-page=hospitality-presentations] .hospitality-hero .container{display:block;padding:8px 0 20px}
+body.interior[data-page=hospitality-presentations] .hospitality-hero h1{font-size:34px;margin:0 0 15px}
+body.interior[data-page=hospitality-presentations] .hospitality-hero .section-lead{font-size:18px;margin-bottom:8px}
+body.interior[data-page=hospitality-presentations] .hospitality-hero .lead-sub{font-size:13px}
+body.interior[data-page=hospitality-presentations] .presentation-library{padding-top:18px}
+}
+/* Deck cards: the homepage selected-thinking treatment, applied to the library. */
+body.interior .library-results .research-card{padding:0 0 24px;border-bottom:1px solid var(--ink);border-radius:0;align-items:stretch}
+body.interior .library-results .deck-preview{margin-bottom:17px;border-radius:6px}
+body.interior .library-results .deck-preview img{object-fit:cover;transition:transform .5s ease}
+body.interior .library-results .deck-preview:hover img{transform:scale(1.025)}
+body.interior .library-results .research-meta{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-between;gap:4px 18px;margin:0 0 9px;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+body.interior .library-results .research-status{color:var(--muted);font-weight:400}
+body.interior .library-results .research-title{font-family:Outfit,Arial,sans-serif;font-size:clamp(21px,2vw,26px);line-height:1.18;letter-spacing:-.03em;font-weight:500;margin:0 0 10px}
+body.interior .library-results .research-summary{font-size:14px;line-height:1.65;color:var(--muted);margin:0 0 14px;max-width:60ch;flex:0 0 auto}
+body.interior .library-results .presentation-author{font-size:11px;color:var(--muted);margin:auto 0 14px}
+body.interior .library-results .presentation-open{background:none;color:var(--ink);padding:0;border-radius:0;font-size:12px;font-weight:650;gap:9px;margin-bottom:16px;text-decoration:none!important}
+body.interior .library-results .presentation-open:hover{background:none;color:var(--accent)}
+body.interior .library-results .research-card>p:has(a[download]){font-size:11px;margin:0 0 14px}
+body.interior .library-results .research-card>p:has(a[download]) a{color:var(--muted)}
+body.interior .library-results .research-tags{padding-top:14px;font-size:10px}
+body.interior .library-results .deck-preview-open{display:none}
+@media(prefers-reduced-motion:reduce){body.interior .library-results .deck-preview img{transition:none}body.interior .library-results .deck-preview:hover img{transform:none}}

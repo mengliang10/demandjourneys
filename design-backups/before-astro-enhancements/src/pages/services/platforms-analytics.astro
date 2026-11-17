@@ -1,0 +1,9 @@
+---
+import ServicePage from '../../components/ServicePage.astro';
+const sections=[
+ {label:'Platforms',title:'Start with the use case.',text:'Choose systems around business needs and the people who use them.',items:['Map CRM, CMS, customer data and marketing workflows.','Review integration needs, ownership and operational gaps.','Develop requirements and vendor evaluation criteria before committing to tools.']},
+ {label:'Analytics',title:'Make the numbers useful.',text:'Build a measurement plan that supports real decisions.',items:['Agree KPI definitions, source systems and reporting responsibilities.','Specify dashboards around audiences, decisions and review cadence.','Distinguish attribution, incrementality and business outcomes.']},
+ {label:'Delivery',title:'Connect strategy to execution.',text:'Provide business-side leadership and coordination with technical specialists.',items:['Prioritise a roadmap with dependencies and acceptance criteria.','Coordinate vendors and engineering teams on implementation and validation.','Establish data governance, documentation and ongoing performance reviews.']}
+];
+---
+<ServicePage title="Platforms & Analytics" current="platforms-analytics" intro="Connect customer data, marketing technology and better decisions." description="Business-led marketing technology and analytics advisory: requirements, measurement, vendor coordination and governance." sections={sections}/>

@@ -1,0 +1,18 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+export function getStaticPaths() {
+ const source=path.resolve('_source/site');
+ const paths=[];
+ function visit(dir) { for(const item of fs.readdirSync(dir,{withFileTypes:true})) {if(item.name==='.git')continue; const full=path.join(dir,item.name);if(item.isDirectory())visit(full);else if(item.name==='index.html'&&dir!==source)paths.push({params:{route:path.relative(source,dir)},props:{file:full}});}}
+ visit(source);return paths;
+}
+let html=fs.readFileSync(Astro.props.file,'utf8');
+if(Astro.params.route==='profile') {
+ const home=fs.readFileSync(path.resolve('_source/site/index.html'),'utf8');
+ const about=home.match(/<section class="section about-section"[\s\S]*?<\/section>/)?.[0]||'';
+ const tagline=home.match(/<p class="hero-tagline">([\s\S]*?)<\/p>/)?.[1]||'';
+ html=html.replace('</main>',`<section class="section" id="practice-context"><div class="container"><h2>About the practice</h2><h3>Make Demand More Profitable.</h3><p>${tagline}</p></div></section>${about}</main>`);
+}
+---
+<Fragment set:html={html} />

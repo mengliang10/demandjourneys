@@ -1,0 +1,61 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Enquiry from '../components/Enquiry.astro';
+import '../styles/home.css';
+import '../styles/refinement.css';
+const services = [
+ { n:'01', type:'Workshop', verb:'Understand.', text:'Clarify the problem and where to focus.' },
+ { n:'02', type:'Audit', verb:'Diagnose.', text:'Find what is working, broken or missing.' },
+ { n:'03', type:'Fractional CMO', verb:'Lead.', text:'Provide senior marketing leadership through the change.' }
+];
+const title='Make Demand More Profitable | Demand Journeys';
+const description='Independent digital marketing advice and leadership from Meng Liang Tan. Workshops, audits and fractional CMO support to help your business make demand more profitable.';
+---
+<!doctype html>
+<html lang="en-SG">
+ <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#253b34" />
+  <link rel="canonical" href="https://www.demandjourneys.com/" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="/fonts/inter-tight-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content="https://www.demandjourneys.com/" />
+  <meta property="og:site_name" content="Demand Journeys" />
+  <meta property="og:image" content="https://www.demandjourneys.com/splash.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json" set:html={JSON.stringify({'@context':'https://schema.org','@type':'ProfessionalService',name:'Demand Journeys',url:'https://www.demandjourneys.com/',email:'ml@demandjourneys.com',description,founder:{'@type':'Person',name:'Meng Liang Tan',sameAs:'https://www.linkedin.com/in/mengliang/'}})} />
+  <script is:inline defer src="/site.js"></script>
+ </head>
+ <body data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <Header home />
+  <main id="main">
+   <section class="hero" aria-labelledby="hero-title" id="top">
+    <div class="hero-topline"><p>Meng Liang Tan · Independent advisor</p><span>Singapore · Asia Pacific</span></div>
+    <h1 id="hero-title">Make demand<br class="mobile-break" /> more profitable.</h1>
+    <div class="hero-bottom">
+     <p class="hero-intro">Digital marketing advice and leadership.<br />With the commercial perspective to connect it all.</p>
+     <a class="primary-cta" href="#enquiry">Enquire <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="hero-caption"><span>Two decades across hospitality, travel &amp; digital commerce.</span><a href="/profile/">Meet Meng Liang <span aria-hidden="true">→</span></a></div>
+   <a class="scroll-cue" href="#ways-to-help" aria-label="Explore how I can help"><span aria-hidden="true">⌄</span></a></section>
+   <section class="services" aria-labelledby="services-title" id="ways-to-help">
+    <div class="section-heading"><span class="eyebrow">01 / How I can help</span><h2 id="services-title">A clearer way forward.</h2></div>
+    <div class="service-grid">{services.map(s=><a class="service" href="#enquiry" data-enquiry={s.type} aria-label={`Enquire about ${s.type}`}><div class="service-top"><span>{s.n}</span><span>{s.type}</span><span aria-hidden="true">↗</span></div><svg class="service-diagram" viewBox="0 0 180 42" fill="none" aria-hidden="true">{s.n==='01' ? <><circle cx="21" cy="21" r="14"/><circle cx="69" cy="21" r="14"/><circle cx="117" cy="21" r="14"/><path d="M35 21H55M83 21H103M131 21H172"/><circle cx="172" cy="21" r="3" fill="currentColor"/></> : s.n==='02' ? <><path d="M8 32H170M25 30V21M55 30V11M85 30V18M115 30V5M145 30V13"/><circle cx="115" cy="12" r="11"/></> : <><path d="M8 34L55 24L102 28L165 6M148 6H165V23"/><circle cx="55" cy="24" r="4"/><circle cx="102" cy="28" r="4"/></>}</svg><h3>{s.verb}</h3><p>{s.text}</p></a>)}</div>
+    <div class="reading-line"><span>Explore the thinking behind the work.</span><div><a href="/methodology/">Methodology →</a><a href="/hospitality-presentations/">Presentations →</a></div></div>
+   </section>
+   <section class="contact" id="enquiry" aria-labelledby="contact-title">
+    <div class="contact-intro"><span class="eyebrow">02 / Let’s talk</span><h2 id="contact-title">What are you<br />trying to solve?</h2><p>Tell me what’s happening in your business.<br />We can start there.</p><a class="email-link" href="mailto:ml@demandjourneys.com">ml@demandjourneys.com ↗</a></div>
+    <Enquiry />
+   </section>
+  </main>
+  <Footer />
+ </body>
+</html>

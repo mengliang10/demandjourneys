@@ -1,0 +1,6 @@
+[
+ {"id":"strategy","label":"Strategy & Commercial","topics":["Commercial Strategy","Demand Economics","Distribution Economics"]},
+ {"id":"search","label":"Search & AI","topics":["AI & Search Shifts","Generative Engine Optimisation (GEO)","Answer Engine Optimisation (AEO)","Technical SEO"]},
+ {"id":"growth","label":"Growth & Customers","topics":["Conversion","Customer Data"]},
+ {"id":"technology","label":"Technology & Analytics","topics":["Measurement","Technology & Execution"]}
+]

@@ -1,0 +1,9 @@
+---
+import ServicePage from '../../components/ServicePage.astro';
+const sections=[
+ {label:'Diagnose',title:'Find the growth constraint.',text:'Start with the customer journey and the economics behind it.',items:['Map discovery, consideration, purchase and repeat behaviour.','Review channel costs, conversion friction and retention signals.','Separate observed performance from assumptions about causality.']},
+ {label:'Prioritise',title:'Focus the next investment.',text:'Turn a broad marketing challenge into a manageable programme.',items:['Align brand, content, paid and owned channels around audience needs.','Prioritise experiments by expected value, effort and evidence.','Define success through qualified demand, contribution and customer value.']},
+ {label:'Lead',title:'Build a working rhythm.',text:'Give teams clear priorities, accountability and commercial context.',items:['Coordinate internal teams, agencies and specialist partners.','Set a practical testing and reporting cadence.','Review what to scale, revise or stop, with attribution limits made clear.']}
+];
+---
+<ServicePage title="Growth Marketing" current="growth-marketing" intro="Turn customer demand into lasting commercial value." description="Growth marketing advisory connecting acquisition, conversion, retention, experimentation and commercial performance." sections={sections}/>

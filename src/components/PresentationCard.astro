@@ -1,0 +1,17 @@
+---
+import subjectGroups from '../data/presentation-subjects.json';
+import { Picture } from 'astro:assets';
+const {article}=Astro.props;
+const searchable=[article.title,article.summary,article.topic,article.author,...article.tags].join(' ');
+const slideCount=article.format.match(/\d+\s+Slides/i)?.[0] || article.format;
+const subjects=subjectGroups.filter(group=>group.topics.some(topic=>article.tags.includes(topic))).map(group=>group.id);
+if(article.tags.some(tag=>!subjectGroups.some(group=>group.topics.includes(tag))))subjects.push('other');
+---
+<article class="research-card" data-search={searchable} data-tags={JSON.stringify(article.tags)} data-subjects={JSON.stringify(subjects)} data-published={article.published || ''}>
+ <a class="deck-preview" href={article.link} data-astro-reload aria-label={`Open presentation: ${article.title}`}>
+ {article.thumbnail ? <Picture src={article.thumbnail} formats={['webp']} widths={[360,640,960,1200]} sizes="(max-width: 760px) 92vw, (max-width: 1000px) 45vw, (max-width: 1522px) 30vw, 440px" alt="" loading="lazy" decoding="async" /> : <span class="deck-preview-fallback"><span>Demand Journeys</span><strong>{article.title}</strong></span>}
+ <span class="deck-preview-open" aria-hidden="true">View presentation ↗</span>
+ </a>
+ <h2 class="research-title"><a href={article.link} data-astro-reload>{article.title}</a></h2>
+ <div class="deck-actions"><span class="deck-slide-count">{slideCount}</span>{article.published ? <time datetime={article.published}>{new Intl.DateTimeFormat('en-SG',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(article.published))}</time> : <span class="deck-date">Undated</span>}<a href={article.link} data-astro-reload>Open ↗</a>{article.pdf && <a href={article.pdf} download aria-label={`Download PDF: ${article.title}`}>PDF ↓</a>}</div>
+</article>

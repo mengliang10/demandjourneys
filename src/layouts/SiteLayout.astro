@@ -1,0 +1,36 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import { fade } from 'astro:transitions';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/home.css';
+const {title,description='',current='',home=false,bodyClass=home?'final-home':'interior',headHtml,ogImage='/splash.jpg'}=Astro.props;
+const canonical=new URL(Astro.url.pathname,'https://www.demandjourneys.com/');
+---
+<!doctype html>
+<html lang="en-SG">
+<head>
+ <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+ {headHtml ? <Fragment set:html={headHtml} /> : <>
+ <title>{title}</title><meta name="description" content={description}/>
+ <link rel="canonical" href={canonical}/><meta property="og:type" content="website"/>
+ <meta property="og:title" content={title}/><meta property="og:description" content={description}/>
+ <meta property="og:url" content={canonical}/><meta property="og:site_name" content="Demand Journeys"/>
+ <meta property="og:image" content={new URL(ogImage,'https://www.demandjourneys.com/')}/><meta name="twitter:card" content="summary_large_image"/>
+ </>}
+ <link rel="icon" href="/favicon.svg" type="image/svg+xml"/><meta name="theme-color" content="#253b34"/>
+ <link rel="preload" href="/fonts/inter-tight-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin/>
+ <link rel="preload" href="/fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin/>
+ <ClientRouter fallback="none" />
+ <slot name="head"/>
+</head>
+<body class={bodyClass} data-page={current || (home?'home':'')}>
+ <a class="skip-link" href="#main">Skip to content</a><Header home={home} current={current}/>
+ <main id="main" transition:animate={fade({duration:'140ms'})}><slot/></main>
+ <Footer/>
+ <script>import '../scripts/site.js';</script>
+</body>
+</html>
+<style is:global>
+@media(prefers-reduced-motion:reduce){::view-transition-old(*),::view-transition-new(*){animation:none!important}}
+</style>

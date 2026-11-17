@@ -1,0 +1,19 @@
+---
+import '../styles/navigation.css';
+const {home=false,current=""}=Astro.props;
+---
+  <header class="site-header">
+   <a class="logo" href="/" aria-label="Demand Journeys home"><img src={home ? "/identity/demandjourneys-logo-white.png" : "/identity/demandjourneys-logo-forest.png"} alt="Demand Journeys" width="228" height="40" /></a>
+   <button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false">Menu</button>
+   <nav id="main-navigation" aria-label="Main navigation">
+    <a href="/profile/" aria-current={current === "profile" ? "page" : undefined}>Profile</a>
+    <a href="/hospitality-presentations/" aria-current={current === "hospitality-presentations" ? "page" : undefined}>Presentations</a>
+    <div class="services-nav-group" role="group" aria-label="Services">
+    <a href="/ai-search/" aria-current={current === "ai-search" ? "page" : undefined}>AEO/GEO</a>
+    <a href="/services/growth-marketing/" aria-current={current === "growth-marketing" ? "page" : undefined}>Growth Marketing</a>
+    <a href="/services/platforms-analytics/" aria-current={current === "platforms-analytics" ? "page" : undefined}>Platforms &amp; Analytics</a>
+    </div>
+   </nav>
+   <a class="header-cta" href={home ? "#enquiry" : "/#enquiry"}>Enquire <span aria-hidden="true">↗</span></a>
+  </header>
+

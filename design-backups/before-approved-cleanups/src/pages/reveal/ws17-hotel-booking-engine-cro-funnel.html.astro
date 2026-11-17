@@ -1,0 +1,6 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+const html=fs.readFileSync(path.resolve("_source/site/reveal/ws17-hotel-booking-engine-cro-funnel.html"),'utf8');
+---
+<Fragment set:html={html} />

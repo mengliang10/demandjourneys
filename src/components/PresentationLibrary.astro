@@ -1,0 +1,38 @@
+---
+import subjectGroups from '../data/presentation-subjects.json';
+import {allPresentations} from '../lib/presentations.mjs';
+import PresentationCard from './PresentationCard.astro';
+const articles=await allPresentations();
+const tags=[...new Set(articles.flatMap(a=>a.tags))].sort();
+const groups=subjectGroups.map(group=>({...group,topics:group.topics.filter(topic=>tags.includes(topic))})).filter(group=>group.topics.length);
+const ungrouped=tags.filter(tag=>!subjectGroups.some(group=>group.topics.includes(tag)));
+if(ungrouped.length)groups.push({id:'other',label:'Other topics',topics:ungrouped});
+---
+<section class="presentation-library container" aria-label="Presentation library">
+ <header class="library-heading"><h1>Presentations</h1></header>
+ <div class="library-tools" hidden>
+  <div class="discovery-topline"><div class="keyword-field"><label for="presentation-search">Search presentations</label><input id="presentation-search" type="search" placeholder="Search presentations…" autocomplete="off" /></div>
+   <details class="subject-dropdown"><summary>Subjects <span id="subject-selection-count"></span><span aria-hidden="true">⌄</span></summary>
+    <div class="subject-panel"><label for="subject-search">Find a subject or topic</label><input id="subject-search" type="search" placeholder="Search subjects and topics…" autocomplete="off"/>
+     
+     <div class="subject-groups">{groups.map(group=><fieldset data-subject-group={group.id}><legend><label><input type="checkbox" data-subject={group.id}/><span>{group.label}</span></label></legend><div class="subject-topics">{group.topics.map(tag=><button type="button" data-tag={tag} aria-pressed="false">{tag}<span>{articles.filter(a=>a.tags.includes(tag)).length}</span></button>)}</div></fieldset>)}</div>
+     <p class="subject-search-empty" hidden>No subjects or topics match.</p>
+     <button type="button" class="close-subjects">Done</button>
+    </div>
+   </details>
+  </div>
+  <div class="date-filter-row"><details class="month-dropdown"><summary><span id="month-label">All months</span><span aria-hidden="true">⌄</span></summary><div class="month-panel"><label for="calendar-year">Year</label><select id="calendar-year" aria-label="Presentation year"></select><div class="calendar-months" role="group" aria-label="Choose month"></div><p class="calendar-empty" hidden>No presentations for this year.</p><button type="button" class="all-months">All months</button></div></details><input type="hidden" id="publication-month"/><button type="button" id="clear-library">Clear</button></div>
+
+  <div class="active-library-filters" aria-label="Selected filters"></div>
+  <div class="library-result-line"><p id="library-status" role="status" aria-live="polite"></p></div>
+ </div>
+ <div class="library-results">{articles.map(article=><PresentationCard article={article} />)}</div>
+ <p class="library-empty" hidden>No presentations match these filters. Try another topic or clear your search.</p>
+ <nav class="library-pagination" aria-label="Presentation result pages" hidden><button type="button" id="library-prev">← Previous</button><span id="library-page"></span><button type="button" id="library-next">Next →</button></nav>
+
+</section>
+<script>
+import {initializeLibrary} from '../scripts/library-discovery';
+document.addEventListener('astro:page-load',initializeLibrary);
+initializeLibrary();
+</script>

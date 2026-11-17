@@ -1,0 +1,26 @@
+---
+import {latestPresentations} from '../lib/presentations.mjs';
+const latest=await latestPresentations();
+import {Picture} from 'astro:assets';
+import portrait from '../assets/profile.jpg';
+import HeroImage from '../components/HeroImage.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Enquiry from '../components/Enquiry.astro';
+import '../styles/final-home.css';
+const title='Demand Journeys | Marketing, Search & Growth';
+const description='Independent marketing advice and leadership. AEO/GEO, growth marketing, platforms and analytics with Meng Liang Tan.';
+---
+<SiteLayout title={title} description={description} home>
+<Fragment slot="head"><script type="application/ld+json" set:html={JSON.stringify({'@context':'https://schema.org','@type':'ProfessionalService',name:'Demand Journeys',url:'https://www.demandjourneys.com/',email:'ml@demandjourneys.com',description,areaServed:['Singapore','Asia Pacific'],knowsAbout:['Hospitality marketing','Digital marketing','Distribution strategy','Marketing technology','AI search optimisation'],founder:{'@type':'Person',name:'Meng Liang Tan',sameAs:'https://www.linkedin.com/in/mengliang/'}})} />
+  </Fragment>
+
+<section class="hero" id="top" aria-labelledby="hero-title">
+ <HeroImage />
+ <div class="hero-copy"><h1 id="hero-title">Make demand<br/>more profitable.</h1><p class="hero-intro">Search. Growth. Technology.<br/>Marketing with a commercial perspective.</p>
+ <aside class="latest-presentations" aria-labelledby="latest-title"><h2 id="latest-title">Latest presentations</h2><ul>{latest.map(deck=><li><a href={deck.link} data-astro-reload><span>{deck.title}</span><span aria-hidden="true">↗</span></a></li>)}</ul><a class="latest-more" href="/hospitality-presentations/">More presentations <span aria-hidden="true">→</span></a></aside>
+ </div>
+ <div class="hero-enquiry" id="enquiry"><h2>What are you trying to solve?</h2><Enquiry compact /></div>
+</section>
+<section class="practice-strip" aria-label="About the practice"><Picture src={portrait} formats={['webp']} widths={[80,160,240]} sizes="76px" alt="Meng Liang Tan" loading="lazy"/><div><span class="eyebrow">The practice</span><h2>Experience across the whole journey.</h2><p>Two decades across hospitality, travel, digital commerce and marketing technology in Asia Pacific.</p></div><a href="/profile/">Meet Meng Liang →</a></section>
+
+</SiteLayout>

@@ -1,0 +1,35 @@
+---
+import '../styles/library-discovery.css';
+import ProfileOverview from './ProfileOverview.astro';
+import '../styles/profile-overview.css';
+import PresentationLibrary from './PresentationLibrary.astro';
+import '../styles/library-profile.css';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import '../styles/interior.css';
+import '../styles/refinement.css';
+const {html,route}=Astro.props;
+const head=html.match(/<head>([\s\S]*?)<\/head>/i)?.[1]
+ .replace(/<link[^>]+(?:fonts\.googleapis|fonts\.gstatic|index\.css)[^>]*>/g,'')
+ .replace(/#F5F2E9/g,'#f4f5f3').replace(/<script[\s\S]*?<\/script>/g,'').replace(/<meta[^>]*charset[^>]*>|<meta[^>]*name="viewport"[^>]*>/g,'');
+let content=html.match(/<main[^>]*>([\s\S]*?)<\/main>/i)?.[1] || '';
+content=content.replace('href="../#about"','href="/"');
+content=content.replace('class="commercial-journey" role="img"', 'class="commercial-journey" tabindex="0" role="img"');
+// Add reading aids without replacing the original copy or diagrams.
+const contents=[];
+let headingNumber=0;
+content=content.replace(/<h2([^>]*)>([\s\S]*?)<\/h2>/g, (whole,attrs,title)=>{
+ const id=attrs.match(/id="([^"]+)"/)?.[1] || `reading-${++headingNumber}`;
+ const label=title.replace(/<[^>]*>/g,'').trim().replace(/\s+/g,' ').replace(/&amp;/g,'&').replace(/&nbsp;/g,' ');
+ contents.push({id,label});
+ return `<h2${attrs}${attrs.includes('id="')?'':` id="${id}"`}>${title}</h2>`;
+});
+content=content.replace('<div class="commercial-journey"', '<p class="diagram-help">Follow the journey from demand to retention. On smaller screens, scroll the diagram sideways.</p><div class="commercial-journey"');
+const libraryParts=route==='hospitality-presentations' ? content.split(/(?=<section class="section hospitality-library-section">)/) : [];
+const labels={profile:'Profile','hospitality-presentations':'Presentations',privacy:'Privacy policy'};
+---
+<SiteLayout headHtml={head} current={route}>
+<nav class="breadcrumb container" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">{labels[route]}</span></nav>
+{contents.length>2 && !['profile','hospitality-presentations'].includes(route) && <nav class="page-index container" aria-label="On this page"><span>On this page</span><div>{contents.map(item=><a href={`#${item.id}`}>{item.label}</a>)}</div></nav>}
+{route==='hospitality-presentations' ? <><PresentationLibrary html={libraryParts.slice(1).join('')} intro={libraryParts[0]} /></> : route==='profile' ? <ProfileOverview html={content} /> : <Fragment set:html={content} />}
+{!['profile','privacy','hospitality-presentations'].includes(route) && <aside class="next-step container"><div><span class="eyebrow">Put the thinking to work</span><h2>Start with your business.</h2><p>A workshop, an audit, or ongoing marketing leadership.</p></div><a class="button" href="/#enquiry">Enquire <span aria-hidden="true">↗</span></a></aside>}
+</SiteLayout>

@@ -1,0 +1,28 @@
+---
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import '../styles/home.css';
+import '../styles/interior.css';
+const {html,route}=Astro.props;
+const head=html.match(/<head>([\s\S]*?)<\/head>/i)?.[1]
+ .replace(/<link[^>]+(?:fonts\.googleapis|fonts\.gstatic|index\.css)[^>]*>/g,'')
+ .replace(/#F5F2E9/g,'#f4f5f3');
+let content=html.match(/<main[^>]*>([\s\S]*?)<\/main>/i)?.[1] || '';
+content=content.replace('href="../#about"','href="/"');
+content=content.replace('class="commercial-journey" role="img"', 'class="commercial-journey" tabindex="0" role="img"');
+const labels={profile:'Profile',methodology:'Methodology','hospitality-presentations':'Presentations',privacy:'Privacy policy'};
+---
+<!doctype html>
+<html lang="en-SG">
+<head><Fragment set:html={head} /></head>
+<body class="interior" data-page={route}>
+<a class="skip-link" href="#main">Skip to content</a>
+<Header current={route} />
+<main id="main">
+<nav class="breadcrumb container" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">{labels[route]}</span></nav>
+<Fragment set:html={content} />
+{route !== 'methodology' && route !== 'privacy' && <aside class="next-step container"><div><span class="eyebrow">Put the thinking to work</span><h2>Start with your business.</h2><p>A workshop, an audit, or ongoing marketing leadership.</p></div><a class="button" href="/#enquiry">Enquire <span aria-hidden="true">↗</span></a></aside>}
+</main>
+<Footer />
+</body>
+</html>

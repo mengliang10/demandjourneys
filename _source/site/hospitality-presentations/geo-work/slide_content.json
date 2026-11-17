@@ -1,0 +1,254 @@
+[
+  {
+    "ch": "THE COMMERCIAL QUESTION",
+    "title": "When customers ask AI,<br>does your expertise appear?",
+    "lead": "Fractional GEO, AEO & SEO leadership",
+    "body": "<div class=\"cols c2\"><div><p class=\"intro\">An operating programme for businesses that need to be found, understood and considered across search and AI answers.</p><div class=\"byline\">Demand Journeys<br><small>Meng Liang Tan · Singapore</small></div><a class=\"button\" href=\"#/1\">Explore the case studies ↗</a></div><div><div class=\"cover-art\"><div class=\"question\">“Which provider fits my needs?”</div><div class=\"source-lines\"><span>Your expertise</span><span>Public evidence</span><span>Customer context</span></div><div class=\"answer\"><span>THE OPPORTUNITY</span><strong>A credible place<br>in the answer</strong></div><div class=\"final-node\">Qualified consideration</div></div></div></div>",
+    "source": "Two anonymised diagnostic cases / proposed delivery programme / local review draft",
+    "note": "",
+    "cls": "cover"
+  },
+  {
+    "ch": "01 / WHY THIS WORK",
+    "title": "Five problems worth solving",
+    "lead": "Start with the buyer decision that matters to your business.",
+    "body": "<div class=\"problem-list\"><a href=\"#/5\"><b>01</b><h3>Our expertise is hard to find</h3><span>Public information does not answer the buyer’s question.</span><em>↗</em></a><a href=\"#/9\"><b>02</b><h3>Our brand is described inconsistently</h3><span>Facts, products and business units blur across sources.</span><em>↗</em></a><a href=\"#/13\"><b>03</b><h3>Our content is hard to use</h3><span>Important answers sit behind technical or editorial barriers.</span><em>↗</em></a><a href=\"#/17\"><b>04</b><h3>We cannot measure AI visibility</h3><span>Mentions, citations and commercial results get mixed together.</span><em>↗</em></a><a href=\"#/23\"><b>05</b><h3>The work has no clear owner</h3><span>SEO, content, technology and approvals move separately.</span><em>↗</em></a></div>",
+    "source": "Method / proposed engagement design",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "01 / WHY THIS WORK",
+    "title": "Visibility has to connect to a decision",
+    "lead": "A useful programme follows the buyer beyond the first answer.",
+    "body": "<div class=\"flow\"><div><span>01</span><h3>Discover</h3><p>Does a relevant question surface the business?</p></div><div><span>02</span><h3>Understand</h3><p>Are its facts and product conditions accurate?</p></div><div><span>03</span><h3>Consider</h3><p>Is it eligible for the buyer’s shortlist?</p></div><div><span>04</span><h3>Act</h3><p>Can the buyer reach a suitable next step?</p></div></div><div class=\"cols c2\"><div><div class=\"box\"><span class=\"label\">VISIBILITY SIGNAL</span><h3>Presence in the answer</h3><p>Track mentions, linked sources and factual accuracy separately.</p></div></div><div><div class=\"box\"><span class=\"label\">COMMERCIAL SIGNAL</span><h3>Quality of the next step</h3><p>Track qualified enquiries, quote starts or applications, then reconcile downstream outcomes.</p></div></div></div>",
+    "source": "Proposed measurement model / visibility alone does not establish incremental revenue",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "01 / WHY THIS WORK",
+    "title": "One programme, three connected disciplines",
+    "lead": "These are working definitions. The same page can support all three.",
+    "body": "<table><thead><tr><th>Discipline</th><th>What I improve</th><th>What we inspect</th></tr></thead><tbody><tr><td><b>SEO</b><br>Search engine optimisation</td><td>Discovery, index eligibility and organic landing-page performance.</td><td>Crawls, rendered pages, internal links, search data and conversions.</td></tr><tr><td><b>AEO</b><br>Answer engine optimisation</td><td>How clearly a page resolves a specific question.</td><td>Direct answers, conditions, supporting evidence and useful next steps.</td></tr><tr><td><b>GEO</b><br>Generative engine optimisation</td><td>How the business appears and is cited in generated responses.</td><td>Repeatable prompt panels, cited URLs and verified factual accuracy.</td></tr></tbody></table><div class=\"takeaway\">The supplied research uses “AIO” in several ways. This deck uses AEO for answer quality and treats agent integrations as a separate, optional workstream.</div>",
+    "source": "Framework adapted from supplied research / Google AI guidance [S1]",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "02 / THE EVIDENCE",
+    "title": "Two cases. Different constraints.",
+    "lead": "The work is diagnostic: identify the weak point, define the response and specify how to verify it.",
+    "body": "<div class=\"cols c2\"><div><div class=\"box\"><span class=\"label\">CASE A</span><h3>Korean Bank</h3><p>Limited discoverable first-party material, weak English coverage and missing markup in sampled pages.<br><br><b>Commercial question</b><br>Can a prospective customer resolve eligibility, product conditions and trust questions?</p></div></div><div><div class=\"box\"><span class=\"label\">CASE B</span><h3>Korean Insurance Company</h3><p>Fragmented properties, content-rendering concerns and stale English entity information.<br><br><b>Commercial question</b><br>Can a prospective customer distinguish the provider, understand coverage and reach the right quote journey?</p></div></div></div><div class=\"takeaway\">Evidence boundary: the archive contains public-site observations, inferred risks and simulated answer estimates. It does not demonstrate a deployed programme or measured citation uplift.</div>",
+    "source": "Case A + Case B / April 2026 audit bundle methodology",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "03 / CASE A · KOREAN BANK",
+    "title": "The missing asset was usable public evidence",
+    "lead": "A recognised business can still leave important customer questions unanswered.",
+    "body": "<table><thead><tr><th>Reported finding</th><th>Decision it obstructs</th><th>First validation step</th></tr></thead><tbody><tr><td>Limited coverage in the inspected sitemaps</td><td>Finding product, support and corporate information.</td><td>Compare sitemap entries with a crawl and the CMS inventory.</td></tr><tr><td>No English site found at the tested paths</td><td>Understanding eligibility and access in another language.</td><td>Map the actual audience, service capability and available pages.</td></tr><tr><td>No structured data detected in sampled HTML</td><td>Interpreting the provider and product consistently.</td><td>Inspect raw and rendered HTML across representative templates.</td></tr><tr><td>Thin entity and product explanations</td><td>Checking conditions and distinguishing facts from commentary.</td><td>Build a claim inventory with approved source references.</td></tr></tbody></table><div class=\"takeaway\">A short sitemap is a discovery clue. It is not a count of indexed pages, and it does not prove that the rest of the site is invisible.</div>",
+    "source": "Case A / Korean Bank · supplied April 2026 audit · reported observations, not a fresh audit / interpretation qualified using [S2]",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "03 / CASE A · KOREAN BANK",
+    "title": "Customer questions determine the content backlog",
+    "lead": "Choose pages by the decisions they support, then test whether those pages are found.",
+    "body": "<table><thead><tr><th>Buyer intent</th><th>Example question</th><th>Proposed source page</th><th>Commercial next step</th></tr></thead><tbody><tr><td>Trust</td><td>How do I verify the institution and its disclosures?</td><td>Institution profile with dated official references.</td><td>Review approved disclosures.</td></tr><tr><td>Eligibility</td><td>Can a foreign resident apply?</td><td>Eligibility and documentation guide.</td><td>Check eligibility before applying.</td></tr><tr><td>Product choice</td><td>Which account fits my withdrawal needs?</td><td>Product comparison with limits, fees and conditions.</td><td>Visit the relevant product journey.</td></tr><tr><td>Service</td><td>How do I resolve an access or account issue?</td><td>Public support guide with verified service channels.</td><td>Reach the correct support route.</td></tr></tbody></table>",
+    "source": "Case A / content and prompt research; examples rewritten and anonymised",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "03 / CASE A · KOREAN BANK",
+    "title": "A source page earns its usefulness",
+    "lead": "The proposed content makes a claim understandable and maintainable.",
+    "body": "<div class=\"cols c2\"><div><div class=\"specimen\"><span class=\"label\">ILLUSTRATIVE PAGE STRUCTURE</span><h3>Account eligibility and access</h3><p class=\"answer-copy\">Eligibility depends on residency, identification and the selected product. Check the current requirements before beginning an application.</p><dl><dt>Who can apply?</dt><dd>Approved eligibility criteria and exceptions.</dd><dt>What is required?</dt><dd>Documents, verification steps and service limitations.</dd><dt>What changes the answer?</dt><dd>Product conditions and effective dates.</dd></dl><div class=\"specimen-foot\">Reviewed by product owner · source reference · review date</div></div></div><div><ol class=\"numbered\"><li><b>A direct answer</b><span>Explain the question before presenting the brand.</span></li><li><b>Conditions beside the claim</b><span>Keep limits and exclusions in the same reading path.</span></li><li><b>Evidence people can inspect</b><span>Link to the governing product and disclosure sources.</span></li><li><b>A useful next action</b><span>Take eligible visitors to the appropriate application or support route.</span></li></ol></div></div>",
+    "source": "Case A / proposed editorial template; illustrative wording, not financial product advice",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "03 / CASE A · KOREAN BANK",
+    "title": "A focused pilot before a larger rollout",
+    "lead": "The first release should prove that the content and maintenance process work.",
+    "body": "<div class=\"flow\"><div><span>01</span><h3>Scope</h3><p>One product family and a defined audience.</p></div><div><span>02</span><h3>Publish</h3><p>Approved source pages with useful internal links.</p></div><div><span>03</span><h3>Validate</h3><p>Fetch, render, index checks and answer sampling.</p></div><div><span>04</span><h3>Decide</h3><p>Expand, revise or stop using observed evidence.</p></div></div><table><thead><tr><th>Work product</th><th>Acceptance criterion</th></tr></thead><tbody><tr><td>Claim register</td><td>Every pilot claim has a source, owner and review trigger.</td></tr><tr><td>Public page set</td><td>Essential facts are accessible and match approved product conditions.</td></tr><tr><td>Baseline and rerun</td><td>Same prompt cohort and settings, with citations and errors recorded.</td></tr><tr><td>Pilot review</td><td>Quality of enquiries or applications assessed alongside visibility.</td></tr></tbody></table>",
+    "source": "Case A / proposed pilot; no implementation or performance result claimed",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "04 / CASE B · KOREAN INSURANCE COMPANY",
+    "title": "The content existed across disconnected journeys",
+    "lead": "The audit raised questions about discovery, rendering and entity clarity.",
+    "body": "<table><thead><tr><th>Reported finding</th><th>Why it matters</th><th>What must be verified</th></tr></thead><tbody><tr><td>The tested sitemap endpoint returned 404</td><td>Some discovery paths may be missing.</td><td>Alternative sitemap locations, internal links and indexed-page coverage.</td></tr><tr><td>Template placeholders appeared in fetched HTML</td><td>Important content may depend on rendering.</td><td>Raw versus rendered content, crawler access and representative URLs.</td></tr><tr><td>Corporate and transactional properties were split</td><td>The customer may reach the wrong product or service route.</td><td>Purpose of each domain, cross-links, duplicates and conversion paths.</td></tr><tr><td>English entity material was stale or shallow</td><td>Answers may reuse outdated facts or confuse business units.</td><td>Current first-party facts and actual responses on selected surfaces.</td></tr></tbody></table>",
+    "source": "Case B / Korean Insurance Company · supplied April 2026 audit · reported observations, not a fresh audit",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "04 / CASE B · KOREAN INSURANCE COMPANY",
+    "title": "Clear relationships beat a forced domain merger",
+    "lead": "The proposed architecture preserves useful journeys while clarifying who provides what.",
+    "body": "<div class=\"network\"><div class=\"network-root\"><span>VERIFIED PROVIDER IDENTITY</span><h3>Korean Insurance Company</h3><p>Official name · business scope · current contact routes</p></div><div class=\"network-branches\"><div><b>Corporate information</b><p>Governance, company facts and disclosures.</p></div><div><b>Product information</b><p>Coverage, conditions, exclusions and suitability.</p></div><div><b>Quote journey</b><p>Eligibility, application and conversion measurement.</p></div><div><b>Customer service</b><p>Claim steps, documentation and assistance.</p></div></div></div><div class=\"takeaway\">Assign each page a purpose and a maintained relationship. Use canonicals for duplicate or near-duplicate pages; keep genuinely different content independently discoverable.</div>",
+    "source": "Case B / architecture proposal; canonical guidance [S3]",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "04 / CASE B · KOREAN INSURANCE COMPANY",
+    "title": "A rendering fix starts with a comparison",
+    "lead": "A framework name alone cannot tell us what a search system can access.",
+    "body": "<div class=\"cols c2\"><div><div class=\"code-panel\"><span class=\"label\">INITIAL RESPONSE / ILLUSTRATIVE</span><pre>&lt;h1&gt;Product information&lt;/h1&gt;\n&lt;div id=\"details\"&gt;\n  {{ coverage.summary }}\n&lt;/div&gt;</pre><p>The key condition is absent from the response.</p></div></div><div><div class=\"code-panel good\"><span class=\"label\">PROPOSED ACCESSIBLE RESPONSE</span><pre>&lt;h1&gt;Product information&lt;/h1&gt;\n&lt;p&gt;Approved coverage summary&lt;/p&gt;\n&lt;a href=\"/terms/\"&gt;\n  Conditions and exclusions\n&lt;/a&gt;</pre><p>Readers and compatible crawlers receive useful text.</p></div></div></div><div class=\"flow\"><div><span>01</span><h3>Compare</h3><p>Raw HTML, rendered DOM and URL inspection.</p></div><div><span>02</span><h3>Pilot</h3><p>A small set of important pages.</p></div><div><span>03</span><h3>Protect</h3><p>Consistent content, release checks and rollback.</p></div><div><span>04</span><h3>Measure</h3><p>Access, index status and customer experience.</p></div></div>",
+    "source": "Case B / Korean Insurance Company · supplied April 2026 audit · reported observations, not a fresh audit / schematic example, not a captured client response",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "04 / CASE B · KOREAN INSURANCE COMPANY",
+    "title": "The same language can serve different buyers",
+    "lead": "Language expansion should follow a serviceable audience and a commercial route.",
+    "body": "<table><thead><tr><th>Audience</th><th>Question to resolve</th><th>Content required</th><th>Operational dependency</th></tr></thead><tbody><tr><td>Resident customer</td><td>Can I buy and receive support in this language?</td><td>Eligibility, product guide, documentation and support details.</td><td>Actual language support and a working purchase path.</td></tr><tr><td>Investor or analyst</td><td>Which entity, business and period do these facts describe?</td><td>Dated corporate facts and clearly labelled reports.</td><td>Approved financial and corporate information.</td></tr><tr><td>Existing policyholder</td><td>How do I start a claim and what should I prepare?</td><td>Public process guide with boundaries and service routing.</td><td>An accurate claims process and available service channels.</td></tr></tbody></table><div class=\"takeaway\">Translate intent and service conditions. A translated corporate profile alone does not create a usable customer journey.</div>",
+    "source": "Case B / language and audience strategy; proposed execution",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "05 / THE DELIVERY SYSTEM",
+    "title": "The work connects evidence to a release",
+    "lead": "A common backlog brings SEO, content and AI-answer measurement together.",
+    "body": "<div class=\"flow\"><div><span>01</span><h3>Evidence</h3><p>Question, source page, current response and confidence.</p></div><div><span>02</span><h3>Decision</h3><p>Commercial priority, owner and acceptance test.</p></div><div><span>03</span><h3>Release</h3><p>Content or technical change with approved claims.</p></div><div><span>04</span><h3>Observation</h3><p>Access, citations, factual errors and customer actions.</p></div></div><div class=\"cols c2\"><div><div class=\"box\"><span class=\"label\">DELIVERABLE</span><h3>A release-ready issue</h3><p>Affected page, reproducible finding, proposed change, dependency and success check.</p></div></div><div><div class=\"box\"><span class=\"label\">DELIVERABLE</span><h3>A decision-ready review</h3><p>What shipped, what changed, what remains uncertain and what receives effort next.</p></div></div></div>",
+    "source": "Proposed fractional operating model",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "05 / THE DELIVERY SYSTEM",
+    "title": "Priorities change with the business constraint",
+    "lead": "Use the selector to see how the opening sprint changes.",
+    "body": "<div class=\"segmented\" role=\"group\" aria-label=\"Choose starting constraint\"><button data-priority=\"access\" class=\"selected\" aria-pressed=\"true\">Access problem</button><button data-priority=\"answers\" aria-pressed=\"false\">Answer problem</button><button data-priority=\"conversion\" aria-pressed=\"false\">Conversion problem</button></div><div class=\"priority-layout\"><div class=\"priority-visual\"><div class=\"axis-y\">Business relevance ↑</div><div class=\"quadrants\"><span>VALIDATE</span><span>PRIORITISE</span><span>DEFER</span><span>SCHEDULE</span><b id=\"priority-dot\">1</b></div><div class=\"axis-x\">Confidence in the diagnosis →</div></div><div id=\"priority-detail\" aria-live=\"polite\"></div></div>",
+    "source": "Illustrative prioritisation exercise / positions express judgment, not measured client scores",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "05 / THE DELIVERY SYSTEM",
+    "title": "Five controls before publishing a claim",
+    "lead": "One maintained evidence record should feed the page, markup and review process.",
+    "body": "<table><thead><tr><th>Control</th><th>Required field</th><th>Why it earns its place</th></tr></thead><tbody><tr><td>Identity</td><td>Which legal entity, product and market?</td><td>Prevents mixing facts between related businesses.</td></tr><tr><td>Meaning</td><td>Claim, unit, scope and conditions.</td><td>Prevents a correct number being used in the wrong context.</td></tr><tr><td>Evidence</td><td>Approved source and effective date.</td><td>Gives reviewers a clear basis for verification.</td></tr><tr><td>Ownership</td><td>Content owner, reviewer and refresh trigger.</td><td>Turns freshness into a responsibility.</td></tr><tr><td>Consistency</td><td>Visible page, metadata and applicable markup agree.</td><td>Reduces contradictory representations of the same information.</td></tr></tbody></table><div class=\"takeaway\">A review date changes when content is actually reviewed. Automated date changes alone do not make an old claim current.</div>",
+    "source": "Derived from both cases / proposed claim governance",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "05 / THE DELIVERY SYSTEM",
+    "title": "Technical changes need a business reason",
+    "lead": "The implementation brief specifies the symptom, test and smallest useful fix.",
+    "body": "<table><thead><tr><th>Symptom</th><th>Validate first</th><th>Potential response</th></tr></thead><tbody><tr><td>Key page cannot be reached</td><td>Status codes, access rules, CDN and internal links.</td><td>Repair the relevant access or linking issue.</td></tr><tr><td>Important text appears only after scripts run</td><td>Initial HTML versus rendered content on the target surface.</td><td>Server-render or statically publish essential content where justified.</td></tr><tr><td>Competing URLs carry the same material</td><td>Duplicate content, canonicals and redirects.</td><td>Consolidate duplicates with a tested migration path.</td></tr><tr><td>Facts differ across representations</td><td>Page copy, feeds, metadata and schema.</td><td>Update from a governed claim record.</td></tr><tr><td>Different languages serve the wrong intent</td><td>Audience, equivalent pages and service capability.</td><td>Create useful locale pages and appropriate language relationships.</td></tr></tbody></table>",
+    "source": "Proposed engineering brief / Google crawl and canonical guidance [S2, S3]",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "06 / MEASUREMENT",
+    "title": "A mention is not a citation",
+    "lead": "Keep each measure precise enough to support a decision.",
+    "body": "<table><thead><tr><th>Measure</th><th>Operational definition</th><th>Useful interpretation</th></tr></thead><tbody><tr><td>Brand mention rate</td><td>Valid responses naming the brand ÷ all valid panel responses.</td><td>Presence in the sampled answers.</td></tr><tr><td>Owned-source citation rate</td><td>Valid responses linking an approved owned domain ÷ all valid panel responses.</td><td>First-party evidence used in the sampled answers.</td></tr><tr><td>Verified claim accuracy</td><td>Correct, checkable claims ÷ all checkable claims about the brand.</td><td>Quality of factual representation; record uncheckable claims separately.</td></tr><tr><td>Citation share within a defined set</td><td>Owned-domain citations ÷ citations to all tracked domains.</td><td>Relative presence for that panel and domain set only.</td></tr><tr><td>Qualified action rate</td><td>Qualified enquiries or completed applications ÷ relevant measured visits.</td><td>Commercial quality of the observable journey.</td></tr></tbody></table>",
+    "source": "Measurement definitions proposed for this programme; do not compare incompatible denominators",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "06 / MEASUREMENT",
+    "title": "A repeatable panel creates a usable baseline",
+    "lead": "The scope below is a proposed pilot design, not a historical audit result.",
+    "body": "<div class=\"panel-math\"><div><strong>40</strong><span>prompts</span></div><b>×</b><div><strong>3</strong><span>selected surfaces</span></div><b>×</b><div><strong>2</strong><span>repeat runs</span></div><b>=</b><div class=\"accent\"><strong>240</strong><span>attempted responses</span></div></div><div class=\"cols c3\"><div><div class=\"box\"><span class=\"label\">STRATIFY</span><h3>Intent and language</h3><p>Split branded and unbranded questions. Cover trust, eligibility, comparison and action. Separate language cohorts.</p></div></div><div><div class=\"box\"><span class=\"label\">RECORD</span><h3>The actual conditions</h3><p>Save exact prompt, date, locale, surface, mode, full answer and linked URLs. Mark refusals, failures and no-answer responses.</p></div></div><div><div class=\"box\"><span class=\"label\">COMPARE</span><h3>Like with like</h3><p>Use new sessions and fixed settings where possible. Report counts and variation by cohort. Track model or product changes.</p></div></div></div><div class=\"takeaway\">A synthetic prompt panel is a diagnostic sample. It is not the market’s query volume, audience reach or total share of demand.</div>",
+    "source": "Proposed research protocol adapted from the archive prompt kits",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "06 / MEASUREMENT",
+    "title": "The dashboard should tell us what to do next",
+    "lead": "Every signal needs a denominator, a source and a decision.",
+    "body": "<table><thead><tr><th>Layer</th><th>What appears in the report</th><th>Decision it supports</th></tr></thead><tbody><tr><td>Delivery</td><td>Approved fixes shipped / committed fixes; ageing blockers.</td><td>Remove dependencies or narrow scope.</td></tr><tr><td>Technical access</td><td>Pilot URLs accessible / tested; index observations by URL.</td><td>Repair failed templates or discovery paths.</td></tr><tr><td>Answer quality</td><td>Owned citations / valid responses; correct / checkable claims.</td><td>Improve a specific source page or correct a factual gap.</td></tr><tr><td>Behaviour</td><td>Observed referral visits, engaged sessions and qualified actions.</td><td>Improve the landing page or next-step journey.</td></tr><tr><td>Commercial outcome</td><td>Qualified pipeline or applications with documented attribution.</td><td>Continue, modify or pause the investment.</td></tr></tbody></table><div class=\"takeaway\">Engine dashboards and prompt panels answer different questions. Keep their totals separate; missing referral data does not prove zero influence.</div>",
+    "source": "Proposed reporting model / Bing aggregated citation reporting [S4]",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "06 / MEASUREMENT",
+    "title": "A business case needs conservative arithmetic",
+    "lead": "Explore what must be true for a programme to cover its cost.",
+    "body": "<div class=\"economics\"><div><span class=\"label\">ILLUSTRATIVE INPUTS / MONTHLY</span><label>Programme cost <output id=\"cost-out\"></output><input id=\"cost\" type=\"range\" min=\"3000\" max=\"20000\" step=\"500\" value=\"10000\"></label><label>Contribution per acquired customer <output id=\"margin-out\"></output><input id=\"margin\" type=\"range\" min=\"250\" max=\"5000\" step=\"250\" value=\"1000\"></label><label>Qualified lead-to-customer rate <output id=\"close-out\"></output><input id=\"close\" type=\"range\" min=\"5\" max=\"50\" step=\"1\" value=\"20\"></label></div><div class=\"calc-result\"><span class=\"label\">BREAK-EVEN REQUIREMENT</span><strong id=\"leads-out\">50</strong><h3>additional qualified leads / month</h3><p id=\"customers-out\"></p><div class=\"calc-rule\">Cost ÷ (contribution per customer × close rate)</div><p class=\"small\">S$ illustrative inputs. Contribution should be after variable costs and aligned to the same measurement horizon.</p></div></div>",
+    "source": "Scenario model, not a quote or forecast. Include implementation, tools and content costs. Attribution and time to conversion remain uncertain.",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "07 / THE FIRST 90 DAYS",
+    "title": "The first quarter builds an operating capability",
+    "lead": "Dates are indicative and depend on access, approvals and delivery capacity.",
+    "body": "<div class=\"roadmap\"><div class=\"phase\"><span>DAYS 1–15</span><h3>Establish the baseline</h3><p>Agree a product family, buyer intents and access. Revalidate audit signals and run the first panel.</p><b>Gate: evidence and scope accepted</b></div><div class=\"phase\"><span>DAYS 16–30</span><h3>Remove critical barriers</h3><p>Address access or content faults. Approve claim records, release plan and page specifications.</p><b>Gate: release-ready backlog</b></div><div class=\"phase\"><span>DAYS 31–60</span><h3>Publish the pilot</h3><p>Release a bounded page set. Validate content, tracking and relevant technical changes.</p><b>Gate: release quality accepted</b></div><div class=\"phase\"><span>DAYS 61–90</span><h3>Review and expand</h3><p>Rerun the panel. Review qualified actions and blockers. Set the next-quarter investment.</p><b>Gate: scale, revise or pause</b></div></div><div class=\"takeaway\">The commitment is an accountable delivery process with explicit acceptance criteria. Rankings, citations and revenue are outcomes to measure, not guarantee.</div>",
+    "source": "Proposed roadmap adapted from both case workstreams",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "07 / THE FIRST 90 DAYS",
+    "title": "What you own at the end of the sprint",
+    "lead": "The deliverables remain usable by your internal team and existing partners.",
+    "body": "<table><thead><tr><th>Deliverable</th><th>What is inside</th><th>Definition of done</th></tr></thead><tbody><tr><td>Baseline evidence pack</td><td>Crawl samples, prompt records and claim issues.</td><td>Results can be traced to a dated observation.</td></tr><tr><td>Prioritised implementation backlog</td><td>Scope, page, owner, dependency and acceptance test.</td><td>Each committed item is actionable.</td></tr><tr><td>Pilot content and technical briefs</td><td>Source-page templates, claim register and approved changes.</td><td>Pilot release passes agreed content and technical checks.</td></tr><tr><td>Measurement workspace</td><td>Definitions, tracked cohorts and dashboard specification.</td><td>The next measurement run can reproduce the method.</td></tr><tr><td>Operating playbook</td><td>Review cadence, escalation route and refresh rules.</td><td>Named owners can continue the programme.</td></tr><tr><td>Next-quarter recommendation</td><td>Observed progress, limits and options.</td><td>Sponsor can choose an investment with clear trade-offs.</td></tr></tbody></table>",
+    "source": "Proposed scope; exact outputs and production responsibilities confirmed in the statement of work",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "08 / FRACTIONAL LEADERSHIP",
+    "title": "One accountable lead across the work",
+    "lead": "I connect the commercial priority to the specialists who can deliver it.",
+    "body": "<div class=\"cols c2\"><div><div class=\"ownership\"><span class=\"label\">FRACTIONAL LEAD</span><h3>Priority, evidence<br>and delivery decisions</h3><p>Own the programme backlog, brief the work, review quality, resolve trade-offs and report to the sponsor.</p><div>Works with your team and existing agencies</div></div></div><div><table><thead><tr><th>Partner</th><th>Responsibility</th></tr></thead><tbody><tr><td>Business sponsor</td><td>Objectives, budget and decisions at the gates.</td></tr><tr><td>Product / subject expert</td><td>Facts, eligibility, conditions and source approval.</td></tr><tr><td>Content / localisation</td><td>Useful pages and audience-appropriate language.</td></tr><tr><td>Engineering / SEO</td><td>Access, templates, instrumentation and release checks.</td></tr><tr><td>Legal / compliance</td><td>Review claims where the business requires it.</td></tr><tr><td>Analytics / sales</td><td>Qualification definitions and downstream outcomes.</td></tr></tbody></table></div></div>",
+    "source": "Proposed responsibilities / production capacity is agreed explicitly",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "08 / FRACTIONAL LEADERSHIP",
+    "title": "Three ways to engage",
+    "lead": "Choose the level of ownership your team needs.",
+    "body": "<div class=\"cols c3\"><div><div class=\"box\"><span class=\"label\">DIAGNOSTIC / 2–3 WEEKS</span><h3>Find the constraint</h3><p><b>For:</b> teams without a reliable baseline.<br><br><b>You receive:</b> evidence pack, prioritised gaps and a scoped pilot recommendation.<br><br><b>Client input:</b> access, product context and a sponsor.</p></div></div><div><div class=\"box\"><span class=\"label\">FOUNDATION / 90 DAYS</span><h3>Deliver a bounded pilot</h3><p><b>For:</b> teams ready to improve a product or audience journey.<br><br><b>You receive:</b> coordinated delivery, QA, measurement and a next-quarter plan.<br><br><b>Client input:</b> content and engineering capacity.</p></div></div><div><div class=\"box\"><span class=\"label\">FRACTIONAL / ONGOING</span><h3>Keep the programme moving</h3><p><b>For:</b> teams needing senior cross-functional ownership.<br><br><b>You receive:</b> weekly prioritisation, release reviews and monthly commercial reporting.<br><br><b>Client input:</b> agreed decision rights and team allocation.</p></div></div></div><div class=\"takeaway\">Fees follow scope, markets, cadence and production responsibility. Tools, engineering, translation and specialist review are itemised in the proposal.</div>",
+    "source": "Engagement design adapted from supplied service specifications; no historic rate is presented as a current offer",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "08 / FRACTIONAL LEADERSHIP",
+    "title": "The mandate is wider than a content calendar",
+    "lead": "Prospective clients buy a clear owner for a connected business problem.",
+    "body": "<div class=\"cols c2\"><div><div class=\"big-quote\">“We have an SEO agency, content and technology teams.<br><em>Who connects the decisions?</em>”</div><p class=\"small\">Illustrative buyer situation, not a client quotation.</p></div><div><ol class=\"numbered\"><li><b>Translate the commercial problem</b><span>Choose the buyer journey and the business measure.</span></li><li><b>Make the work executable</b><span>Turn audit findings into scoped releases and clear ownership.</span></li><li><b>Challenge weak evidence</b><span>Separate observed results from assumptions and vendor claims.</span></li><li><b>Maintain the programme</b><span>Refresh facts, monitor changes and reallocate effort.</span></li></ol></div></div><div class=\"takeaway\">The fractional role complements specialist execution. It works best when the sponsor supplies access, authority and enough capacity to act.</div>",
+    "source": "Demand Journeys / proposed value proposition",
+    "note": "",
+    "cls": ""
+  },
+  {
+    "ch": "09 / DISCUSSION",
+    "title": "Which buyer question<br>should you answer better?",
+    "lead": "Start with one market, one product family and one commercial objective.",
+    "body": "<div class=\"cols c2\"><div><div class=\"closing-prompts\"><p><span>01</span>Where do prospects hesitate or misunderstand the offer?</p><p><span>02</span>Which facts or pages should support the answer?</p><p><span>03</span>What customer action would make this work valuable?</p></div></div><div><div class=\"contact\"><span class=\"label\">FRACTIONAL GEO · AEO · SEO</span><h3>Demand Journeys</h3><p>Meng Liang Tan<br>Singapore · APAC and global engagements</p><a class=\"button\" href=\"mailto:ml@demandjourneys.com?subject=GEO%20AEO%20SEO%20Discovery\">Discuss your visibility challenge ↗</a><p><a href=\"mailto:ml@demandjourneys.com\">ml@demandjourneys.com</a></p></div></div></div>",
+    "source": "Anonymised case studies and proposed services / scope agreed before delivery",
+    "note": "",
+    "cls": "closing"
+  },
+  {
+    "ch": "10 / EVIDENCE & SOURCES",
+    "title": "What supports this presentation",
+    "lead": "Case evidence is historical. Platform guidance was checked for this draft.",
+    "body": "<table><thead><tr><th>Reference</th><th>Basis</th><th>How it is used</th></tr></thead><tbody><tr><td>Case A / Case B</td><td>Supplied April 2026 financial-services audit bundle.</td><td>Anonymised observations, proposed remedies and measurement design. No client lift claimed.</td></tr><tr><td>[S1] Google AI features</td><td><a href=\"https://developers.google.com/search/docs/appearance/ai-features\">AI features and your website ↗</a></td><td>SEO eligibility, useful text and consistency. No special AI markup requirement.</td></tr><tr><td>[S2] Google discovery</td><td><a href=\"https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview\">Sitemap guidance ↗</a></td><td>Sitemaps assist discovery; they are not indexed-page counts.</td></tr><tr><td>[S3] Google canonicals</td><td><a href=\"https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls\">Consolidate duplicate URLs ↗</a></td><td>Canonical relationships apply to duplicate or similar content.</td></tr><tr><td>[S4] Bing measurement</td><td><a href=\"https://www.bing.com/webmasters/help/ai-performance-9f8e7d6c\">AI Performance reporting ↗</a></td><td>Aggregated citation evidence, distinct from commercial causality.</td></tr><tr><td>[S5] Google updates</td><td><a href=\"https://developers.google.com/search/updates\">Search documentation updates ↗</a></td><td>FAQ rich results retired; llms.txt does not improve Google visibility.</td></tr></tbody></table>",
+    "source": "Guidance checked 15 October 2026 / no organisation names, original URLs or distinctive client identifiers included",
+    "note": "The source archive contains inconsistent scores, simulated citation percentages, unmeasured performance claims and unsupported uplift projections. These are excluded. Official guidance replaces outdated implementation promises. Client-specific financial, legal and product claims are not reproduced.",
+    "cls": ""
+  }
+]

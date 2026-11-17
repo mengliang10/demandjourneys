@@ -1,0 +1,61 @@
+---
+import {parsePresentations} from '../lib/presentations.mjs';
+const {html}=Astro.props;
+const articles=parsePresentations(html);
+const tags=[...new Set(articles.flatMap(a=>a.tags))].sort();
+const scope=html.match(/<div class="editorial-scope">([\s\S]*?)<\/div>/)?.[1]||'';
+const taxonomy=html.match(/<div class="taxonomy-pills">([\s\S]*?)<\/div>/)?.[1]||'';
+const note=html.match(/<div class="editorial-footer-note">([\s\S]*?)<\/div>/)?.[1]||'';
+---
+<section class="presentation-library container" aria-label="Presentation library">
+ <div class="library-tools" hidden>
+  <label for="presentation-search">Find a presentation</label>
+  <div class="library-search-row"><input id="presentation-search" type="search" placeholder="Search titles, topics or keywords…" autocomplete="off" /><button type="button" id="clear-library">Clear filters</button></div>
+  <fieldset class="tag-filters"><legend>Browse by tag <span>— select any matching topics</span></legend><div>{tags.map(tag=><button type="button" data-tag={tag} aria-pressed="false">{tag}<span>{articles.filter(a=>a.tags.includes(tag)).length}</span></button>)}</div></fieldset>
+  <p id="library-status" role="status" aria-live="polite"></p>
+ </div>
+ <div class="library-results">{articles.map(article=><article class="research-card" data-tags={JSON.stringify(article.tags)}><a class="deck-preview" href={article.link} aria-label={`Open presentation: ${article.title}`}>
+ {article.thumbnail ? <img src={article.thumbnail} alt="" width="1600" height="900" loading="lazy" decoding="async" /> : <span class="deck-preview-fallback"><span>Demand Journeys</span><strong>{article.title}</strong></span>}
+ <span class="deck-preview-open" aria-hidden="true">View presentation ↗</span>
+ </a><Fragment set:html={article.html} /></article>)}</div>
+ <p class="library-empty" hidden>No presentations match these filters. Try another topic or clear your search.</p>
+ <nav class="library-pagination" aria-label="Presentation result pages" hidden><button type="button" id="library-prev">← Previous</button><span id="library-page"></span><button type="button" id="library-next">Next →</button></nav>
+ <details class="library-scope"><summary>About this collection</summary><Fragment set:html={scope} /><div class="scope-topics"><Fragment set:html={taxonomy} /></div><Fragment set:html={note} /></details>
+</section>
+<script>
+ const root=document.querySelector('.presentation-library');
+ if(root){
+ const input=root.querySelector<HTMLInputElement>('#presentation-search')!;
+ const cards=[...root.querySelectorAll<HTMLElement>('.research-card')];
+ const buttons=[...root.querySelectorAll<HTMLButtonElement>('[data-tag]')];
+ const selected=new Set<string>();
+ const params=new URLSearchParams(location.search);
+ input.value=params.get('q')||'';
+ for(const tag of params.getAll('tag')) if(buttons.some(b=>b.dataset.tag===tag)) selected.add(tag);
+ let page=Math.max(1,parseInt(params.get('page')||'1')||1);
+ const pageSize=12;
+ const previous=root.querySelector<HTMLButtonElement>('#library-prev')!;
+ const next=root.querySelector<HTMLButtonElement>('#library-next')!;
+ const records=cards.map(card=>({card,tags:JSON.parse(card.dataset.tags||'[]') as string[],text:card.textContent!.toLocaleLowerCase()}));
+ function render(updateUrl=true){
+  const terms=input.value.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
+  const matches=records.filter(r=>terms.every(t=>r.text.includes(t))&&(!selected.size||r.tags.some(t=>selected.has(t))));
+  const pages=Math.max(1,Math.ceil(matches.length/pageSize));page=Math.min(page,pages);
+  const visible=new Set(matches.slice((page-1)*pageSize,page*pageSize));
+  records.forEach(r=>r.card.hidden=!visible.has(r));
+  buttons.forEach(b=>b.setAttribute('aria-pressed',String(selected.has(b.dataset.tag!))));
+  root!.querySelector('#library-status')!.textContent=`${matches.length} of ${cards.length} presentations${selected.size?' · Matching any selected tag':''}`;
+  (root!.querySelector('.library-empty') as HTMLElement).hidden=matches.length!==0;
+  (root!.querySelector('.library-pagination') as HTMLElement).hidden=pages<=1;
+  root!.querySelector('#library-page')!.textContent=`Page ${page} of ${pages}`;
+  previous.disabled=page===1;next.disabled=page===pages;
+  if(updateUrl){const url=new URL(location.href);url.searchParams.delete('q');url.searchParams.delete('tag');url.searchParams.delete('page');if(input.value.trim())url.searchParams.set('q',input.value.trim());selected.forEach(tag=>url.searchParams.append('tag',tag));if(page>1)url.searchParams.set('page',String(page));history.replaceState(null,'',url);}
+ }
+ input.addEventListener('input',()=>{page=1;render();});
+ buttons.forEach(b=>b.addEventListener('click',()=>{const tag=b.dataset.tag!;selected.has(tag)?selected.delete(tag):selected.add(tag);page=1;render();}));
+ root.querySelector('#clear-library')!.addEventListener('click',()=>{input.value='';selected.clear();page=1;render();input.focus();});
+ for(const [button,delta] of [[previous,-1],[next,1]] as const)button.addEventListener('click',()=>{page+=delta;render();root.querySelector('.library-tools')!.scrollIntoView({block:'start'});});
+ (root.querySelector('.library-tools') as HTMLElement).hidden=false;
+ render(false);
+ }
+</script>

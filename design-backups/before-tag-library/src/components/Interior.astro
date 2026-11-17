@@ -1,0 +1,45 @@
+---
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import '../styles/home.css';
+import '../styles/interior.css';
+import '../styles/refinement.css';
+const {html,route}=Astro.props;
+const head=html.match(/<head>([\s\S]*?)<\/head>/i)?.[1]
+ .replace(/<link[^>]+(?:fonts\.googleapis|fonts\.gstatic|index\.css)[^>]*>/g,'')
+ .replace(/#F5F2E9/g,'#f4f5f3');
+let content=html.match(/<main[^>]*>([\s\S]*?)<\/main>/i)?.[1] || '';
+content=content.replace('href="../#about"','href="/"');
+content=content.replace('class="commercial-journey" role="img"', 'class="commercial-journey" tabindex="0" role="img"');
+// Add reading aids without replacing the original copy or diagrams.
+const contents=[];
+let headingNumber=0;
+content=content.replace(/<h2([^>]*)>([\s\S]*?)<\/h2>/g, (whole,attrs,title)=>{
+ const id=attrs.match(/id="([^"]+)"/)?.[1] || `reading-${++headingNumber}`;
+ const label=title.replace(/<[^>]*>/g,'').trim().replace(/\s+/g,' ').replace(/&amp;/g,'&').replace(/&nbsp;/g,' ');
+ contents.push({id,label});
+ return `<h2${attrs}${attrs.includes('id="')?'':` id="${id}"`}>${title}</h2>`;
+});
+let coverIndex=0;
+content=content.replace(/(<article class="research-card">)/g, (opening)=>{
+ const number=++coverIndex;
+ return opening+`<div class="publication-cover cover-${number}" aria-hidden="true"><span>DEMAND JOURNEYS / FIELD NOTES</span><div class="cover-art"><i></i><i></i><i></i><i></i></div><strong>${number===1?'Demand. Value. Growth.':'Search is changing.'}</strong><span>${number===1?'COMMERCIAL STRATEGY':'AI & DISCOVERY'}<b>0${number}</b></span></div>`;
+});
+content=content.replace('<div class="commercial-journey"', '<p class="diagram-help">Follow the journey from demand to retention. On smaller screens, scroll the diagram sideways.</p><div class="commercial-journey"');
+const labels={profile:'Profile',methodology:'Methodology','hospitality-presentations':'Presentations',privacy:'Privacy policy'};
+---
+<!doctype html>
+<html lang="en-SG">
+<head><Fragment set:html={head} /></head>
+<body class="interior" data-page={route}>
+<a class="skip-link" href="#main">Skip to content</a>
+<Header current={route} />
+<main id="main">
+<nav class="breadcrumb container" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">{labels[route]}</span></nav>
+{contents.length>2 && <nav class="page-index container" aria-label="On this page"><span>On this page</span><div>{contents.map(item=><a href={`#${item.id}`}>{item.label}</a>)}</div></nav>}
+<Fragment set:html={content} />
+{route !== 'methodology' && route !== 'privacy' && <aside class="next-step container"><div><span class="eyebrow">Put the thinking to work</span><h2>Start with your business.</h2><p>A workshop, an audit, or ongoing marketing leadership.</p></div><a class="button" href="/#enquiry">Enquire <span aria-hidden="true">↗</span></a></aside>}
+</main>
+<Footer />
+</body>
+</html>

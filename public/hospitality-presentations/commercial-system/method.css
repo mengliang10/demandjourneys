@@ -1,0 +1,43 @@
+@import url('../geo-work/geo.css');
+
+/* The commercial system deck: cover rail, journey diagram and chapter map. */
+.cover-rail{background:#fffdf7;border:1px solid #c4d3c5;padding:18px 22px}
+.cover-rail>.label{display:block;margin-bottom:10px}
+.rail-row{display:grid;grid-template-columns:34px 1fr auto;align-items:baseline;gap:12px;padding:7px 0;border-top:1px solid #dfe7d9}
+.rail-row:first-of-type{border-top:0}
+.rail-row b{font:19px var(--dj-font-display);color:var(--teal);font-weight:400}
+.rail-row span{font-size:20px;font-weight:500}
+.rail-row em{font-size:13px;font-style:normal;color:var(--muted)}
+.rail-foot{border-top:1px solid #b8cbb9;margin-top:10px;padding-top:11px;font-size:13px;line-height:1.4;color:var(--muted)}
+
+.journey{background:#fffdf8;border:1px solid #dedbd1;border-radius:12px;padding:10px 14px;overflow:hidden}
+.journey svg{display:block;width:100%;height:auto;max-width:1120px;margin:0 auto;font-family:'DM Sans',Arial,sans-serif}
+.journey .stage{fill:#fff;stroke:#d7e1dd;stroke-width:1.4}
+.journey .stage-title{font-size:15px;font-weight:700;fill:#183f38;letter-spacing:.5px}
+.journey .stage-detail{font-size:10.5px;fill:#64756e}
+.journey .stage-num{font-size:11px;font-weight:700;fill:#b48b4d}
+.journey .section-label{font-size:12px;font-weight:700;fill:#264d44;letter-spacing:1.3px}
+.journey .minor{font-size:11px;fill:#5d6f68}
+.journey .infra-text{font-size:11px;font-weight:650;fill:#28534a}
+.journey+.takeaway{margin-top:14px}
+
+.chapter-box{background:var(--soft);border-top:2px solid #99b29e;padding:16px 20px;height:100%}
+.chapter-box .chapter-line{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+.chapter-box .chapter-line b{font:20px var(--dj-font-display);color:var(--teal);font-weight:400}
+.chapter-box .chapter-tag{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.chapter-box h3{font:24px/1.15 var(--dj-font-display);margin:3px 0 7px}
+.chapter-box p{font-size:16px;line-height:1.4;margin:0}
+.chapter-box .caps{margin-top:11px;padding-top:10px;border-top:1px solid #cbd7c9;font-size:12px;line-height:1.4;color:#4f6a5f;font-weight:500}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+.map-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:4px}
+.map-item{background:var(--soft);border-top:2px solid #91ad97;padding:9px 13px 10px}
+.map-item .chapter-line{display:flex;align-items:baseline;gap:8px}
+.map-item .chapter-line b{font:16px var(--dj-font-display);color:var(--teal);font-weight:400}
+.map-item h3{font:19px/1.1 var(--dj-font-display);margin:2px 0 3px}
+.map-item .chapter-tag{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)}
+.map-item .caps{margin-top:5px;font-size:11px;line-height:1.35;color:#4f6a5f;font-weight:500}
+
+.closing .contact .button{margin-top:16px}

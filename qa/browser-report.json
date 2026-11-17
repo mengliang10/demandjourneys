@@ -1,0 +1,390 @@
+{
+  "availabilityCalendar": true,
+  "addedDateLabels": true,
+  "subjectFilters": true,
+  "monthYearFilter": true,
+  "monthUrlRestore": true,
+  "monthChipRemoval": true,
+  "clientTransitions": true,
+  "repeatedNavigation": true,
+  "historyNavigation": true,
+  "noJsLibrary": true,
+  "reducedMotion": true,
+  "tagSearchReset": true,
+  "paginationFixture": 15,
+  "paginationUrlRestore": true,
+  "results": [
+    {
+      "label": "desktop",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "pageHeight": 1145,
+      "viewport": 1000,
+      "primaryCTAVisible": true,
+      "logoLoaded": true,
+      "localForm": true
+    },
+    {
+      "label": "mobile",
+      "width": 390,
+      "scrollWidth": 390,
+      "pageHeight": 1459,
+      "viewport": 844,
+      "primaryCTAVisible": true,
+      "logoLoaded": true,
+      "localForm": true
+    },
+    {
+      "label": "small-mobile",
+      "width": 320,
+      "scrollWidth": 320,
+      "pageHeight": 1559,
+      "viewport": 740,
+      "primaryCTAVisible": true,
+      "logoLoaded": true,
+      "localForm": true
+    }
+  ],
+  "interiorResults": [
+    {
+      "route": "profile",
+      "label": "desktop",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "profile",
+      "label": "mobile",
+      "width": 390,
+      "scrollWidth": 390,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "profile",
+      "label": "small-mobile",
+      "width": 320,
+      "scrollWidth": 320,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "hospitality-presentations",
+      "label": "desktop",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "hospitality-presentations",
+      "label": "mobile",
+      "width": 390,
+      "scrollWidth": 390,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "hospitality-presentations",
+      "label": "small-mobile",
+      "width": 320,
+      "scrollWidth": 320,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "privacy",
+      "label": "desktop",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "privacy",
+      "label": "mobile",
+      "width": 390,
+      "scrollWidth": 390,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "privacy",
+      "label": "small-mobile",
+      "width": 320,
+      "scrollWidth": 320,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "ai-search",
+      "label": "desktop",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "ai-search",
+      "label": "mobile",
+      "width": 390,
+      "scrollWidth": 390,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "ai-search",
+      "label": "small-mobile",
+      "width": 320,
+      "scrollWidth": 320,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "services",
+      "label": "desktop",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "services",
+      "label": "mobile",
+      "width": 390,
+      "scrollWidth": 390,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "services",
+      "label": "small-mobile",
+      "width": 320,
+      "scrollWidth": 320,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "services/growth-marketing",
+      "label": "desktop",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "services/growth-marketing",
+      "label": "mobile",
+      "width": 390,
+      "scrollWidth": 390,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "services/growth-marketing",
+      "label": "small-mobile",
+      "width": 320,
+      "scrollWidth": 320,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "services/platforms-analytics",
+      "label": "desktop",
+      "width": 1440,
+      "scrollWidth": 1425,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "services/platforms-analytics",
+      "label": "mobile",
+      "width": 390,
+      "scrollWidth": 390,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    },
+    {
+      "route": "services/platforms-analytics",
+      "label": "small-mobile",
+      "width": 320,
+      "scrollWidth": 320,
+      "headings": 1,
+      "font": "Outfit, Arial, sans-serif",
+      "logoLoaded": true,
+      "nav": [
+        "/profile/",
+        "/hospitality-presentations/",
+        "/ai-search/",
+        "/services/growth-marketing/",
+        "/services/platforms-analytics/"
+      ]
+    }
+  ],
+  "internalLinksChecked": 13,
+  "brokenLinks": [],
+  "errors": [],
+  "liveRequests": false
+}

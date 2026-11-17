@@ -1,0 +1,9 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import '../styles/interior.css';
+import '../styles/services.css';
+const {title,intro,description,current,sections,topic}=Astro.props;
+const canonical=new URL(Astro.url.pathname,'https://www.demandjourneys.com/');
+---
+<SiteLayout title={`${title} | Demand Journeys`} description={description} current={current} bodyClass="interior service-page">
+<nav class="breadcrumb container" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span>{current!=='services'&&<><a href="/services/">Services</a><span>/</span></>}<span aria-current="page">{title}</span></nav><section class="service-introduction container"><span class="eyebrow">Demand Journeys / Services</span><h1>{title}</h1><p>{intro}</p><a class="button" href={`/?service=${encodeURIComponent(topic||title)}#enquiry`}>Enquire ↗</a></section><div class="service-sections container">{sections.map((s,i)=><section><span class="eyebrow">{String(i+1).padStart(2,'0')} / {s.label}</span><h2>{s.title}</h2><p>{s.text}</p>{s.items&&<ul>{s.items.map(item=><li>{item}</li>)}</ul>}{s.href&&<a class="service-detail-link" href={s.href}>Explore {s.linkLabel||s.title} →</a>}</section>)}</div><aside class="service-closing container"><h2>Start with the business question.</h2><p>Workshops, audits and fractional leadership. Scope, responsibilities and fees agreed before work begins.</p><div><a href={`/?service=${encodeURIComponent(topic||title)}#enquiry`}>Enquire →</a><a href="/hospitality-presentations/">Explore presentations →</a><a href="/methodology/">Our methodology →</a></div></aside></SiteLayout>

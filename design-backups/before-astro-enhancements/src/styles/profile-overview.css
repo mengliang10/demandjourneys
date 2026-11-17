@@ -1,0 +1,32 @@
+/* Profile is a compact overview, not a slide-shaped title screen. */
+body.interior[data-page=profile] .profile-overview{padding-bottom:50px}
+body.interior[data-page=profile] .profile-opening{display:grid;grid-template-columns:minmax(0,2fr) minmax(240px,1fr);gap:7%;padding:28px 0 32px;border-bottom:1px solid var(--line)}
+body.interior[data-page=profile] .profile-opening h1{font-size:clamp(36px,4vw,58px);margin:12px 0 18px;letter-spacing:-.04em}
+body.interior[data-page=profile] .profile-positioning{font-size:clamp(20px,1.7vw,25px);line-height:1.5;color:var(--ink);max-width:790px;margin-bottom:17px}
+body.interior[data-page=profile] .profile-specialisms{font-size:13px;margin:0}
+body.interior[data-page=profile] .profile-contact{border-left:1px solid var(--line);padding-left:28px;display:flex;flex-direction:column;align-items:flex-start;gap:12px;justify-content:center;font-size:13px}
+body.interior[data-page=profile] .profile-contact .eyebrow{margin:0 0 2px;font-size:10px}
+body.interior[data-page=profile] .profile-contact .button{padding:10px 28px}
+body.interior[data-page=profile] .profile-expertise .profile-section-heading{border:0;margin:25px 0 20px;padding:0}
+body.interior[data-page=profile] .profile-expertise .profile-pillars-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+body.interior[data-page=profile] .profile-expertise .profile-pillar-card{background:#fff;border:1px solid var(--line);border-radius:6px;padding:20px;margin:0}
+body.interior[data-page=profile] .profile-expertise .profile-pillar-title{font-size:20px;margin:0 0 13px}
+body.interior[data-page=profile] .profile-expertise .profile-pillar-text{font-size:14px;line-height:1.7}
+body.interior[data-page=profile] .profile-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;margin:30px 0}
+body.interior[data-page=profile] .profile-detail-grid .profile-section-heading{margin:0 0 20px;padding-top:22px}
+body.interior[data-page=profile] .profile-detail-grid .profile-paragraph{font-size:15px;line-height:1.7;margin-bottom:16px}
+body.interior[data-page=profile] .profile-growth .growth-flow-box{display:flex;gap:8px;margin-bottom:20px}
+body.interior[data-page=profile] .profile-growth .growth-step{font-size:12px;padding:6px 9px;background:#e7eee7;border-radius:4px}
+body.interior[data-page=profile] .profile-growth .growth-arrow{margin-left:5px}
+body.interior[data-page=profile] .profile-background{border-top:1px solid var(--line)}
+body.interior[data-page=profile] .profile-background details{border-bottom:1px solid var(--line)}
+body.interior[data-page=profile] .profile-background summary{display:flex;justify-content:space-between;align-items:center;padding:19px 0;font-size:18px;font-family:Outfit,Arial,sans-serif;cursor:pointer;list-style:none}
+.profile-background summary::-webkit-details-marker{display:none}
+.profile-background details[open]>summary span{transform:rotate(45deg)}
+body.interior[data-page=profile] .profile-expanded{max-width:900px;padding-bottom:20px}
+body.interior[data-page=profile] .profile-expanded .container{width:100%;max-width:900px}
+body.interior[data-page=profile] .profile-expanded .section{padding:10px 0}
+body.interior[data-page=profile] .profile-expanded .about-social{font-size:13px}
+body.interior[data-page=profile] .profile-doc-footer{padding-top:20px;border:0;font-size:12px;margin-top:0}
+@media(max-width:1000px){body.interior[data-page=profile] .profile-expertise .profile-pillars-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){body.interior[data-page=profile] .profile-opening{grid-template-columns:1fr;gap:22px;padding-top:12px}body.interior[data-page=profile] .profile-contact{border-left:0;border-top:1px solid var(--line);padding:19px 0 0;display:flex;flex-direction:row;flex-wrap:wrap;gap:12px 20px;justify-content:flex-start}body.interior[data-page=profile] .profile-contact .eyebrow{width:100%}body.interior[data-page=profile] .profile-contact a:last-child{overflow-wrap:anywhere}body.interior[data-page=profile] .profile-detail-grid{grid-template-columns:1fr;gap:12px;margin-top:24px}body.interior[data-page=profile] .profile-expertise .profile-pillars-grid{grid-template-columns:1fr;gap:12px}body.interior[data-page=profile] .profile-expertise .profile-pillar-card{padding:18px}body.interior[data-page=profile] .profile-expertise .profile-pillar-title{margin-bottom:8px}}

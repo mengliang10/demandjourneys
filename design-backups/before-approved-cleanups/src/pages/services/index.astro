@@ -1,0 +1,9 @@
+---
+import ServicePage from '../../components/ServicePage.astro';
+const sections=[
+ {label:'Search',title:'AEO/GEO',text:'Help buyers find and understand your expertise in search and AI-generated answers.',items:['Search and answer visibility diagnostics','Content evidence and technical priorities','Measurement and cross-functional delivery'],href:'/ai-search/'},
+ {label:'Growth',title:'Growth Marketing',text:'Connect customer demand, acquisition, conversion and retention to commercial performance.',items:['Customer journeys and growth constraints','Channel investment and experimentation','CRM, loyalty and customer value'],href:'/services/growth-marketing/'},
+ {label:'Systems',title:'Platforms & Analytics',text:'Make technology and data useful to the people making business decisions.',items:['MarTech and customer-data roadmaps','Measurement and dashboard requirements','Vendor coordination and operating governance'],href:'/services/platforms-analytics/'}
+];
+---
+<ServicePage title="Services" current="services" topic="Other" intro="Search, growth and technology. Connected around your business." description="Explore AEO/GEO, Growth Marketing, and Platforms & Analytics advisory services from Demand Journeys." sections={sections}/>
