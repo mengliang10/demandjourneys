@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
-  "description": "Demand Journeys \u2014 Independent commercial practice connecting marketing, technology, distribution and customer performance.",
+  "description": "Demand Journeys — Independent commercial practice connecting marketing, technology, distribution and customer performance.",
   "author": "Tan Meng Liang",
   "license": "MIT",
   "keywords": [
@@ -21,7 +21,8 @@
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
     "build": "astro build && node scripts/finalize-routes.mjs",
-    "preview": "astro preview --host 127.0.0.1"
+    "preview": "astro preview --host 127.0.0.1",
+    "audit": "node scripts/audit-critical-pages.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
