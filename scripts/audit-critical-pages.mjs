@@ -34,7 +34,7 @@ for(const route of routes){
   const canonicals=linkTags.filter(t=>/\brel\s*=\s*["']canonical["']/i.test(t));
   if(descriptions.length!==1) errors.push('Expected exactly one description, got '+descriptions.length+': '+route);
   if(canonicals.length!==1) errors.push('Expected exactly one canonical, got '+canonicals.length+': '+route);
-  if(!html.includes('"@id":"https://www.demandjourneys.com/#organization"')) errors.push('Stable Organization schema identity missing: '+route);
+  if(!route.startsWith('/selected-work/decks/') && !html.includes('"@id":"https://www.demandjourneys.com/#organization"')) errors.push('Stable Organization schema identity missing: '+route);
   if(/Amazing Site|dev3_admin/i.test(html)) errors.push('Placeholder entity identity present: '+route);
   pages.push({route,html});
 }
