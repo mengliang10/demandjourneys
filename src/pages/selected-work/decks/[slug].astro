@@ -36,11 +36,12 @@ const decks=[
 ];
 export function getStaticPaths(){return ['booking-transformation','customer-data-platform','distribution-governance'].map(slug=>({params:{slug}}));}
 const deck=decks.find(item=>item.slug===Astro.params.slug);
+const isPreview = Astro.url.searchParams.get('preview') === '1';
 const site='https://www.demandjourneys.com';
 const deckURL=`${site}/selected-work/decks/${deck.slug}/`;
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" class:list={[{'is-slide-preview':isPreview}]}>
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -93,6 +94,9 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-off
 .reveal .placeholder li{font-size:16px;line-height:1.23;margin:5px 0}
 .reveal .progress{height:3px;color:var(--teal)}
 .reveal .controls{display:none}
+/* Inline slide previews show only the slide: no logo, toolbar, footer or progress overlay. */
+.is-slide-preview .presentation-header,.is-slide-preview .bottom,.is-slide-preview .reveal .progress,.is-slide-preview .reveal .slide-number{display:none!important}
+.is-slide-preview .reveal .controls{display:none!important}
 /* Production wordmark used by the main Demand Journeys website. */
 .presentation-header>a:first-child{font-size:0;letter-spacing:0;line-height:0;min-width:180px;min-height:30px;background:url('/identity/wordmark-forest-456.webp') left center/180px auto no-repeat}
 @media(max-width:650px){.presentation-header>a:first-child{min-width:126px;min-height:24px;background-size:126px auto}}
@@ -162,7 +166,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-off
 if (typeof Reveal !== 'undefined') {
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ready=Reveal.initialize({
-    width:1200,height:700,margin:.12,hash:true,controls:false,progress:true,center:false,
+    width:1200,height:700,margin:document.documentElement.classList.contains('is-slide-preview')?.015:.12,hash:true,controls:false,progress:!document.documentElement.classList.contains('is-slide-preview'),center:false,
     transition:reduced?'none':'fade',backgroundTransition:'none',
     keyboardCondition:e=>!['INPUT','TEXTAREA','SELECT'].includes(e.target?.tagName)
   });
@@ -170,7 +174,7 @@ if (typeof Reveal !== 'undefined') {
   const count=document.getElementById('count');
   function status(){
     const current=Reveal.getCurrentSlide();
-    if(!current)return;
+    if(!current || document.documentElement.classList.contains('is-slide-preview'))return;
     count.textContent=String(Reveal.getIndices().h+1).padStart(2,'0')+' / '+String(Reveal.getTotalSlides()).padStart(2,'0');
     chapter.textContent=current.querySelector('.eyebrow')?.textContent||'SELECTED WORK';
   }
