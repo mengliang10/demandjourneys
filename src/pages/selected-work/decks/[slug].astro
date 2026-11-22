@@ -1,0 +1,141 @@
+---
+const decks=[
+  {
+    slug:'booking-transformation',
+    title:'Enterprise booking experience transformation',
+    subtitle:'Frasers Hospitality · Project Meta',
+    status:'Implemented programme',
+    problem:'A global booking experience needed a clearer, faster customer journey and more consistent digital infrastructure.',
+    remit:'Concept, business case, Board approval and implementation governance across web and booking systems.',
+    evidence:['Page-load time improved from approximately 7.1 to 3.0 seconds.','Booking journey reduced from approximately 10 steps to 5.','Direct website room nights increased by 56% in the documented programme context.'],
+    caution:'Programme-associated outcomes, not proof of causal attribution to a single change. Figures are subject to original measurement scope.',
+    sections:['Context and decision criteria','Booking journey before / after','Architecture and delivery approach','Measurement and governance','Sources and approved evidence']
+  },
+  {
+    slug:'customer-data-platform',
+    title:'Customer data platform strategy',
+    subtitle:'Hospitality customer-platform planning',
+    status:'Planned and specified · Not deployed',
+    problem:'Customer identity, lifecycle activity and measurement required an integrated platform decision framework.',
+    remit:'CDP concept, requirements, architecture, roadmap, RFP, business case and implementation planning.',
+    evidence:['Business and platform requirements translated into an implementation roadmap.','Vendor evaluation and procurement planning completed.'],
+    caution:'Full approval and deployment were not completed before departure. No production unified guest profile or realised benefit is claimed.',
+    sections:['Use cases and decision requirements','Data sources, privacy and identity','RFP and vendor evaluation','Proposed architecture and phases','Planning evidence and limitations']
+  },
+  {
+    slug:'distribution-governance',
+    title:'Regional distribution and media governance',
+    subtitle:'Hospitality and travel · APAC',
+    status:'Leadership and operating experience',
+    problem:'Direct commerce, OTA distribution, paid media and commercial reporting needed coordinated governance across markets.',
+    remit:'Regional marketing and channel oversight, selected chain agreements, forecasting and cross-functional governance.',
+    evidence:['Direct involvement in chain distribution agreements with major online travel agencies.','Forecasting responsibilities spanning weekly through long-range planning.'],
+    caution:'Property-level OTA execution remained locally owned. Revenue management was shared governance, not sole functional ownership.',
+    sections:['Markets, teams and operating scope','Channel economics and distribution governance','Media and agency management','Measurement, forecasting and cadence','Role ownership and evidence boundaries']
+  }
+];
+export function getStaticPaths(){return decks.map(deck=>({params:{slug:deck.slug},props:{deck}}));}
+const {deck}=Astro.props;
+const site='https://www.demandjourneys.com';
+const deckURL=`${site}/selected-work/decks/${deck.slug}/`;
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content={`Evidence-qualified presentation placeholder: ${deck.title}. Scope, evidence and limitations are included; full case materials forthcoming.`}/>
+<link rel="canonical" href={deckURL}/>
+<title>{deck.title} | Selected Work | Demand Journeys</title>
+<link rel="stylesheet" href="/hospitality-presentations/commercial-system/vendor/reveal.min.css"/>
+<style is:global>
+:root{--forest:#203e3a;--ivory:#f5f2e9;--sage:#60716a;--brass:#927448}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--forest);color:var(--ivory);font-family:"DM Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.reveal{font-family:inherit;color:var(--forest);font-size:30px}
+.reveal .slides{font-family:inherit;text-align:left}
+.reveal .slides section{background:var(--ivory);height:100%;box-sizing:border-box;padding:66px 85px 74px;text-align:left;overflow:hidden}
+.reveal .slides section.dark{background:var(--forest);color:var(--ivory)}
+.reveal h1,.reveal h2{font-family:Georgia,"Times New Roman",serif;text-transform:none;letter-spacing:-.035em;line-height:1.12;margin:0 0 26px;color:inherit}
+.reveal h1{font-size:2.45em;max-width:1050px}
+.reveal h2{font-size:2.05em;max-width:1000px}
+.reveal p,.reveal li{line-height:1.48;font-size:.83em}
+.reveal p.lead{font-size:1.08em;line-height:1.4;max-width:980px}
+.reveal ul{padding-left:1.25em;margin:18px 0}
+.reveal li{padding:7px 0}
+.reveal .eyebrow{font-size:.48em;letter-spacing:.13em;font-weight:750;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:25px}
+.reveal .dark .eyebrow{color:#cedad1}
+.reveal .subtitle{font-size:.7em;opacity:.82;margin-top:24px}
+.reveal .boundary{margin-top:34px;font-size:.56em;padding:18px 22px;border-left:4px solid var(--brass);background:#e5ebe2;line-height:1.45;max-width:1020px}
+.reveal .tag{font-size:.52em;display:inline-block;border:1px solid currentColor;padding:9px 15px;margin-top:40px;letter-spacing:.04em}
+.reveal .placeholder{font-size:.85em;border:2px dashed #9eb0a3;background:#edf2eb;padding:40px;max-width:1050px}
+.reveal .placeholder strong{display:block;font-size:1.1em;margin-bottom:15px}
+.reveal .footnote{font-size:.47em;color:var(--sage);position:absolute;bottom:30px;left:85px;right:85px}
+.reveal .controls{color:var(--brass)}
+.deck-topbar{position:fixed;top:0;left:0;right:0;height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#162c28;color:#fff;z-index:30;font:600 12px system-ui,sans-serif;gap:10px}
+.deck-topbar a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.deck-topbar span{white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.deck-topbar button{font:inherit;background:none;border:1px solid #b6c7b9;color:white;border-radius:3px;padding:5px 9px;cursor:pointer}
+.deck-stage{position:fixed;inset:42px 0 0;overflow:hidden}
+.reveal .progress{color:var(--brass)}
+@media print{.deck-topbar{display:none}.deck-stage{inset:0}.reveal .slides section{break-after:page}}
+</style>
+</head>
+<body>
+<header class="deck-topbar"><a href="/selected-work/">← Selected Work</a><span>{deck.title} · Placeholder deck</span><button type="button" id="fullscreen-toggle">Fullscreen</button></header>
+<main class="deck-stage">
+<div class="reveal" aria-label={`Reveal.js presentation for ${deck.title}`}>
+<div class="slides">
+<section class="dark">
+<span class="eyebrow">Demand Journeys / Selected work</span>
+<h1>{deck.title}</h1>
+<p class="lead">{deck.subtitle}</p>
+<span class="tag">{deck.status}</span>
+<p class="subtitle">Presentation framework · Placeholder edition</p>
+</section>
+<section>
+<span class="eyebrow">01 / Business context</span>
+<h2>The challenge</h2>
+<p class="lead">{deck.problem}</p>
+<div class="boundary">Detailed context, chronology and supporting visuals will be inserted after the public-use evidence review.</div>
+</section>
+<section>
+<span class="eyebrow">02 / Scope</span>
+<h2>What the work covered</h2>
+<p class="lead">{deck.remit}</p>
+<div class="boundary">This scope describes professional work in earlier roles, not necessarily a Demand Journeys consulting engagement.</div>
+</section>
+<section>
+<span class="eyebrow">03 / Evidence</span>
+<h2>What is supported today</h2>
+<ul>{deck.evidence.map(item=><li>{item}</li>)}</ul>
+<div class="boundary">{deck.caution}</div>
+</section>
+<section>
+<span class="eyebrow">04 / To complete</span>
+<h2>Case-study materials pending</h2>
+<div class="placeholder"><strong>Placeholder for the full Reveal.js case deck</strong><p>The next edition will develop the following sections using approved, non-confidential material:</p>
+<ul>{deck.sections.map(item=><li>{item}</li>)}</ul></div>
+</section>
+<section class="dark">
+<span class="eyebrow">Demand Journeys / Evidence-first thinking</span>
+<h2>From operating experience to defensible decisions.</h2>
+<p class="lead">Explore the broader selected-work evidence and advisory scope.</p>
+<p><a style="color:inherit;text-decoration:underline" href="/selected-work/">Return to Selected Work</a></p>
+<p class="subtitle">Placeholder deck · No financial revenue amounts or service prices</p>
+</section>
+</div></div>
+</main>
+<script is:inline src="/hospitality-presentations/commercial-system/vendor/reveal.min.js"></script>
+<script is:inline>
+  if(typeof Reveal!=='undefined'){
+    Reveal.initialize({hash:true,controls:true,progress:true,slideNumber:'c/t',center:false,transition:'slide',width:1280,height:720,margin:0.02});
+  }
+  document.getElementById('fullscreen-toggle')?.addEventListener('click',()=>{
+    const target=document.querySelector('.deck-stage');
+    if(document.fullscreenElement)document.exitFullscreen();
+    else target?.requestFullscreen?.();
+  });
+</script>
+</body>
+</html>
