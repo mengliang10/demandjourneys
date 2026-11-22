@@ -1,13 +1,11 @@
 ---
+import ProfilePractice from './ProfilePractice.astro';
+import RelatedPresentations from './RelatedPresentations.astro';
 const {html}=Astro.props;
 const between=(start,end)=>html.split(`<!-- ${start} -->`)[1]?.split(`<!-- ${end} -->`)[0]||'';
 const statement=html.match(/<div class="profile-lead-statement">([\s\S]*?)<\/div>/)?.[1]||'';
-const intro=between('STATEMENT & INTRO','WHAT I BRING').replace(/<div class="profile-lead-statement">[\s\S]*?<\/div>/,'');
 const pillars=between('WHAT I BRING','HOW I APPROACH GROWTH');
-const growth=between('HOW I APPROACH GROWTH','FOR YOUR BUSINESS');
-const business=between('FOR YOUR BUSINESS','SIGNATURE / FOOTER');
 const footer=html.match(/<footer class="profile-doc-footer">[\s\S]*?<\/footer>/)?.[0]||'';
-const extra=html.slice(html.indexOf('<section class="section" id="practice-context">'));
 const subtitle=html.match(/<p class="profile-subtitle">([\s\S]*?)<\/p>/)?.[1]||'';
 ---
 <div class="profile-overview container">
@@ -16,13 +14,7 @@ const subtitle=html.match(/<p class="profile-subtitle">([\s\S]*?)<\/p>/)?.[1]||'
   <aside class="profile-contact"><span class="eyebrow">Start a conversation</span><a class="button" href="/#enquiry">Enquire ↗</a><a href="/tan-meng-liang-professional-introduction.pdf" download>Download profile · PDF ↓</a><a href="https://www.linkedin.com/in/mengliang/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="mailto:mengliang.online@outlook.com">mengliang.online@outlook.com</a></aside>
  </section>
  <section class="profile-expertise"><Fragment set:html={pillars}/></section>
- <div class="profile-detail-grid">
-  <section class="profile-growth"><Fragment set:html={growth}/></section>
-  <section class="profile-engagement"><Fragment set:html={business}/></section>
- </div>
- <div class="profile-background">
-  <details><summary>Experience &amp; background<span aria-hidden="true">+</span></summary><div class="profile-expanded"><Fragment set:html={intro}/></div></details>
-  <details><summary>About Demand Journeys<span aria-hidden="true">+</span></summary><div class="profile-expanded"><Fragment set:html={extra}/></div></details>
- </div>
+ <RelatedPresentations ids={['personal-portfolio']} nested />
+ <ProfilePractice />
  <Fragment set:html={footer}/>
 </div>

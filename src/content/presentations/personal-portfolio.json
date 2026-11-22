@@ -16,5 +16,11 @@
   "order": 1,
   "draft": false,
   "thumbnail": "../../assets/presentations/personal-portfolio.jpg",
-  "published": "2026-11-16"
+  "published": "2026-11-16",
+  "libraryTopics": [
+    "Channel cost calculators",
+    "Customer data and technology",
+    "Customer conversion",
+    "Hospitality and travel"
+  ]
 }

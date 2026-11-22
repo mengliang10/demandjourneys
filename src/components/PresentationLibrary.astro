@@ -1,38 +1,90 @@
 ---
-import subjectGroups from '../data/presentation-subjects.json';
+import {groups, latest} from '../lib/library-navigation';
 import {allPresentations} from '../lib/presentations.mjs';
 import PresentationCard from './PresentationCard.astro';
-const articles=await allPresentations();
-const tags=[...new Set(articles.flatMap(a=>a.tags))].sort();
-const groups=subjectGroups.map(group=>({...group,topics:group.topics.filter(topic=>tags.includes(topic))})).filter(group=>group.topics.length);
-const ungrouped=tags.filter(tag=>!subjectGroups.some(group=>group.topics.includes(tag)));
-if(ungrouped.length)groups.push({id:'other',label:'Other topics',topics:ungrouped});
+
+const {selectedHref = latest.href} = Astro.props;
+const navigation = [latest, ...groups];
+const currentGroup = navigation.find(group =>
+  group.href === selectedHref || group.topics.some(topic => topic.href === selectedHref)
+) ?? latest;
+const currentTopic = currentGroup.topics.find(topic => topic.href === selectedHref);
+const heading = currentTopic?.label ?? currentGroup.label;
+const articles = await allPresentations();
+const byPage = new Map<string, typeof articles>([
+  [latest.href, articles.slice(0, 3)],
+  [latest.topics[0].href, articles]
+]);
+for (const group of groups) {
+  const names = new Set(group.topics.map(topic => topic.label));
+  byPage.set(group.href, articles.filter(deck => deck.libraryTopics.some((name: string) => names.has(name))));
+  for (const topic of group.topics) {
+    byPage.set(topic.href, articles.filter(deck => deck.libraryTopics.includes(topic.label)));
+  }
+}
+const decks = byPage.get(selectedHref) ?? [];
 ---
-<section class="presentation-library container" aria-label="Presentation library">
- <header class="library-heading"><h1>Presentations</h1></header>
- <div class="library-tools" hidden>
-  <div class="discovery-topline"><div class="keyword-field"><label for="presentation-search">Search presentations</label><input id="presentation-search" type="search" placeholder="Search presentations…" autocomplete="off" /></div>
-   <details class="subject-dropdown"><summary>Subjects <span id="subject-selection-count"></span><span aria-hidden="true">⌄</span></summary>
-    <div class="subject-panel"><label for="subject-search">Find a subject or topic</label><input id="subject-search" type="search" placeholder="Search subjects and topics…" autocomplete="off"/>
-     
-     <div class="subject-groups">{groups.map(group=><fieldset data-subject-group={group.id}><legend><label><input type="checkbox" data-subject={group.id}/><span>{group.label}</span></label></legend><div class="subject-topics">{group.topics.map(tag=><button type="button" data-tag={tag} aria-pressed="false">{tag}<span>{articles.filter(a=>a.tags.includes(tag)).length}</span></button>)}</div></fieldset>)}</div>
-     <p class="subject-search-empty" hidden>No subjects or topics match.</p>
-     <button type="button" class="close-subjects">Done</button>
-    </div>
-   </details>
+<section class="presentation-library container" aria-labelledby="library-title">
+  <header class="library-heading"><h1 id="library-title">Presentations</h1></header>
+  <div class="catalogue">
+    <button class="catalogue-toggle" type="button" hidden aria-expanded="false" aria-controls="catalogue-menu">Browse topics <span aria-hidden="true">⌄</span></button>
+    <nav id="catalogue-menu" class="catalogue-menu" aria-label="Presentation topics">
+      {navigation.map(group => (
+        <div class:list={['menu-group', {expanded: group === currentGroup}]}>
+          <a class="group-link" href={group.href} data-astro-reload
+             aria-current={group.href === selectedHref ? 'page' : undefined}><span>{group.label} <small>({byPage.get(group.href)?.length ?? 0})</small></span></a>
+          {group === currentGroup && <ul>
+            {group.topics.map(topic => <li><a href={topic.href} data-astro-reload
+              aria-current={topic.href === selectedHref ? 'page' : undefined}>{topic.label} <small>({byPage.get(topic.href)?.length ?? 0})</small></a></li>)}
+          </ul>}
+        </div>
+      ))}
+    </nav>
+    <section class="catalogue-body" aria-labelledby="selection-title">
+      <h2 id="selection-title">{heading}</h2>
+      {decks.length > 0
+        ? <div class="library-results">{decks.map(article => <PresentationCard article={article} />)}</div>
+        : <p>No presentations published for {heading} yet.</p>}
+    </section>
   </div>
-  <div class="date-filter-row"><details class="month-dropdown"><summary><span id="month-label">All months</span><span aria-hidden="true">⌄</span></summary><div class="month-panel"><label for="calendar-year">Year</label><select id="calendar-year" aria-label="Presentation year"></select><div class="calendar-months" role="group" aria-label="Choose month"></div><p class="calendar-empty" hidden>No presentations for this year.</p><button type="button" class="all-months">All months</button></div></details><input type="hidden" id="publication-month"/><button type="button" id="clear-library">Clear</button></div>
-
-  <div class="active-library-filters" aria-label="Selected filters"></div>
-  <div class="library-result-line"><p id="library-status" role="status" aria-live="polite"></p></div>
- </div>
- <div class="library-results">{articles.map(article=><PresentationCard article={article} />)}</div>
- <p class="library-empty" hidden>No presentations match these filters. Try another topic or clear your search.</p>
- <nav class="library-pagination" aria-label="Presentation result pages" hidden><button type="button" id="library-prev">← Previous</button><span id="library-page"></span><button type="button" id="library-next">Next →</button></nav>
-
 </section>
+
 <script>
-import {initializeLibrary} from '../scripts/library-discovery';
-document.addEventListener('astro:page-load',initializeLibrary);
-initializeLibrary();
+  function prepareMenu() {
+    const button = document.querySelector<HTMLButtonElement>('.catalogue-toggle[hidden]');
+    if (!button) return;
+    button.hidden = false;
+    button.addEventListener('click', () => {
+      button.setAttribute('aria-expanded', String(button.getAttribute('aria-expanded') !== 'true'));
+    });
+  }
+  document.addEventListener('astro:page-load', prepareMenu);
+  prepareMenu();
 </script>
+<style>
+  .catalogue-toggle {display:none;}
+  @media(max-width:760px){
+    .catalogue-toggle:not([hidden]) {display:flex;align-items:center;justify-content:space-between;font:inherit;font-weight:600;background:#e5ede6;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:12px 16px;min-height:44px;}
+    .catalogue-toggle:not([hidden])[aria-expanded=false] + nav {display:none;}
+    .catalogue-toggle[aria-expanded=true] span {transform:rotate(180deg);}
+  }
+  .catalogue { display:grid; grid-template-columns:minmax(210px,245px) minmax(0,1fr); gap:clamp(24px,4vw,64px); align-items:start; }
+  .catalogue-menu { border-right:1px solid var(--line); padding-right:18px; }
+  .catalogue-menu small { font-size:.88em; color:var(--muted); white-space:nowrap; }
+  .menu-group { border-bottom:1px solid var(--line); }
+  .catalogue-menu a { display:block; text-decoration:none; }
+  .group-link { display:flex!important; align-items:center; justify-content:space-between; gap:10px; padding:13px 8px; font:500 16px/1.35 Outfit,sans-serif; }
+  .group-link::after { content:''; width:6px; height:6px; flex:none; border:solid currentColor; border-width:0 1.5px 1.5px 0; transform:rotate(45deg); }
+  .expanded .group-link::after { transform:rotate(225deg); }
+  .catalogue-menu ul { list-style:none; padding:0; margin:0 0 8px; }
+  .catalogue-menu li a { padding:8px 14px; font-size:14px; line-height:1.4; }
+  .catalogue-menu a:hover, .catalogue-menu a:focus-visible, .catalogue-menu [aria-current=page] { background:#e5ede6; color:var(--ink); }
+  .catalogue-menu [aria-current=page] { box-shadow:inset 3px 0 var(--accent); }
+  .catalogue-body { min-width:0; }
+  .catalogue-body h2 { font:500 clamp(23px,2vw,31px)/1.2 Outfit,sans-serif; margin:0 0 18px; }
+  @media(max-width:760px) {
+    .catalogue { grid-template-columns:1fr; gap:24px; }
+    .catalogue-menu { padding:0; border:0; }
+    .group-link { padding-block:9px; }
+  }
+</style>

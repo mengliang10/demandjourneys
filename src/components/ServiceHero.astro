@@ -1,0 +1,39 @@
+---
+import '../styles/ai-search.css';
+interface Props {
+  eyebrow: string;
+  headline: string;
+  lead: string;
+  approach: string;
+  enquiryLabel: string;
+  enquiryHref: string;
+  deckLabel: string;
+  deckHref: string;
+  facts: string[][];
+  note: string;
+}
+const {eyebrow, headline, lead, approach, enquiryLabel, enquiryHref, deckLabel, deckHref, facts, note} = Astro.props;
+---
+<section class="geo-hero container" aria-labelledby="service-title">
+    <div class="geo-hero-grid">
+     <div>
+      <span class="eyebrow">{eyebrow}</span>
+      <h1 id="service-title">{headline}</h1>
+      <p class="section-lead">{lead}</p>
+      <p class="lead-sub">{approach}</p>
+      <div class="geo-actions">
+       <a class="button" href={enquiryHref}>{enquiryLabel} <span aria-hidden="true">↗</span></a>
+       <a class="geo-link" href={deckHref}>{deckLabel} <span aria-hidden="true">↗</span></a>
+      </div>
+     </div>
+     <aside class="geo-facts" aria-label="Engagement at a glance">
+      <p class="eyebrow">At a glance</p>
+      <dl>
+       {facts.map(([label, value]) => (
+        <div class="geo-fact"><dt>{label}</dt><dd>{value}</dd></div>
+       ))}
+      </dl>
+      <p class="geo-note">{note}</p>
+     </aside>
+    </div>
+   </section>

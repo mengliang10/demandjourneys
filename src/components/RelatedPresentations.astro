@@ -1,0 +1,11 @@
+---
+import {allPresentations} from '../lib/presentations.mjs';
+import PresentationCard from './PresentationCard.astro';
+import '../styles/related-presentations.css';
+const {ids, nested=false}=Astro.props;
+const articles=(await allPresentations()).filter(article=>ids.includes(article.id));
+---
+<section class:list={['related-presentations',{'container':!nested}]} aria-label="Presentations">
+ <header class="related-heading"><h2>Presentations</h2><a href="/hospitality-presentations/">All presentations <span aria-hidden="true">→</span></a></header>
+ <div class="related-decks">{articles.map(article=><PresentationCard article={article}/>)}</div>
+</section>

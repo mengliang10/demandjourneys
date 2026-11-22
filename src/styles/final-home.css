@@ -1,51 +1,35 @@
-body.final-home .hero{height:auto;min-height:min(850px,100svh);max-height:none;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(330px,.85fr);gap:7%;text-align:left;padding:135px max(5%,calc((100% - 1320px)/2)) 65px;align-items:start}
-body.final-home .hero h1{font-size:clamp(43px,5.1vw,76px);line-height:1.05;margin:0 0 22px;letter-spacing:-.04em}
-body.final-home .hero-copy{align-self:start}
-body.final-home .hero-copy .eyebrow{font-size:11px;color:#dbe8de}
-body.final-home .hero-intro{font-size:21px;color:#f1f5f0;line-height:1.45;text-shadow:0 1px 3px rgba(0,0,0,0.35)}
-body.final-home .primary-cta{display:inline-flex;margin-top:26px;font-size:14px;background:transparent;border-bottom:1px solid #ffffff80;padding:8px 0;color:white;gap:25px}
-body.final-home .hero-enquiry{background:#fffffff7;color:var(--ink);border-radius:10px;padding:28px;scroll-margin-top:95px;box-shadow:0 12px 40px #10251d20;align-self:center}
-body.final-home .hero-enquiry h2{font:500 26px/1.2 Outfit,Arial,sans-serif;letter-spacing:-.025em;margin:0 0 20px}
-body.final-home .clean-enquiry-form{padding:0;gap:12px}
-body.final-home .form-field label{font-size:12px;font-weight:600;color:#2c3e38}
-body.final-home .form-field input,body.final-home .form-field select,body.final-home .form-field textarea{font-size:15px;padding:10px;min-height:42px;border:1px solid #c7d2cc;border-radius:5px;transition:border-color 0.15s, box-shadow 0.15s}
-body.final-home .form-field input:focus,body.final-home .form-field select:focus,body.final-home .form-field textarea:focus{border-color:#253b34;outline:none;box-shadow:0 0 0 3px rgba(37,59,52,0.15)}
-body.final-home .form-field input:user-invalid,body.final-home .form-field textarea:user-invalid{border-color:#b43c3c}
-body.final-home .form-field textarea{min-height:66px}
-body.final-home .submit-btn{width:100%;background:#253b34;color:#fff;border:none;border-radius:5px;cursor:pointer;font-weight:600;transition:background 0.15s, transform 0.15s}
-body.final-home .submit-btn:hover{background:#182823;transform:translateY(-1px)}
-body.final-home .form-disclaimer p{color:#495d55;font-size:12px;line-height:1.4}
-body.final-home .form-disclaimer a{color:#253b34;text-decoration:underline;text-underline-offset:2px}
-body.final-home .services{max-width:1320px;padding:42px 5% 28px}
-body.final-home .section-heading{margin-bottom:23px}
-body.final-home .section-heading h2{font-size:30px}
-body.final-home .service-grid{border:0;gap:24px;box-shadow:none;background:none;overflow:visible}
-body.final-home .service{background:transparent;border:0;border-top:1px solid #bdcbc1;border-radius:0;padding:20px 0;min-height:0}
-body.final-home .service+.service{border-left:0}
-body.final-home .service-top{justify-content:space-between}
-body.final-home .service h3{font:500 27px/1.15 Outfit,Arial,sans-serif;letter-spacing:-.025em;margin:15px 0 12px}
-body.final-home .service p{font-size:15px;max-width:350px}
-body.final-home .service-read{display:block;font-size:12px;margin-top:20px}
-.engagement-line{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;padding:20px 0;border-top:1px solid var(--line)}
-.engagement-line>span{color:var(--muted)}.engagement-line a{text-decoration:underline;text-underline-offset:4px}
-.practice-strip,.library-strip{width:min(1188px,90%);margin:0 auto;padding:30px 0;display:flex;gap:26px;align-items:center;border-top:1px solid var(--line)}
-.practice-strip img{width:76px;height:76px;object-fit:cover;border-radius:50%}.practice-strip>div,.library-strip>div{flex:1}
-.practice-strip h2,.library-strip h2{font:500 25px/1.2 Outfit,Arial,sans-serif;margin:10px 0;letter-spacing:-.025em}.practice-strip p,.library-strip p{font-size:14px;color:var(--muted);margin:0;max-width:620px}.practice-strip>a,.library-strip>a{font-size:13px;flex-shrink:0;text-decoration:underline;text-underline-offset:5px}
-.library-strip{padding-bottom:38px}body.final-home .site-footer{padding-top:25px;border-top:1px solid var(--line);max-width:1320px}
-@media(min-width:761px) and (max-height:760px){body.final-home .hero{padding-top:110px;padding-bottom:35px;min-height:100svh}.hero-enquiry{padding:22px}body.final-home .hero h1{font-size:54px}}
-@media(max-width:900px) and (min-width:761px){body.final-home .hero{gap:4%;padding-inline:4%;grid-template-columns:1fr 1fr}body.final-home .hero h1{font-size:45px}}
-@media(max-width:760px){body.final-home .hero{display:flex;align-items:stretch;gap:28px;height:auto;min-height:0;padding:125px 6% 32px}body.final-home .hero h1{font-size:43px;margin:18px 0}body.final-home .hero-intro{font-size:18px}body.final-home .primary-cta{margin-top:12px}body.final-home .hero-enquiry{padding:22px;scroll-margin-top:75px}body.final-home .hero-enquiry h2{font-size:24px}body.final-home .form-field input,body.final-home .form-field select,body.final-home .form-field textarea{font-size:16px}body.final-home .services{padding:30px 6% 15px}body.final-home .service-grid{grid-template-columns:1fr;gap:0}body.final-home .service{padding:22px 0}body.final-home .service h3{font-size:27px}.engagement-line{gap:12px 18px}.engagement-line>span{width:100%}.practice-strip,.library-strip{flex-wrap:wrap;gap:18px}.practice-strip>div{flex-basis:65%}.practice-strip>a,.library-strip>a{width:100%}.practice-strip h2,.library-strip h2{font-size:23px}.library-strip>div{flex-basis:100%}}
-@media(max-width:760px){body.final-home .hero{padding-top:105px;gap:22px}body.final-home .hero h1{font-size:39px;margin:13px 0}body.final-home .hero-intro{font-size:16px;line-height:1.5}body.final-home .hero-enquiry{padding:20px}body.final-home .hero-enquiry h2{font-size:22px;margin-bottom:16px}body.final-home .clean-enquiry-form .form-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}body.final-home .clean-enquiry-form .form-field{min-width:0}body.final-home .clean-enquiry-form{gap:10px}body.final-home .primary-cta{margin-top:8px}}
-
-/* Quiet secondary reading panel: small type, less padding, lighter framing. */
-body.final-home .latest-presentations{max-width:490px;margin-top:24px;padding:14px 18px;background:rgba(18,42,34,.35);border:1px solid #ffffff29;border-radius:6px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:white}
-body.final-home .latest-presentations h2{font:600 11px/1.3 Editorial,Arial,sans-serif;letter-spacing:.08em;margin:0 0 5px;text-transform:uppercase;color:#d9e5de}
+/* A single aligned composition, preserving all homepage content. */
+body.final-home .hero{height:auto;min-height:min(760px,100svh);max-height:none;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(340px,.85fr);gap:clamp(32px,5vw,72px);text-align:left;padding:132px max(5%,calc((100% - 1180px)/2)) 56px;align-items:center}
+body.final-home .hero-copy,body.final-home .hero-enquiry{width:100%;min-width:0;align-self:center}
+body.final-home .hero h1{font:500 clamp(44px,4.4vw,64px)/1.06 Outfit,Arial,sans-serif;letter-spacing:-.035em;margin:0 0 20px}
+body.final-home .hero-intro{font-size:18px;line-height:1.55;color:#f1f5f0;margin:0;text-shadow:0 1px 3px #0003}
+body.final-home .latest-presentations{margin-top:28px;padding:20px 22px;background:#17382dcc;border:1px solid #ffffff30;border-radius:10px;color:white}
+body.final-home .latest-presentations h2{font:500 20px/1.25 Outfit,Arial,sans-serif;letter-spacing:-.015em;margin:0 0 12px;color:white}
 .latest-presentations ul{list-style:none;padding:0;margin:0}
-body.final-home .latest-presentations li+li{border-top:1px solid #ffffff18}
-body.final-home .latest-presentations li a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;font-size:13.5px;line-height:1.4;color:#fff}
-body.final-home .latest-presentations li a:hover span:first-child{text-decoration:underline;text-underline-offset:4px}
-body.final-home .latest-presentations li a>span:last-child{flex:none;color:#d0e0d6}
-body.final-home .latest-more{display:inline-flex;align-items:center;font-size:11.5px;padding:4px 0;border:0;border-radius:0;gap:15px;margin-top:7px;color:#fff;text-decoration:underline;text-underline-offset:4px}
-body.final-home .latest-more:hover{opacity:0.85}
-@media(max-width:760px){body.final-home .latest-presentations{padding:13px 16px;margin-top:20px}body.final-home .latest-presentations li a{font-size:13px;padding:9px 0}body.final-home .hero-enquiry{align-self:stretch}body.final-home .hero-copy{align-self:stretch}}
-@media(prefers-reduced-transparency:reduce){body.final-home .latest-presentations{background:#1b382e;backdrop-filter:none}}
+body.final-home .latest-presentations li+li{border-top:1px solid #ffffff24}
+body.final-home .latest-presentations li a{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0;font-size:14px;line-height:1.45;color:#fff}
+body.final-home .latest-presentations li a>span:last-child{flex:none}
+body.final-home .latest-more{display:inline-flex;gap:16px;margin-top:12px;font-size:13px;color:#fff;text-decoration:underline;text-underline-offset:4px}
+body.final-home .latest-presentations a:hover{text-decoration:underline;text-underline-offset:4px}
+body.final-home .hero-enquiry{background:#fafcf9;color:var(--ink);border:1px solid #ffffff90;border-radius:10px;padding:28px;scroll-margin-top:100px;box-shadow:0 12px 36px #10251d20}
+body.final-home .hero-enquiry h2{font:500 26px/1.2 Outfit,Arial,sans-serif;letter-spacing:-.025em;margin:0 0 22px}
+body.final-home .clean-enquiry-form{padding:0;gap:14px}
+body.final-home .form-field{min-width:0;gap:6px}
+body.final-home .form-row{gap:14px}
+body.final-home .form-field label{font-size:13px;font-weight:600;color:var(--ink)}
+body.final-home .form-field input,body.final-home .form-field select,body.final-home .form-field textarea{font-size:16px;padding:10px 12px;min-height:44px;border:1px solid #c7d2cc;border-radius:5px;background:#fff}
+body.final-home .form-field textarea{min-height:72px}
+body.final-home .form-field :is(input,select,textarea):focus{border-color:var(--ink);outline:2px solid #315b4b40;outline-offset:1px}
+body.final-home .form-field :is(input,textarea):user-invalid{border-color:#b43c3c}
+body.final-home .submit-btn{width:100%;background:var(--ink);color:#fff;border:0;border-radius:5px;font-size:15px;font-weight:600;cursor:pointer}
+body.final-home .submit-btn:hover{background:#182823}
+body.final-home .form-disclaimer p{color:#495d55;font-size:12px;line-height:1.5;margin:0}
+body.final-home .form-disclaimer a{text-decoration:underline;text-underline-offset:3px}
+.practice-strip{width:min(1180px,90%);margin:0 auto;padding:32px 0;display:flex;gap:24px;align-items:center}
+.practice-strip img{width:76px;height:76px;object-fit:cover;border-radius:50%}.practice-strip>div{flex:1}
+.practice-strip .eyebrow{font-size:12px}.practice-strip h2{font:500 26px/1.25 Outfit,Arial,sans-serif;letter-spacing:-.025em;margin:8px 0}.practice-strip p{font-size:15px;line-height:1.6;color:var(--muted);margin:0;max-width:620px}.practice-strip>a{font-size:14px;flex-shrink:0;text-decoration:underline;text-underline-offset:5px}
+body.final-home .site-footer{max-width:1320px;padding-top:25px;border-top:1px solid var(--line)}
+@media(min-width:761px) and (max-height:800px){body.final-home .hero{min-height:0;padding-top:112px;padding-bottom:36px}body.final-home .hero-enquiry{padding:24px}body.final-home .clean-enquiry-form{gap:10px}}
+@media(max-width:1000px) and (min-width:761px){body.final-home .hero{gap:28px;grid-template-columns:1fr 1fr;padding-inline:4%}body.final-home .hero h1{font-size:46px}body.final-home .hero-enquiry{padding:22px}}
+@media(max-width:760px){body.final-home .hero{display:flex;flex-direction:column;align-items:stretch;gap:28px;min-height:0;padding:116px 6% 32px}body.final-home .hero h1{font-size:clamp(38px,8vw,54px);margin:0 0 16px}body.final-home .hero-intro{font-size:16px}body.final-home .latest-presentations{margin-top:24px;padding:18px}body.final-home .hero-enquiry{padding:22px}body.final-home .hero-enquiry h2{font-size:24px}body.final-home .form-row{grid-template-columns:1fr 1fr}.practice-strip{flex-wrap:wrap;gap:16px}.practice-strip>div{flex-basis:65%}.practice-strip h2{font-size:23px}.practice-strip>a{margin-left:92px}}
+@media(max-width:380px){body.final-home .form-row{grid-template-columns:1fr}.practice-strip>a{margin-left:0}}

@@ -13,5 +13,5 @@ if(article.tags.some(tag=>!subjectGroups.some(group=>group.topics.includes(tag))
  <span class="deck-preview-open" aria-hidden="true">View presentation ↗</span>
  </a>
  <h2 class="research-title"><a href={article.link} data-astro-reload>{article.title}</a></h2>
- <div class="deck-actions"><span class="deck-slide-count">{slideCount}</span>{article.published ? <time datetime={article.published}>{new Intl.DateTimeFormat('en-SG',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(article.published))}</time> : <span class="deck-date">Undated</span>}<a href={article.link} data-astro-reload>Open ↗</a>{article.pdf && <a href={article.pdf} download aria-label={`Download PDF: ${article.title}`}>PDF ↓</a>}</div>
+ <div class="deck-actions"><span class="deck-slide-count">{slideCount}</span>{article.published ? <time datetime={article.published}>Updated {new Intl.DateTimeFormat('en-SG',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(article.published))}</time> : <span class="deck-date">Undated</span>}<a href={article.link} data-astro-reload>Open ↗</a>{article.pdf && <a href={article.pdf} download aria-label={`Download PDF: ${article.title}`}>PDF ↓</a>}</div>
 </article>

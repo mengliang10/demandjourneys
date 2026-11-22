@@ -1,0 +1,24 @@
+/* Additive styles only. Nothing below changes the original SVG geometry or colors. */
+#drawer .research-content{border-top:1px solid var(--line2);margin-top:22px;padding-top:16px;user-select:text}
+#drawer .research-content h3{font-family:var(--disp);font-size:16px;letter-spacing:0;color:var(--ink);margin:16px 0 7px}
+#drawer .research-content h2{font-size:17px;margin:17px 0 8px}
+.research-content{line-height:1.7;color:var(--ink)}
+.research-content p,.research-content ul,.research-content ol{margin:9px 0}
+.research-content ul,.research-content ol{padding-left:20px}
+.research-content li{margin-bottom:5px}
+.research-content a{color:var(--brand);text-decoration:underline;text-underline-offset:3px}
+.research-content a:hover{color:var(--ink)}
+.research-content .research-kicker{font:600 10px var(--mono);letter-spacing:.14em;color:var(--brand)}
+.research-content .research-summary{font-size:13px;color:var(--ink)}
+.research-content .research-meta{font:10px var(--mono);color:var(--mut)}
+.research-gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:9px}
+.research-gallery figure{margin:0}
+.research-gallery img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:7px;border:1px solid var(--line2)}
+.research-gallery figcaption{font-size:10px;color:var(--mut)}
+.research-citations li{overflow-wrap:anywhere;font-size:11px}
+.research-citations li p,.research-citations small{font-size:10px;color:var(--mut)}
+.research-links{display:flex;flex-wrap:wrap;gap:7px}
+.research-links a{font:11px var(--mono);border:1px solid var(--line2);padding:5px 9px;border-radius:6px;text-decoration:none}
+.research-readmore{padding:10px 0 4px}
+.research-loading{font:11px var(--mono);color:var(--mut);margin-top:15px}
+.research-error{font:11px var(--mono);color:var(--warn);margin-top:15px}

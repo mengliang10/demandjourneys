@@ -1,9 +1,10 @@
 ---
 import '../styles/navigation.css';
 const {home=false,current=""}=Astro.props;
+const wordmark = '/identity/wordmark-' + (home ? 'white' : 'forest');
 ---
   <header class="site-header">
-   <a class="logo" href="/" aria-label="Demand Journeys home"><img src={home ? "/identity/demandjourneys-logo-white.png" : "/identity/demandjourneys-logo-forest.png"} alt="Demand Journeys" width="228" height="40" /></a>
+   <a class="logo" href="/" aria-label="Demand Journeys home"><img src={wordmark + "-228.webp"} srcset={wordmark + "-228.webp 1x, " + wordmark + "-456.webp 2x"} alt="Demand Journeys" width="228" height="28" /></a>
    <button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false">Menu</button>
    <nav id="main-navigation" aria-label="Main navigation">
     <a href="/profile/" aria-current={current === "profile" ? "page" : undefined}>Profile</a>

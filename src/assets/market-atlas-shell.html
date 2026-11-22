@@ -1,0 +1,109 @@
+<div id="grain"></div>
+<header>
+  <div class="brand">
+    <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+      <rect x="1" y="1" width="28" height="28" rx="7" fill="none" stroke="var(--line2)"/>
+      <circle cx="14" cy="14" r="8" fill="none" stroke="var(--brand)" stroke-width="1.8"/>
+      <path d="M18 18l6 6" stroke="var(--brand)" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="9" cy="10" r="1.6" fill="var(--sg)"/><circle cx="19" cy="9" r="1.6" fill="var(--hk)"/><circle cx="14" cy="20" r="1.6" fill="var(--cn)"/>
+    </svg>
+    <div class="bt"><b>Market Strategy Atlas</b><span>TRI-MARKET MARKETING BLUEPRINT · SG / HK / CN</span></div>
+    <span class="rev">FY2027 · REV 1.0</span>
+  </div>
+  <div class="searchwrap">
+    <input id="search" type="text" placeholder="Search channels, campaigns, partners, KPIs…" autocomplete="off" aria-label="Search the blueprint">
+    <div id="results" role="listbox"></div>
+  </div>
+  <div class="stats" id="stats"></div>
+  <div class="hacts">
+    <button class="btn" id="bCopy" title="Copy current SVG to clipboard">⧉ <span class="bl">COPY SVG</span></button>
+    <button class="btn" id="bSvg" title="Download current state as SVG">↓ <span class="bl">SVG</span></button>
+    <button class="btn hot" id="bPng" title="Download current state as PNG">▦ <span class="bl">PNG</span></button>
+  </div>
+</header>
+
+<aside id="deck" aria-label="Control deck">
+  <div class="grp">
+    <h3>VIEW</h3>
+    <div class="row"><label>Zoom</label><span class="val" id="zVal">62%</span></div>
+    <input type="range" id="zoom" min="12" max="260" value="62" aria-label="Zoom level">
+    <div class="btnrow" style="margin:6px 0 8px">
+      <button class="btn" id="bFit">FIT SHEET</button>
+      <button class="btn" id="b100">1:1</button>
+    </div>
+    <div class="navbtns">
+      <button class="btn" data-nav="brand">01 BRAND</button>
+      <button class="btn" data-nav="markets">02 ENGINES</button>
+      <button class="btn" data-nav="execution">03 EXECUTION</button>
+      <button class="btn" data-nav="calendar">04 CALENDAR</button>
+      <button class="btn" data-nav="governance">05 GOVERN</button>
+      <button class="btn" id="bRand">✦ SPOTLIGHT</button>
+    </div>
+    <button class="btn" id="bTour">▶ AUTO TOUR</button>
+  </div>
+  <div class="grp">
+    <h3>SIGNAL</h3>
+    <div class="row"><label>Market lens</label></div>
+    <select id="focus" aria-label="Focus a market">
+      <option value="all">ALL SYSTEMS</option>
+      <option value="brand">BRAND CORE</option>
+      <option value="sg">SINGAPORE ENGINE</option>
+      <option value="hk">HONG KONG ENGINE</option>
+      <option value="cn">CHINA ENGINE</option>
+      <option value="ops">SHARED OPERATIONS</option>
+    </select>
+    <div class="row" style="margin-top:9px"><label>Flow pulse speed</label><span class="val" id="sVal">1.0×</span></div>
+    <input type="range" id="speed" min="0" max="30" value="10" aria-label="Flow animation speed">
+    <div class="row" style="margin-top:7px"><label>Label density</label></div>
+    <select id="density" aria-label="Label density">
+      <option value="full">FULL ANNOTATION</option>
+      <option value="compact">COMPACT</option>
+    </select>
+  </div>
+  <div class="grp">
+    <h3>LAYERS</h3>
+    <label class="sw">Interaction flows<input type="checkbox" id="lFlows" checked><span class="tk"></span></label>
+    <label class="sw">Live pulse<input type="checkbox" id="lAnim" checked><span class="tk"></span></label>
+    <label class="sw">Flow labels<input type="checkbox" id="lLabels" checked><span class="tk"></span></label>
+    <label class="sw">Atlas grid<input type="checkbox" id="lGrid" checked><span class="tk"></span></label>
+    <label class="sw">Gilded glow<input type="checkbox" id="lGlow" checked><span class="tk"></span></label>
+    <label class="sw">Execution lanes<input type="checkbox" id="lExec" checked><span class="tk"></span></label>
+    <label class="sw">Campaign calendar<input type="checkbox" id="lCal" checked><span class="tk"></span></label>
+    <label class="sw">Governance<input type="checkbox" id="lGov" checked><span class="tk"></span></label>
+  </div>
+  <div class="grp">
+    <h3>THEME</h3>
+    <select id="theme" aria-label="Sheet theme">
+      <option value="dark">MIDNIGHT ATLAS</option>
+      <option value="light">PARCHMENT ATLAS</option>
+    </select>
+  </div>
+  <div class="grp">
+    <h3>ACTIONS</h3>
+    <div class="btnrow">
+      <button class="btn" id="bReset">⟲ RESET</button>
+      <button class="btn" id="bSvg2">↓ SVG</button>
+      <button class="btn" id="bPng2">▦ PNG</button>
+    </div>
+  </div>
+</aside>
+
+<main id="stage">
+  <svg id="scene" class="boot" role="img" aria-label="Market Strategy Atlas tri-market marketing plan and execution blueprint for Singapore, Hong Kong and China"></svg>
+  <div class="pills" id="pills">
+    <button data-nav="brand" class="on">BRAND</button>
+    <button data-nav="markets">ENGINES</button>
+    <button data-nav="execution">EXECUTION</button>
+    <button data-nav="calendar">CALENDAR</button>
+    <button data-nav="governance">GOVERN</button>
+  </div>
+  <div id="spine" aria-label="Sheet navigator"><div id="spineInd"></div></div>
+  <div id="legend"></div>
+  <div id="hud"><b id="hz">62%</b> · drag to pan · wheel to zoom<br>◆ observed in source sites · ◇ proposed plan</div>
+</main>
+
+<aside id="drawer" role="dialog" aria-label="Dossier" aria-live="polite">
+  <button class="close" id="dClose" aria-label="Close dossier">✕</button>
+  <div id="dBody"></div>
+</aside>
+<div id="toast"></div>

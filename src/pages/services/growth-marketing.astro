@@ -1,9 +1,41 @@
 ---
 import ServicePage from '../../components/ServicePage.astro';
-const sections=[
- {label:'Diagnose',title:'Find the growth constraint.',text:'Start with the customer journey and the economics behind it.',items:['Map discovery, consideration, purchase and repeat behaviour.','Review channel costs, conversion friction and retention signals.','Separate observed performance from assumptions about causality.']},
- {label:'Prioritise',title:'Focus the next investment.',text:'Turn a broad marketing challenge into a manageable programme.',items:['Align brand, content, paid and owned channels around audience needs.','Prioritise experiments by expected value, effort and evidence.','Define success through qualified demand, contribution and customer value.']},
- {label:'Lead',title:'Build a working rhythm.',text:'Give teams clear priorities, accountability and commercial context.',items:['Coordinate internal teams, agencies and specialist partners.','Set a practical testing and reporting cadence.','Review what to scale, revise or stop, with attribution limits made clear.']}
-];
+import ServiceHero from '../../components/ServiceHero.astro';
+
+const title = "Growth Marketing";
+const hero = {
+  "eyebrow": "Growth Marketing · Acquisition & retention",
+  "headline": "Where are you losing customers you’ve already paid to reach?",
+  "lead": "Growth marketing leadership for teams deciding how much to spend on acquisition, where to improve conversion and how to bring customers back.",
+  "approach": "Start with one customer journey. Trace the cost of reaching buyers, find where they drop out and test one change against the margin it could earn.",
+  "enquiryLabel": "Discuss your growth challenge",
+  "deckLabel": "Open the 10-slide commercial strategy deck",
+  "deckHref": "/hospitality-presentations/commercial-system/",
+  "facts": [
+    [
+      "Disciplines",
+      "Acquisition · Conversion · Retention"
+    ],
+    [
+      "Evidence",
+      "Channel costs, purchase funnels and repeat purchase data"
+    ],
+    [
+      "First sprint",
+      "Map one journey and prioritise one experiment"
+    ],
+    [
+      "Engagements",
+      "Workshop · Audit · Fractional leadership"
+    ],
+    [
+      "Markets",
+      "Singapore · Asia Pacific"
+    ]
+  ],
+  "note": "Agree the success measure before the test, including how you’ll account for channel costs."
+};
 ---
-<ServicePage title="Growth Marketing" current="growth-marketing" intro="Turn customer demand into lasting commercial value." description="Growth marketing advisory connecting acquisition, conversion, retention, experimentation and commercial performance." sections={sections}/>
+<ServicePage title={title} current="growth-marketing" description="Growth marketing advisory connecting acquisition, conversion, retention, experimentation and commercial performance.">
+  <ServiceHero slot="introduction" {...hero} enquiryHref={`/?service=${encodeURIComponent(title)}#enquiry`} />
+</ServicePage>

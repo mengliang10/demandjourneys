@@ -15,5 +15,10 @@
   "order": 0,
   "draft": false,
   "thumbnail": "../../assets/presentations/commercial-system.jpg",
-  "published": "2026-11-16"
+  "published": "2026-11-16",
+  "libraryTopics": [
+    "Commercial diagnostics",
+    "Commercial strategy",
+    "Marketing measurement"
+  ]
 }

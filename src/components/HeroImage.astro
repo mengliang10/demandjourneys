@@ -4,7 +4,7 @@ import desktop from '../assets/splash.jpg';
 import mobile from '../assets/splash-mobile.jpg';
 const desktopWidths=[960,1440,1920];
 const mobileWidths=[390,640,900];
-const make=async (src,widths)=>Promise.all(widths.map(width=>getImage({src,width,format:'webp',quality:80})));
+const make=async (src,widths)=>Promise.all(widths.map(width=>getImage({src,width,format:'webp',quality:74})));
 const [large,small]=await Promise.all([make(desktop,desktopWidths),make(mobile,mobileWidths)]);
 ---
 <picture class="hero-background" aria-hidden="true">

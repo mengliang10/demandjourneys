@@ -30,3 +30,14 @@ body.interior .site-header .services-nav-group{background:#315b4b09;border-color
 @media(min-width:1121px) and (max-width:1280px){body .site-header .services-nav-group{gap:12px;padding:8px 10px;font-size:13px}}
 @media(max-width:1120px){body .site-header .services-nav-group{flex-basis:100%;flex-wrap:wrap;gap:10px 20px;padding:14px}body .site-header .services-nav-group>a{padding:5px 0}}
 @media(prefers-reduced-transparency:reduce){body .site-header .services-nav-group{backdrop-filter:none;background:#254338}body.interior .site-header .services-nav-group{background:#edf1ed}}
+
+/* Keep touch controls comfortable and the navigation visible at narrow widths. */
+@media(max-width:760px){
+  body .site-header {column-gap:clamp(8px,2.4vw,16px);}
+  body .site-header .logo img {width:clamp(124px,37vw,164px);height:auto;}
+  body .site-header .menu-toggle,body .site-header .header-cta {min-height:44px;}
+  body .site-header .header-cta {display:inline-flex;align-items:center;}
+  body .site-header #main-navigation a {display:inline-flex;align-items:center;min-height:44px;}
+  body .site-header .services-nav-group {gap:2px 18px;padding:6px 12px;}
+}
+.site-header a:focus-visible,.site-header button:focus-visible {outline:2px solid currentColor;outline-offset:4px;}

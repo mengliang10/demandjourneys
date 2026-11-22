@@ -16,89 +16,20 @@
 .geo-fact dt{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#64756c;font-weight:650}
 .geo-fact dd{margin:0;font-size:14px;line-height:1.45;color:var(--ink)}
 .geo-note{font-size:11px;line-height:1.55;color:#5b6761;margin:18px 0 0;padding-top:16px;border-top:1px solid #cfd9d1}
-.geo-section{padding:56px 0;border-top:1px solid var(--line)}
-.geo-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:14px 48px;align-items:end;margin-bottom:34px}
-.geo-head .eyebrow{grid-column:1/-1;margin:0}
-.geo-head h2{margin:0;max-width:560px}
-.geo-head>p{margin:0;font-size:15px;line-height:1.65;max-width:470px;justify-self:end}
-.geo-problems{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:48px;border-top:1px solid var(--ink)}
-.geo-problems li{display:grid;grid-template-columns:32px 1fr;gap:10px;padding:20px 0;border-bottom:1px solid var(--line)}
-.geo-n{font-size:10px;letter-spacing:.1em;color:var(--muted);padding-top:5px}
-.geo-problems li:last-child{grid-column:1/-1}
-.geo-problems li:last-child>div{max-width:640px}
-.geo-problems h3{font-size:18px;margin:0 0 5px}
-.geo-problems p{font-size:13.5px;line-height:1.55;margin:0}
-.geo-disciplines{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink)}
-.geo-discipline{padding:22px 26px 20px 0;border-bottom:1px solid var(--line)}
-.geo-discipline+.geo-discipline{border-left:1px solid var(--line);padding-left:26px}
-.geo-label{display:block;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:650}
-.geo-discipline h3{font-size:21px;line-height:1.2;margin:9px 0 10px}
-.geo-discipline>p{font-size:13.5px;line-height:1.6;margin:0}
-.geo-inspect{font-size:11.5px!important;line-height:1.55!important;color:var(--muted);margin-top:14px!important}
-.geo-inspect strong{display:block;color:var(--ink);font-weight:600;margin-bottom:2px}
-.geo-callout{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;margin-top:24px;padding:16px 22px;background:#fff;border-left:2px solid var(--accent);border-radius:0 6px 6px 0}
-.geo-callout strong{font-family:Outfit,Arial,sans-serif;font-size:17px;font-weight:500;color:var(--ink)}
-.geo-callout p{margin:0;font-size:12.5px;line-height:1.55;color:var(--muted)}
-.geo-cases{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.geo-case{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px 26px 24px}
-.geo-case h3{font-size:22px;margin:8px 0 10px}
-.geo-case>p{font-size:13.5px;line-height:1.6;margin:0}
-.geo-question{margin-top:16px!important;padding-top:14px;border-top:1px solid var(--line);color:var(--ink)!important}
-.geo-question span{display:block;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
-.geo-boundary{margin-top:24px;padding:22px 26px;background:#253b34;border-radius:10px;color:#f4f5f3}
-.geo-boundary strong{font-family:Outfit,Arial,sans-serif;font-size:18px;font-weight:500}
-.geo-boundary p{font-size:12.5px;line-height:1.65;color:#d3ded6;margin:6px 0 0;max-width:880px}
-.geo-timeline{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
-.geo-phase{display:grid;grid-template-columns:140px minmax(0,1fr);gap:26px;padding:20px 0;border-bottom:1px solid var(--line)}
-.geo-days{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:650;padding-top:6px}
-.geo-phase h3{font-size:19px;margin:0 0 5px}
-.geo-phase p{font-size:13.5px;line-height:1.55;margin:0 0 7px;max-width:700px}
-.geo-gate{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);font-weight:650}
-.geo-subhead{font-size:20px;margin:34px 0 0}
-.geo-deliverables{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:44px;border-top:1px solid var(--line)}
-.geo-deliverables li{padding:13px 0;border-bottom:1px solid var(--line);font-size:12.5px;line-height:1.55;color:var(--muted)}
-.geo-deliverables strong{display:block;font-size:13.5px;color:var(--ink);font-weight:600;margin-bottom:2px}
-.geo-engagements{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.geo-engagement{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px}
-.geo-tag{display:flex;justify-content:space-between;gap:12px;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:650}
-.geo-engagement h3{font-size:20px;line-height:1.2;margin:14px 0}
-.geo-engagement dl{margin:0;font-size:12.5px;line-height:1.55}
-.geo-engagement dt{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#7a877f;font-weight:650;margin-top:12px}
-.geo-engagement dt:first-child{margin-top:0}
-.geo-engagement dd{margin:2px 0 0;color:var(--muted)}
-.geo-fees{font-size:12px;line-height:1.6;color:var(--muted);margin:22px 0 0;max-width:820px}
-.geo-led{font-size:12.5px;line-height:1.6;color:var(--muted);margin:10px 0 0;max-width:820px}
-.geo-measures{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:44px;border-top:1px solid var(--ink)}
-.geo-measures li{padding:14px 0;border-bottom:1px solid var(--line)}
-.geo-measures strong{display:block;font-size:13.5px;color:var(--ink);font-weight:600}
-.geo-measures span{font-size:12px;line-height:1.55;color:var(--muted)}
-.geo-panel-note{font-size:11.5px;line-height:1.6;color:var(--muted);margin:18px 0 0;max-width:780px}
-@media(max-width:1000px){
- .geo-hero-grid{grid-template-columns:1fr;gap:34px}
- .geo-facts{max-width:560px}
- .geo-head{grid-template-columns:1fr;gap:10px;align-items:start}
- .geo-head>p{justify-self:start}
- .geo-disciplines{grid-template-columns:1fr}
- .geo-discipline,.geo-discipline+.geo-discipline{border-left:0;padding:18px 0;border-bottom:1px solid var(--line)}
- .geo-cases{grid-template-columns:1fr}
- .geo-engagements{grid-template-columns:1fr}
-}
 @media(max-width:760px){
- .geo-hero{padding:10px 0 38px}
- .geo-hero h1{font-size:36px;margin-bottom:18px}
- .geo-hero .section-lead{font-size:19px}
- .geo-hero .lead-sub{font-size:15px}
- .geo-actions{align-items:flex-start;flex-direction:column;gap:14px;margin-top:24px}
- .geo-facts{padding:22px 22px;max-width:none}
- .geo-section{padding:36px 0}
- .geo-head{margin-bottom:24px}
- .geo-problems{grid-template-columns:1fr;column-gap:0}
- .geo-case{padding:22px}
- .geo-boundary{padding:20px 22px}
- .geo-phase{grid-template-columns:1fr;gap:3px;padding:18px 0}
- .geo-days{padding-top:0}
- .geo-deliverables,.geo-measures{grid-template-columns:1fr}
- .geo-callout{display:block}
- .geo-callout strong{display:block;margin-bottom:5px}
- .geo-engagement{padding:20px}
+ .geo-actions{align-items:flex-start;flex-direction:column;gap:14px}
+ .geo-facts{max-width:none}
 }
+
+/* Compact introduction above the presentation shelf. */
+body:is([data-page=ai-search], [data-page=growth-marketing], [data-page=platforms-analytics]) .container{width:min(1180px,90%)}
+body:is([data-page=ai-search], [data-page=growth-marketing], [data-page=platforms-analytics]) .geo-hero{padding:24px 0 40px}
+body:is([data-page=ai-search], [data-page=growth-marketing], [data-page=platforms-analytics]) .geo-hero-grid{gap:48px;align-items:center;grid-template-columns:minmax(0,1.4fr) minmax(280px,.8fr)}
+body:is([data-page=ai-search], [data-page=growth-marketing], [data-page=platforms-analytics]) .geo-hero h1{font:500 clamp(36px,3.7vw,52px)/1.1 Outfit,Arial,sans-serif;letter-spacing:-.035em;margin-bottom:20px}
+body:is([data-page=ai-search], [data-page=growth-marketing], [data-page=platforms-analytics]) .section-lead{font-size:19px;line-height:1.55}
+body:is([data-page=ai-search], [data-page=growth-marketing], [data-page=platforms-analytics]) .lead-sub{font-size:16px;line-height:1.6}
+body:is([data-page=ai-search], [data-page=growth-marketing], [data-page=platforms-analytics]) .geo-facts{padding:24px;background:#e8eee8;border:1px solid #d3ddd5}
+body:is([data-page=ai-search], [data-page=growth-marketing], [data-page=platforms-analytics]) .geo-fact dt{font-size:11px;letter-spacing:.06em}
+body:is([data-page=ai-search], [data-page=growth-marketing], [data-page=platforms-analytics]) .geo-note{font-size:12px}
+body:is([data-page=ai-search], [data-page=growth-marketing], [data-page=platforms-analytics]) .geo-actions{gap:16px;margin-top:24px}
+@media(max-width:760px){body:is([data-page=ai-search], [data-page=growth-marketing], [data-page=platforms-analytics]) .geo-hero-grid{grid-template-columns:1fr;gap:28px}body:is([data-page=ai-search], [data-page=growth-marketing], [data-page=platforms-analytics]) .geo-hero{padding-top:16px}body:is([data-page=ai-search], [data-page=growth-marketing], [data-page=platforms-analytics]) .section-lead{font-size:18px}}

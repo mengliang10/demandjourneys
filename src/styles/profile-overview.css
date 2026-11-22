@@ -30,3 +30,13 @@ body.interior[data-page=profile] .profile-expanded .about-social{font-size:13px}
 body.interior[data-page=profile] .profile-doc-footer{padding-top:20px;border:0;font-size:12px;margin-top:0}
 @media(max-width:1000px){body.interior[data-page=profile] .profile-expertise .profile-pillars-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){body.interior[data-page=profile] .profile-opening{grid-template-columns:1fr;gap:22px;padding-top:12px}body.interior[data-page=profile] .profile-contact{border-left:0;border-top:1px solid var(--line);padding:19px 0 0;display:flex;flex-direction:row;flex-wrap:wrap;gap:12px 20px;justify-content:flex-start}body.interior[data-page=profile] .profile-contact .eyebrow{width:100%}body.interior[data-page=profile] .profile-contact a:last-child{overflow-wrap:anywhere}body.interior[data-page=profile] .profile-detail-grid{grid-template-columns:1fr;gap:12px;margin-top:24px}body.interior[data-page=profile] .profile-expertise .profile-pillars-grid{grid-template-columns:1fr;gap:12px}body.interior[data-page=profile] .profile-expertise .profile-pillar-card{padding:18px}body.interior[data-page=profile] .profile-expertise .profile-pillar-title{margin-bottom:8px}}
+
+body.interior[data-page=profile] .profile-overview{width:min(1180px,90%)}
+body.interior[data-page=profile] .profile-opening{gap:48px;padding:24px 0 32px;align-items:center}
+body.interior[data-page=profile] .profile-opening h1{font-size:clamp(36px,3.7vw,52px)}
+body.interior[data-page=profile] .profile-positioning{font-size:20px;line-height:1.55}
+body.interior[data-page=profile] .profile-expertise{padding-bottom:32px}
+body.interior[data-page=profile] .profile-contact{font-size:14px}
+body.interior[data-page=profile] .profile-contact .eyebrow{font-size:12px}
+body.interior[data-page=profile] .profile-expertise .profile-section-heading{font:500 26px/1.25 Outfit,Arial,sans-serif;letter-spacing:-.02em;text-transform:none}
+@media(max-width:760px){body.interior[data-page=profile] .profile-opening{gap:24px}}

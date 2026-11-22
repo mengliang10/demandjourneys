@@ -1,67 +1,46 @@
 ---
+import RelatedPresentations from '../components/RelatedPresentations.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import '../styles/interior.css';
 import '../styles/refinement.css';
-import '../styles/ai-search.css';
+import ServiceHero from '../components/ServiceHero.astro';
+const hero = {
+  "eyebrow": "AEO/GEO · AI search visibility",
+  "headline": "When customers ask AI, does your expertise appear?",
+  "lead": "Fractional GEO, AEO and SEO leadership for businesses that need to be found, understood and considered across search and AI answers.",
+  "approach": "A diagnostic first. A bounded pilot next. One accountable lead across SEO, content, technology and measurement.",
+  "enquiryLabel": "Discuss your visibility challenge",
+  "deckLabel": "Open the 28-slide programme",
+  "note": "Rankings, citations and revenue are outcomes to measure, not guarantees. No client lift is claimed.",
+  "enquiryHref": "/#enquiry",
+  "deckHref": "/hospitality-presentations/geo-work/",
+  "facts": [
+    [
+      "Disciplines",
+      "SEO · AEO · GEO"
+    ],
+    [
+      "Evidence",
+      "Two anonymised financial-services diagnostics"
+    ],
+    [
+      "First sprint",
+      "90 days, four decision gates"
+    ],
+    [
+      "Engagements",
+      "Diagnostic · Pilot · Fractional lead"
+    ],
+    [
+      "Markets",
+      "Singapore · APAC and global engagements"
+    ]
+  ]
+};
 
 const title = 'AEO/GEO — AI Search Visibility | Demand Journeys';
 const description = 'Fractional GEO, AEO and SEO leadership from Demand Journeys: diagnose how your business appears in AI answers, fix the evidence, and measure citations and qualified actions.';
 
-const symptoms = [
-  { title: 'Our expertise is hard to find', text: 'Public information does not answer the buyer’s question.' },
-  { title: 'Our brand is described inconsistently', text: 'Facts, products and business units blur across sources.' },
-  { title: 'Our content is hard to use', text: 'Important answers sit behind technical or editorial barriers.' },
-  { title: 'We cannot measure AI visibility', text: 'Mentions, citations and commercial results get mixed together.' },
-  { title: 'The work has no clear owner', text: 'SEO, content, technology and approvals move separately.' }
-];
-
-const disciplines = [
-  { label: 'SEO', name: 'Search engine optimisation', improve: 'Discovery, index eligibility and organic landing-page performance.', inspect: 'Crawls, rendered pages, internal links, search data and conversions.' },
-  { label: 'AEO', name: 'Answer engine optimisation', improve: 'How clearly a page resolves a specific question.', inspect: 'Direct answers, conditions, supporting evidence and useful next steps.' },
-  { label: 'GEO', name: 'Generative engine optimisation', improve: 'How the business appears and is cited in generated responses.', inspect: 'Repeatable prompt panels, cited URLs and verified factual accuracy.' }
-];
-
-const cases = [
-  {
-    label: 'Case A · Korean bank',
-    finding: 'Limited discoverable first-party material, weak English coverage and missing markup in sampled pages.',
-    question: 'Can a prospective customer resolve eligibility, product conditions and trust questions?'
-  },
-  {
-    label: 'Case B · Korean insurance company',
-    finding: 'Fragmented properties, content-rendering concerns and stale English entity information.',
-    question: 'Can a prospective customer distinguish the provider, understand coverage and reach the right quote journey?'
-  }
-];
-
-const phases = [
-  { days: 'Days 1–15', title: 'Establish the baseline', text: 'Agree a product family, buyer intents and access. Revalidate audit signals and run the first panel.', gate: 'Gate: evidence and scope accepted' },
-  { days: 'Days 16–30', title: 'Remove critical barriers', text: 'Address access or content faults. Approve claim records, release plan and page specifications.', gate: 'Gate: release-ready backlog' },
-  { days: 'Days 31–60', title: 'Publish the pilot', text: 'Release a bounded page set. Validate content, tracking and relevant technical changes.', gate: 'Gate: release quality accepted' },
-  { days: 'Days 61–90', title: 'Review and expand', text: 'Rerun the panel. Review qualified actions and blockers. Set the next-quarter investment.', gate: 'Gate: scale, revise or pause' }
-];
-
-const deliverables = [
-  { name: 'Baseline evidence pack', text: 'Crawl samples, prompt records and claim issues, traceable to a dated observation.' },
-  { name: 'Prioritised implementation backlog', text: 'Scope, page, owner, dependency and acceptance test for each item.' },
-  { name: 'Pilot content and technical briefs', text: 'Source-page templates, claim register and approved changes.' },
-  { name: 'Measurement workspace', text: 'Definitions, tracked cohorts and a dashboard specification.' },
-  { name: 'Operating playbook', text: 'Review cadence, escalation route and refresh rules with named owners.' },
-  { name: 'Next-quarter recommendation', text: 'Observed progress, limits and options, with the trade-offs stated.' }
-];
-
-const engagements = [
-  { tag: 'Diagnostic', duration: '2–3 weeks', title: 'Find the constraint', forWho: 'Teams without a reliable baseline.', receive: 'Evidence pack, prioritised gaps and a scoped pilot recommendation.', input: 'Access, product context and a sponsor.' },
-  { tag: 'Foundation', duration: '90 days', title: 'Deliver a bounded pilot', forWho: 'Teams ready to improve a product or audience journey.', receive: 'Coordinated delivery, QA, measurement and a next-quarter plan.', input: 'Content and engineering capacity.' },
-  { tag: 'Fractional', duration: 'Ongoing', title: 'Keep the programme moving', forWho: 'Teams needing senior cross-functional ownership.', receive: 'Weekly prioritisation, release reviews and monthly commercial reporting.', input: 'Agreed decision rights and team allocation.' }
-];
-
-const measures = [
-  { name: 'Brand mention rate', formula: 'Valid responses naming the brand ÷ all valid panel responses.' },
-  { name: 'Owned-source citation rate', formula: 'Valid responses linking an approved owned domain ÷ all valid panel responses.' },
-  { name: 'Verified claim accuracy', formula: 'Correct, checkable claims ÷ all checkable claims about the brand.' },
-  { name: 'Qualified action rate', formula: 'Qualified enquiries or completed applications ÷ relevant measured visits.' }
-];
 ---
 
 <SiteLayout title={title} description={description} current="ai-search" ogImage="/presentation-previews/geo-work.jpg">
@@ -85,167 +64,7 @@ const measures = [
 
    <nav class="breadcrumb container" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">AEO/GEO</span></nav>
 
-   <section class="geo-hero container" aria-labelledby="geo-title">
-    <div class="geo-hero-grid">
-     <div>
-      <span class="eyebrow">AEO/GEO · AI search visibility</span>
-      <h1 id="geo-title">When customers ask AI, does your expertise appear?</h1>
-      <p class="section-lead">Fractional GEO, AEO and SEO leadership for businesses that need to be found, understood and considered across search and AI answers.</p>
-      <p class="lead-sub">A diagnostic first. A bounded pilot next. One accountable lead across SEO, content, technology and measurement.</p>
-      <div class="geo-actions">
-       <a class="button" href="/#enquiry">Discuss your visibility challenge <span aria-hidden="true">↗</span></a>
-       <a class="geo-link" href="/hospitality-presentations/geo-work/">Open the 28-slide programme <span aria-hidden="true">↗</span></a>
-      </div>
-     </div>
-     <aside class="geo-facts" aria-label="Engagement at a glance">
-      <p class="eyebrow">At a glance</p>
-      <dl>
-       <div class="geo-fact"><dt>Disciplines</dt><dd>SEO · AEO · GEO</dd></div>
-       <div class="geo-fact"><dt>Evidence</dt><dd>Two anonymised financial-services diagnostics</dd></div>
-       <div class="geo-fact"><dt>First sprint</dt><dd>90 days, four decision gates</dd></div>
-       <div class="geo-fact"><dt>Engagements</dt><dd>Diagnostic · Pilot · Fractional lead</dd></div>
-       <div class="geo-fact"><dt>Markets</dt><dd>Singapore · APAC and global engagements</dd></div>
-      </dl>
-      <p class="geo-note">Rankings, citations and revenue are outcomes to measure, not guarantees. No client lift is claimed.</p>
-     </aside>
-    </div>
-   </section>
+   <ServiceHero {...hero} />
 
-   <section class="geo-section" aria-labelledby="geo-problem">
-    <div class="container">
-     <div class="geo-head">
-      <span class="eyebrow">01 / The problem</span>
-      <h2 id="geo-problem">Five problems worth solving</h2>
-      <p>Start with the buyer decision that matters to your business. Most visibility work fails because it starts with a tool, not a question.</p>
-     </div>
-     <ol class="geo-problems">
-      {symptoms.map((s, i) => (
-       <li><span class="geo-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span><div><h3>{s.title}</h3><p>{s.text}</p></div></li>
-      ))}
-     </ol>
-    </div>
-   </section>
-
-   <section class="geo-section" aria-labelledby="geo-work">
-    <div class="container">
-     <div class="geo-head">
-      <span class="eyebrow">02 / What the work covers</span>
-      <h2 id="geo-work">One programme, three connected disciplines</h2>
-      <p>The same page can support all three. These are working definitions, not badges — and no special AI markup is required to be eligible.</p>
-     </div>
-     <div class="geo-disciplines">
-      {disciplines.map(d => (
-       <article class="geo-discipline">
-        <span class="geo-label">{d.label}</span>
-        <h3>{d.name}</h3>
-        <p>{d.improve}</p>
-        <p class="geo-inspect"><strong>What we inspect</strong>{d.inspect}</p>
-       </article>
-      ))}
-     </div>
-     <div class="geo-callout">
-      <strong>A mention is not a citation.</strong>
-      <p>Presence, citation and factual accuracy are reported separately, with a denominator and a source. <a href="/hospitality-presentations/geo-work/">See the measurement definitions in the deck <span aria-hidden="true">↗</span></a></p>
-     </div>
-    </div>
-   </section>
-
-   <section class="geo-section" aria-labelledby="geo-evidence">
-    <div class="container">
-     <div class="geo-head">
-      <span class="eyebrow">03 / The evidence</span>
-      <h2 id="geo-evidence">Two diagnostics. Different constraints.</h2>
-      <p>Anonymised financial-services work from an audit bundle dated April 2026. The work is diagnostic: identify the weak point, define the response and specify how to verify it.</p>
-     </div>
-     <div class="geo-cases">
-      {cases.map(c => (
-       <article class="geo-case">
-        <span class="geo-label">{c.label}</span>
-        <h3>What the audit found</h3>
-        <p>{c.finding}</p>
-        <p class="geo-question"><span>The commercial question</span>{c.question}</p>
-       </article>
-      ))}
-     </div>
-     <div class="geo-boundary">
-      <strong>What this evidence is — and is not</strong>
-      <p>Public-site observations, inferred risks and simulated answer estimates. It is not a deployed programme or a measured citation uplift. No client lift is claimed, and no result here should be read as a forecast for another business.</p>
-     </div>
-    </div>
-   </section>
-
-   <section class="geo-section" aria-labelledby="geo-days">
-    <div class="container">
-     <div class="geo-head">
-      <span class="eyebrow">04 / The first 90 days</span>
-      <h2 id="geo-days">A bounded pilot before a larger rollout</h2>
-      <p>The first quarter builds an operating capability, not a content calendar. Dates are indicative and depend on access, approvals and delivery capacity.</p>
-     </div>
-     <ol class="geo-timeline">
-      {phases.map(p => (
-       <li class="geo-phase">
-        <span class="geo-days">{p.days}</span>
-        <div><h3>{p.title}</h3><p>{p.text}</p><span class="geo-gate">{p.gate}</span></div>
-       </li>
-      ))}
-     </ol>
-     <h3 class="geo-subhead">What you own at the end of the sprint</h3>
-     <ul class="geo-deliverables">
-      {deliverables.map(d => (
-       <li><strong>{d.name}</strong>{d.text}</li>
-      ))}
-     </ul>
-    </div>
-   </section>
-
-   <section class="geo-section" aria-labelledby="geo-engage">
-    <div class="container">
-     <div class="geo-head">
-      <span class="eyebrow">05 / Ways to engage</span>
-      <h2 id="geo-engage">Choose the level of ownership your team needs</h2>
-      <p>Every engagement begins with the same question: which buyer decision should this work improve?</p>
-     </div>
-     <div class="geo-engagements">
-      {engagements.map(e => (
-       <article class="geo-engagement">
-        <div class="geo-tag"><span>{e.tag}</span><span>{e.duration}</span></div>
-        <h3>{e.title}</h3>
-        <dl>
-         <dt>For</dt><dd>{e.forWho}</dd>
-         <dt>You receive</dt><dd>{e.receive}</dd>
-         <dt>Your input</dt><dd>{e.input}</dd>
-        </dl>
-       </article>
-      ))}
-     </div>
-     <p class="geo-fees">Fees follow scope, markets, cadence and production responsibility. Tools, engineering, translation and specialist review are itemised in the proposal.</p>
-     <p class="geo-led">Led by Meng Liang Tan. Two decades across hospitality, travel and digital commerce in Asia Pacific, with prior roles at Raffles, Singapore Press Holdings, GroupM/MediaCom, TripAdvisor, Accor, HomeAway/Expedia Group and Frasers Hospitality. <a href="/profile/">Full profile <span aria-hidden="true">→</span></a></p>
-    </div>
-   </section>
-
-   <section class="geo-section" aria-labelledby="geo-measure">
-    <div class="container">
-     <div class="geo-head">
-      <span class="eyebrow">06 / Measurement</span>
-      <h2 id="geo-measure">Every signal needs a denominator</h2>
-      <p>The dashboard should tell us what to do next. Engine dashboards and synthetic prompt panels answer different questions, so their totals stay separate.</p>
-     </div>
-     <ul class="geo-measures">
-      {measures.map(m => (
-       <li><strong>{m.name}</strong><span>{m.formula}</span></li>
-      ))}
-     </ul>
-     <p class="geo-panel-note">Proposed pilot panel: 40 prompts × 3 selected surfaces × 2 repeat runs = 240 attempted responses. A synthetic panel is a diagnostic sample, not the market’s query volume, audience reach or total share of demand.</p>
-    </div>
-   </section>
-
-   <aside class="next-step container" aria-labelledby="geo-cta">
-    <div>
-     <span class="eyebrow">Start with one decision</span>
-     <h2 id="geo-cta">Which buyer question should you answer better?</h2>
-     <p>One market, one product family and one commercial objective. We can start with what is already visible.</p>
-    </div>
-    <a class="button" href="/#enquiry">Discuss your visibility challenge <span aria-hidden="true">↗</span></a>
-   </aside>
-  
+   <RelatedPresentations ids={['geo-work']} />
 </SiteLayout>

@@ -1,0 +1,26 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import PresentationLibrary from '../../../components/PresentationLibrary.astro';
+import { groups, latest } from '../../../lib/library-navigation';
+import '../../../styles/interior.css';
+import '../../../styles/refinement.css';
+import '../../../styles/library-profile.css';
+import '../../../styles/library-discovery.css';
+
+export function getStaticPaths() {
+  const pages = [...latest.topics, ...groups.flatMap(group => [group, ...group.topics])];
+  return pages.map(page => ({
+    params: {selection: page.href.split('/browse/')[1].replace(/\/$/, '')},
+    props: {label: page.label, href: page.href}
+  }));
+}
+const {label, href} = Astro.props;
+---
+<SiteLayout title={label + ' | Presentations | Demand Journeys'} description={'Browse ' + label + ' presentations from Demand Journeys.'} current="hospitality-presentations">
+  <nav class="breadcrumb container" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href={latest.href}>Presentations</a><span aria-hidden="true">/</span>
+    <span aria-current="page">{label}</span>
+  </nav>
+  <PresentationLibrary selectedHref={href} />
+</SiteLayout>

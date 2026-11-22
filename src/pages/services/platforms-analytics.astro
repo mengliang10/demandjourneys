@@ -1,9 +1,41 @@
 ---
 import ServicePage from '../../components/ServicePage.astro';
-const sections=[
- {label:'Platforms',title:'Start with the use case.',text:'Choose systems around business needs and the people who use them.',items:['Map CRM, CMS, customer data and marketing workflows.','Review integration needs, ownership and operational gaps.','Develop requirements and vendor evaluation criteria before committing to tools.']},
- {label:'Analytics',title:'Make the numbers useful.',text:'Build a measurement plan that supports real decisions.',items:['Agree KPI definitions, source systems and reporting responsibilities.','Specify dashboards around audiences, decisions and review cadence.','Distinguish attribution, incrementality and business outcomes.']},
- {label:'Delivery',title:'Connect strategy to execution.',text:'Provide business-side leadership and coordination with technical specialists.',items:['Prioritise a roadmap with dependencies and acceptance criteria.','Coordinate vendors and engineering teams on implementation and validation.','Establish data governance, documentation and ongoing performance reviews.']}
-];
+import ServiceHero from '../../components/ServiceHero.astro';
+
+const title = "Platforms & Analytics";
+const hero = {
+  "eyebrow": "Platforms & Analytics · Marketing technology & measurement",
+  "headline": "Can your team trust the numbers behind its next decision?",
+  "lead": "Marketing technology and analytics advisory for teams connecting customer data, choosing platforms and building reports they can use to make decisions.",
+  "approach": "Start with one decision your team makes regularly. Trace its data back to the source, agree how to calculate the metric and give someone ownership of the report.",
+  "enquiryLabel": "Discuss your data challenge",
+  "deckLabel": "Open the 12-slide portfolio",
+  "deckHref": "/hospitality-presentations/personal-portfolio/",
+  "facts": [
+    [
+      "Disciplines",
+      "CRM · Marketing technology · Analytics"
+    ],
+    [
+      "Evidence",
+      "Source data, KPI definitions and reporting workflows"
+    ],
+    [
+      "First sprint",
+      "Map one use case and specify a dashboard"
+    ],
+    [
+      "Engagements",
+      "Workshop · Audit · Fractional leadership"
+    ],
+    [
+      "Markets",
+      "Singapore · Asia Pacific"
+    ]
+  ],
+  "note": "Agree who owns each metric, how often it updates and how the team will check its accuracy."
+};
 ---
-<ServicePage title="Platforms & Analytics" current="platforms-analytics" intro="Connect customer data, marketing technology and better decisions." description="Business-led marketing technology and analytics advisory: requirements, measurement, vendor coordination and governance." sections={sections}/>
+<ServicePage title={title} current="platforms-analytics" description="Business-led marketing technology and analytics advisory: requirements, measurement, vendor coordination and governance.">
+  <ServiceHero slot="introduction" {...hero} enquiryHref={`/?service=${encodeURIComponent(title)}#enquiry`} />
+</ServicePage>
