@@ -15,6 +15,7 @@
 | Platforms & Analytics | https://www.demandjourneys.com/services/platforms-analytics/ |
 | Selected work and evidence | https://www.demandjourneys.com/selected-work/ |
 | Interactive Tools | https://www.demandjourneys.com/interactive-tools/ |
+| Page Scanner & SEO Lab | https://www.demandjourneys.com/interactive-tools/page-scanner/ |
 | Presentation library | https://www.demandjourneys.com/hospitality-presentations/ |
 | Professional profile | https://www.demandjourneys.com/profile/ |
 
@@ -72,6 +73,12 @@ See [CONTENT.md](CONTENT.md) for presentation record authoring and [DESIGN.md](D
 `/interactive-tools/` uses a separate topic navigation rail, inspired by the presentation library but with its own independent categories. All input and calculations execute client-side. No customer financial figures are transmitted to the server. Models are deliberately directional and disclose their assumptions.
 
 Current tools:
+
+**DM_Tools browser-only analyzers:** HTML page-source scanner, technical/on-page SEO checks, heading and link analysis, image alt inspection, structured-data extraction and validation, content/keyword analysis, and a search-result appearance preview. These modules are adapted from the source project, [DM_Tools](https://github.com/mengliang10/DM_Tools). They perform no LLM calls and require no server-side Python.
+
+**Scan limitations:** pasted/uploaded HTML works offline; URL fetch only works for same-origin or CORS-enabled endpoints. No cross-origin bypass, HTTP header/security audit, robots.txt retrieval, JavaScript rendering, real-time PageSpeed, live search index inspection, or server-stored history is claimed. The Page Scanner produces a locally downloaded JSON summary with no raw page content beyond a short excerpt. 
+
+Commercial decision tools:
 
 1. Channel distribution cost comparison.
 2. Booking funnel conversion scenario.
