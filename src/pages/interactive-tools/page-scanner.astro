@@ -1,0 +1,51 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import '../../styles/interior.css';
+import '../../styles/interactive-tools.css';
+import '../../styles/page-scanner.css';
+---
+<SiteLayout title="Page Scanner, SEO & Content Analysis | Demand Journeys" description="Browser-only website source scanner and SEO analyzer. Inspect an uploaded HTML page or paste its source to review metadata, structured data, headings, links, images, and content." current="interactive-tools" bodyClass="interior tools-page">
+<div class="container tools-shell scanner-shell">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/interactive-tools/">Interactive Tools</a><span>/</span><span aria-current="page">Page Scanner</span></nav>
+<header class="tools-intro"><span class="eyebrow">DM_Tools / Adapted for GitHub Pages</span><h1>Page Scanner</h1><p>Audit page HTML without an LLM or backend. Choose a local HTML file, paste page source, or attempt a URL scan where the destination explicitly permits cross-origin browser access.</p><p class="tools-caution">A browser cannot bypass CORS. A failed URL request is not a failed website audit. View the target page's source, paste it here, or upload its saved HTML file. No scan content is sent to Demand Journeys.</p></header>
+<div class="tools-layout">
+<aside class="tools-menu-wrap">
+<button class="tools-menu-toggle" type="button" aria-expanded="false" aria-controls="tools-menu">Browse tools <span aria-hidden="true">⌄</span></button>
+<nav class="tools-menu" id="tools-menu" aria-label="Interactive tool topics">
+<p class="tools-menu-title">DM_Tools analyzers</p>
+<a href="#page-audit" data-tool-nav><small>Technical SEO</small><span>Page Scanner</span></a>
+<a href="#content-analysis" data-tool-nav><small>Editorial quality</small><span>Content &amp; Keywords</span></a>
+<a href="#schema-analysis" data-tool-nav><small>Structured data</small><span>JSON-LD Validator</span></a>
+<a href="#serp-analysis" data-tool-nav><small>Search appearance</small><span>SERP Preview</span></a>
+<div class="tools-menu-foot"><a href="/interactive-tools/">All Interactive Tools ↗</a><a href="/hospitality-presentations/">Presentation library ↗</a></div>
+</nav>
+</aside>
+<div class="tools-content">
+<section class="tool-panel" id="page-audit">
+<span class="eyebrow">01 / Source inspection</span><h2>HTML page scanner</h2><p>Rebuilt from DM_Tools' website, deep DOM and technical analyzers. Works on supplied HTML; checks are descriptive and do not imply a Google ranking or AI citation score.</p>
+<div class="scanner-inputs"><label>Page URL (optional, used to interpret internal/external links)<input id="scan-url" type="url" placeholder="https://example.com/page/" autocomplete="url" /></label>
+<div class="scanner-input-row"><button type="button" id="scan-fetch">Fetch URL if CORS allows</button><label class="scanner-file-label">Upload saved HTML <input id="scan-file" type="file" accept=".html,.htm,text/html" /></label></div>
+<label>HTML source<textarea id="scan-html" rows="11" spellcheck="false" placeholder="Paste View Page Source HTML here (including the head section)"></textarea></label>
+<div class="scanner-input-row"><button id="scan-run" type="button" class="scanner-primary">Analyze HTML</button><button id="scan-clear" type="button">Clear</button><button id="scan-download" type="button" disabled>Download JSON report</button></div>
+<p id="scan-status" class="scanner-status" role="status" aria-live="polite">No scan started.</p></div>
+<div id="scan-report" class="scanner-report" aria-live="polite" hidden>
+<div class="scanner-summary" id="scan-summary"></div>
+<div class="scanner-checks" id="scan-checks"></div>
+<div class="scanner-details" id="scan-details"></div>
+</div>
+</section>
+<section class="tool-panel" id="content-analysis"><span class="eyebrow">02 / Content analysis</span><h2>Content and keyword explorer</h2><p>Uses text from the latest page scan, or separately pasted copy. Analyse term frequency, sentence structure and prominent topics; this is not a ranking prediction.</p>
+<label class="scanner-block-label">Content to analyse<textarea id="content-text" rows="9" placeholder="Paste article text, marketing copy or page content"></textarea></label>
+<label class="scanner-block-label">Target phrase (optional)<input id="content-phrase" placeholder="e.g. hotel direct booking" /></label>
+<button type="button" id="content-run" class="scanner-primary">Analyse content</button><div id="content-report" class="scanner-report" role="status" aria-live="polite"></div></section>
+<section class="tool-panel" id="schema-analysis"><span class="eyebrow">03 / Structured data</span><h2>JSON-LD validator</h2><p>Checks JSON syntax, Schema.org context, type and a small set of common properties. This does not replace Google's Rich Results Test or validate eligibility for search features.</p>
+<label class="scanner-block-label">JSON-LD object<textarea id="schema-text" rows="9" spellcheck="false" placeholder='{"@context":"https://schema.org","@type":"Organization","name":"Example"}'></textarea></label>
+<button id="schema-run" type="button" class="scanner-primary">Validate JSON-LD</button><div id="schema-report" class="scanner-report" role="status" aria-live="polite"></div></section>
+<section class="tool-panel" id="serp-analysis"><span class="eyebrow">04 / Search presentation</span><h2>Search result preview</h2><p>Illustrative snippet, not a reproduction of Google's search results. Search engines may rewrite titles and descriptions.</p>
+<div class="tool-fields"><label>Page title<input id="serp-title" placeholder="Your page title" /></label><label>Page URL<input id="serp-url" type="url" placeholder="https://example.com/page" /></label></div>
+<label class="scanner-block-label">Meta description<textarea id="serp-desc" rows="3" placeholder="Your page description"></textarea></label>
+<button id="serp-run" type="button" class="scanner-primary">Preview</button><div id="serp-report" class="scanner-report" role="status" aria-live="polite"></div></section>
+<aside class="tool-cta"><h2>From findings to decisions</h2><p>A source scan cannot check HTTP security headers, actual indexing, JS-rendered content, live backlinks, cross-origin robots.txt, or Lighthouse without external access. Validate important issues with authenticated tools or a commissioned audit.</p><a href="/ai-search/">AI Search advisory →</a><a href="/services/engagements/">Services →</a></aside>
+</div></div></div>
+</SiteLayout>
+<script is:inline src="/interactive-tools/page-scanner.js"></script>
