@@ -1,0 +1,7 @@
+name = "demandjourneys-page-scanner"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+workers_dev = true
+
+# Optional when demandjourneys.com is managed in Cloudflare:
+# routes = [{ pattern = "scanner.demandjourneys.com", custom_domain = true }]
