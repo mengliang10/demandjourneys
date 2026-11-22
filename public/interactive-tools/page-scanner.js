@@ -1,5 +1,5 @@
-/* Browser-only DM_Tools adapter: source inspection, keyword statistics, JSON-LD and SERP preview.
-   Parses user-supplied markup as inert text. Never executes third-party JavaScript,
+/* Browser-only DM_Tools adapter: URL-based source inspection, keyword statistics, JSON-LD and SERP preview.
+   Parses fetched markup as inert text. Never executes third-party JavaScript,
    stores input or sends scan data to Demand Journeys. */
 (function(){
   function init(){
@@ -70,7 +70,7 @@
         note(schemas.length>0,'Structured data availability',schemas.length+' JSON-LD block(s)'),
         note(!/noindex/i.test(meta('robots')),'Robots meta directive',meta('robots')||'No page-level robots meta directive found')
       ];
-      return {source:'User supplied HTML or CORS-permitted URL',url:url||null,analyzedAt:new Date().toISOString(),
+      return {source:'URL with permitted cross-origin HTML access',url:url||null,analyzedAt:new Date().toISOString(),
         title,description,canonical,ogTitle:og('og:title'),headers,headings,h1,images:{total:images.length,missingAlt:altMissing,emptyAlt:altEmpty,lazy:images.filter(i=>i.getAttribute('loading')==='lazy').length},
         links:{total:anchors.length,internal,external,other,placeholders},scripts:doc.querySelectorAll('script').length,
         schemaTypes:[...new Set(types)],schemaBlocks:schemas.length,jsonErrors,documentLanguage:doc.documentElement.getAttribute('lang')||'',
@@ -98,38 +98,48 @@
       if(!value('serp-url'))el('serp-url').value=report.url||'';
       write('scan-status','Source analysis complete. This does not verify live HTTP headers, crawler access or PageSpeed scores.');
     }
-    function scan(){
-      try{
-        const html=value('scan-html');
-        if(!html.trim()){write('scan-status','Paste HTML, upload a file, or fetch a CORS-enabled page first.');return;}
-        last=extract(html,value('scan-url'));render(last);
-      }catch(e){write('scan-status','Unable to analyse: '+e.message);}
-    }
-    el('scan-run').addEventListener('click',scan);
-    el('scan-file').addEventListener('change',async event=>{
-      const file=event.target.files?.[0];if(!file)return;
-      if(file.size>5e6){write('scan-status','File exceeds 5 MB limit.');return;}
-      el('scan-html').value=await file.text();write('scan-status','File loaded locally. Select Analyze HTML.');});
-    el('scan-fetch').addEventListener('click',async()=>{
+    async function scan(){
       let url;
-      try{url=new URL(value('scan-url'));if(!['http:','https:'].includes(url.protocol))throw Error('Invalid scheme');}
-      catch{write('scan-status','Enter a valid HTTPS URL (HTTP may be blocked by browser security).');return;}
-      write('scan-status','Requesting source. Cross-origin servers must explicitly enable CORS.');
-      const button=el('scan-fetch');button.disabled=true;
-      try{
+      try {
+        url=new URL(value('scan-url').trim());
+        if(!['https:','http:'].includes(url.protocol))throw Error('Invalid URL scheme');
+        if(location.protocol==='https:'&&url.protocol==='http:')throw Error('HTTP pages are blocked by secure-browser mixed-content rules. Use HTTPS.');
+      } catch(e) {
+        write('scan-status',e.message?.includes('mixed-content')?e.message:'Enter a valid website URL beginning with https://.');
+        return;
+      }
+      const button=el('scan-run');
+      button.disabled=true;
+      el('scan-report').hidden=true;
+      el('scan-download').disabled=true;
+      last=null;
+      write('scan-status','Checking accessible source for '+url.hostname+'…');
+      try {
+        // Browser-side scanning is only possible where the target grants CORS.
+        // No third-party script from the scanned document is executed.
         const response=await fetch(url.href,{mode:'cors',credentials:'omit',redirect:'follow',signal:AbortSignal.timeout(15000)});
         if(!response.ok)throw Error('HTTP '+response.status);
         const contentType=response.headers.get('content-type')||'';
-        if(!/html|xhtml|text\/plain/i.test(contentType))throw Error('Response is not HTML');
-        const size=Number(response.headers.get('content-length')||0);if(size>5e6)throw Error('Response exceeds 5 MB');
-        const text=await response.text();if(text.length>5e6)throw Error('Source exceeds 5 MB');
-        el('scan-html').value=text;
-        write('scan-status','Fetched readable HTML from '+url.origin+'.');
-        scan();
-      }catch(e){write('scan-status','Cannot fetch in this browser ('+e.message+'). Most third-party websites block CORS. Copy their View Page Source HTML instead.');}
-      finally{button.disabled=false;}
+        if(!/html|xhtml/i.test(contentType))throw Error('The URL did not return an HTML document.');
+        const declaredSize=Number(response.headers.get('content-length')||0);
+        if(declaredSize>5e6)throw Error('HTML exceeds the 5 MB browser analysis limit.');
+        const html=await response.text();
+        if(html.length>5e6)throw Error('HTML exceeds the 5 MB browser analysis limit.');
+        last=extract(html,url.href);
+        render(last);
+      } catch(e) {
+        write('scan-status','Unable to inspect this URL in your browser. The target may block cross-origin requests (CORS), require authentication or be unavailable. This is an access limitation, not an SEO failure. Details: '+e.message);
+      } finally {button.disabled=false;}
+    }
+    el('scan-run').addEventListener('click',scan);
+    el('scan-url').addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();void scan();}});
+    el('scan-clear').addEventListener('click',()=>{
+      el('scan-url').value='';
+      el('scan-report').hidden=true;
+      el('scan-download').disabled=true;
+      last=null;
+      write('scan-status','Cleared.');
     });
-    el('scan-clear').addEventListener('click',()=>{el('scan-html').value='';el('scan-file').value='';el('scan-report').hidden=true;el('scan-download').disabled=true;last=null;write('scan-status','Cleared.');});
     el('scan-download').addEventListener('click',()=>{
       if(!last)return;
       const {text,...report}=last;
