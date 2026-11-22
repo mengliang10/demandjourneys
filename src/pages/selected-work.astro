@@ -2,20 +2,211 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 import '../styles/interior.css';
 import '../styles/interactive-tools.css';
+// Content is unchanged from the previous version. `tone` and `metrics` only drive presentation:
+// every metric restates a figure already listed under "Documented evidence" for that entry.
 const examples=[
-  {name:'Enterprise booking experience transformation',deck:'booking-transformation',type:'Implemented programme',context:'Frasers Hospitality · Project Meta',challenge:'Simplify a complex global digital booking experience and improve the underlying content and booking journey.',scope:'Conceived and business-cased the programme, secured Board approval and led implementation governance across the web and booking ecosystem.',evidence:['Approximate page-load reduction from 7.1 to 3.0 seconds','Booking journey simplified from approximately 10 steps to 5','Direct website room nights increased by 56% in the documented programme context'],boundary:'These are programme-associated operating outcomes, not isolated causal effects attributable to any single design change. Financial figures are intentionally omitted.'},
-  {name:'Customer data platform strategy',deck:'customer-data-platform',type:'Planned and specified, not deployed',context:'Hospitality customer-platform planning',challenge:'Unify the business requirements for customer identity, lifecycle activation and guest-level measurement.',scope:'Developed CDP concept, architecture direction, roadmap, RFP, business case and implementation planning.',evidence:['Business and platform requirements translated into an implementation roadmap','Vendor evaluation and procurement planning completed'],boundary:'Full CDP approval and deployment were not completed before departure. No unified production guest profile is claimed.'},
-  {name:'Regional distribution and media governance',deck:'distribution-governance',type:'Leadership and operating experience',context:'Hospitality and travel · APAC',challenge:'Coordinate direct commerce, marketplace distribution, agency investment and commercial reporting across markets.',scope:'Regional digital marketing, channel oversight, selected chain distribution contracting, forecasting and cross-functional governance.',evidence:['Direct involvement in chain agreements with major online travel agencies','Forecasting responsibilities spanning weekly through long-range planning'],boundary:'Property-level OTA execution was locally owned. Revenue management was shared commercial governance, not sole functional ownership.'}
+  {name:'Enterprise booking experience transformation',deck:'booking-transformation',tone:'implemented',type:'Implemented programme',context:'Frasers Hospitality · Project Meta',challenge:'Simplify a complex global digital booking experience and improve the underlying content and booking journey.',scope:'Conceived and business-cased the programme, secured Board approval and led implementation governance across the web and booking ecosystem.',evidence:['Approximate page-load reduction from 7.1 to 3.0 seconds','Booking journey simplified from approximately 10 steps to 5','Direct website room nights increased by 56% in the documented programme context'],boundary:'These are programme-associated operating outcomes, not isolated causal effects attributable to any single design change. Financial figures are intentionally omitted.',
+    metrics:[{value:'7.1 → 3.0s',label:'Approximate page-load time'},{value:'~10 → 5',label:'Booking journey steps (approximate)'},{value:'+56%',label:'Direct website room nights, documented programme context'}]},
+  {name:'Customer data platform strategy',deck:'customer-data-platform',tone:'planned',type:'Planned and specified, not deployed',context:'Hospitality customer-platform planning',challenge:'Unify the business requirements for customer identity, lifecycle activation and guest-level measurement.',scope:'Developed CDP concept, architecture direction, roadmap, RFP, business case and implementation planning.',evidence:['Business and platform requirements translated into an implementation roadmap','Vendor evaluation and procurement planning completed'],boundary:'Full CDP approval and deployment were not completed before departure. No unified production guest profile is claimed.'},
+  {name:'Regional distribution and media governance',deck:'distribution-governance',tone:'operating',type:'Leadership and operating experience',context:'Hospitality and travel · APAC',challenge:'Coordinate direct commerce, marketplace distribution, agency investment and commercial reporting across markets.',scope:'Regional digital marketing, channel oversight, selected chain distribution contracting, forecasting and cross-functional governance.',evidence:['Direct involvement in chain agreements with major online travel agencies','Forecasting responsibilities spanning weekly through long-range planning'],boundary:'Property-level OTA execution was locally owned. Revenue management was shared commercial governance, not sole functional ownership.'}
 ];
+const num=(i:number)=>String(i+1).padStart(2,'0');
 ---
 <SiteLayout title="Selected Work & Evidence | Demand Journeys" description="Evidence-led examples of implemented transformation, planned customer-platform work and regional governance, with explicit delivery boundaries." current="selected-work" bodyClass="interior tools-page">
-<div class="container evidence-page">
+<div class="container sw-page">
 <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span aria-current="page">Selected work</span></nav>
-<header class="evidence-heading"><span class="eyebrow">Selected experience / Evidence boundaries</span><h1>What has been delivered, governed and planned.</h1><p>These examples refer to professional roles and programmes, not necessarily clients of Demand Journeys. Specific outcomes are described only where supported by the professional evidence record.</p></header>
-<div class="evidence-list">{examples.map((entry,i)=><article class="evidence-entry"><div class="evidence-number">{String(i+1).padStart(2,'0')} / {entry.type}</div><h2>{entry.name}</h2><p class="evidence-context">{entry.context}</p><div class="evidence-columns"><section><h3>Business problem</h3><p>{entry.challenge}</p><h3>Scope of involvement</h3><p>{entry.scope}</p></section><section><h3>Documented evidence</h3><ul>{entry.evidence.map(point=><li>{point}</li>)}</ul><h3>Limitations</h3><p>{entry.boundary}</p></section></div><div class="evidence-deck"><div class="evidence-deck-heading"><div><span class="eyebrow">Interactive case-study presentation</span><h3>Reveal.js deck · Placeholder edition</h3><p>Six slides covering context, involvement, supported evidence and materials awaiting approval.</p></div><a href={`/selected-work/decks/${entry.deck}/`} class="evidence-deck-link">Open full presentation ↗</a></div><iframe loading="lazy" title={`Reveal.js placeholder deck for ${entry.name}`} src={`/selected-work/decks/${entry.deck}/?preview=1`} class="evidence-deck-frame" allow="fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div></article>)}</div>
-<aside class="evidence-note"><h2>How we assess evidence</h2><p>Implemented result, delivered scope, planned initiative and advisory work are different kinds of evidence. Demand Journeys does not attribute another organisation's work to itself or publish confidential client results without permission.</p><div><a href="/profile/">Professional profile →</a><a href="/hospitality-presentations/">Explore presentations →</a><a href="/#enquiry">Discuss an engagement →</a></div></aside>
+
+<header class="sw-hero">
+  <span class="sw-eyebrow">Selected experience / Evidence boundaries</span>
+  <h1>What has been delivered, governed and planned.</h1>
+  <p class="sw-intro">These examples refer to professional roles and programmes, not necessarily clients of Demand Journeys. Specific outcomes are described only where supported by the professional evidence record.</p>
+</header>
+
+<nav class="sw-ledger" aria-label="Programmes on this page">
+  <ol>
+    {examples.map((entry,i)=>(
+      <li>
+        <a class={`sw-ledger-card tone-${entry.tone}`} href={`#programme-${i+1}`}>
+          <span class="sw-ledger-top"><span class="sw-ledger-num">{num(i)}</span><span class="sw-badge"><i aria-hidden="true"></i>{entry.type}</span></span>
+          <strong>{entry.name}</strong>
+          <span class="sw-ledger-context">{entry.context}</span>
+          <span class="sw-ledger-go" aria-hidden="true">↓</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<div class="sw-list">
+{examples.map((entry,i)=>(
+  <article class={`sw-entry tone-${entry.tone}`} id={`programme-${i+1}`} aria-labelledby={`programme-${i+1}-title`}>
+    <header class="sw-entry-head">
+      <div class="sw-entry-kicker"><span class="sw-entry-num">{num(i)}</span><span class="sw-badge"><i aria-hidden="true"></i>{entry.type}</span></div>
+      <h2 id={`programme-${i+1}-title`}>{entry.name}</h2>
+      <p class="sw-context">{entry.context}</p>
+    </header>
+
+    {entry.metrics && (
+      <ul class="sw-metrics" aria-label="Headline figures from the documented evidence">
+        {entry.metrics.map(m=><li><strong>{m.value}</strong><span>{m.label}</span></li>)}
+      </ul>
+    )}
+
+    <div class="sw-columns">
+      <section class="sw-col">
+        <h3>Business problem</h3><p>{entry.challenge}</p>
+        <h3>Scope of involvement</h3><p>{entry.scope}</p>
+      </section>
+      <section class="sw-col">
+        <h3>Documented evidence</h3>
+        <ul class="sw-evidence">{entry.evidence.map(point=><li>{point}</li>)}</ul>
+        <div class="sw-limits" role="note">
+          <h3>Limitations</h3>
+          <p>{entry.boundary}</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="sw-deck">
+      <div class="sw-deck-head">
+        <div>
+          <span class="sw-eyebrow">Interactive case-study presentation</span>
+          <h3>Reveal.js deck · Placeholder edition</h3>
+          <p>Six slides covering context, involvement, supported evidence and materials awaiting approval.</p>
+        </div>
+        <a href={`/selected-work/decks/${entry.deck}/`} class="sw-deck-link">Open full presentation <span aria-hidden="true">↗</span></a>
+      </div>
+      <details class="sw-preview">
+        <summary><span>Preview slides inline</span><span class="sw-chevron" aria-hidden="true"></span></summary>
+        <div class="sw-frame-wrap">
+          <iframe loading="lazy" title={`Reveal.js placeholder deck for ${entry.name}`} src={`/selected-work/decks/${entry.deck}/?preview=1`} class="sw-frame" allow="fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </details>
+    </div>
+  </article>
+))}
+</div>
+
+<aside class="sw-note">
+  <div class="sw-note-copy">
+    <span class="sw-eyebrow sw-eyebrow-light">Evidence standard</span>
+    <h2>How we assess evidence</h2>
+    <p>Implemented result, delivered scope, planned initiative and advisory work are different kinds of evidence. Demand Journeys does not attribute another organisation's work to itself or publish confidential client results without permission.</p>
+  </div>
+  <div class="sw-note-links">
+    <a href="/profile/">Professional profile <span aria-hidden="true">→</span></a>
+    <a href="/hospitality-presentations/">Explore presentations <span aria-hidden="true">→</span></a>
+    <a href="/#enquiry">Discuss an engagement <span aria-hidden="true">→</span></a>
+  </div>
+</aside>
 </div>
 </SiteLayout>
 <style>
-.evidence-page{max-width:1180px;margin:0 auto;padding:32px clamp(20px,4vw,55px) 100px}.evidence-heading{max-width:900px;margin:42px 0 52px}.evidence-heading h1{font:500 clamp(2.4rem,5vw,4.5rem)/1.08 Outfit,Arial,sans-serif;letter-spacing:-.04em;margin:14px 0 18px}.evidence-heading p{max-width:760px;line-height:1.7}.evidence-list{display:grid;gap:24px}.evidence-entry{background:#fffefa;border:1px solid #d7dfd6;border-radius:7px;padding:clamp(22px,4vw,45px)}.evidence-number{font-size:.79rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#60716a}.evidence-entry h2{font:500 clamp(1.7rem,3vw,2.5rem)/1.2 Outfit,sans-serif;margin:15px 0 9px}.evidence-context{color:#60716a;font-size:.9rem;margin-bottom:24px}.evidence-columns{display:grid;grid-template-columns:1fr 1fr;gap:clamp(25px,4vw,70px)}.evidence-columns h3{font-size:1rem;margin:25px 0 8px}.evidence-columns p,.evidence-columns li{font-size:.98rem;line-height:1.7}.evidence-columns ul{padding-left:22px}.evidence-note{padding:34px;margin-top:35px;background:#203e3a;color:#fffefa}.evidence-note h2{font:500 1.8rem Outfit,sans-serif;color:inherit}.evidence-note p{max-width:760px;line-height:1.65}.evidence-note a{display:inline-block;margin:12px 23px 0 0;color:#fffefa;text-underline-offset:3px}@media(max-width:700px){.evidence-columns{grid-template-columns:1fr;gap:0}}
+/* Tokens follow the existing system: forest #203e3a / accent #315b4b / gold #927448, Outfit headings, Editorial (Inter Tight) body. */
+.sw-page{--sw-forest:#203e3a;--sw-accent:#315b4b;--sw-gold:#927448;--sw-muted:#5b6761;--sw-line:#d7dfd6;--sw-card:#fffefa;--sw-pale:#eef2ec;--sw-tone:var(--sw-accent);
+  width:min(1180px,calc(100% - clamp(40px,8vw,96px)));padding:8px 0 100px}
+.sw-page .tone-implemented{--sw-tone:#2f6b57}
+.sw-page .tone-planned{--sw-tone:#927448}
+.sw-page .tone-operating{--sw-tone:#3f6670}
+
+/* Hero */
+.sw-page .sw-hero{max-width:920px;margin:38px 0 44px}
+.sw-page .sw-eyebrow{display:block;font-size:.74rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--sw-muted);margin:0 0 4px}
+.sw-page .sw-hero h1{font:500 clamp(2.4rem,5.2vw,4.6rem)/1.06 Outfit,Arial,sans-serif;letter-spacing:-.04em;margin:16px 0 20px;text-wrap:balance}
+.sw-page .sw-intro{max-width:720px;font-size:clamp(1.02rem,1.5vw,1.18rem);line-height:1.65;margin:0}
+
+/* Status badge */
+.sw-page .sw-badge{display:inline-flex;align-items:center;gap:8px;padding:5px 12px 5px 10px;border-radius:999px;background:color-mix(in srgb,var(--sw-tone) 11%,#fff);border:1px solid color-mix(in srgb,var(--sw-tone) 28%,#fff);color:color-mix(in srgb,var(--sw-tone) 82%,#000);font-size:.72rem;font-weight:700;letter-spacing:.04em;line-height:1.3}
+.sw-page .sw-badge i{width:8px;height:8px;border-radius:50%;background:var(--sw-tone);flex:none}
+
+/* At-a-glance ledger */
+.sw-page .sw-ledger{margin:0 0 56px}
+.sw-page .sw-ledger ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.sw-page .sw-ledger-card{position:relative;display:flex;flex-direction:column;gap:10px;height:100%;padding:22px 22px 24px;background:var(--sw-card);border:1px solid var(--sw-line);border-top:3px solid var(--sw-tone);border-radius:12px;color:var(--sw-forest);text-decoration:none!important;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.sw-page .sw-ledger-card:hover{background:#fff;transform:translateY(-3px);box-shadow:0 14px 34px #203e3a14}
+.sw-page .sw-ledger-card:focus-visible{outline:3px solid var(--sw-gold);outline-offset:3px}
+.sw-page .sw-ledger-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.sw-page .sw-ledger-num,.sw-page .sw-entry-num{font:600 .95rem Outfit,Arial,sans-serif;color:var(--sw-tone);letter-spacing:.04em}
+.sw-page .sw-ledger-card strong{font:500 1.28rem/1.25 Outfit,Arial,sans-serif;letter-spacing:-.02em}
+.sw-page .sw-ledger-context{font-size:.86rem;color:var(--sw-muted);line-height:1.5;padding-right:26px}
+.sw-page .sw-ledger-go{position:absolute;right:20px;bottom:18px;font-size:1.1rem;color:var(--sw-tone);transition:transform .2s ease}
+.sw-page .sw-ledger-card:hover .sw-ledger-go{transform:translateY(3px)}
+
+/* Entries */
+.sw-page .sw-list{display:grid;gap:28px}
+.sw-page .sw-entry{scroll-margin-top:28px;background:var(--sw-card);border:1px solid var(--sw-line);border-left:4px solid var(--sw-tone);border-radius:14px;padding:clamp(24px,4vw,48px);box-shadow:0 5px 25px #203e3a05}
+.sw-page .sw-entry-kicker{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.sw-page .sw-entry-head h2{font:500 clamp(1.75rem,3.2vw,2.7rem)/1.14 Outfit,Arial,sans-serif;letter-spacing:-.03em;margin:18px 0 8px;max-width:22ch;text-wrap:balance}
+.sw-page .sw-context{font-size:.92rem;color:var(--sw-muted);margin:0 0 28px}
+
+/* Headline figures */
+.sw-page .sw-metrics{list-style:none;margin:0 0 34px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.sw-page .sw-metrics li{padding:20px 22px;border-radius:10px;background:var(--sw-pale);border:1px solid #e0e7dd}
+.sw-page .sw-metrics strong{display:block;font:600 clamp(1.9rem,3.6vw,2.9rem)/1.05 Outfit,Arial,sans-serif;letter-spacing:-.035em;color:var(--sw-tone);white-space:nowrap}
+.sw-page .sw-metrics span{display:block;margin-top:10px;font-size:.82rem;line-height:1.45;color:#4c6157}
+
+/* Body columns */
+.sw-page .sw-columns{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4vw,72px)}
+.sw-page .sw-col h3{font:700 .74rem Editorial,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--sw-tone);margin:0 0 9px}
+.sw-page .sw-col>h3:not(:first-child){margin-top:26px}
+.sw-page .sw-col p{font-size:1rem;line-height:1.72;margin:0;color:#4c5a53}
+.sw-page .sw-evidence{list-style:none;margin:0 0 28px;padding:0}
+.sw-page .sw-evidence li{position:relative;padding:11px 0 11px 24px;border-bottom:1px solid #e5eae2;font-size:1rem;line-height:1.6;color:#33463e}
+.sw-page .sw-evidence li:first-child{padding-top:2px}
+.sw-page .sw-evidence li::before{content:"";position:absolute;left:3px;top:1.05em;width:7px;height:7px;background:var(--sw-tone);transform:rotate(45deg)}
+.sw-page .sw-evidence li:first-child::before{top:.65em}
+.sw-page .sw-limits{padding:18px 20px 18px 22px;background:#faf6ec;border-left:3px solid var(--sw-gold);border-radius:0 8px 8px 0}
+.sw-page .sw-limits h3{color:#7a5f36;margin-bottom:7px}
+.sw-page .sw-limits p{font-size:.93rem;line-height:1.65;color:#4c4636}
+
+/* Deck */
+.sw-page .sw-deck{margin-top:38px;padding-top:26px;border-top:1px solid var(--sw-line)}
+.sw-page .sw-deck-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.sw-page .sw-deck-head h3{font:500 1.3rem/1.25 Outfit,Arial,sans-serif;letter-spacing:-.02em;margin:6px 0 6px}
+.sw-page .sw-deck-head p{margin:0;font-size:.92rem;line-height:1.55;max-width:56ch}
+.sw-page .sw-deck-link{display:inline-flex;align-items:center;gap:12px;padding:12px 20px;border-radius:6px;background:var(--sw-forest);color:#fff!important;font-size:.9rem;font-weight:600;text-decoration:none!important;white-space:nowrap;transition:background .2s ease,transform .2s ease}
+.sw-page .sw-deck-link:hover{background:var(--sw-accent);transform:translateY(-1px)}
+.sw-page .sw-deck-link:focus-visible,.sw-page .sw-preview summary:focus-visible,.sw-page .sw-note-links a:focus-visible{outline:3px solid var(--sw-gold);outline-offset:3px}
+.sw-page .sw-preview{margin-top:20px;border:1px solid var(--sw-line);border-radius:10px;background:#fff;overflow:hidden}
+.sw-page .sw-preview summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 18px;cursor:pointer;list-style:none;font-size:.88rem;font-weight:650;color:var(--sw-forest)}
+.sw-page .sw-preview summary::-webkit-details-marker{display:none}
+.sw-page .sw-preview summary:hover{background:var(--sw-pale)}
+.sw-page .sw-chevron{width:9px;height:9px;border-right:2px solid var(--sw-forest);border-bottom:2px solid var(--sw-forest);transform:rotate(45deg);transition:transform .2s ease;margin-right:4px}
+.sw-page .sw-preview[open] .sw-chevron{transform:rotate(-135deg)}
+.sw-page .sw-frame-wrap{padding:0 14px 14px}
+.sw-page .sw-frame{display:block;width:100%;aspect-ratio:16/9;min-height:260px;border:1px solid var(--sw-line);border-radius:8px;background:#f5f2e9}
+
+/* Closing panel */
+.sw-page .sw-note{margin-top:44px;padding:clamp(28px,4vw,48px);display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,5vw,70px);align-items:center;background:#203e3a;color:#fffefa;border-radius:14px}
+.sw-page .sw-eyebrow-light{color:#a8bfb1}
+.sw-page .sw-note h2{font:500 clamp(1.6rem,2.6vw,2.1rem)/1.15 Outfit,Arial,sans-serif;letter-spacing:-.025em;color:inherit;margin:10px 0 14px}
+.sw-page .sw-note p{max-width:62ch;line-height:1.7;margin:0;color:#dbe6de}
+.sw-page .sw-note-links{display:grid;gap:0}
+.sw-page .sw-note-links a{display:flex;justify-content:space-between;gap:16px;padding:15px 2px;border-top:1px solid #ffffff2b;color:#fffefa;font-weight:600;font-size:.96rem;text-decoration:none!important;transition:padding .2s ease,color .2s ease}
+.sw-page .sw-note-links a:last-child{border-bottom:1px solid #ffffff2b}
+.sw-page .sw-note-links a:hover{padding-left:10px;color:#fff}
+
+@media(max-width:960px){
+  .sw-page .sw-ledger ol{grid-template-columns:1fr}
+  .sw-page .sw-ledger-card{height:auto}
+  .sw-page .sw-note{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .sw-page .sw-columns{grid-template-columns:1fr;gap:0}
+  .sw-page .sw-col+.sw-col{margin-top:26px}
+  .sw-page .sw-metrics{grid-template-columns:1fr;gap:10px}
+  .sw-page .sw-metrics li{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 16px}
+  .sw-page .sw-metrics strong{font-size:1.6rem;order:2;text-align:right}
+  .sw-page .sw-metrics span{margin:0;order:1;font-size:.8rem}
+  .sw-page .sw-entry{border-left-width:3px}
+  .sw-page .sw-deck-link{width:100%;justify-content:space-between}
+}
+@media(prefers-reduced-motion:reduce){
+  .sw-page *{transition:none!important}
+  .sw-page .sw-ledger-card:hover,.sw-page .sw-deck-link:hover{transform:none}
+}
+@media print{
+  .sw-page .sw-ledger,.sw-page .sw-preview{display:none}
+  .sw-page .sw-entry{break-inside:avoid;box-shadow:none}
+}
 </style>
