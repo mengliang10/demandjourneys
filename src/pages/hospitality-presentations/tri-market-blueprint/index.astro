@@ -14,8 +14,16 @@ import markup from '../../../assets/market-atlas-shell.html?raw';
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/hospitality-presentations/tri-market-blueprint/original.css" />
   <link rel="stylesheet" href="/hospitality-presentations/tri-market-blueprint/enrichment.css" />
+<style is:global>
+.atlas-brand-wordmark{position:fixed;top:12px;right:16px;z-index:1000;display:inline-flex;align-items:center;padding:7px 10px;background:#203e3af2;border:1px solid #ffffff38;border-radius:5px}
+.atlas-brand-wordmark img{display:block;width:160px;height:auto;max-height:27px;object-fit:contain}
+.atlas-brand-wordmark:focus-visible{outline:3px solid #927448;outline-offset:3px}
+@media(max-width:700px){.atlas-brand-wordmark{top:8px;right:8px;padding:5px}.atlas-brand-wordmark img{width:120px}}
+@media print{.atlas-brand-wordmark{display:none}}
+</style>
 </head>
 <body>
+  <a class="atlas-brand-wordmark" href="/hospitality-presentations/" aria-label="Demand Journeys presentation library"><img src="/identity/wordmark-white-456.webp" alt="Demand Journeys" width="160" height="24" /></a>
   <div id="atlas-app" set:html={markup} />
 <script is:inline src="/hospitality-presentations/tri-market-blueprint/original.js"></script>
 <script is:inline src="/hospitality-presentations/tri-market-blueprint/enrichment.js"></script>
