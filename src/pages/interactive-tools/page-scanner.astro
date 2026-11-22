@@ -4,10 +4,10 @@ import '../../styles/interior.css';
 import '../../styles/interactive-tools.css';
 import '../../styles/page-scanner.css';
 ---
-<SiteLayout title="Page Scanner, SEO & Content Analysis | Demand Journeys" description="Browser-only website source scanner and SEO analyzer. Inspect an uploaded HTML page or paste its source to review metadata, structured data, headings, links, images, and content." current="interactive-tools" bodyClass="interior tools-page">
+<SiteLayout title="Page Scanner, SEO & Content Analysis | Demand Journeys" description="URL-based website source scanner and SEO analyzer. Analyze page metadata, structured data, headings, links, images and content when the target permits browser access." current="interactive-tools" bodyClass="interior tools-page">
 <div class="container tools-shell scanner-shell">
 <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/interactive-tools/">Interactive Tools</a><span>/</span><span aria-current="page">Page Scanner</span></nav>
-<header class="tools-intro"><span class="eyebrow">DM_Tools / Adapted for GitHub Pages</span><h1>Page Scanner</h1><p>Audit page HTML without an LLM or backend. Choose a local HTML file, paste page source, or attempt a URL scan where the destination explicitly permits cross-origin browser access.</p><p class="tools-caution">A browser cannot bypass CORS. A failed URL request is not a failed website audit. View the target page's source, paste it here, or upload its saved HTML file. No scan content is sent to Demand Journeys.</p></header>
+<header class="tools-intro"><span class="eyebrow">DM_Tools / Adapted for GitHub Pages</span><h1>Page Scanner</h1><p>Enter a website URL to inspect its available HTML source, metadata, structured data, headings, links, images and content.</p><p class="tools-caution">This scanner runs in your browser. Some websites block external source inspection through CORS; those sites require a server-side scanner. No scan content is sent to Demand Journeys.</p></header>
 <div class="tools-layout">
 <aside class="tools-menu-wrap">
 <button class="tools-menu-toggle" type="button" aria-expanded="false" aria-controls="tools-menu">Browse tools <span aria-hidden="true">⌄</span></button>
@@ -23,10 +23,9 @@ import '../../styles/page-scanner.css';
 <div class="tools-content">
 <section class="tool-panel" id="page-audit">
 <span class="eyebrow">01 / Source inspection</span><h2>HTML page scanner</h2><p>Rebuilt from DM_Tools' website, deep DOM and technical analyzers. Works on supplied HTML; checks are descriptive and do not imply a Google ranking or AI citation score.</p>
-<div class="scanner-inputs"><label>Page URL (optional, used to interpret internal/external links)<input id="scan-url" type="url" placeholder="https://example.com/page/" autocomplete="url" /></label>
-<div class="scanner-input-row"><button type="button" id="scan-fetch">Fetch URL if CORS allows</button><label class="scanner-file-label">Upload saved HTML <input id="scan-file" type="file" accept=".html,.htm,text/html" /></label></div>
-<label>HTML source<textarea id="scan-html" rows="11" spellcheck="false" placeholder="Paste View Page Source HTML here (including the head section)"></textarea></label>
-<div class="scanner-input-row"><button id="scan-run" type="button" class="scanner-primary">Analyze HTML</button><button id="scan-clear" type="button">Clear</button><button id="scan-download" type="button" disabled>Download JSON report</button></div>
+<div class="scanner-inputs">
+<label>Website URL<input id="scan-url" type="url" placeholder="https://example.com/page/" autocomplete="url" required /></label>
+<div class="scanner-input-row"><button id="scan-run" type="button" class="scanner-primary">Scan URL</button><button id="scan-clear" type="button">Clear</button><button id="scan-download" type="button" disabled>Download JSON report</button></div>
 <p id="scan-status" class="scanner-status" role="status" aria-live="polite">No scan started.</p></div>
 <div id="scan-report" class="scanner-report" aria-live="polite" hidden>
 <div class="scanner-summary" id="scan-summary"></div>
