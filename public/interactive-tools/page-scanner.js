@@ -1,6 +1,5 @@
-/* Browser-only DM_Tools adapter: URL-based source inspection, keyword statistics, JSON-LD and SERP preview.
-   Parses fetched markup as inert text. Never executes third-party JavaScript,
-   stores input or sends scan data to Demand Journeys. */
+/* URL-scanner frontend: the Cloudflare Worker fetches public HTML, then this browser
+   parses it as inert text. No third-party scripts are executed or source displayed. */
 (function(){
   function init(){
     const root=document.querySelector('.scanner-shell');
@@ -70,7 +69,7 @@
         note(schemas.length>0,'Structured data availability',schemas.length+' JSON-LD block(s)'),
         note(!/noindex/i.test(meta('robots')),'Robots meta directive',meta('robots')||'No page-level robots meta directive found')
       ];
-      return {source:'URL with permitted cross-origin HTML access',url:url||null,analyzedAt:new Date().toISOString(),
+      return {source:'Cloudflare Worker fetched source',url:url||null,analyzedAt:new Date().toISOString(),
         title,description,canonical,ogTitle:og('og:title'),headers,headings,h1,images:{total:images.length,missingAlt:altMissing,emptyAlt:altEmpty,lazy:images.filter(i=>i.getAttribute('loading')==='lazy').length},
         links:{total:anchors.length,internal,external,other,placeholders},scripts:doc.querySelectorAll('script').length,
         schemaTypes:[...new Set(types)],schemaBlocks:schemas.length,jsonErrors,documentLanguage:doc.documentElement.getAttribute('lang')||'',
@@ -101,35 +100,43 @@
     async function scan(){
       let url;
       try {
-        url=new URL(value('scan-url').trim());
-        if(!['https:','http:'].includes(url.protocol))throw Error('Invalid URL scheme');
-        if(location.protocol==='https:'&&url.protocol==='http:')throw Error('HTTP pages are blocked by secure-browser mixed-content rules. Use HTTPS.');
-      } catch(e) {
-        write('scan-status',e.message?.includes('mixed-content')?e.message:'Enter a valid website URL beginning with https://.');
+        url = new URL(value('scan-url').trim());
+        if (!['https:', 'http:'].includes(url.protocol)) throw Error('Invalid URL scheme');
+      } catch {
+        write('scan-status','Enter a valid website URL beginning with https://.');
         return;
       }
-      const button=el('scan-run');
-      button.disabled=true;
-      el('scan-report').hidden=true;
-      el('scan-download').disabled=true;
-      last=null;
-      write('scan-status','Checking accessible source for '+url.hostname+'…');
+      const endpoint = root.dataset.scannerApi?.trim() || '';
+      if (!endpoint) {
+        write('scan-status','The URL scanner backend has not been activated yet. The site administrator must deploy and configure the Cloudflare Worker.');
+        return;
+      }
+      const button = el('scan-run');
+      button.disabled = true;
+      el('scan-report').hidden = true;
+      el('scan-download').disabled = true;
+      last = null;
+      write('scan-status','Fetching public HTML via scanner gateway for '+url.hostname+'…');
       try {
-        // Browser-side scanning is only possible where the target grants CORS.
-        // No third-party script from the scanned document is executed.
-        const response=await fetch(url.href,{mode:'cors',credentials:'omit',redirect:'follow',signal:AbortSignal.timeout(15000)});
-        if(!response.ok)throw Error('HTTP '+response.status);
-        const contentType=response.headers.get('content-type')||'';
-        if(!/html|xhtml/i.test(contentType))throw Error('The URL did not return an HTML document.');
-        const declaredSize=Number(response.headers.get('content-length')||0);
-        if(declaredSize>5e6)throw Error('HTML exceeds the 5 MB browser analysis limit.');
-        const html=await response.text();
-        if(html.length>5e6)throw Error('HTML exceeds the 5 MB browser analysis limit.');
-        last=extract(html,url.href);
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ url: url.href }),
+          credentials: 'omit',
+          signal: AbortSignal.timeout(18000)
+        });
+        let data;
+        try { data = await response.json(); } catch { throw Error('The scanner gateway returned an invalid response.'); }
+        if (!response.ok) throw Error(data.error || 'Gateway HTTP '+response.status);
+        if (typeof data.html !== 'string' || !data.url) throw Error('No HTML was returned.');
+        last = extract(data.html, data.url);
         render(last);
-      } catch(e) {
-        write('scan-status','Unable to inspect this URL in your browser. The target may block cross-origin requests (CORS), require authentication or be unavailable. This is an access limitation, not an SEO failure. Details: '+e.message);
-      } finally {button.disabled=false;}
+      } catch (e) {
+        const offline = /Failed to fetch|NetworkError|Load failed/i.test(e.message);
+        write('scan-status',offline
+          ? 'The scanner gateway cannot be reached. Check its deployment and configuration.'
+          : 'Unable to scan: '+e.message);
+      } finally { button.disabled = false; }
     }
     el('scan-run').addEventListener('click',scan);
     el('scan-url').addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();void scan();}});
