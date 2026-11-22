@@ -1,0 +1,40 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import '../styles/interior.css';
+const destinations=[
+  {href:'/services/',label:'Services',text:'AEO/GEO, growth marketing, platforms and analytics.'},
+  {href:'/selected-work/',label:'Selected Work',text:'Documented evidence with explicit boundaries.'},
+  {href:'/hospitality-presentations/',label:'Presentations',text:'The library of decks and diagnostics.'},
+  {href:'/interactive-tools/',label:'Interactive Tools',text:'Browser-based models and scanners.'},
+  {href:'/profile/',label:'Profile',text:'Background and professional introduction.'},
+  {href:'/#enquiry',label:'Enquire',text:'Describe the problem you are trying to solve.'}
+];
+---
+<SiteLayout title="Page not found | Demand Journeys" description="This page could not be found. Use the links to continue to Demand Journeys services, selected work, presentations and tools." bodyClass="interior">
+<Fragment slot="head"><meta name="robots" content="noindex"/></Fragment>
+<div class="container nf-page">
+  <header class="nf-hero">
+    <span class="eyebrow">404 / Page not found</span>
+    <h1>That page isn’t here.</h1>
+    <p>The link may be out of date or the page may have moved. These are the main places to continue.</p>
+  </header>
+  <ul class="nf-grid">{destinations.map(d=><li><a href={d.href}><strong>{d.label}</strong><span>{d.text}</span><i aria-hidden="true">→</i></a></li>)}</ul>
+  <p class="nf-home"><a class="button" href="/">Back to the homepage</a></p>
+</div>
+</SiteLayout>
+<style>
+.nf-page{padding-bottom:40px}
+.nf-hero{padding:48px 0 36px}
+.nf-hero h1{font:500 clamp(2.3rem,4.6vw,4.1rem)/1.07 Outfit,Arial,sans-serif;letter-spacing:-.04em;margin:14px 0 20px}
+.nf-hero p{max-width:56ch;font-size:1.1rem;line-height:1.65}
+.nf-grid{list-style:none;margin:0 0 36px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.nf-grid a{position:relative;display:flex;flex-direction:column;gap:8px;height:100%;padding:24px 56px 26px 24px;background:#fffefa;border:1px solid #d7dfd6;border-top:3px solid #315b4b;border-radius:14px;text-decoration:none;color:#203e3a;transition:transform .2s ease,box-shadow .2s ease}
+.nf-grid a,.nf-grid a *{text-decoration:none!important}
+.nf-grid a:hover{transform:translateY(-3px);box-shadow:0 18px 40px #203e3a17}
+.nf-grid strong{font:500 1.3rem/1.25 Outfit,Arial,sans-serif;letter-spacing:-.02em}
+.nf-grid span{font-size:.92rem;line-height:1.55;color:#5b6761}
+.nf-grid i{position:absolute;right:22px;top:22px;font-style:normal;font-size:1.2rem;color:#315b4b}
+@media(max-width:860px){.nf-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.nf-grid{grid-template-columns:1fr}.nf-hero{padding-top:32px}}
+@media(prefers-reduced-motion:reduce){.nf-grid a{transition:none}.nf-grid a:hover{transform:none}}
+</style>

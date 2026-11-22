@@ -4,6 +4,7 @@ import { fade } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/home.css';
+import '../styles/system.css';
 const {title,description='',current='',home=false,bodyClass=home?'final-home':'interior',headHtml,ogImage='/splash.jpg'}=Astro.props;
 const canonical=new URL(Astro.url.pathname,'https://www.demandjourneys.com/');
 ---

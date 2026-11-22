@@ -1,0 +1,181 @@
+/* ==========================================================================
+   Demand Journeys: site standardisation layer
+   One place for the shared rules: page shell, header, footer, headings,
+   breadcrumbs, buttons, cards, CTA bands, focus and motion.
+
+   Why `html:not(#_)`: older page-level styles set their own widths, radii and
+   sizes. The ID-weight prefix makes this layer win without !important. When the
+   legacy page CSS is consolidated, delete the prefix and fold rules into source.
+   Remove the import in SiteLayout.astro to roll the whole layer back.
+   ========================================================================== */
+
+:root{
+  --dj-forest:#203e3a;--dj-accent:#315b4b;--dj-gold:#927448;--dj-gold-soft:#c8ad7f;
+  --dj-ink:#253b34;--dj-muted:#5b6761;--dj-line:#d7dfd6;--dj-surface:#fffefa;--dj-pale:#eef2ec;
+  --dj-radius-card:14px;--dj-radius-control:8px;
+  --dj-shadow-card:0 5px 25px #203e3a05;--dj-shadow-lift:0 18px 40px #203e3a17;
+  --dj-gutter-total:clamp(40px,8vw,96px);
+  --dj-shell:min(1320px,calc(100% - var(--dj-gutter-total)));              /* width of a top-level content block */
+  --dj-edge:max(calc(var(--dj-gutter-total) / 2),calc((100% - 1320px) / 2));  /* left/right edge of full-bleed sections */
+  --dj-header-edge:max(clamp(20px,3vw,40px),calc((100% - 1320px) / 2));       /* header aligns with the shell */
+}
+
+/* ---------- 1. Page frame ---------- */
+html:has(body.interior){scroll-padding-top:96px}
+body{display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body>main{flex:1 0 auto}                              /* footer sits at the bottom on short pages */
+::selection{background:var(--dj-accent);color:#fff}
+
+/* ---------- 2. Header: sticky on content pages, aligned to the shell everywhere ---------- */
+html:not(#_) body.interior .site-header{position:sticky;top:0;z-index:60;max-width:none;margin:0;padding:14px var(--dj-header-edge);background:rgba(255,255,255,.93);-webkit-backdrop-filter:saturate(1.5) blur(14px);backdrop-filter:saturate(1.5) blur(14px);border-bottom:1px solid var(--dj-line)}
+html:not(#_) body.final-home .site-header{max-width:none;margin:0;padding-inline:var(--dj-header-edge);--dj-focus:#e1c997}
+html:not(#_) body .site-header .header-cta{border-radius:var(--dj-radius-control)}
+@media(max-width:1120px){
+  html:not(#_) body.interior .site-header:has(#main-navigation.is-open){max-height:100dvh;overflow-y:auto;background:#fff}
+}
+
+/* ---------- 3. Shell: one content width on every page ---------- */
+html:not(#_) body.interior .container{width:var(--dj-shell)}
+html:not(#_) body.interior :is(.tools-shell,.profile-overview,.sw-page,.engagements,.hospitality-landing){width:var(--dj-shell);max-width:none;margin-inline:auto;padding-inline:0}
+html:not(#_) body.interior .tools-menu-wrap{top:96px}
+html:not(#_) body.interior .next-step{max-width:none}
+
+/* ---------- 4. Page header pattern: breadcrumb, eyebrow, headline, lead ---------- */
+html:not(#_) body.interior .breadcrumb{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin-block:0;padding:26px 0 0;font-size:13px;line-height:1.4;color:var(--dj-muted)}
+html:not(#_) body.interior .breadcrumb a{color:var(--dj-accent);text-decoration:none;border-bottom:1px solid #b9c9be;padding-bottom:1px}
+html:not(#_) body.interior .breadcrumb a:hover{border-bottom-color:currentColor}
+html:not(#_) body.interior .breadcrumb>span:not([aria-current]){color:#9aa8a0}
+html:not(#_) body.interior .breadcrumb [aria-current]{color:var(--dj-ink);font-weight:600}
+
+html:not(#_) body.interior .eyebrow:not(.on-dark){display:block;font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#52695d;margin:0 0 12px}
+
+html:not(#_) body.interior :is(.service-introduction,.engagement-intro,.focus-hero,.tools-intro,.sw-hero,.method-hero,.hospitality-hero) h1{font:500 clamp(2.3rem,4.6vw,4.1rem)/1.07 Outfit,Arial,sans-serif;letter-spacing:-.04em;margin:14px 0 20px;max-width:18em;text-wrap:balance}
+html:not(#_) body.interior :is(.service-introduction>p,.engagement-intro>p,.focus-hero>p,.tools-intro>p,.sw-hero>.sw-intro){font-size:clamp(1.05rem,1.45vw,1.2rem);line-height:1.65;max-width:62ch;color:var(--dj-muted)}
+html:not(#_) body.interior :is(.engagement-intro,.focus-hero,.tools-intro,.sw-hero){padding-block:28px 52px;margin-block:0}
+html:not(#_) body.interior :is(h2,h3){text-wrap:balance}
+html:not(#_) body.interior :is(p,li){text-wrap:pretty}
+
+/* ---------- 5. Buttons ---------- */
+html:not(#_) body.interior :is(.button,.profile-download-btn,.presentation-open,.sw-deck-link){display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:46px;padding:12px 22px;border:0;border-radius:var(--dj-radius-control);background:var(--dj-forest);color:#fff;font-size:14.5px;font-weight:600;line-height:1.4;text-decoration:none;transition:background .2s ease,transform .2s ease}
+html:not(#_) body.interior :is(.button,.profile-download-btn,.presentation-open,.sw-deck-link):hover{background:var(--dj-accent);color:#fff;transform:translateY(-1px)}
+
+/* ---------- 6. Cards ---------- */
+html:not(#_) body :is(.engagement-card,.focus-grid article,.focus-method,.tool-panel,.research-card,.profile-doc-card,.system-diagram-wrap,.text-content,.sw-entry){border-radius:var(--dj-radius-card)}
+html:not(#_) body :is(.engagement-card,.focus-grid article,.tool-panel,.research-card){background:var(--dj-surface);border-color:var(--dj-line);box-shadow:var(--dj-shadow-card)}
+
+/* ---------- 7. Closing call-to-action band (same treatment on every page) ---------- */
+html:not(#_) body.interior:not([data-page=profile]) .engagement-cta,
+html:not(#_) body.interior:not([data-page=profile]) .service-closing,
+html:not(#_) body.interior:not([data-page=profile]) .tool-cta,
+html:not(#_) body.interior:not([data-page=profile]) .next-step,
+html:not(#_) body.interior:not([data-page=profile]) .method-cta .container{background:var(--dj-forest);color:#fffefa;border:0;border-radius:var(--dj-radius-card);padding:clamp(28px,4vw,48px);box-shadow:none;--dj-focus:#e1c997}
+html:not(#_) body.interior:not([data-page=profile]) .engagement-cta :is(h2,h3),
+html:not(#_) body.interior:not([data-page=profile]) .service-closing :is(h2,h3),
+html:not(#_) body.interior:not([data-page=profile]) .tool-cta :is(h2,h3),
+html:not(#_) body.interior:not([data-page=profile]) .next-step :is(h2,h3),
+html:not(#_) body.interior:not([data-page=profile]) .method-cta .container :is(h2,h3){color:#fffefa}
+html:not(#_) body.interior:not([data-page=profile]) .engagement-cta :is(p,li,span),
+html:not(#_) body.interior:not([data-page=profile]) .service-closing :is(p,li,span),
+html:not(#_) body.interior:not([data-page=profile]) .tool-cta :is(p,li,span),
+html:not(#_) body.interior:not([data-page=profile]) .next-step :is(p,li,span),
+html:not(#_) body.interior:not([data-page=profile]) .method-cta .container :is(p,li,span){color:#dbe6de}
+html:not(#_) body.interior:not([data-page=profile]) .engagement-cta .eyebrow,
+html:not(#_) body.interior:not([data-page=profile]) .service-closing .eyebrow,
+html:not(#_) body.interior:not([data-page=profile]) .tool-cta .eyebrow,
+html:not(#_) body.interior:not([data-page=profile]) .next-step .eyebrow,
+html:not(#_) body.interior:not([data-page=profile]) .method-cta .container .eyebrow{color:#a8bfb1}
+html:not(#_) body.interior:not([data-page=profile]) .engagement-cta a:not(.button),
+html:not(#_) body.interior:not([data-page=profile]) .service-closing a:not(.button),
+html:not(#_) body.interior:not([data-page=profile]) .tool-cta a:not(.button),
+html:not(#_) body.interior:not([data-page=profile]) .next-step a:not(.button),
+html:not(#_) body.interior:not([data-page=profile]) .method-cta .container a:not(.button){color:#fffefa;font-weight:650;text-underline-offset:4px;text-decoration-color:#ffffff66!important}
+html:not(#_) body.interior:not([data-page=profile]) .engagement-cta .button,
+html:not(#_) body.interior:not([data-page=profile]) .service-closing .button,
+html:not(#_) body.interior:not([data-page=profile]) .tool-cta .button,
+html:not(#_) body.interior:not([data-page=profile]) .next-step .button,
+html:not(#_) body.interior:not([data-page=profile]) .method-cta .container .button{background:#fffefa;color:var(--dj-forest)}
+html:not(#_) body.interior:not([data-page=profile]) .engagement-cta .button:hover,
+html:not(#_) body.interior:not([data-page=profile]) .service-closing .button:hover,
+html:not(#_) body.interior:not([data-page=profile]) .tool-cta .button:hover,
+html:not(#_) body.interior:not([data-page=profile]) .next-step .button:hover,
+html:not(#_) body.interior:not([data-page=profile]) .method-cta .container .button:hover{background:#fff;color:var(--dj-forest)}
+html:not(#_) body.interior .service-closing{margin-block:48px 0}
+
+/* ---------- 8. Focus: one visible, consistent ring ---------- */
+html:not(#_) :is(a,button,summary,[tabindex]):focus-visible{outline:3px solid var(--dj-focus,#927448);outline-offset:3px;border-radius:4px}
+
+/* ---------- 9. Homepage: hang the sections off the same shell ---------- */
+html:not(#_) body.final-home .hero{padding-inline:var(--dj-edge)}
+html:not(#_) body.final-home .practice-strip{width:var(--dj-shell)}
+html:not(#_) body.final-home .dj-quick-paths{padding-inline:0}
+html:not(#_) body.final-home :is(.dj-section-head,.dj-path-grid){width:var(--dj-shell);max-width:none;margin-inline:auto}
+html:not(#_) body.final-home .dj-footer{margin-top:0}
+@media(max-width:520px){
+  html:not(#_) body.final-home .form-row{grid-template-columns:1fr}
+}
+
+/* ---------- 10. Footer ---------- */
+html:not(#_) .dj-footer{margin-top:clamp(56px,8vw,96px);padding:clamp(40px,5vw,64px) 0 28px;background:var(--dj-forest);color:#d3ded6;--dj-focus:#e1c997}
+html:not(#_) .dj-footer-inner{width:var(--dj-shell);margin-inline:auto;display:grid;grid-template-columns:minmax(220px,1fr) minmax(0,2.6fr);gap:clamp(32px,6vw,96px)}
+html:not(#_) .dj-footer-brand .footer-name{display:inline-block;font:500 1.55rem/1.2 Outfit,Arial,sans-serif;letter-spacing:-.025em;color:#fff;text-decoration:none}
+html:not(#_) .dj-footer-brand p{margin:8px 0 22px;font-size:14.5px;line-height:1.5;color:#b9cdbf}
+html:not(#_) .dj-footer-cta{display:inline-flex;align-items:center;gap:12px;padding:11px 20px;border:1px solid #ffffff59;border-radius:var(--dj-radius-control);color:#fff;font-size:14.5px;font-weight:600;text-decoration:none;transition:background .2s ease,color .2s ease}
+html:not(#_) .dj-footer-cta:hover{background:#fff;color:var(--dj-forest)}
+html:not(#_) .dj-footer-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 32px}
+html:not(#_) .dj-footer-label{margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#93ab9d}
+html:not(#_) .dj-footer-nav ul{list-style:none;margin:0;padding:0}
+html:not(#_) .dj-footer-nav a{display:inline-block;padding:6px 0;font-size:14.5px;line-height:1.4;color:#e6ede8;text-decoration:none}
+html:not(#_) .dj-footer-nav a:hover,html:not(#_) .dj-footer-legal a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+html:not(#_) .dj-footer-legal{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:12px 24px;flex-wrap:wrap;margin-top:8px;padding-top:22px;border-top:1px solid #ffffff24;font-size:13px;color:#a8bfb1}
+html:not(#_) .dj-footer-legal p{margin:0}
+html:not(#_) .dj-footer-legal a{color:#d3ded6;text-decoration:none}
+@media(max-width:860px){
+  html:not(#_) .dj-footer-inner{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  html:not(#_) .dj-footer-nav{grid-template-columns:1fr 1fr}
+}
+@media(max-width:380px){
+  html:not(#_) .dj-footer-nav{grid-template-columns:1fr}
+}
+
+/* ---------- 10b. Accessibility: contrast (WCAG AA, 4.5:1 for small text) ---------- */
+:root{--dj-gold-text:#7f6336;--dj-label:#4f6158}                       /* #927448 is 4.3:1 on white; this is 5.6:1 */
+html:not(#_) .tone-planned{--sw-tone:var(--dj-gold-text)}
+html:not(#_) body.final-home .dj-path-grid>a:nth-child(3){--tone:var(--dj-gold-text)}
+html:not(#_) .geo-fact dt{color:var(--dj-label)}
+html:not(#_) :is(.tools-menu,.tools-menu-wrap) a small{color:var(--dj-label)}
+html:not(#_) .dj-footer-legal p{color:inherit}                                  /* legacy `.interior p` rule was dimming this to 2:1 */
+
+/* ---------- 10c. Touch: 44px hit areas without changing the layout ---------- */
+html:not(#_) body.interior .research-card{position:relative;border:1px solid var(--dj-line);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+html:not(#_) body.interior .research-card:hover{transform:translateY(-3px);box-shadow:var(--dj-shadow-lift);border-color:#b9c9be}
+html:not(#_) body.interior .research-card .research-title a::after{content:"";position:absolute;inset:0;z-index:1;border-radius:inherit}   /* whole card is one click target */
+html:not(#_) body.interior .research-card .deck-actions a{position:relative;z-index:2}
+@media(max-width:760px),(pointer:coarse){
+  html:not(#_) body :is(.logo,.menu-toggle,.breadcrumb a,.service-detail-link,.geo-link,.latest-more,.engagement-card>a,.engagement-cta a,.service-closing a:not(.button),.focus-actions>a:not(.button),.related-heading a,.profile-contact a,.profile-footer-email,.tool-cta a:not(.button),.page-index a){position:relative}
+  html:not(#_) body :is(.logo,.menu-toggle,.breadcrumb a,.service-detail-link,.geo-link,.latest-more,.engagement-card>a,.engagement-cta a,.service-closing a:not(.button),.focus-actions>a:not(.button),.related-heading a,.profile-contact a,.profile-footer-email,.tool-cta a:not(.button),.page-index a)::before{content:"";position:absolute;inset:-14px -6px}
+  html:not(#_) body .research-card .deck-actions a{position:relative}
+  html:not(#_) body .research-card .deck-actions a::before{content:"";position:absolute;inset:-14px -4px}
+  html:not(#_) .dj-footer-nav a{display:inline-flex;align-items:center;min-height:44px;padding:0}
+  html:not(#_) .dj-footer-brand .footer-name,html:not(#_) .dj-footer-legal a{display:inline-flex;align-items:center;min-height:44px}
+  html:not(#_) .tool-checks label{display:flex;align-items:center;gap:10px;min-height:44px}
+  html:not(#_) .tool-checks input[type=checkbox]{width:22px;height:22px;accent-color:var(--dj-accent);flex:none}
+}
+
+/* ---------- 10d. Back to top (added by site.js on long pages) ---------- */
+html:not(#_) .dj-top{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:55;display:flex;align-items:center;justify-content:center;width:48px;height:48px;padding:0;border:1px solid #ffffff40;border-radius:50%;background:var(--dj-forest);color:#fff;font-size:1.25rem;line-height:1;cursor:pointer;box-shadow:0 10px 28px #0a1f1b4d;transition:background .2s ease,transform .2s ease}
+html:not(#_) .dj-top[hidden]{display:none}
+html:not(#_) .dj-top:hover{background:var(--dj-accent);transform:translateY(-2px)}
+html:not(#_) .dj-top:focus-visible{outline:3px solid #e1c997;outline-offset:3px}
+
+/* ---------- 11. Motion and print ---------- */
+@media(prefers-reduced-motion:reduce){
+  html:not(#_) body.interior :is(.button,.profile-download-btn,.presentation-open,.sw-deck-link),html:not(#_) .dj-footer-cta,html:not(#_) .dj-top,html:not(#_) body.interior .research-card{transition:none}
+  html:not(#_) body.interior .research-card:hover,html:not(#_) .dj-top:hover{transform:none}
+  html:not(#_) body.interior :is(.button,.profile-download-btn,.presentation-open,.sw-deck-link):hover{transform:none}
+}
+@media print{
+  html:not(#_) .dj-footer,html:not(#_) .dj-top,html:not(#_) body.interior .site-header{display:none!important}
+  html:not(#_) body.interior .site-header{position:static}
+}

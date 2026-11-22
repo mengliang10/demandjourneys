@@ -157,6 +157,34 @@ function initializeSite() {
       serviceField.value = requestedService;
     }
   }
+  initBackToTop();
+}
+
+// Back to top: appears on long pages once the reader has scrolled past the first screens.
+function initBackToTop() {
+  document.querySelectorAll('.dj-top').forEach(el => el.remove());
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'dj-top';
+  button.hidden = true;
+  button.setAttribute('aria-label', 'Back to top');
+  button.innerHTML = '<span aria-hidden="true">\u2191</span>';
+  button.addEventListener('click', () => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
+  document.body.append(button);
+  const update = () => {
+    const tallPage = document.documentElement.scrollHeight > window.innerHeight * 2.5;
+    button.hidden = !(tallPage && window.scrollY > window.innerHeight * 1.2);
+  };
+  window.__djTopUpdate = update;
+  if (!window.__djTopBound) {
+    window.__djTopBound = true;
+    window.addEventListener('scroll', () => window.__djTopUpdate && window.__djTopUpdate(), { passive: true });
+    window.addEventListener('resize', () => window.__djTopUpdate && window.__djTopUpdate());
+  }
+  update();
 }
 
 document.addEventListener('astro:page-load', initializeSite);
