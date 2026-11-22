@@ -33,7 +33,7 @@ for(const route of ['/services/engagements/','/selected-work/','/interactive-too
   if(!front.includes('href="'+route+'"'))errors.push('Homepage missing discovery link: '+route);
 }
 const tools=pages.find(p=>p.route==='/interactive-tools/')?.html||'';
-for(const id of ['channel-mix','booking-funnel','media-efficiency','ai-readiness','platform-fit']){
+for(const id of ['channel-mix','booking-funnel','media-efficiency','roi-scenario','ai-readiness','platform-fit']){
   if(!tools.includes('id="'+id+'"'))errors.push('Interactive tool missing: '+id);
 }
 if(!tools.includes('aria-label="Interactive tool topics"'))errors.push('Interactive tools topic navigation missing');
