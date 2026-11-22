@@ -117,6 +117,29 @@ function initializeSite() {
       tag.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-WRNWZSKD';
       document.head.appendChild(tag);
     }
+    // Record navigation intent only. Never capture form values or calculator inputs.
+    document.querySelectorAll('a[href^="/"]').forEach(link => {
+      link.addEventListener('click', () => {
+        const destination = new URL(link.getAttribute('href'), location.origin);
+        const route = destination.pathname;
+        const category = route.startsWith('/interactive-tools/') ? 'interactive_tools'
+          : route.startsWith('/services/') || route === '/ai-search/' || route === '/hospitality/' ? 'advisory_service'
+          : route === '/selected-work/' ? 'work_evidence' : null;
+        if (category) window.dataLayer.push({
+          event: 'content_navigation',
+          content_category: category,
+          destination_path: route,
+          page_type: document.body.dataset.page
+        });
+      });
+    });
+    document.querySelectorAll('[data-tool-nav]').forEach(link => {
+      link.addEventListener('click', () => window.dataLayer.push({
+        event: 'interactive_tool_selected',
+        tool_id: link.hash.slice(1),
+        page_type: 'interactive-tools'
+      }));
+    });
     document.querySelectorAll('[data-enquiry]').forEach(control => {
       control.addEventListener('click', () => window.dataLayer.push({
         event: 'enquiry_cta_click', 
