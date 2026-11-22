@@ -70,7 +70,7 @@ for(const file of ['hospitality-presentations/personal-portfolio/portfolio.css',
   }
 }
 const selectedDeck=pages.find(p=>p.route==='/selected-work/decks/booking-transformation/')?.html||'';
-if(!selectedDeck.includes('/identity/wordmark-forest-456.webp'))errors.push('Selected Work decks missing production wordmark');
+if(!readFileSync(resolve('src/pages/selected-work/decks/[slug].astro'),'utf8').includes('/identity/wordmark-forest-456.webp'))errors.push('Selected Work decks missing production wordmark in source styles');
 const atlas=join(dist,'hospitality-presentations/tri-market-blueprint/index.html');
 if(existsSync(atlas)&&!readFileSync(atlas,'utf8').includes('/identity/wordmark-white-456.webp')){
   errors.push('Tri-market blueprint missing production wordmark');
