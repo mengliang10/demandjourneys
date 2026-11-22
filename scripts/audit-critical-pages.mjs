@@ -58,5 +58,27 @@ const map=readFileSync(join(dist,'sitemap.xml'),'utf8');
 for(const route of routes.filter(x=>x!=='/privacy/')){
   if(!map.includes('https://www.demandjourneys.com'+route))errors.push('Sitemap missing '+route);
 }
+// Prevent a future presentation template from silently reverting to the superseded logo.
+for(const name of ['wordmark-forest-456.webp','wordmark-white-456.webp']){
+  if(!existsSync(join(dist,'identity',name)))errors.push('Production wordmark missing: '+name);
+}
+for(const file of ['hospitality-presentations/personal-portfolio/portfolio.css','hospitality-presentations/geo-work/geo.css','reveal/css/demand-journeys.css','brand/presentation-logo.css']){
+  const target=join(dist,file);
+  if(!existsSync(target)||!readFileSync(target,'utf8').includes('/identity/wordmark-')){
+    errors.push('Presentation logo styling missing: '+file);
+  }
+}
+const selectedDeck=pages.find(p=>p.route==='/selected-work/decks/booking-transformation/')?.html||'';
+if(!selectedDeck.includes('/identity/wordmark-forest-456.webp'))errors.push('Selected Work decks missing production wordmark');
+const atlas=join(dist,'hospitality-presentations/tri-market-blueprint/index.html');
+if(existsSync(atlas)&&!readFileSync(atlas,'utf8').includes('/identity/wordmark-white-456.webp')){
+  errors.push('Tri-market blueprint missing production wordmark');
+}
+for(const kind of ['hotels','airlines','cruises','tours']){
+  const file=join(dist,'demo',kind,'presentation.html');
+  if(!existsSync(file)||!readFileSync(file,'utf8').includes('/brand/presentation-logo.css')){
+    errors.push('Demo deck missing production wordmark stylesheet: '+kind);
+  }
+}
 console.log(JSON.stringify({checkedRoutes:routes.length,errors},null,2));
 if(errors.length)process.exitCode=1;
