@@ -77,7 +77,8 @@ Current tools:
 2. Booking funnel conversion scenario.
 3. Acquisition efficiency index.
 4. AI search readiness checklist.
-5. MarTech and platform decision readiness.
+5. Contribution-based ROI scenario using only visitor-supplied inputs.
+6. MarTech and platform decision readiness.
 
 ## Measurement and privacy
 
