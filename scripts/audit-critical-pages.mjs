@@ -11,6 +11,9 @@ const routes=[
   '/services/platforms-analytics/',
   '/hospitality/',
   '/selected-work/',
+  '/selected-work/decks/booking-transformation/',
+  '/selected-work/decks/customer-data-platform/',
+  '/selected-work/decks/distribution-governance/',
   '/interactive-tools/',
   '/interactive-tools/page-scanner/',
   '/ai-search/',
@@ -32,6 +35,14 @@ for(const route of routes){
 const front=pages.find(p=>p.route==='/')?.html||'';
 for(const route of ['/services/engagements/','/selected-work/','/interactive-tools/','/hospitality/']){
   if(!front.includes('href="'+route+'"'))errors.push('Homepage missing discovery link: '+route);
+}
+const selected=pages.find(p=>p.route==='/selected-work/')?.html||'';
+for(const slug of ['booking-transformation','customer-data-platform','distribution-governance']){
+  const route='/selected-work/decks/'+slug+'/';
+  if(!selected.includes('src="'+route+'"'))errors.push('Selected Work embedding missing: '+slug);
+  const deck=pages.find(p=>p.route===route)?.html||'';
+  if(!deck.includes('class="reveal"'))errors.push('Reveal.js deck missing: '+slug);
+  if(!deck.includes('Placeholder edition'))errors.push('Placeholder label missing: '+slug);
 }
 const tools=pages.find(p=>p.route==='/interactive-tools/')?.html||'';
 for(const id of ['channel-mix','booking-funnel','media-efficiency','roi-scenario','ai-readiness','platform-fit']){
