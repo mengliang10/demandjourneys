@@ -1,6 +1,6 @@
 ---
 import fs from 'node:fs';
 import path from 'node:path';
-const html=fs.readFileSync(path.resolve("_source/site/demo/tours/presentation.html"),'utf8');
+const html=fs.readFileSync(path.resolve("_source/site/demo/tours/presentation.html"),'utf8').replace('</head>', '<link rel="stylesheet" href="/brand/presentation-logo.css"></head>');
 ---
 <Fragment set:html={html} />
