@@ -1540,3 +1540,8 @@
 .reveal .slides section .source-list li{color:var(--dj-muted)}
 .reveal .slides section .chart-container{background:var(--dj-paper)}
 .reveal .slides section a:focus-visible{outline:3px solid var(--dj-focus);outline-offset:4px}
+
+/* Production wordmark in executive Reveal workshop decks (no legacy emblem). */
+body:has(.reveal)::after{content:"";pointer-events:none;position:fixed;z-index:100;right:18px;top:12px;width:172px;height:33px;background:#f5f2e9 url('/identity/wordmark-forest-456.webp') center/156px auto no-repeat;border:1px solid #d5dcd1;border-radius:4px;box-shadow:0 2px 8px #00000016}
+@media(max-width:650px){body:has(.reveal)::after{right:7px;top:6px;width:126px;height:27px;background-size:116px auto}}
+@media print{body:has(.reveal)::after{display:none}}
