@@ -1,0 +1,106 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import '../../styles/interior.css';
+import '../../styles/interactive-tools.css';
+const tools = [
+  {id:'channel-mix',label:'Distribution mix',category:'Hospitality economics'},
+  {id:'booking-funnel',label:'Booking funnel',category:'Conversion'},
+  {id:'media-efficiency',label:'Media efficiency',category:'Acquisition'},
+  {id:'ai-readiness',label:'AI search readiness',category:'Discoverability'},
+  {id:'platform-fit',label:'Platform readiness',category:'MarTech & data'}
+];
+---
+<SiteLayout title="Interactive Tools | Demand Journeys" description="Private, browser-based marketing diagnostics and scenario calculators covering distribution, conversion, media, AI search and MarTech." current="interactive-tools" bodyClass="interior tools-page">
+  <div class="container tools-shell">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span aria-current="page">Interactive Tools</span></nav>
+    <header class="tools-intro"><span class="eyebrow">Demand Journeys / Decision tools</span><h1>Interactive Tools</h1><p>Explore your own scenarios before committing to an audit. All calculations run locally in this browser. No revenue data or inputs are transmitted, stored remotely, or prefilled with assumed business results.</p><p class="tools-caution">These are directional screening models, not financial forecasts or a substitute for measurement, contractual review or a full diagnostic. Enter your own assumptions.</p></header>
+    <div class="tools-layout">
+      <aside class="tools-menu-wrap">
+        <button class="tools-menu-toggle" type="button" aria-expanded="false" aria-controls="tools-menu">Browse tools <span aria-hidden="true">⌄</span></button>
+        <nav class="tools-menu" id="tools-menu" aria-label="Interactive tool topics">
+          <p class="tools-menu-title">Decision tools</p>
+          {tools.map(tool=><a href={`#${tool.id}`} data-tool-nav><small>{tool.category}</small><span>{tool.label}</span></a>)}
+          <div class="tools-menu-foot"><a href="/hospitality-presentations/">Presentation library ↗</a><a href="/services/">Advisory services ↗</a></div>
+        </nav>
+      </aside>
+      <div class="tools-content">
+        <section class="tool-panel" id="channel-mix" tabindex="-1">
+          <span class="eyebrow">01 / Hospitality distribution</span><h2>Channel cost comparison</h2><p>Model how changes in channel mix affect average distribution cost as a share of booking value. This is a percentage-point comparison, not a claim of actual savings.</p>
+          <div class="tool-fields"><label>Current OTA booking share (%)<input type="number" min="0" max="100" step=".1" value="50" data-calc="mix" id="ota-share" /></label><label>OTA commission (%)<input type="number" min="0" max="100" step=".1" value="18" data-calc="mix" id="ota-cost" /></label><label>Direct acquisition/servicing cost (%)<input type="number" min="0" max="100" step=".1" value="6" data-calc="mix" id="direct-cost" /></label><label>Share shifted from OTA to direct (percentage points)<input type="number" min="0" max="100" step=".1" value="5" data-calc="mix" id="shift" /></label></div>
+          <div class="tool-results" aria-live="polite"><div><small>Current blended cost</small><strong id="mix-before">—</strong></div><div><small>Scenario blended cost</small><strong id="mix-after">—</strong></div><div><small>Difference</small><strong id="mix-change">—</strong></div></div><p class="tool-feedback" id="mix-note"></p><p class="tool-method">Model: OTA share × OTA cost + direct share × direct cost. Other channels and incremental switching costs are excluded.</p>
+        </section>
+        <section class="tool-panel" id="booking-funnel" tabindex="-1">
+          <span class="eyebrow">02 / Conversion</span><h2>Booking funnel scenario</h2><p>Estimate the relative change in completed bookings from a change in conversion rate, holding the number of sessions constant.</p>
+          <div class="tool-fields"><label>Monthly eligible sessions<input type="number" min="1" max="1000000000" step="1" value="10000" data-calc="funnel" id="sessions" /></label><label>Current booking conversion (%)<input type="number" min="0" max="100" step=".1" value="2" data-calc="funnel" id="conv-before" /></label><label>Scenario booking conversion (%)<input type="number" min="0" max="100" step=".1" value="2.4" data-calc="funnel" id="conv-after" /></label></div>
+          <div class="tool-results" aria-live="polite"><div><small>Current bookings (modelled)</small><strong id="book-before">—</strong></div><div><small>Scenario bookings (modelled)</small><strong id="book-after">—</strong></div><div><small>Relative change</small><strong id="book-change">—</strong></div></div><p class="tool-method">Model: eligible sessions × conversion rate. Sessions, booking value, mix, cancellations and attribution remain unchanged. Calculated bookings are modelled expectations, not measured outcomes.</p>
+        </section>
+        <section class="tool-panel" id="media-efficiency" tabindex="-1">
+          <span class="eyebrow">03 / Paid media governance</span><h2>Acquisition efficiency index</h2><p>Assess how the cost per qualified action changes when qualified actions increase or spend changes. Both indexes start at an arbitrary baseline of 100.</p>
+          <div class="tool-fields"><label>Spend change (%)<input type="number" min="-99" max="1000" step=".1" value="0" data-calc="media" id="spend-change" /></label><label>Qualified actions change (%)<input type="number" min="-99" max="1000" step=".1" value="10" data-calc="media" id="action-change" /></label></div>
+          <div class="tool-results" aria-live="polite"><div><small>Baseline cost/action index</small><strong>100</strong></div><div><small>Scenario cost/action index</small><strong id="media-index">—</strong></div><div><small>Relative efficiency change</small><strong id="media-change">—</strong></div></div><p class="tool-method">Model: (1 + spend change) ÷ (1 + qualified-action change) × 100. Does not assume incrementality or causal impact.</p>
+        </section>
+        <section class="tool-panel" id="ai-readiness" tabindex="-1">
+          <span class="eyebrow">04 / AEO & GEO</span><h2>AI search readiness checklist</h2><p>Self-assess foundational capabilities. This does not crawl your site, inspect live AI answers, or certify eligibility for citation.</p>
+          <fieldset class="tool-checks"><legend>Select only what you have verified</legend><label><input type="checkbox" data-readiness/> Important pages are crawlable and indexable under documented policies</label><label><input type="checkbox" data-readiness/> Brand identity and official entity references are consistent</label><label><input type="checkbox" data-readiness/> Relevant structured data is valid and matches visible content</label><label><input type="checkbox" data-readiness/> Product/service claims cite authoritative supporting evidence</label><label><input type="checkbox" data-readiness/> Priority prompts and competitors are benchmarked with saved evidence</label><label><input type="checkbox" data-readiness/> Citations and qualified actions are reviewed over time</label></fieldset>
+          <div class="tool-results" aria-live="polite"><div><small>Verified foundations</small><strong id="ai-score">0 of 6</strong></div><div><small>First priority</small><strong class="result-text" id="ai-priority">Validate crawler access</strong></div></div><p class="tool-method">An unweighted checklist, not an AI visibility score. Each criterion needs independent verification.</p>
+        </section>
+        <section class="tool-panel" id="platform-fit" tabindex="-1">
+          <span class="eyebrow">05 / MarTech & analytics</span><h2>Platform decision readiness</h2><p>Check the prerequisites before committing to a CRM, CDP, booking engine or marketing platform.</p>
+          <fieldset class="tool-checks"><legend>Current decision prerequisites</legend><label><input type="checkbox" data-platform/> Business outcomes and use cases are documented</label><label><input type="checkbox" data-platform/> Data sources, ownership and permission constraints are mapped</label><label><input type="checkbox" data-platform/> Integration and migration requirements are tested</label><label><input type="checkbox" data-platform/> Vendors use one weighted evaluation framework</label><label><input type="checkbox" data-platform/> An operating owner and adoption plan are assigned</label></fieldset>
+          <div class="tool-results" aria-live="polite"><div><small>Readiness checklist</small><strong id="platform-score">0 of 5</strong></div><div><small>Next unchecked requirement</small><strong class="result-text" id="platform-priority">Define business outcomes</strong></div></div><p class="tool-method">Procurement decision support only. No vendor ranking or product endorsement is generated.</p>
+        </section>
+        <aside class="tool-cta"><h2>Need a deeper diagnosis?</h2><p>A structured review can validate assumptions, reconcile source data and turn scenarios into a prioritised operating plan.</p><a href="/services/">Explore advisory services →</a><a href="/#enquiry">Discuss a specific challenge →</a></aside>
+      </div>
+    </div>
+  </div>
+</SiteLayout>
+<script is:inline>
+(function(){
+  function init() {
+    const root=document.querySelector('.tools-page'); if(!root||root.dataset.toolsReady==='yes')return;
+    root.dataset.toolsReady='yes';
+    const get=id=>root.querySelector('#'+id), num=id=>Number(get(id)?.value);
+    const output=(id,value)=>{const el=get(id);if(el)el.textContent=value;};
+    const valid=(v,min=0,max=100)=>Number.isFinite(v)&&v>=min&&v<=max;
+    const pct=v=>v.toFixed(2)+'%', pts=v=>(v>=0?'+':'')+v.toFixed(2)+' pp';
+    const count=v=>Math.round(v).toLocaleString('en-SG');
+    function mix(){
+      const a=num('ota-share'),b=num('ota-cost'),c=num('direct-cost'),d=num('shift');
+      if(![a,b,c,d].every(v=>valid(v))||d>a){['mix-before','mix-after','mix-change'].forEach(id=>output(id,'—'));output('mix-note','Use valid percentages. Shift cannot exceed the current OTA share.');return;}
+      const before=(a*b+(100-a)*c)/100, after=((a-d)*b+(100-a+d)*c)/100;
+      output('mix-before',pct(before));output('mix-after',pct(after));output('mix-change',pts(after-before));
+      output('mix-note',after<before?'Lower modelled distribution cost, subject to incremental acquisition and operating costs.':after>before?'Higher modelled distribution cost with these assumptions.':'No change in blended distribution cost.');
+    }
+    function funnel(){
+      const s=num('sessions'),a=num('conv-before'),b=num('conv-after');
+      if(!valid(s,1,1e9)||!valid(a)||!valid(b)){['book-before','book-after','book-change'].forEach(id=>output(id,'—'));return;}
+      output('book-before',count(s*a/100));output('book-after',count(s*b/100));output('book-change',a===0?'Not defined':pct((b/a-1)*100));
+    }
+    function media(){
+      const a=num('spend-change'),b=num('action-change');
+      if(!valid(a,-99,1000)||!valid(b,-99,1000)){output('media-index','—');output('media-change','—');return;}
+      const index=(100+a)/(100+b)*100;
+      output('media-index',index.toFixed(1));output('media-change',pct((100/index-1)*100));
+    }
+    function checklist(selector,score,priority,labels){
+      const els=[...root.querySelectorAll(selector)],selected=els.filter(el=>el.checked).length;
+      output(score,selected+' of '+els.length);
+      output(priority,labels[els.findIndex(el=>!el.checked)]||'Review and maintain evidence');
+    }
+    const recalc=()=>{
+      mix();funnel();media();
+      checklist('[data-readiness]','ai-score','ai-priority',['Validate crawler access','Reconcile entity references','Validate structured data','Substantiate key claims','Benchmark real prompts','Set up ongoing monitoring']);
+      checklist('[data-platform]','platform-score','platform-priority',['Define business outcomes','Map source data and permissions','Test integration constraints','Prepare a vendor scorecard','Assign implementation ownership']);
+    };
+    root.querySelectorAll('input').forEach(el=>el.addEventListener('input',recalc));
+    const toggle=root.querySelector('.tools-menu-toggle'), nav=root.querySelector('#tools-menu');
+    toggle?.addEventListener('click',()=>toggle.setAttribute('aria-expanded',String(toggle.getAttribute('aria-expanded')!=='true')));
+    nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggle?.setAttribute('aria-expanded','false')));
+    const links=[...root.querySelectorAll('[data-tool-nav]')];
+    function active(){links.forEach(a=>a.toggleAttribute('aria-current',a.hash===(location.hash||'#channel-mix')));}
+    window.addEventListener('hashchange',active,{once:false});
+    recalc();active();
+  }
+  document.addEventListener('astro:page-load',init);init();
+})();
+</script>
