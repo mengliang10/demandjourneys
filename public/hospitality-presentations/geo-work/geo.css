@@ -3,3 +3,8 @@
 
 header>a:first-child{display:inline-flex;align-items:center;gap:10px}
 header>a:first-child::before{content:"";display:inline-block;width:24px;height:24px;flex:none;background:url('../../brand/logos/journey-mark.svg') center/contain no-repeat}
+
+/* Use the exact production wordmark from the website header. */
+header>a:first-child{display:inline-flex;align-items:center;min-width:180px;min-height:30px;font-size:0!important;line-height:0!important;letter-spacing:0!important;gap:0!important;background:url('/identity/wordmark-forest-456.webp') left center/180px auto no-repeat}
+header>a:first-child::before{display:none!important;content:none!important}
+@media(max-width:650px){header>a:first-child{min-width:126px;min-height:24px;background-size:126px auto}}
