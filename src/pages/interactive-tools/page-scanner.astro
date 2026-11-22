@@ -4,10 +4,10 @@ import '../../styles/interior.css';
 import '../../styles/interactive-tools.css';
 import '../../styles/page-scanner.css';
 ---
-<SiteLayout title="Page Scanner, SEO & Content Analysis | Demand Journeys" description="URL-based website source scanner and SEO analyzer. Analyze page metadata, structured data, headings, links, images and content when the target permits browser access." current="interactive-tools" bodyClass="interior tools-page">
-<div class="container tools-shell scanner-shell">
+<SiteLayout title="Page Scanner, SEO & Content Analysis | Demand Journeys" description="URL-based website scanner. A server-side gateway retrieves public HTML for metadata, structured data, headings, links, images and content analysis." current="interactive-tools" bodyClass="interior tools-page">
+<div class="container tools-shell scanner-shell" data-scanner-api="">
 <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/interactive-tools/">Interactive Tools</a><span>/</span><span aria-current="page">Page Scanner</span></nav>
-<header class="tools-intro"><span class="eyebrow">DM_Tools / Adapted for GitHub Pages</span><h1>Page Scanner</h1><p>Enter a website URL to inspect its available HTML source, metadata, structured data, headings, links, images and content.</p><p class="tools-caution">This scanner runs in your browser. Some websites block external source inspection through CORS; those sites require a server-side scanner. No scan content is sent to Demand Journeys.</p></header>
+<header class="tools-intro"><span class="eyebrow">DM_Tools / Adapted for GitHub Pages</span><h1>Page Scanner</h1><p>Enter a website URL to inspect its available HTML source, metadata, structured data, headings, links, images and content.</p><p class="tools-caution">Public HTML is retrieved by a Cloudflare Worker and analysed in your browser. Authentication and anti-bot restrictions may still prevent scans. Source code is never shown.</p></header>
 <div class="tools-layout">
 <aside class="tools-menu-wrap">
 <button class="tools-menu-toggle" type="button" aria-expanded="false" aria-controls="tools-menu">Browse tools <span aria-hidden="true">⌄</span></button>
@@ -22,7 +22,7 @@ import '../../styles/page-scanner.css';
 </aside>
 <div class="tools-content">
 <section class="tool-panel" id="page-audit">
-<span class="eyebrow">01 / Source inspection</span><h2>HTML page scanner</h2><p>Rebuilt from DM_Tools' website, deep DOM and technical analyzers. Works on supplied HTML; checks are descriptive and do not imply a Google ranking or AI citation score.</p>
+<span class="eyebrow">01 / Source inspection</span><h2>HTML page scanner</h2><p>Checks the HTML returned for a public URL. Results are descriptive and do not imply Google rankings, AI citations or JavaScript-rendered completeness.</p>
 <div class="scanner-inputs">
 <label>Website URL<input id="scan-url" type="url" placeholder="https://example.com/page/" autocomplete="url" required /></label>
 <div class="scanner-input-row"><button id="scan-run" type="button" class="scanner-primary">Scan URL</button><button id="scan-clear" type="button">Clear</button><button id="scan-download" type="button" disabled>Download JSON report</button></div>
@@ -47,4 +47,4 @@ import '../../styles/page-scanner.css';
 <aside class="tool-cta"><h2>From findings to decisions</h2><p>A source scan cannot check HTTP security headers, actual indexing, JS-rendered content, live backlinks, cross-origin robots.txt, or Lighthouse without external access. Validate important issues with authenticated tools or a commissioned audit.</p><a href="/ai-search/">AI Search advisory →</a><a href="/services/engagements/">Services →</a></aside>
 </div></div></div>
 </SiteLayout>
-<script is:inline src="/interactive-tools/page-scanner.js?v=20261122-url-only-2"></script>
+<script is:inline src="/interactive-tools/page-scanner.js?v=20261122-worker-backend-1"></script>
