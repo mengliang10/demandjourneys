@@ -12,6 +12,7 @@ const routes=[
   '/hospitality/',
   '/selected-work/',
   '/interactive-tools/',
+  '/interactive-tools/page-scanner/',
   '/ai-search/',
   '/hospitality-presentations/',
   '/privacy/'
@@ -36,6 +37,11 @@ const tools=pages.find(p=>p.route==='/interactive-tools/')?.html||'';
 for(const id of ['channel-mix','booking-funnel','media-efficiency','roi-scenario','ai-readiness','platform-fit']){
   if(!tools.includes('id="'+id+'"'))errors.push('Interactive tool missing: '+id);
 }
+if(!tools.includes('href="/interactive-tools/page-scanner/"'))errors.push('Page Scanner missing from Interactive Tools directory');
+const scanner=pages.find(p=>p.route==='/interactive-tools/page-scanner/')?.html||'';
+for(const id of ['page-audit','content-analysis','schema-analysis','serp-analysis'])if(!scanner.includes('id="'+id+'"'))errors.push('Page Scanner analyzer missing: '+id);
+if(!scanner.includes('aria-label="Interactive tool topics"'))errors.push('Page Scanner left navigation missing');
+if(!existsSync(join(dist,'interactive-tools','page-scanner.js')))errors.push('Page Scanner JavaScript missing');
 if(!tools.includes('aria-label="Interactive tool topics"'))errors.push('Interactive tools topic navigation missing');
 const map=readFileSync(join(dist,'sitemap.xml'),'utf8');
 for(const route of routes.filter(x=>x!=='/privacy/')){
