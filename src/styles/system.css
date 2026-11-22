@@ -223,3 +223,21 @@ html:not(#_) body.interior :is(.library-results,.related-decks) .research-title{
     padding:10px;
   }
 }
+
+/* Presentation cards: restore bottom breathing room on image and card.
+   The catalogue previously reset card padding to zero, leaving the actions
+   tight against the lower edge. Use the same gutter for all four image sides. */
+html:not(#_) body.interior :is(.library-results,.related-decks) .research-card{
+  padding-bottom:clamp(20px,2vw,28px);
+}
+html:not(#_) body.interior :is(.library-results,.related-decks) .research-card > .deck-preview{
+  padding:clamp(12px,1.4vw,20px);
+}
+@media(max-width:760px){
+  html:not(#_) body.interior :is(.library-results,.related-decks) .research-card{
+    padding-bottom:22px;
+  }
+  html:not(#_) body.interior :is(.library-results,.related-decks) .research-card > .deck-preview{
+    padding:14px;
+  }
+}
