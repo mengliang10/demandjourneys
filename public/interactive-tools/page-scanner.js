@@ -148,6 +148,22 @@
       for(const [label,val] of [['Total words (approx.)',tokens.length],['Unique significant terms',counts.size],['Sentences',sentences.length],['Average terms / sentence',sentences.length?(tokens.length/sentences.length).toFixed(1):'—']]){const tile=add(summary,'div','','scanner-stat');add(tile,'small',label);add(tile,'strong',val);}
       const phrase=value('content-phrase').trim().toLowerCase();
       if(phrase){const occurrences=text.toLowerCase().split(phrase).length-1;add(target,'p','Target phrase: '+occurrences+' occurrence(s). This is descriptive, not an ideal density or ranking signal.');}
+      // Flesch Reading Ease is designed for English prose. It is not a search ranking factor.
+      const latin=words(text.match(/[A-Za-z][A-Za-z'’-]*/g)?.join(' ')||'');
+      const englishSentences=text.split(/[.!?]+/).filter(v=>v.trim().length>10);
+      if(latin.length>=30&&englishSentences.length>=2){
+        function syllables(token){
+          let w=token.toLowerCase().replace(/[^a-z]/g,'');
+          if(w.length<=3)return 1;
+          w=w.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/,'').replace(/^y/,'');
+          return Math.max(1,(w.match(/[aeiouy]{1,2}/g)||[]).length);
+        }
+        const syllablesTotal=latin.reduce((n,w)=>n+syllables(w),0);
+        const ease=206.835-1.015*(latin.length/englishSentences.length)-84.6*(syllablesTotal/latin.length);
+        const grade=Math.max(0,0.39*(latin.length/englishSentences.length)+11.8*(syllablesTotal/latin.length)-15.59);
+        add(target,'h3','English readability approximation');
+        add(target,'p','Flesch Reading Ease: '+Math.round(ease)+' (higher is easier) · Estimated US grade: '+grade.toFixed(1)+'. Estimates may be unreliable on technical terms, product names and non-English content.');
+      }
       add(target,'h3','Frequent terms');
       rows(target,top.length?top.map(([term,n])=>term+' · '+n+' occurrences'):['No significant terms identified.']);
       add(target,'p','Word-count thresholds, keyword density and freshness mentions are not reliable Google ranking guarantees.','scanner-caveat');
