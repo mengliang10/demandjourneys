@@ -6,6 +6,7 @@ const tools = [
   {id:'channel-mix',label:'Distribution mix',category:'Hospitality economics'},
   {id:'booking-funnel',label:'Booking funnel',category:'Conversion'},
   {id:'media-efficiency',label:'Media efficiency',category:'Acquisition'},
+  {id:'roi-scenario',label:'ROI scenario',category:'Commercial modelling'},
   {id:'ai-readiness',label:'AI search readiness',category:'Discoverability'},
   {id:'platform-fit',label:'Platform readiness',category:'MarTech & data'}
 ];
@@ -39,13 +40,19 @@ const tools = [
           <div class="tool-fields"><label>Spend change (%)<input type="number" min="-99" max="1000" step=".1" value="0" data-calc="media" id="spend-change" /></label><label>Qualified actions change (%)<input type="number" min="-99" max="1000" step=".1" value="10" data-calc="media" id="action-change" /></label></div>
           <div class="tool-results" aria-live="polite"><div><small>Baseline cost/action index</small><strong>100</strong></div><div><small>Scenario cost/action index</small><strong id="media-index">—</strong></div><div><small>Relative efficiency change</small><strong id="media-change">—</strong></div></div><p class="tool-method">Model: (1 + spend change) ÷ (1 + qualified-action change) × 100. Does not assume incrementality or causal impact.</p>
         </section>
+        <section class="tool-panel" id="roi-scenario" tabindex="-1">
+          <span class="eyebrow">04 / Commercial decision scenario</span><h2>Incremental ROI model</h2><p>Enter your own incremental contribution after variable costs and your own incremental investment cost, using the same currency and time period. No revenue figures or fees are supplied by Demand Journeys.</p>
+          <div class="tool-fields"><label>Incremental contribution (your input)<input type="number" min="0" step="any" placeholder="Enter your amount" id="roi-contribution" /></label><label>Incremental programme cost (your input)<input type="number" min="0.01" step="any" placeholder="Enter your amount" id="roi-investment" /></label></div>
+          <div class="tool-results" aria-live="polite"><div><small>Incremental ROI</small><strong id="roi-result">—</strong></div><div><small>Contribution / cost multiple</small><strong id="roi-multiple">—</strong></div><div><small>Break-even status</small><strong class="result-text" id="roi-status">Enter your assumptions</strong></div></div>
+          <p class="tool-method">ROI = (incremental contribution − incremental cost) ÷ incremental cost × 100. Contribution should be incremental, net of variable delivery and channel costs, and measured against a defensible counterfactual. This is not a forecast.</p>
+        </section>
         <section class="tool-panel" id="ai-readiness" tabindex="-1">
-          <span class="eyebrow">04 / AEO & GEO</span><h2>AI search readiness checklist</h2><p>Self-assess foundational capabilities. This does not crawl your site, inspect live AI answers, or certify eligibility for citation.</p>
+          <span class="eyebrow">05 / AEO & GEO</span><h2>AI search readiness checklist</h2><p>Self-assess foundational capabilities. This does not crawl your site, inspect live AI answers, or certify eligibility for citation.</p>
           <fieldset class="tool-checks"><legend>Select only what you have verified</legend><label><input type="checkbox" data-readiness/> Important pages are crawlable and indexable under documented policies</label><label><input type="checkbox" data-readiness/> Brand identity and official entity references are consistent</label><label><input type="checkbox" data-readiness/> Relevant structured data is valid and matches visible content</label><label><input type="checkbox" data-readiness/> Product/service claims cite authoritative supporting evidence</label><label><input type="checkbox" data-readiness/> Priority prompts and competitors are benchmarked with saved evidence</label><label><input type="checkbox" data-readiness/> Citations and qualified actions are reviewed over time</label></fieldset>
           <div class="tool-results" aria-live="polite"><div><small>Verified foundations</small><strong id="ai-score">0 of 6</strong></div><div><small>First priority</small><strong class="result-text" id="ai-priority">Validate crawler access</strong></div></div><p class="tool-method">An unweighted checklist, not an AI visibility score. Each criterion needs independent verification.</p>
         </section>
         <section class="tool-panel" id="platform-fit" tabindex="-1">
-          <span class="eyebrow">05 / MarTech & analytics</span><h2>Platform decision readiness</h2><p>Check the prerequisites before committing to a CRM, CDP, booking engine or marketing platform.</p>
+          <span class="eyebrow">06 / MarTech & analytics</span><h2>Platform decision readiness</h2><p>Check the prerequisites before committing to a CRM, CDP, booking engine or marketing platform.</p>
           <fieldset class="tool-checks"><legend>Current decision prerequisites</legend><label><input type="checkbox" data-platform/> Business outcomes and use cases are documented</label><label><input type="checkbox" data-platform/> Data sources, ownership and permission constraints are mapped</label><label><input type="checkbox" data-platform/> Integration and migration requirements are tested</label><label><input type="checkbox" data-platform/> Vendors use one weighted evaluation framework</label><label><input type="checkbox" data-platform/> An operating owner and adoption plan are assigned</label></fieldset>
           <div class="tool-results" aria-live="polite"><div><small>Readiness checklist</small><strong id="platform-score">0 of 5</strong></div><div><small>Next unchecked requirement</small><strong class="result-text" id="platform-priority">Define business outcomes</strong></div></div><p class="tool-method">Procurement decision support only. No vendor ranking or product endorsement is generated.</p>
         </section>
@@ -82,13 +89,23 @@ const tools = [
       const index=(100+a)/(100+b)*100;
       output('media-index',index.toFixed(1));output('media-change',pct((100/index-1)*100));
     }
+    function roi(){
+      const a=get('roi-contribution')?.value?.trim()||'',b=get('roi-investment')?.value?.trim()||'';
+      const contribution=Number(a),cost=Number(b);
+      if(!a||!b||!Number.isFinite(contribution)||!Number.isFinite(cost)||contribution<0||cost<=0){
+        output('roi-result','—');output('roi-multiple','—');output('roi-status','Enter valid inputs');return;
+      }
+      output('roi-result',pct((contribution-cost)/cost*100));
+      output('roi-multiple',(contribution/cost).toFixed(2)+'×');
+      output('roi-status',contribution>cost?'Above break-even':contribution===cost?'At break-even':'Below break-even');
+    }
     function checklist(selector,score,priority,labels){
       const els=[...root.querySelectorAll(selector)],selected=els.filter(el=>el.checked).length;
       output(score,selected+' of '+els.length);
       output(priority,labels[els.findIndex(el=>!el.checked)]||'Review and maintain evidence');
     }
     const recalc=()=>{
-      mix();funnel();media();
+      mix();funnel();media();roi();
       checklist('[data-readiness]','ai-score','ai-priority',['Validate crawler access','Reconcile entity references','Validate structured data','Substantiate key claims','Benchmark real prompts','Set up ongoing monitoring']);
       checklist('[data-platform]','platform-score','platform-priority',['Define business outcomes','Map source data and permissions','Test integration constraints','Prepare a vendor scorecard','Assign implementation ownership']);
     };
