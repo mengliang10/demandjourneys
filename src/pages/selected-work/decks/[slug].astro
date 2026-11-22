@@ -34,8 +34,8 @@ const decks=[
     sections:['Markets, teams and operating scope','Channel economics and distribution governance','Media and agency management','Measurement, forecasting and cadence','Role ownership and evidence boundaries']
   }
 ];
-export function getStaticPaths(){return decks.map(deck=>({params:{slug:deck.slug},props:{deck}}));}
-const {deck}=Astro.props;
+export function getStaticPaths(){return ['booking-transformation','customer-data-platform','distribution-governance'].map(slug=>({params:{slug}}));}
+const deck=decks.find(item=>item.slug===Astro.params.slug);
 const site='https://www.demandjourneys.com';
 const deckURL=`${site}/selected-work/decks/${deck.slug}/`;
 ---
