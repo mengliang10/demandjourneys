@@ -43,49 +43,73 @@ const deckURL=`${site}/selected-work/decks/${deck.slug}/`;
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="description" content={`Evidence-qualified presentation placeholder: ${deck.title}. Scope, evidence and limitations are included; full case materials forthcoming.`}/>
 <link rel="canonical" href={deckURL}/>
 <title>{deck.title} | Selected Work | Demand Journeys</title>
-<link rel="stylesheet" href="/hospitality-presentations/commercial-system/vendor/reveal.min.css"/>
+<link rel="stylesheet" href="/hospitality-presentations/personal-portfolio/vendor/reveal.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"/>
 <style is:global>
-:root{--forest:#203e3a;--ivory:#f5f2e9;--sage:#60716a;--brass:#927448}
+:root{--ink:#203e3a;--teal:#237e72;--paper:#f5f2e9;--muted:#60716a;--line:#d5dcd1;--orange:#b45a34;--gold:#927448;--dj-font-display:'Newsreader',Georgia,serif;--dj-font-body:'DM Sans',Arial,Helvetica,sans-serif}
 *{box-sizing:border-box}
-html,body{height:100%;margin:0;background:var(--forest);color:var(--ivory);font-family:"DM Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-.reveal{font-family:inherit;color:var(--forest);font-size:30px}
-.reveal .slides{font-family:inherit;text-align:left}
-.reveal .slides section{background:var(--ivory);height:100%;box-sizing:border-box;padding:66px 85px 74px;text-align:left;overflow:hidden}
-.reveal .slides section.dark{background:var(--forest);color:var(--ivory)}
-.reveal h1,.reveal h2{font-family:Georgia,"Times New Roman",serif;text-transform:none;letter-spacing:-.035em;line-height:1.12;margin:0 0 26px;color:inherit}
-.reveal h1{font-size:2.45em;max-width:1050px}
-.reveal h2{font-size:2.05em;max-width:1000px}
-.reveal p,.reveal li{line-height:1.48;font-size:.83em}
-.reveal p.lead{font-size:1.08em;line-height:1.4;max-width:980px}
-.reveal ul{padding-left:1.25em;margin:18px 0}
-.reveal li{padding:7px 0}
-.reveal .eyebrow{font-size:.48em;letter-spacing:.13em;font-weight:750;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:25px}
-.reveal .dark .eyebrow{color:#cedad1}
-.reveal .subtitle{font-size:.7em;opacity:.82;margin-top:24px}
-.reveal .boundary{margin-top:34px;font-size:.56em;padding:18px 22px;border-left:4px solid var(--brass);background:#e5ebe2;line-height:1.45;max-width:1020px}
-.reveal .tag{font-size:.52em;display:inline-block;border:1px solid currentColor;padding:9px 15px;margin-top:40px;letter-spacing:.04em}
-.reveal .placeholder{font-size:.85em;border:2px dashed #9eb0a3;background:#edf2eb;padding:40px;max-width:1050px}
-.reveal .placeholder strong{display:block;font-size:1.1em;margin-bottom:15px}
-.reveal .footnote{font-size:.47em;color:var(--sage);position:absolute;bottom:30px;left:85px;right:85px}
-.reveal .controls{color:var(--brass)}
-.deck-topbar{position:fixed;top:0;left:0;right:0;height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#162c28;color:#fff;z-index:30;font:600 12px system-ui,sans-serif;gap:10px}
-.deck-topbar a{color:#fff;text-decoration:underline;text-underline-offset:3px}
-.deck-topbar span{white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
-.deck-topbar button{font:inherit;background:none;border:1px solid #b6c7b9;color:white;border-radius:3px;padding:5px 9px;cursor:pointer}
-.deck-stage{position:fixed;inset:42px 0 0;overflow:hidden}
-.reveal .progress{color:var(--brass)}
-@media print{.deck-topbar{display:none}.deck-stage{inset:0}.reveal .slides section{break-after:page}}
+html,body{width:100%;height:100%;margin:0;background:var(--paper);color:var(--ink);font-family:var(--dj-font-body)}
+html:fullscreen,html:fullscreen body,html:fullscreen .reveal{background:var(--paper)}
+a{color:inherit;text-decoration:none}
+header,.bottom{position:fixed;left:4%;right:4%;z-index:30;display:flex;align-items:center;justify-content:space-between;font-size:11px;letter-spacing:1.8px}
+header{top:24px;gap:15px}header>a{font-weight:800;letter-spacing:2px;display:inline-flex;align-items:center;gap:10px}
+header>a:before{content:'';width:24px;height:24px;flex:none;background:url('/brand/logos/journey-mark.svg') center/contain no-repeat}
+header span{color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header .header-actions{display:flex;gap:10px;align-items:center}
+button,.presentation-action{font:inherit;color:inherit;background:transparent;border:1px solid var(--line);border-radius:24px;padding:8px 14px;cursor:pointer;white-space:nowrap;letter-spacing:.5px}
+button:hover,.presentation-action:hover{background:#d9e5d9}
+a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-offset:4px}
+.bottom{bottom:19px}
+.bottom>div{display:flex;gap:18px;align-items:center}
+.bottom button{font-size:19px;padding:3px 14px}
+.reveal,.reveal-viewport{background:var(--paper);color:var(--ink)}
+.reveal{font-size:22px}
+.reveal .slides{text-align:left}
+.reveal .slides section{height:650px;padding:28px 26px 44px;text-align:left}
+.reveal h1,.reveal h2{font-family:var(--dj-font-display);font-weight:400;text-transform:none;letter-spacing:-1.7px;line-height:1.06;margin:14px 0 28px;color:inherit;max-width:1100px}
+.reveal h1{font-size:62px}
+.reveal h2{font-size:53px}
+.reveal p{font-size:21px;line-height:1.42;margin:14px 0}
+.reveal .lead{font-size:23px;line-height:1.45;color:var(--muted);max-width:930px}
+.reveal ul{padding-left:22px;margin:20px 0}
+.reveal li{font-size:20px;line-height:1.36;margin:11px 0}
+.reveal .eyebrow{font-size:11px;letter-spacing:2px;font-weight:600;color:var(--teal);margin-bottom:22px;display:block;text-transform:uppercase}
+.reveal .dark{color:var(--ink)}
+.reveal .dark h1,.reveal .dark h2{color:var(--ink)}
+.reveal .dark .lead{color:var(--muted)}
+.reveal .subtitle{color:var(--muted);font-size:16px;margin-top:23px}
+.reveal .tag{display:inline-block;border:1px solid #a8bba8;border-radius:24px;padding:10px 18px;margin-top:32px;font-size:14px;letter-spacing:.3px;color:var(--teal)}
+.reveal .boundary{margin-top:29px;padding:15px 20px;border-left:3px solid var(--orange);background:#e8ede4;font-size:16px;line-height:1.5;max-width:1000px}
+.reveal .placeholder{border:1px dashed #a6b8a6;background:#e8ede4;padding:22px 27px;max-width:1050px}
+.reveal .placeholder strong{display:block;font-size:18px;margin-bottom:8px}
+.reveal .placeholder p{font-size:17px;margin:6px 0}
+.reveal .placeholder ul{margin:9px 0}
+.reveal .placeholder li{font-size:16px;line-height:1.23;margin:5px 0}
+.reveal .progress{height:3px;color:var(--teal)}
+.reveal .controls{display:none}
+@media(max-width:650px){header{top:12px;left:3%;right:3%;gap:7px}header>a{font-size:9px;letter-spacing:.6px;max-width:140px}header>a:before{width:19px;height:19px}header>span{display:none}.header-actions{gap:5px!important}.header-actions button,.header-actions a{font-size:10px;padding:8px 9px}.bottom{bottom:10px;font-size:9px;left:3%;right:3%}.bottom>div{gap:8px}.bottom button{padding:3px 11px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media print{header,.bottom{display:none}.reveal .slides section{padding-top:20px}}
 </style>
 </head>
 <body>
-<header class="deck-topbar"><a href="/selected-work/">← Selected Work</a><span>{deck.title} · Placeholder deck</span><button type="button" id="fullscreen-toggle">Fullscreen</button></header>
-<main class="deck-stage">
+<header class="presentation-header">
+<a href="/selected-work/" aria-label="Back to Selected Work">DEMAND JOURNEYS / SELECTED WORK</a>
+<span>{deck.title.toUpperCase()}</span>
+<div class="header-actions">
+<button type="button" id="present" aria-label="Enter presentation fullscreen mode">Present ⛶</button>
+<button type="button" id="overview" aria-label="Show slide overview">Overview ⊞</button>
+</div>
+</header>
 <div class="reveal" aria-label={`Reveal.js presentation for ${deck.title}`}>
 <div class="slides">
+
 <section class="dark">
 <span class="eyebrow">Demand Journeys / Selected work</span>
 <h1>{deck.title}</h1>
@@ -124,18 +148,53 @@ html,body{height:100%;margin:0;background:var(--forest);color:var(--ivory);font-
 <p><a style="color:inherit;text-decoration:underline" href="/selected-work/">Return to Selected Work</a></p>
 <p class="subtitle">Placeholder deck · No financial revenue amounts or service prices</p>
 </section>
+
 </div></div>
-</main>
-<script is:inline src="/hospitality-presentations/commercial-system/vendor/reveal.min.js"></script>
+<nav class="bottom" aria-label="Slide navigation">
+<span id="chapter">SELECTED WORK</span>
+<div><button type="button" id="prev" aria-label="Previous slide">←</button><span id="count" aria-live="polite">01 / 06</span><button type="button" id="next" aria-label="Next slide">→</button></div>
+</nav>
+<script is:inline src="/hospitality-presentations/personal-portfolio/vendor/reveal.min.js"></script>
 <script is:inline>
-  if(typeof Reveal!=='undefined'){
-    Reveal.initialize({hash:true,controls:true,progress:true,slideNumber:'c/t',center:false,transition:'slide',width:1280,height:720,margin:0.02});
-  }
-  document.getElementById('fullscreen-toggle')?.addEventListener('click',()=>{
-    const target=document.querySelector('.deck-stage');
-    if(document.fullscreenElement)document.exitFullscreen();
-    else target?.requestFullscreen?.();
+if (typeof Reveal !== 'undefined') {
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ready=Reveal.initialize({
+    width:1200,height:700,margin:.12,hash:true,controls:false,progress:true,center:false,
+    transition:reduced?'none':'fade',backgroundTransition:'none',
+    keyboardCondition:e=>!['INPUT','TEXTAREA','SELECT'].includes(e.target?.tagName)
   });
+  const chapter=document.getElementById('chapter');
+  const count=document.getElementById('count');
+  function status(){
+    const current=Reveal.getCurrentSlide();
+    if(!current)return;
+    count.textContent=String(Reveal.getIndices().h+1).padStart(2,'0')+' / '+String(Reveal.getTotalSlides()).padStart(2,'0');
+    chapter.textContent=current.querySelector('.eyebrow')?.textContent||'SELECTED WORK';
+  }
+  ready.then(status);
+  Reveal.on('slidechanged',status);
+  document.getElementById('next').addEventListener('click',()=>Reveal.next());
+  document.getElementById('prev').addEventListener('click',()=>Reveal.prev());
+  document.getElementById('overview').addEventListener('click',()=>Reveal.toggleOverview());
+  const button=document.getElementById('present');
+  button.addEventListener('click',async()=>{
+    try{
+      if(document.fullscreenElement)await document.exitFullscreen();
+      else await document.documentElement.requestFullscreen();
+    }catch(e){
+      // In restricted embeds, open the standalone deck instead of showing a broken fullscreen state.
+      if(window.self!==window.top)window.open(location.href,'_blank','noopener');
+    }
+  });
+  function syncFullscreen(){
+    const full=Boolean(document.fullscreenElement);
+    button.textContent=full?'Exit fullscreen':'Present ⛶';
+    button.setAttribute('aria-label',full?'Exit presentation fullscreen mode':'Enter presentation fullscreen mode');
+    requestAnimationFrame(()=>Reveal.layout());
+  }
+  document.addEventListener('fullscreenchange',syncFullscreen);
+  window.addEventListener('resize',()=>requestAnimationFrame(()=>Reveal.layout()));
+}
 </script>
 </body>
 </html>
