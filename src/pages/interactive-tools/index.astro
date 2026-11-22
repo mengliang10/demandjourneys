@@ -3,6 +3,10 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
 import '../../styles/interior.css';
 import '../../styles/interactive-tools.css';
 const tools = [
+  {id:'page-scanner',label:'Page Scanner',category:'Technical SEO / HTML',href:'/interactive-tools/page-scanner/'},
+  {id:'content-analysis',label:'Content & Keywords',category:'Content analysis',href:'/interactive-tools/page-scanner/#content-analysis'},
+  {id:'schema-analysis',label:'JSON-LD Validator',category:'Structured data',href:'/interactive-tools/page-scanner/#schema-analysis'},
+  {id:'serp-analysis',label:'SERP Preview',category:'Search appearance',href:'/interactive-tools/page-scanner/#serp-analysis'},
   {id:'channel-mix',label:'Distribution mix',category:'Hospitality economics'},
   {id:'booking-funnel',label:'Booking funnel',category:'Conversion'},
   {id:'media-efficiency',label:'Media efficiency',category:'Acquisition'},
@@ -20,11 +24,12 @@ const tools = [
         <button class="tools-menu-toggle" type="button" aria-expanded="false" aria-controls="tools-menu">Browse tools <span aria-hidden="true">⌄</span></button>
         <nav class="tools-menu" id="tools-menu" aria-label="Interactive tool topics">
           <p class="tools-menu-title">Decision tools</p>
-          {tools.map(tool=><a href={`#${tool.id}`} data-tool-nav><small>{tool.category}</small><span>{tool.label}</span></a>)}
+          {tools.map(tool=><a href={tool.href ?? `#${tool.id}`} data-tool-nav><small>{tool.category}</small><span>{tool.label}</span></a>)}
           <div class="tools-menu-foot"><a href="/hospitality-presentations/">Presentation library ↗</a><a href="/services/">Advisory services ↗</a></div>
         </nav>
       </aside>
       <div class="tools-content">
+        <a class="scanner-feature-link" href="/interactive-tools/page-scanner/"><span class="eyebrow">Featured / DM_Tools adapted</span><strong>Page Scanner, SEO and Content Lab</strong><span>Inspect HTML sources, headings, metadata, JSON-LD, image alt attributes, content keywords and search snippets. Open the standalone browser-only scanner →</span></a>
         <section class="tool-panel" id="channel-mix" tabindex="-1">
           <span class="eyebrow">01 / Hospitality distribution</span><h2>Channel cost comparison</h2><p>Model how changes in channel mix affect average distribution cost as a share of booking value. This is a percentage-point comparison, not a claim of actual savings.</p>
           <div class="tool-fields"><label>Current OTA booking share (%)<input type="number" min="0" max="100" step=".1" value="50" data-calc="mix" id="ota-share" /></label><label>OTA commission (%)<input type="number" min="0" max="100" step=".1" value="18" data-calc="mix" id="ota-cost" /></label><label>Direct acquisition/servicing cost (%)<input type="number" min="0" max="100" step=".1" value="6" data-calc="mix" id="direct-cost" /></label><label>Share shifted from OTA to direct (percentage points)<input type="number" min="0" max="100" step=".1" value="5" data-calc="mix" id="shift" /></label></div>
@@ -114,7 +119,7 @@ const tools = [
     toggle?.addEventListener('click',()=>toggle.setAttribute('aria-expanded',String(toggle.getAttribute('aria-expanded')!=='true')));
     nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggle?.setAttribute('aria-expanded','false')));
     const links=[...root.querySelectorAll('[data-tool-nav]')];
-    function active(){links.forEach(a=>a.toggleAttribute('aria-current',a.hash===(location.hash||'#channel-mix')));}
+    function active(){links.forEach(a=>a.toggleAttribute('aria-current',a.getAttribute('href')===(location.hash||'#channel-mix')));}
     window.addEventListener('hashchange',active,{once:false});
     recalc();active();
   }
