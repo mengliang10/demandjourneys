@@ -183,7 +183,7 @@
       add(preview,'p',description.length>165?description.slice(0,164)+'…':description||'Meta description missing.');
       add(target,'p','Title: '+title.length+' characters · Description: '+description.length+' characters. Real search display is pixel-dependent and may be rewritten.','scanner-caveat');
     });
-    const menuButton=el('tools-menu-toggle'),menu=el('tools-menu');
+    const menuButton=root.querySelector('.tools-menu-toggle'),menu=el('tools-menu');
     menuButton?.addEventListener('click',()=>menuButton.setAttribute('aria-expanded',String(menuButton.getAttribute('aria-expanded')!=='true')));
     menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menuButton.setAttribute('aria-expanded','false')));
   }
