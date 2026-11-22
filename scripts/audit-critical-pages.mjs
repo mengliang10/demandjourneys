@@ -39,9 +39,10 @@ for(const route of ['/services/engagements/','/selected-work/','/interactive-too
 const selected=pages.find(p=>p.route==='/selected-work/')?.html||'';
 for(const slug of ['booking-transformation','customer-data-platform','distribution-governance']){
   const route='/selected-work/decks/'+slug+'/';
-  if(!selected.includes('src="'+route+'"'))errors.push('Selected Work embedding missing: '+slug);
+  if(!selected.includes('src="'+route+'?preview=1"'))errors.push('Selected Work overlay-free preview missing: '+slug);
   const deck=pages.find(p=>p.route===route)?.html||'';
   if(!deck.includes('class="reveal"'))errors.push('Reveal.js deck missing: '+slug);
+  if(!deck.includes('is-slide-preview'))errors.push('Preview overlay suppression missing: '+slug);
   if(!deck.includes('Placeholder edition'))errors.push('Placeholder label missing: '+slug);
 }
 const tools=pages.find(p=>p.route==='/interactive-tools/')?.html||'';
