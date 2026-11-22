@@ -179,3 +179,47 @@ html:not(#_) .dj-top:focus-visible{outline:3px solid #e1c997;outline-offset:3px}
   html:not(#_) .dj-footer,html:not(#_) .dj-top,html:not(#_) body.interior .site-header{display:none!important}
   html:not(#_) body.interior .site-header{position:static}
 }
+
+
+/* ---------- Presentation cards: readable thumbnail/title safe area ----------
+   The deck preview should never crop slide typography near its own edges.
+   Keep the 16:9 image, give its contents a small inset, and align the
+   card caption and actions with that inset across catalogue + related decks. */
+html:not(#_) body.interior :is(.library-results,.related-decks) .research-card{
+  --dj-deck-gutter:clamp(16px,1.6vw,24px);
+}
+html:not(#_) body.interior :is(.library-results,.related-decks) .research-card > .deck-preview{
+  box-sizing:border-box;
+  padding:clamp(10px,1.2vw,16px);
+  background:#e9eee9;
+  aspect-ratio:16/9;
+}
+html:not(#_) body.interior :is(.library-results,.related-decks) .deck-preview picture{
+  display:block;
+  width:100%;
+  height:100%;
+}
+html:not(#_) body.interior :is(.library-results,.related-decks) .deck-preview img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  transform:none;
+}
+html:not(#_) body.interior :is(.library-results,.related-decks) .deck-preview:hover img{
+  transform:none;
+}
+html:not(#_) body.interior :is(.library-results,.related-decks) .research-card > :is(.research-title,.deck-actions,.research-meta,.research-summary,.presentation-author,.research-tags){
+  padding-inline:var(--dj-deck-gutter);
+}
+html:not(#_) body.interior :is(.library-results,.related-decks) .research-title{
+  overflow-wrap:anywhere;
+  text-wrap:balance;
+}
+@media(max-width:760px){
+  html:not(#_) body.interior :is(.library-results,.related-decks) .research-card{
+    --dj-deck-gutter:16px;
+  }
+  html:not(#_) body.interior :is(.library-results,.related-decks) .research-card > .deck-preview{
+    padding:10px;
+  }
+}
