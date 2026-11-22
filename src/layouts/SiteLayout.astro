@@ -6,26 +6,40 @@ import Footer from '../components/Footer.astro';
 import '../styles/home.css';
 import '../styles/system.css';
 const {title,description='',current='',home=false,bodyClass=home?'final-home':'interior',headHtml,ogImage='/splash.jpg'}=Astro.props;
-const canonical=new URL(Astro.url.pathname,'https://www.demandjourneys.com/');
+const base='https://www.demandjourneys.com/';
+const canonical=new URL(Astro.url.pathname,base);
+const metaTitle=(title || headHtml?.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || 'Demand Journeys').replace(/\s+/g,' ').trim();
+const metaDescription=description || 'Independent search, growth, marketing technology and hospitality advisory from Demand Journeys.';
+const organisationId=base+'#organization';
+const semanticGraph={
+ '@context':'https://schema.org',
+ '@graph':[
+  {'@type':'Organization','@id':organisationId,name:'Demand Journeys',url:base,
+   logo:{'@type':'ImageObject',url:new URL('/identity/wordmark-forest-456.webp',base).href},
+   email:'ml@demandjourneys.com',
+   founder:{'@type':'Person',name:'Meng Liang Tan',sameAs:['https://www.linkedin.com/in/mengliang/']},
+   areaServed:['Singapore','Asia Pacific'],
+   knowsAbout:['Hospitality and travel marketing','Search marketing','AI search discoverability','Marketing technology','Digital commerce']},
+  {'@type':'WebSite','@id':base+'#website',name:'Demand Journeys',url:base,publisher:{'@id':organisationId},inLanguage:'en-SG'},
+  {'@type':'WebPage','@id':canonical.href+'#webpage',url:canonical.href,name:metaTitle,description:metaDescription,
+   isPartOf:{'@id':base+'#website'},about:{'@id':organisationId},inLanguage:'en-SG'}
+ ]
+};
 ---
 <!doctype html>
 <html lang="en-SG">
 <head>
  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
  {headHtml ? <Fragment set:html={headHtml} /> : <>
- <title>{title}</title><meta name="description" content={description}/>
+ <title>{metaTitle}</title><meta name="description" content={metaDescription}/>
  <link rel="canonical" href={canonical}/><meta property="og:type" content="website"/>
- <meta property="og:title" content={title}/><meta property="og:description" content={description}/>
+ <meta property="og:title" content={metaTitle}/><meta property="og:description" content={metaDescription}/>
  <meta property="og:url" content={canonical}/><meta property="og:site_name" content="Demand Journeys"/>
  <meta property="og:image" content={new URL(ogImage,'https://www.demandjourneys.com/')}/><meta name="twitter:card" content="summary_large_image"/>
+ <meta name="twitter:title" content={metaTitle}/><meta name="twitter:description" content={metaDescription}/>
+ <meta name="twitter:image" content={new URL(ogImage,base)}/>
  </>}
- {headHtml && <>
- <meta name="description" content={description || 'Independent commercial, marketing technology and hospitality advisory from Demand Journeys.'}/>
- <link rel="canonical" href={canonical}/>
- <meta property="og:type" content="website"/>
- <meta property="og:url" content={canonical}/>
- <meta property="og:site_name" content="Demand Journeys"/>
- </>}
+ <script type="application/ld+json" set:html={JSON.stringify(semanticGraph)}/>
  <link rel="icon" href="/favicon.svg" type="image/svg+xml"/><meta name="theme-color" content="#253b34"/>
  <link rel="preload" href="/fonts/inter-tight-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin/>
  <link rel="preload" href="/fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin/>

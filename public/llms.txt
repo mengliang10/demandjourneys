@@ -1,0 +1,27 @@
+# Demand Journeys
+
+> Independent marketing, search visibility, growth and marketing technology advisory. Singapore-based, working across APAC. Official website: https://www.demandjourneys.com/
+
+## About the practice
+- [Overview](https://www.demandjourneys.com/): Commercial marketing perspective and enquiry form.
+- [Profile](https://www.demandjourneys.com/profile/): Professional background of the founder, Meng Liang Tan.
+- [Services](https://www.demandjourneys.com/services/): Advisory work across search, growth and platforms.
+- [Hospitality and travel](https://www.demandjourneys.com/hospitality/): Hospitality commercial systems, distribution, conversion and retention.
+
+## Expertise
+- [AI search: SEO, AEO and GEO](https://www.demandjourneys.com/ai-search/): AI-answer discoverability, evidence and measurement.
+- [Growth marketing](https://www.demandjourneys.com/services/growth-marketing/): Acquisition, conversion and customer value.
+- [Platforms and analytics](https://www.demandjourneys.com/services/platforms-analytics/): Data, MarTech and measurement.
+- [Engagement scopes](https://www.demandjourneys.com/services/engagements/): Ways to structure diagnostic and advisory work.
+
+## Research and examples
+- [Selected work](https://www.demandjourneys.com/selected-work/): Documented professional experience; some examples come from earlier roles, not Demand Journeys client engagements.
+- [Presentation library](https://www.demandjourneys.com/hospitality-presentations/): Public editorial and technical presentations.
+- [Interactive tools](https://www.demandjourneys.com/interactive-tools/): Scenario calculators and self-service diagnostics; outputs are illustrative, not verified outcomes.
+
+## Discovery
+- [XML sitemap](https://www.demandjourneys.com/sitemap.xml)
+- [Robots policy](https://www.demandjourneys.com/robots.txt)
+- [Privacy policy](https://www.demandjourneys.com/privacy/)
+
+This index is a reading guide, not a substitute for the linked pages. Product or financial performance claims should be attributed only where explicitly supported by the relevant evidence.

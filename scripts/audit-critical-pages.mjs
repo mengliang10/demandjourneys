@@ -28,11 +28,25 @@ for(const route of routes){
   if(!existsSync(path)){errors.push('Missing page: '+route);continue;}
   const html=readFileSync(path,'utf8');
   if(!/<h1\b/i.test(html)) errors.push('Missing main heading: '+route);
-  if(!/<meta\s+name="description"/i.test(html)) errors.push('Missing description: '+route);
-  if(!/<link\s+rel="canonical"/i.test(html)) errors.push('Missing canonical: '+route);
+  const metaTags=[...html.matchAll(/<meta\b[^>]*>/gi)].map(m=>m[0]);
+  const linkTags=[...html.matchAll(/<link\b[^>]*>/gi)].map(m=>m[0]);
+  const descriptions=metaTags.filter(t=>/\bname\s*=\s*["']description["']/i.test(t));
+  const canonicals=linkTags.filter(t=>/\brel\s*=\s*["']canonical["']/i.test(t));
+  if(descriptions.length!==1) errors.push('Expected exactly one description, got '+descriptions.length+': '+route);
+  if(canonicals.length!==1) errors.push('Expected exactly one canonical, got '+canonicals.length+': '+route);
+  if(!html.includes('"@id":"https://www.demandjourneys.com/#organization"')) errors.push('Stable Organization schema identity missing: '+route);
+  if(/Amazing Site|dev3_admin/i.test(html)) errors.push('Placeholder entity identity present: '+route);
   pages.push({route,html});
 }
 const front=pages.find(p=>p.route==='/')?.html||'';
+for(const route of ['/','/services/','/services/engagements/','/services/growth-marketing/','/services/platforms-analytics/','/hospitality/','/selected-work/','/interactive-tools/','/interactive-tools/page-scanner/','/ai-search/']){
+ const page=pages.find(p=>p.route===route);
+ if(page){const headings=page.html.match(/<h1\b/gi)||[];if(headings.length!==1)errors.push('Expected one H1 on '+route+', found '+headings.length);}
+}
+const llms=join(dist,'llms.txt');
+if(!existsSync(llms)) errors.push('Missing optional AI document llms.txt');
+else {const text=readFileSync(llms,'utf8');if(!/^#\s+\S/m.test(text)||!/\]\(https?:\/\//.test(text))errors.push('llms.txt requires Markdown heading and navigable links');}
+
 for(const route of ['/services/engagements/','/selected-work/','/interactive-tools/','/hospitality/']){
   if(!front.includes('href="'+route+'"'))errors.push('Homepage missing discovery link: '+route);
 }
