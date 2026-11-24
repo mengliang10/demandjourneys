@@ -68,7 +68,10 @@ const scanner=pages.find(p=>p.route==='/interactive-tools/page-scanner/')?.html|
 for(const id of ['page-audit','content-analysis','schema-analysis','serp-analysis'])if(!scanner.includes('id="'+id+'"'))errors.push('Page Scanner analyzer missing: '+id);
 if(!scanner.includes('aria-label="Interactive tool topics"'))errors.push('Page Scanner left navigation missing');
 if(!existsSync(join(dist,'interactive-tools','page-scanner.js')))errors.push('Page Scanner JavaScript missing');
-if(!tools.includes('aria-label="Interactive tool topics"'))errors.push('Interactive tools topic navigation missing');
+if(!tools.includes('aria-label="Interactive tools by professional role"'))errors.push('Interactive tools role navigation missing');
+for(const role of ['Marketers','Hoteliers','Business Owners &amp; Executives','Web, SEO &amp; Technology Specialists']){
+  if(!tools.includes(role))errors.push('Interactive tools role missing: '+role);
+}
 const map=readFileSync(join(dist,'sitemap.xml'),'utf8');
 for(const route of routes.filter(x=>x!=='/privacy/')){
   if(!map.includes('https://www.demandjourneys.com'+route))errors.push('Sitemap missing '+route);
