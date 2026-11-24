@@ -2,25 +2,6 @@
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import '../../styles/interior.css';
 import '../../styles/interactive-tools.css';
-const tools = [
-  {id:'page-scanner',label:'Page Scanner',category:'Technical SEO / HTML',href:'/interactive-tools/page-scanner/'},
-  {id:'content-analysis',label:'Content & Keywords',category:'Content analysis',href:'/interactive-tools/page-scanner/#content-analysis'},
-  {id:'schema-analysis',label:'JSON-LD Validator',category:'Structured data',href:'/interactive-tools/page-scanner/#schema-analysis'},
-  {id:'serp-analysis',label:'SERP Preview',category:'Search appearance',href:'/interactive-tools/page-scanner/#serp-analysis'},
-  {id:'channel-mix',label:'Distribution mix',category:'Hospitality economics'},
-  {id:'booking-funnel',label:'Booking funnel',category:'Conversion'},
-  {id:'media-efficiency',label:'Media efficiency',category:'Acquisition'},
-  {id:'roi-scenario',label:'ROI scenario',category:'Commercial modelling'},
-  {id:'ai-readiness',label:'AI search readiness',category:'Discoverability'},
-  {id:'platform-fit',label:'Platform readiness',category:'MarTech & data'}
-];
-const roles = [
-  {label:'Marketers',ids:['content-analysis','serp-analysis','media-efficiency','ai-readiness']},
-  {label:'Hoteliers',ids:['channel-mix','booking-funnel']},
-  {label:'Business Owners & Executives',ids:['roi-scenario']},
-  {label:'Web, SEO & Technology Specialists',ids:['page-scanner','schema-analysis','platform-fit']}
-];
-const roleTools = (ids: string[]) => ids.map(id => tools.find(tool => tool.id === id)).filter((tool): tool is typeof tools[number] => Boolean(tool));
 ---
 <SiteLayout title="Interactive Tools | Demand Journeys" description="Private, browser-based marketing diagnostics and scenario calculators covering distribution, conversion, media, AI search and MarTech." current="interactive-tools" bodyClass="interior tools-page">
   <div class="container tools-shell">
@@ -31,10 +12,20 @@ const roleTools = (ids: string[]) => ids.map(id => tools.find(tool => tool.id ==
         <button class="tools-menu-toggle" type="button" aria-expanded="false" aria-controls="tools-menu">Browse tools <span aria-hidden="true">⌄</span></button>
         <nav class="tools-menu" id="tools-menu" aria-label="Interactive tools by professional role">
           <p class="tools-menu-title">Browse by role</p>
-          {roles.map(role=><>
-            <h2 class="tools-role-title">{role.label}</h2>
-            {roleTools(role.ids).map(tool=><a href={tool.href ?? `#${tool.id}`} data-tool-nav><small>{tool.category}</small><span>{tool.label}</span></a>)}
-          </>)}
+          <h2 class="tools-role-title">Marketers</h2>
+          <a href="/interactive-tools/page-scanner/#content-analysis" data-tool-nav><small>Content analysis</small><span>Content &amp; Keywords</span></a>
+          <a href="/interactive-tools/page-scanner/#serp-analysis" data-tool-nav><small>Search appearance</small><span>SERP Preview</span></a>
+          <a href="#media-efficiency" data-tool-nav><small>Acquisition</small><span>Media efficiency</span></a>
+          <a href="#ai-readiness" data-tool-nav><small>Discoverability</small><span>AI search readiness</span></a>
+          <h2 class="tools-role-title">Hoteliers</h2>
+          <a href="#channel-mix" data-tool-nav><small>Hospitality economics</small><span>Distribution mix</span></a>
+          <a href="#booking-funnel" data-tool-nav><small>Conversion</small><span>Booking funnel</span></a>
+          <h2 class="tools-role-title">Business Owners &amp; Executives</h2>
+          <a href="#roi-scenario" data-tool-nav><small>Commercial modelling</small><span>ROI scenario</span></a>
+          <h2 class="tools-role-title">Web, SEO &amp; Technology Specialists</h2>
+          <a href="/interactive-tools/page-scanner/" data-tool-nav><small>Technical SEO / HTML</small><span>Page Scanner</span></a>
+          <a href="/interactive-tools/page-scanner/#schema-analysis" data-tool-nav><small>Structured data</small><span>JSON-LD Validator</span></a>
+          <a href="#platform-fit" data-tool-nav><small>MarTech &amp; data</small><span>Platform readiness</span></a>
           <div class="tools-menu-foot"><a href="/hospitality-presentations/">Knowledge Base ↗</a><a href="/services/">Advisory services ↗</a></div>
         </nav>
       </aside>
