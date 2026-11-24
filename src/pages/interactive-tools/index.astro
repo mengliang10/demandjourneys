@@ -14,6 +14,13 @@ const tools = [
   {id:'ai-readiness',label:'AI search readiness',category:'Discoverability'},
   {id:'platform-fit',label:'Platform readiness',category:'MarTech & data'}
 ];
+const roles = [
+  {label:'Marketers',ids:['content-analysis','serp-analysis','media-efficiency','ai-readiness']},
+  {label:'Hoteliers',ids:['channel-mix','booking-funnel']},
+  {label:'Business Owners & Executives',ids:['roi-scenario']},
+  {label:'Web, SEO & Technology Specialists',ids:['page-scanner','schema-analysis','platform-fit']}
+];
+const roleTools = (ids: string[]) => ids.map(id => tools.find(tool => tool.id === id)).filter((tool): tool is typeof tools[number] => Boolean(tool));
 ---
 <SiteLayout title="Interactive Tools | Demand Journeys" description="Private, browser-based marketing diagnostics and scenario calculators covering distribution, conversion, media, AI search and MarTech." current="interactive-tools" bodyClass="interior tools-page">
   <div class="container tools-shell">
@@ -22,10 +29,13 @@ const tools = [
     <div class="tools-layout">
       <aside class="tools-menu-wrap" aria-label="Interactive tools menu">
         <button class="tools-menu-toggle" type="button" aria-expanded="false" aria-controls="tools-menu">Browse tools <span aria-hidden="true">⌄</span></button>
-        <nav class="tools-menu" id="tools-menu" aria-label="Interactive tool topics">
-          <p class="tools-menu-title">Decision tools</p>
-          {tools.map(tool=><a href={tool.href ?? `#${tool.id}`} data-tool-nav><small>{tool.category}</small><span>{tool.label}</span></a>)}
-          <div class="tools-menu-foot"><a href="/hospitality-presentations/">Presentation library ↗</a><a href="/services/">Advisory services ↗</a></div>
+        <nav class="tools-menu" id="tools-menu" aria-label="Interactive tools by professional role">
+          <p class="tools-menu-title">Browse by role</p>
+          {roles.map(role=><>
+            <h2 class="tools-role-title">{role.label}</h2>
+            {roleTools(role.ids).map(tool=><a href={tool.href ?? `#${tool.id}`} data-tool-nav><small>{tool.category}</small><span>{tool.label}</span></a>)}
+          </>)}
+          <div class="tools-menu-foot"><a href="/hospitality-presentations/">Knowledge Base ↗</a><a href="/services/">Advisory services ↗</a></div>
         </nav>
       </aside>
       <div class="tools-content">
@@ -126,3 +136,10 @@ const tools = [
   document.addEventListener('astro:page-load',init);init();
 })();
 </script>
+
+<style>
+  .tools-role-title { margin: 20px 0 3px; padding: 8px 12px; background: #eef2ec; color: #203e3a; font-size: .78rem; font-weight: 750; line-height: 1.4; }
+  .tools-menu > a { padding-top: 10px; padding-bottom: 10px; }
+  @media (max-width: 860px) { .tools-menu-title { padding: 14px 12px 0; } .tools-role-title { margin-top: 10px; } }
+  @media (min-width: 861px) { .tools-menu { max-height: calc(100vh - 60px); overflow-y: auto; } }
+</style>
